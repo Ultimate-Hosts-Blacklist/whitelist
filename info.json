@@ -1,0 +1,22 @@
+{
+    "arguments": [
+        "--travis",
+        "-a",
+        "-ex",
+        "--plain",
+        "--split",
+        "-t 2",
+        "--share-logs"
+    ],
+    "autosave_minutes": "10",
+    "clean_list_file": "clean.list",
+    "clean_original": "1",
+    "commit_autosave_message": "Testing of the whitelist list",
+    "currently_under_test": "0",
+    "days_until_next_test": "2",
+    "last_test": "0",
+    "list_name": "domains.list",
+    "name": "Whitelist",
+    "raw_link": "",
+    "stable": "0"
+}
