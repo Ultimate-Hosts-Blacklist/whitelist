@@ -1,3 +1,5 @@
 {
-    "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {}
+    "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {
+        "to_test": []
+    }
 }
