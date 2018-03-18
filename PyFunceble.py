@@ -587,24 +587,18 @@ class PyFunceble(object):
         if not result:
             result = []
 
-        for data in to_format:
+        for data in Helpers.List(to_format).format():
             if data:
                 if '#' in data:
-                    result.extend(
-                        cls.format_adblock_decoded(
-                            data.split('#'), result))
+                    return cls.format_adblock_decoded(data.split('#'), result)
                 elif ',' in data:
-                    result.extend(
-                        cls.format_adblock_decoded(
-                            data.split(','), result))
+                    return cls.format_adblock_decoded(data.split(','), result)
                 elif '~' in data:
-                    result.extend(
-                        cls.format_adblock_decoded(
-                            data.split('~'), result))
+                    return cls.format_adblock_decoded(data.split('~'), result)
                 elif '!' in data:
-                    result.extend(
-                        cls.format_adblock_decoded(
-                            data.split('!'), result))
+                    return cls.format_adblock_decoded(data.split('!'), result)
+                elif '|' in data:
+                    return cls.format_adblock_decoded(data.split('|'), result)
                 elif data and \
                     (ExpirationDate.is_domain_valid(data) or
                      ExpirationDate.is_valid_ip(data)):
@@ -1152,7 +1146,7 @@ class Prints(object):
         if not Settings.no_files \
             and self.output is not None \
                 and self.output != '' \
-        and not path.isfile(self.output):
+            and not path.isfile(self.output):
             link = ("# File generated with %s\n" % Settings.link_to_repo)
             date_of_generation = (
                 "# Date of generation: %s \n\n" %
@@ -2896,7 +2890,7 @@ if __name__ == '__main__':
             '-v',
             '--version',
             action='version',
-            version='%(prog)s 0.35.0-beta'
+            version='%(prog)s 0.37.0-beta'
         )
 
         ARGS = PARSER.parse_args()
