@@ -1,15 +1,15 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Sun 18 Mar 11:03:06 UTC 2018 
+# Date of generation: Wed 21 Mar 15:03:37 UTC 2018 
 
 70i.net 
 a1014.g.akamai.net 
 accounts.google.com 
+accuweather.com 
 adaway.org 
 adb.juvander.net 
 adblock.dk 
 adblock.ee 
 adblock.mahakala.is 
-ads.hulu.com 
 akadns.net 
 akamai.net 
 akamaiedge.net 
@@ -17,9 +17,11 @@ albert.apple.com
 digitaltrends.com 
 videolan.org 
 allegro.pl 
+alluremedia.com.au 
 amazon.com 
 android.clients.google.com 
 ap.spotify.com 
+api.ipify.org 
 api.twitter.com 
 app.plex.tv 
 apps.facebook.com 
@@ -27,6 +29,7 @@ apps.skype.com
 apresolve.spotify.com 
 apt.sonarr.tv 
 archive.ubuntu.com 
+askubuntu.com 
 attestation.xboxlive.com 
 audible.com 
 ax.init.itunes.apple.com 
@@ -42,13 +45,13 @@ bit.ly
 bitbucket.org 
 bleacherreport.com 
 blocklist.kowabit.de 
+blogs.discovermagazine.com 
 btstatic.com 
 business.officedepot.com.edgekey.net 
 businessfinder.nj.com 
 businessinsider.com 
 c.msn.com 
 c.s-microsoft.com 
-cda.pl 
 cdn.betrad.com 
 cdn.edgesuite.net 
 cdn.embedly.com 
@@ -56,7 +59,6 @@ cdn.mplxtms.com
 cdn.optimizely.com 
 cert.mgt.xboxlive.com 
 chatenabled.mail.google.com 
-chomikuj.pl 
 chrome.google.com 
 client.dropbox.com 
 clients2.google.com 
@@ -84,6 +86,7 @@ device.auth.xboxlive.com
 digg.com 
 directvapplications.hb.omtrdc.net 
 directvnow.com 
+discovermagazine.com 
 displaycatalog.mp.microsoft.com 
 disqus.com 
 dl-web.dropbox.com 
@@ -123,11 +126,14 @@ external-lhr6-1.xx.fbcdn.net
 external-lhr7-1.xx.fbcdn.net 
 external-lhr8-1.xx.fbcdn.net 
 external-lhr9-1.xx.fbcdn.net 
+extras.ubuntu.com 
 facebook.com 
 feedly.com 
 filters.adtidy.org 
 fonts.googleapis.com 
+forum.xda-developers.com 
 forums.sonarr.tv 
+forums.whirlpool.net.au 
 fr.osdn.net 
 g.live.com 
 g.msn.com 
@@ -142,26 +148,23 @@ googlesyndication.com
 googleusercontent.com 
 googlevideo.com 
 graph.facebook.com 
-gratka.pl 
 gravatar.com 
 gs.apple.com 
 help.ui.xboxlive.com 
 history.com 
-homedepot.com 
 hosts-file.net 
 hostsfile.mine.nu 
-hqporner.com 
 i.imgur.com 
 i.s-microsoft.com 
 icanhazip.com 
-imdb.com 
+imgs.xkcd.com 
 imgur.com 
 instagram.com 
 itunes.apple.com 
+j.mp 
 jdownloader.org 
-jebzdzidy.pl 
 js.maxmind.com 
-komputerswiat.pl 
+keystone.mwbsys.com 
 l.betrad.com 
 lh3.google.com 
 lh4.google.com 
@@ -172,7 +175,6 @@ licensing.xboxlive.com
 live.com 
 live.net 
 livefilestore.com 
-ll.a.hulu.com 
 login.live.com 
 logmein-gateway.com 
 logmein.com 
@@ -201,6 +203,7 @@ msn.com
 mzstatic.com 
 netflix.com 
 newjobs.com 
+newyork.cbslocal.com 
 nexus.passport.com 
 nflxext.com 
 nflximg.com 
@@ -218,12 +221,11 @@ odcdn.com
 officeclient.microsoft.com 
 officedepot.com 
 openload.co 
-other.pl 
 ouo.io 
 outlook.office365.com 
+ow.ly 
 p.imgur.com 
 pastebin.com 
-patrz.pl 
 pgl.yoyo.org 
 phobos.apple.com 
 pic.twitter.com 
@@ -234,13 +236,9 @@ pixel.quantserve.com
 platform.twitter.com 
 play.spotify.com 
 play.spotify.edgekey.net 
-player.pl 
 player.vimeo.com 
 playstation.com 
 plex.tv 
-pobieramy24.pl 
-pornhub.com 
-prnt.sc 
 products.office.com 
 proxy.novafusion.ea.com 
 proxy.plex.bz 
@@ -252,10 +250,13 @@ px.spiceworks.com
 ransomwaretracker.abuse.ch 
 raw.github.com 
 raw.githubusercontent.com 
+res.cloudinary.com 
 road.adblock.ro 
+rover.ebay.com 
 s-media-cache-ak0.pinimg.com 
 s-passets-cache-ak0.pinimg.com 
 s.gateway.messenger.live.com 
+s.shopify.com 
 s.youtube.com 
 s.ytimg.com 
 s.zkcdn.net 
@@ -273,6 +274,7 @@ secure.logmein.com
 secure.netflix.com 
 secure.surveymonkey.com 
 securemecca.com 
+security.ubuntu.com 
 services.sonarr.tv 
 settings-win.data.microsoft.com 
 skyhook.sonarr.tv 
@@ -299,7 +301,6 @@ storage.msn.com
 surveymonkey.com 
 sysctl.org 
 t.co 
-t2.hulu.com 
 talk.google.com 
 talk.l.google.com 
 talkgadget.google.com 
@@ -315,8 +316,8 @@ title.mgt.xboxlive.com
 tlc.com 
 tld-list.com 
 tofukko.r.ribbon.to 
+tomshardware.com 
 torrentfreak.com 
-tosiewytnie.pl 
 track.spiceworks.com 
 tunein.com 
 tvdb2.plex.tv 
@@ -329,18 +330,16 @@ ui.skype.com
 unix.com 
 upload.facebook.com 
 upload.twitter.com 
-uploaded.com 
-us-cert.gov 
 userstream.twitter.com 
 v.firebog.net 
 v10.vortex-win.data.microsoft.com 
 verisign.com 
 video-stats.l.google.com 
 video.google.com 
-vod.pl 
 vox.com 
 vupload2.facebook.com 
 walmart.com 
+weather.com 
 web.archive.org 
 webcache.googleusercontent.com 
 weeklyad.target.com 
@@ -352,6 +351,7 @@ windowsupdate.com
 winhelp2002.mvps.org 
 wirtualnemedia.pl 
 wt.logmein.com 
+www.bit.ly 
 www.feedly.com 
 www.google-analytics.com 
 www.google.com 
@@ -365,12 +365,11 @@ www.kickstarter.com
 www.malwaredomainlist.com 
 www.messenger.com 
 www.msftncsi.com 
-www.niecko.pl 
 www.no-ip.com 
+www.pinterest.com 
 www.plex.tv 
 www.sa-blacklist.stearns.org 
 www.unix.com 
-www.us-cert.gov 
 www.void.gr 
 www.xboxlive.com 
 www.youtube-nocookie.com 
@@ -387,5 +386,4 @@ youtube.com
 yt3.ggpht.com 
 ytimg.com 
 ytimg.l.google.com 
-zajefajna.com 
 zeustracker.abuse.ch 
