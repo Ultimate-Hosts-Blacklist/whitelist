@@ -1,6 +1,7 @@
 106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services
 70i.net
 ALL .gov
+ALL .ubuntu.com
 ALL digitaltrends.com
 ALL twimg.com
 ALL videolan.org
@@ -28,7 +29,6 @@ apps.facebook.com
 apps.skype.com
 apresolve.spotify.com
 apt.sonarr.tv
-archive.ubuntu.com
 askubuntu.com
 attestation.xboxlive.com
 audible.com
@@ -138,7 +138,6 @@ external-lhr6-1.xx.fbcdn.net
 external-lhr7-1.xx.fbcdn.net
 external-lhr8-1.xx.fbcdn.net
 external-lhr9-1.xx.fbcdn.net
-extras.ubuntu.com
 facebook.com
 fbcdn-creative-a.akamaihd.net
 feedly.com
@@ -302,7 +301,6 @@ secure.logmein.com
 secure.netflix.com
 secure.surveymonkey.com
 securemecca.com
-security.ubuntu.com
 services.sonarr.tv
 settings-win.data.microsoft.com
 skyhook.sonarr.tv
