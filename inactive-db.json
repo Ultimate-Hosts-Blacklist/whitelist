@@ -1,10 +1,11 @@
 {
     "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {
-        "1521820569": [
+        "1522080540": [
             "106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services",
             "ad.hulu.com",
             "ale-gratka.pl",
             ".gov",
+            ".ubuntu.com",
             "banners.spiceworks.com",
             "c.youtube.com",
             "channel.facebook.com",
@@ -32,6 +33,7 @@
             "s3.symcb.com",
             "s4.symcb.com",
             "s5.symcb.com",
+            "sqm.microsoft.com",
             "static.ak.facebook.com",
             "talks.l.google.com",
             "teredo.ipv6.microsoft.com",

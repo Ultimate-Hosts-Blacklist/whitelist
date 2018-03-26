@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Fri 23 Mar 15:03:09 UTC 2018 
+# Date of generation: Mon 26 Mar 16:03:59 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
@@ -15,6 +15,7 @@
 0.0.0.0 akamaiedge.net 
 0.0.0.0 albert.apple.com 
 0.0.0.0 digitaltrends.com 
+0.0.0.0 twimg.com 
 0.0.0.0 videolan.org 
 0.0.0.0 allegro.pl 
 0.0.0.0 alluremedia.com.au 
@@ -28,7 +29,6 @@
 0.0.0.0 apps.skype.com 
 0.0.0.0 apresolve.spotify.com 
 0.0.0.0 apt.sonarr.tv 
-0.0.0.0 archive.ubuntu.com 
 0.0.0.0 askubuntu.com 
 0.0.0.0 attestation.xboxlive.com 
 0.0.0.0 audible.com 
@@ -125,7 +125,6 @@
 0.0.0.0 external-lhr7-1.xx.fbcdn.net 
 0.0.0.0 external-lhr8-1.xx.fbcdn.net 
 0.0.0.0 external-lhr9-1.xx.fbcdn.net 
-0.0.0.0 extras.ubuntu.com 
 0.0.0.0 facebook.com 
 0.0.0.0 feedly.com 
 0.0.0.0 filters.adtidy.org 
@@ -159,6 +158,7 @@
 0.0.0.0 imgs.xkcd.com 
 0.0.0.0 imgur.com 
 0.0.0.0 instagram.com 
+0.0.0.0 ipla.tv 
 0.0.0.0 itunes.apple.com 
 0.0.0.0 j.mp 
 0.0.0.0 jdownloader.org 
@@ -273,7 +273,6 @@
 0.0.0.0 secure.netflix.com 
 0.0.0.0 secure.surveymonkey.com 
 0.0.0.0 securemecca.com 
-0.0.0.0 security.ubuntu.com 
 0.0.0.0 services.sonarr.tv 
 0.0.0.0 settings-win.data.microsoft.com 
 0.0.0.0 skyhook.sonarr.tv 
@@ -283,7 +282,6 @@
 0.0.0.0 spapps.spotify.edgekey.net 
 0.0.0.0 spclient.wg.spotify.com 
 0.0.0.0 sport.onet.pl 
-0.0.0.0 sqm.microsoft.com 
 0.0.0.0 ssl-images-amazon.com 
 0.0.0.0 ssl.google-analytics.com 
 0.0.0.0 ssl.gstatic.com 
@@ -325,6 +323,7 @@
 0.0.0.0 twimg.com 
 0.0.0.0 twimg0-a.akamaihd.net 
 0.0.0.0 twitter.com 
+0.0.0.0 ubuntuforums.org 
 0.0.0.0 ui.skype.com 
 0.0.0.0 unix.com 
 0.0.0.0 upload.facebook.com 
