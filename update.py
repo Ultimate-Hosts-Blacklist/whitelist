@@ -135,6 +135,11 @@ class Settings(object):  # pylint: disable=too-few-public-methods
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     permanent_license_link = 'https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/repository-structure/master/LICENSE'  # pylint: disable=line-too-long
 
+    # This variable is used to set the permanant config links
+    #
+    # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
+    permanent_config_link = 'https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/repository-structure/master/config_production.yaml'  # pylint: disable=line-too-long
+
     # This variable is used to set the arguments when executing PyFunceble.py
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
@@ -162,6 +167,7 @@ class Initiate(object):
     """
 
     def __init__(self):  # pylint: disable=too-many-branches
+        self.config_update = 'wget %s -O config.yaml' % Settings.permanent_config_link
         self.travis()
         self.travis_permissions()
         self.structure()
@@ -372,9 +378,11 @@ class Initiate(object):
                     'Unable to download the the file. Please check the link.')
 
             if path.isdir(Settings.current_directory + 'output'):
+                Helpers.Command(self.config_update, False).execute()
+
                 Helpers.Command(
                     Settings.current_directory +
-                    'tool.py -c',
+                    'PyFunceble.py --clean',
                     False).execute()
 
             self.travis_permissions()
@@ -521,7 +529,6 @@ class Initiate(object):
         Install and run PyFunceble.
         """
 
-        tool_path = Settings.current_directory + 'tool.py'
         # pylint: disable=invalid-name
         PyFunceble_path = Settings.current_directory + \
             'PyFunceble.py'
@@ -531,14 +538,10 @@ class Initiate(object):
         else:
             status = '--dev'
 
-        command_to_execute = 'sudo python3 %s --dev -u && ' % (tool_path)
-        command_to_execute += 'python3 %s -v && ' % (tool_path)
-        command_to_execute += 'export TRAVIS_BUILD_DIR=%s && ' % environ['TRAVIS_BUILD_DIR']
-        command_to_execute += 'python3 %s -q --directory-structure && ' % (
-            tool_path)
-        command_to_execute += 'sudo python3 %s %s --autosave-minutes %s --commit-autosave-message "[Autosave] %s" --commit-results-message "[Results] %s" -i && ' % (  # pylint: disable=line-too-long
-            tool_path, status, Settings.autosave_minutes, Settings.commit_autosave_message, Settings.commit_autosave_message)  # pylint: disable=line-too-long
+        command_to_execute = 'sudo python3 %s %s -u && ' % (
+            PyFunceble_path, status)
         command_to_execute += 'python3 %s -v && ' % (PyFunceble_path)
+        command_to_execute += 'export TRAVIS_BUILD_DIR=%s && ' % environ['TRAVIS_BUILD_DIR']
         command_to_execute += 'sudo python3 %s %s -f %s' % (
             PyFunceble_path, self._construct_arguments(), Settings.file_to_test)
 
@@ -549,11 +552,12 @@ class Initiate(object):
                 'LICENSE').link()
 
             Settings.informations['last_test'] = strftime('%s')
+
             Helpers.Dict(
                 Settings.informations).to_json(
                     Settings.repository_info)
-            self.travis_permissions()
 
+            Helpers.Command(self.config_update, False).execute()
             print(Helpers.Command(command_to_execute, True).execute())
 
             commit_message = 'Update of info.json'
@@ -566,15 +570,14 @@ class Initiate(object):
                     return_data=False,
                     escape=True).match():
                 Settings.informations['currently_under_test'] = str(int(False))
-                commit_message = "[Results] " + \
-                    commit_message + \
+                commit_message = "[Results] " + commit_message + \
                     ' && input source file [ci skip]'
 
                 self._clean_original()
             else:
                 Settings.informations['currently_under_test'] = str(int(True))
                 commit_message = "[Autosave] " + \
-                    commit_message + ' && launch next test part'
+                    commit_message
 
             Helpers.Dict(
                 Settings.informations).to_json(
