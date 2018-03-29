@@ -138,7 +138,7 @@ class Settings(object):  # pylint: disable=too-few-public-methods
     # This variable is used to set the permanant config links
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
-    permanent_config_link = 'https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/repository-structure/master/config_production.yaml'  # pylint: disable=line-too-long
+    permanent_config_link = 'https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/repository-structure/master/config_cross_input_sources.yaml'  # pylint: disable=line-too-long
 
     # This variable is used to set the arguments when executing PyFunceble.py
     #
