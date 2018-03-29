@@ -1,8 +1,8 @@
 {
     "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {
-        "number_of_down": 39,
-        "number_of_invalid": 4,
-        "number_of_tested": 427,
-        "number_of_up": 384
+        "down": 36,
+        "invalid": 3,
+        "tested": 441,
+        "up": 402
     }
 }

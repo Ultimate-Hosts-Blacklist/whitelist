@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Mon 26 Mar 16:03:59 UTC 2018 
+# Date of generation: Wed 28 Mar 23:03:27 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
@@ -32,6 +32,7 @@
 0.0.0.0 askubuntu.com 
 0.0.0.0 attestation.xboxlive.com 
 0.0.0.0 audible.com 
+0.0.0.0 avsforum.com 
 0.0.0.0 ax.init.itunes.apple.com 
 0.0.0.0 ax.itunes.apple.com 
 0.0.0.0 ax.phobos.apple.com.edgesuite.net 
@@ -69,6 +70,7 @@
 0.0.0.0 cloudfront.net 
 0.0.0.0 cnbc.com 
 0.0.0.0 cnn.com 
+0.0.0.0 community.spiceworks.com 
 0.0.0.0 content.logmein.com 
 0.0.0.0 cookie.monster.com 
 0.0.0.0 crateandbarrel.com 
@@ -130,7 +132,11 @@
 0.0.0.0 filters.adtidy.org 
 0.0.0.0 fonts.googleapis.com 
 0.0.0.0 forum.xda-developers.com 
+0.0.0.0 forums.mozillazine.org 
+0.0.0.0 forums.plex.tv 
+0.0.0.0 forums.roku.com 
 0.0.0.0 forums.sonarr.tv 
+0.0.0.0 forums.techguy.org 
 0.0.0.0 forums.whirlpool.net.au 
 0.0.0.0 fr.osdn.net 
 0.0.0.0 g.live.com 
@@ -138,8 +144,10 @@
 0.0.0.0 gawker.com 
 0.0.0.0 gekko.spiceworks.com 
 0.0.0.0 geo-prod.do.dsp.mp.microsoft.com 
+0.0.0.0 get.adobe.com 
 0.0.0.0 github.com 
 0.0.0.0 gitter.im 
+0.0.0.0 gmail.com 
 0.0.0.0 goo.gl 
 0.0.0.0 google.com 
 0.0.0.0 googlesyndication.com 
@@ -152,6 +160,7 @@
 0.0.0.0 history.com 
 0.0.0.0 hosts-file.net 
 0.0.0.0 hostsfile.mine.nu 
+0.0.0.0 hotmail.com 
 0.0.0.0 i.imgur.com 
 0.0.0.0 i.s-microsoft.com 
 0.0.0.0 icanhazip.com 
@@ -162,6 +171,7 @@
 0.0.0.0 itunes.apple.com 
 0.0.0.0 j.mp 
 0.0.0.0 jdownloader.org 
+0.0.0.0 jobs.lifehacker.com 
 0.0.0.0 js.maxmind.com 
 0.0.0.0 keystone.mwbsys.com 
 0.0.0.0 l.betrad.com 
@@ -171,6 +181,7 @@
 0.0.0.0 lh6.google.com 
 0.0.0.0 licdn.com 
 0.0.0.0 licensing.xboxlive.com 
+0.0.0.0 lifehacker.com 
 0.0.0.0 live.com 
 0.0.0.0 live.net 
 0.0.0.0 livefilestore.com 
@@ -196,6 +207,7 @@
 0.0.0.0 microsoft.com 
 0.0.0.0 mirror1.malwaredomains.com 
 0.0.0.0 movies.netflix.com 
+0.0.0.0 mozillazine.org 
 0.0.0.0 msftncsi.com 
 0.0.0.0 msg.edit.yahoo.com 
 0.0.0.0 msn.com 
@@ -249,8 +261,10 @@
 0.0.0.0 ransomwaretracker.abuse.ch 
 0.0.0.0 raw.github.com 
 0.0.0.0 raw.githubusercontent.com 
+0.0.0.0 reddit.com 
 0.0.0.0 res.cloudinary.com 
 0.0.0.0 road.adblock.ro 
+0.0.0.0 roku.com 
 0.0.0.0 rover.ebay.com 
 0.0.0.0 s-media-cache-ak0.pinimg.com 
 0.0.0.0 s-passets-cache-ak0.pinimg.com 
@@ -281,6 +295,7 @@
 0.0.0.0 spapps.co 
 0.0.0.0 spapps.spotify.edgekey.net 
 0.0.0.0 spclient.wg.spotify.com 
+0.0.0.0 spiceworks.com 
 0.0.0.0 sport.onet.pl 
 0.0.0.0 ssl-images-amazon.com 
 0.0.0.0 ssl.google-analytics.com 
@@ -305,6 +320,7 @@
 0.0.0.0 tampermonkey.net 
 0.0.0.0 target.com 
 0.0.0.0 teamviewer.com 
+0.0.0.0 techguy.org 
 0.0.0.0 themoviedb.com 
 0.0.0.0 thetvdb.com 
 0.0.0.0 tinyurl.com 
@@ -342,6 +358,7 @@
 0.0.0.0 webcache.googleusercontent.com 
 0.0.0.0 weeklyad.target.com 
 0.0.0.0 weeklyad.target.com.edgesuite.net 
+0.0.0.0 whirlpool.net.au 
 0.0.0.0 who.is 
 0.0.0.0 widgets.dlvr.it 
 0.0.0.0 windows.com 
@@ -374,6 +391,7 @@
 0.0.0.0 www.zoso.ro 
 0.0.0.0 xbox.ipv6.microsoft.com 
 0.0.0.0 xboxexperiencesprod.experimentation.xboxlive.com 
+0.0.0.0 xda-developers.com 
 0.0.0.0 xflight.xboxlive.com 
 0.0.0.0 xkms.xbolive.com 
 0.0.0.0 xmpp-server.l.google.com 
