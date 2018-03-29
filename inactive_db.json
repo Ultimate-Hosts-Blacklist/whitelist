@@ -40,6 +40,7 @@
             "vupload2.t.facebook.com",
             "webcam.yahoo.com",
             "windowsupdate.nsatc.net"
-        ]
+        ],
+        "to_test": []
     }
 }
