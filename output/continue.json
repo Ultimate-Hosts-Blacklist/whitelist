@@ -1,0 +1,8 @@
+{
+    "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {
+        "down": 37,
+        "invalid": 3,
+        "tested": 446,
+        "up": 406
+    }
+}

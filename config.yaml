@@ -37,7 +37,7 @@ no_files:                     False
 # Activate/Deactivate the usage of WHOIS records for our tests results.
 no_whois:                     False
 # Activate/Deactivate the generation of plain list of domains.
-plain_list_domain:            False
+plain_list_domain:            True
 # Activate/Deactivate the quiet mode.
 quiet:                        False
 # The following will save the referer.
@@ -45,28 +45,28 @@ referer:                      ""
 # HTTP Status code timeout.
 # Consider this as the minimum time in seconds that we need before closing our
 # request.
-seconds_before_http_timeout:  3
+seconds_before_http_timeout:  2
 # Activate/Deactivate the logs sharing.
 # This allow you to share logs which are used to write PyFunceble updates.
-share_logs:                   False
+share_logs:                   True
 # Show/hide execution time.
-show_execution_time:          False
+show_execution_time:          True
 # Show/hide the percentage.
 show_percentage:              True
 # Activate/Deactivate the simple output mode.
 # In this mode we only return the status of the tested domain.
 simple:                       False
 # Activate/Deactivate the split of results fils.
-split:                        False
+split:                        True
 # Activation/Deactivation of Travis CI autosave system.
-travis:                       False
+travis:                       True
 # Default commit message we use for the commit at the end of
 # the the travis_autosave_minutes if we did not read the file completly.
-travis_autosave_commit:       "PyFunceble - AutoSave"
+travis_autosave_commit:       "[Autosave] Testing for Ultimate Hosts Blacklist"
 # Default final commit message we append at the end the last commit.
-travis_autosave_final_commit: "PyFunceble - Results"
+travis_autosave_final_commit: "[Results] Testing for Ultimate Hosts Blacklist"
 # Minimum of minutes before we start commiting to upstream under Travis CI.
-travis_autosave_minutes:      15
+travis_autosave_minutes:      10
 # This tell us in which branch we have to push
 travis_branch:                master
 # Activate/Deactivate the generation of unified files for the results logs.
@@ -136,7 +136,7 @@ outputs:
     directory:                splited/
 
 # The following section helps you change the status in the script.
-# NOTE: if you cahnge the official status please also add it to its
+# NOTE:                       if you cahnge the official status please also add it to its
 # list section. If you do not do that, the script will stop working correctly.
 status:
   list:
@@ -167,7 +167,7 @@ status:
     invalid:                  INVALID
 
 
-# NOTE: DO NOT CHANGE THIS SECTION UNLESS YOU KNOW WHAT IT IMPLIES.
+# NOTE:                       DO NOT CHANGE THIS SECTION UNLESS YOU KNOW WHAT IT IMPLIES.
 # Indeed, we only advice changing the active which will activate (True) or deactivate (False)
 # the usage of the domain status code in our results.
 http_codes:
@@ -218,7 +218,7 @@ http_codes:
       - 504
       - 505
 
-# NOTE: DO NOT CHANGE THIS SECTION UNLESS YOU KNOW WHAT IT IMPLIES.
+# NOTE:                       DO NOT CHANGE THIS SECTION UNLESS YOU KNOW WHAT IT IMPLIES.
 links:
   api_date_format:            "http://pyfunceble.funilrys.com/api/date-format"
   api_no_referer:             "http://pyfunceble.funilrys.com/api/no-referer"
@@ -230,7 +230,7 @@ links:
   script:                     "https://raw.githubusercontent.com/funilrys/PyFunceble/master/PyFunceble.py"
   tool:                       "https://raw.githubusercontent.com/funilrys/PyFunceble/master/tool.py"
 
-# NOTE: DO NOT CHANGE THIS SECTION UNLESS YOU KNOW WHAT IT IMPLIES.
+# NOTE:                       DO NOT CHANGE THIS SECTION UNLESS YOU KNOW WHAT IT IMPLIES.
 counter:
   number:
     down:                     0
