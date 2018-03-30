@@ -31,10 +31,11 @@ import hashlib
 import socket
 from collections import OrderedDict
 from inspect import getsourcefile
+from itertools import repeat
 from json import decoder, dump, loads
-from os import environ, mkdir, path, remove, rename, chmod, stat
+from os import chmod, environ, mkdir, path, remove, rename
 from os import sep as directory_separator
-from os import walk
+from os import stat, walk
 from re import compile as comp
 from re import escape
 from re import sub as substrings
@@ -134,13 +135,15 @@ class PyFunceble(object):
 
             CONFIGURATION['header_printed'] = True
 
-    def domain(self, domain=None):
+    def domain(self, domain=None, last_domain=None):
         """
         Manage the case that we want to test only a domain.
 
         Argument:
             - domain: str
                 The domain or IP to test.
+            - last_domain: str
+                The last domain of the file we are testing.
         """
 
         if domain:
@@ -161,7 +164,11 @@ class PyFunceble(object):
                         Database(self.file_path).add()
 
                 AutoContinue().backup(self.file_path)
-                AutoSave()
+
+                if domain != last_domain:
+                    AutoSave()
+                else:
+                    AutoSave(True)
 
             CONFIGURATION['http_code'] = ''
             CONFIGURATION['referer'] = ''
@@ -296,10 +303,10 @@ class PyFunceble(object):
                 rematch=True,
                 group=0).match()
 
-            if rematch != []:
+            if rematch:
                 result.extend(rematch)
 
-            if rematch_v2 != []:
+            if rematch_v2:
                 result.extend(
                     Helpers.List(
                         self._format_adblock_decoded(rematch_v2)).format())
@@ -346,7 +353,7 @@ class PyFunceble(object):
 
             if self.file_path in CONFIGURATION['inactive_db'] \
                 and 'to_test' in CONFIGURATION['inactive_db'][self.file_path] \
-                    and CONFIGURATION['inactive_db'][self.file_path]['to_test'] != []:
+                    and CONFIGURATION['inactive_db'][self.file_path]['to_test']:
                 list_to_test.extend(
                     CONFIGURATION['inactive_db'][self.file_path]['to_test'])
 
@@ -357,7 +364,7 @@ class PyFunceble(object):
                 list_to_test,
                 regex_delete).not_matching_list()).format()
 
-        if CONFIGURATION['filter'] != '':
+        if CONFIGURATION['filter']:
             list_to_test = Helpers.List(
                 Helpers.Regex(
                     list_to_test,
@@ -365,9 +372,8 @@ class PyFunceble(object):
                     escape=True).matching_list()).format()
 
         list(map(self.domain,
-                 list_to_test[CONFIGURATION['counter']['number']['tested']:]))
-
-        AutoSave(True)
+                 list_to_test[CONFIGURATION['counter']['number']['tested']:],
+                 repeat(list_to_test[-1])))
 
     @classmethod
     def switch(cls, variable):  # pylint: disable=inconsistent-return-statements
@@ -412,9 +418,9 @@ class PyFunceble(object):
                 try:
                     number_of_tested = CONFIGURATION['counter']['number']['tested']
 
-                    if number_of_tested >= len(list_to_test) \
-                            or number_of_tested == 0 \
-                            or list_to_test[number_of_tested - 1] == list_to_test[-1]:
+                    if number_of_tested == 0 \
+                            or list_to_test[number_of_tested - 1] == list_to_test[-1] \
+                            or number_of_tested == len(list_to_test):
                         PyFunceble.reset_counters()
 
                         self.all()
@@ -422,7 +428,8 @@ class PyFunceble(object):
                     PyFunceble.reset_counters()
 
                     self.all()
-            self.all()
+            else:
+                self.all()
 
         @classmethod
         def file_to_delete(cls):
@@ -513,7 +520,7 @@ class AutoContinue(object):
                 The path to the file we are going to test.
         """
 
-        if CONFIGURATION['auto_continue'] and self.backup_content != {}:
+        if CONFIGURATION['auto_continue'] and self.backup_content:
             if file_to_restore in self.backup_content:
                 to_initiate = [
                     'up',
@@ -604,7 +611,7 @@ class AutoSave(object):  # pylint: disable=too-few-public-methods
             command = 'git add --all && git commit -a -m "%s"'
 
             if self.last:
-                if CONFIGURATION['command_before_end'] != '':
+                if CONFIGURATION['command_before_end']:
                     Helpers.Command(
                         CONFIGURATION['command_before_end']).execute()
 
@@ -728,7 +735,7 @@ class Database(object):
         to_delete = []
 
         if self.file_path in CONFIGURATION['inactive_db'] \
-                and CONFIGURATION['inactive_db'][self.file_path] != {}:
+                and CONFIGURATION['inactive_db'][self.file_path]:
             for data in CONFIGURATION['inactive_db'][self.file_path]:
                 if data != 'to_test':
                     if self.current_time < int(data) + self.day_in_seconds:
@@ -1459,7 +1466,7 @@ class Generate(object):
                 Prints([CONFIGURATION['domain']], 'PlainDomain',
                        plain_destination).data()
 
-            if CONFIGURATION['split'] and splited_destination != '':
+            if CONFIGURATION['split'] and splited_destination:
                 Prints([CONFIGURATION['domain']], 'PlainDomain',
                        splited_destination).data()
 
@@ -1733,6 +1740,11 @@ class Generate(object):
         Generate a file according to the domain status.
         """
 
+        try:
+            CONFIGURATION['http_code']
+        except KeyError:
+            CONFIGURATION['http_code'] = '*' * 3
+
         if self.domain_status.lower() in STATUS['list']['up']:
             self.up_status_file()
         elif self.domain_status.lower() in STATUS['list']['down']:
@@ -1745,11 +1757,6 @@ class Generate(object):
             self.source,
             self.expiration_date).hosts_file()
         Percentage(self.domain_status).count()
-
-        try:
-            CONFIGURATION['http_code']
-        except KeyError:
-            CONFIGURATION['http_code'] = '*' * 3
 
         if not CONFIGURATION['quiet']:
             if CONFIGURATION['less']:
@@ -2095,6 +2102,7 @@ class ExpirationDate(object):
             Helpers.File(
                 CURRENT_DIRECTORY +
                 OUTPUTS['parent_directory'] +
+                OUTPUTS['logs']['directories']['parent'] +
                 OUTPUTS['logs']['directories']['date_format'] +
                 CONFIGURATION['referer']).write(log)
 
@@ -2106,7 +2114,7 @@ class ExpirationDate(object):
                 }
 
                 requests.post(
-                    LINKS['link_api_date_format'],
+                    LINKS['api_date_format'],
                     data=date_to_share)
 
     @classmethod
@@ -2243,10 +2251,10 @@ class ExpirationDate(object):
                     self.expiration_date = day + '-' + month + '-' + year
                 break
 
-        if self.expiration_date != '' and Helpers.Regex(
+        if self.expiration_date and not Helpers.Regex(
                 self.expiration_date,
                 r'[0-9]{2}\-[a-z]{3}\-2[0-9]{3}',
-                return_data=False).match() != True:
+                return_data=False).match():
             self.log()
             self._whois_log()
 
@@ -2736,12 +2744,15 @@ class Update(object):
         """
 
         for data in self.files:
-            if data not in ['iana', 'dir_structure', 'config']:
-                stats = stat(CURRENT_DIRECTORY + self.files[data])
-                chmod(
-                    CURRENT_DIRECTORY +
-                    self.files[data],
-                    stats.st_mode | S_IEXEC)
+            if data not in ['iana', 'dir_structure', 'config', 'requirements']:
+                try:
+                    stats = stat(CURRENT_DIRECTORY + self.files[data])
+                    chmod(
+                        CURRENT_DIRECTORY +
+                        self.files[data],
+                        stats.st_mode | S_IEXEC)
+                except FileNotFoundError:
+                    pass
 
     def download_files(self):
         """
@@ -3622,7 +3633,7 @@ if __name__ == '__main__':
         '-v',
         '--version',
         action='version',
-        version='%(prog)s 0.50.6-beta'
+        version='%(prog)s 0.51.0-beta'
     )
 
     ARGS = PARSER.parse_args()

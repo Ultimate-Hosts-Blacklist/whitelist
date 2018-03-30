@@ -1,9 +1,9 @@
 {
     "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {
-        "1522281447": [
+        "1522420312": [
+            ".ubuntu.com",
             "106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services",
             ".gov",
-            ".ubuntu.com",
             "banners.spiceworks.com",
             "c.youtube.com",
             "channel.facebook.com",
@@ -39,8 +39,7 @@
             "vr-ov-crl.thawte.com",
             "vupload2.t.facebook.com",
             "webcam.yahoo.com",
-            "windowsupdate.nsatc.net",
-            "spapps.co"
+            "windowsupdate.nsatc.net"
         ],
         "to_test": []
     }
