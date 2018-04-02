@@ -108,7 +108,6 @@ class Settings(object):  # pylint: disable=too-few-public-methods
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     PyFunceble = {
         'PyFunceble.py': 'https://raw.githubusercontent.com/funilrys/PyFunceble/master/PyFunceble.py',  # pylint: disable=line-too-long
-        'tool.py': 'https://raw.githubusercontent.com/funilrys/PyFunceble/master/tool.py',
         'requirements.txt': 'https://raw.githubusercontent.com/funilrys/PyFunceble/master/requirements.txt'  # pylint: disable=line-too-long
     }
 
@@ -285,6 +284,9 @@ class Initiate(object):
 
             stats = stat(file_path)
             chmod(file_path, stats.st_mode | S_IEXEC)
+
+        if path.isfile(Settings.current_directory + 'tool.py'):
+            Helpers.File(Settings.current_directory + 'tool.py').delete()
 
     def _extract_lines(self, file):
         """
