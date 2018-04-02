@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Fri 30 Mar 14:03:52 UTC 2018 
+# Date of generation: Mon 02 Apr 17:04:18 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
@@ -25,6 +25,7 @@
 0.0.0.0 api.ipify.org 
 0.0.0.0 api.twitter.com 
 0.0.0.0 app.plex.tv 
+0.0.0.0 appldnld.apple.com 
 0.0.0.0 apps.facebook.com 
 0.0.0.0 apps.skype.com 
 0.0.0.0 apresolve.spotify.com 
@@ -221,17 +222,20 @@
 0.0.0.0 nflximg.com 
 0.0.0.0 nflximg.net 
 0.0.0.0 nine.plugins.plexapp.com 
+0.0.0.0 nitroflare.com 
 0.0.0.0 node.plexapp.com 
 0.0.0.0 notify.xboxlive.com 
 0.0.0.0 nsatc.net 
 0.0.0.0 o1.email.plex.tv 
 0.0.0.0 o2.sg0.plex.tv 
 0.0.0.0 oas.monster.com 
+0.0.0.0 ocsp.apple.com 
 0.0.0.0 ocsp.thawte.com 
 0.0.0.0 ocsp.verisign.net 
 0.0.0.0 odcdn.com 
 0.0.0.0 officeclient.microsoft.com 
 0.0.0.0 officedepot.com 
+0.0.0.0 onet.pl 
 0.0.0.0 openload.co 
 0.0.0.0 ouo.io 
 0.0.0.0 outlook.office365.com 
@@ -248,6 +252,7 @@
 0.0.0.0 platform.twitter.com 
 0.0.0.0 play.spotify.com 
 0.0.0.0 play.spotify.edgekey.net 
+0.0.0.0 player.pl 
 0.0.0.0 player.vimeo.com 
 0.0.0.0 playstation.com 
 0.0.0.0 plex.tv 
@@ -314,6 +319,7 @@
 0.0.0.0 steamcommunity.com 
 0.0.0.0 storage.msn.com 
 0.0.0.0 surveymonkey.com 
+0.0.0.0 swcdn.apple.com 
 0.0.0.0 sysctl.org 
 0.0.0.0 t.co 
 0.0.0.0 talk.google.com 
@@ -337,6 +343,7 @@
 0.0.0.0 track.spiceworks.com 
 0.0.0.0 tunein.com 
 0.0.0.0 tvdb2.plex.tv 
+0.0.0.0 tvnstyle.pl 
 0.0.0.0 tvthemes.plexapp.com 
 0.0.0.0 tvthemes.plexapp.com.cdn.cloudflare.net 
 0.0.0.0 twimg.com 
@@ -350,6 +357,7 @@
 0.0.0.0 userstream.twitter.com 
 0.0.0.0 v.firebog.net 
 0.0.0.0 v10.vortex-win.data.microsoft.com 
+0.0.0.0 variety.com 
 0.0.0.0 verisign.com 
 0.0.0.0 video-stats.l.google.com 
 0.0.0.0 video.google.com 
