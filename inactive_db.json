@@ -1,9 +1,8 @@
 {
     "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {
-        "1522689559": [
+        "1522937353": [
             ".ubuntu.com",
             "106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services",
-            ".gov",
             "banners.spiceworks.com",
             "c.youtube.com",
             "channel.facebook.com",
@@ -31,6 +30,8 @@
             "s3.symcb.com",
             "s4.symcb.com",
             "s5.symcb.com",
+            "sa-blacklist.stearns.org",
+            "spapps.co",
             "sqm.microsoft.com",
             "static.ak.facebook.com",
             "talks.l.google.com",
@@ -41,6 +42,8 @@
             "webcam.yahoo.com",
             "windowsupdate.nsatc.net"
         ],
-        "to_test": []
+        "to_test": [
+            ".gov"
+        ]
     }
 }

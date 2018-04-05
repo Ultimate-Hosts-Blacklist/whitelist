@@ -1,10 +1,11 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Mon 02 Apr 17:04:18 UTC 2018 
+# Date of generation: Thu 05 Apr 14:04:12 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
 0.0.0.0 accounts.google.com 
 0.0.0.0 accuweather.com 
+0.0.0.0 acehardware.com 
 0.0.0.0 adaway.org 
 0.0.0.0 adb.juvander.net 
 0.0.0.0 adblock.dk 
@@ -14,9 +15,6 @@
 0.0.0.0 akamai.net 
 0.0.0.0 akamaiedge.net 
 0.0.0.0 albert.apple.com 
-0.0.0.0 digitaltrends.com 
-0.0.0.0 twimg.com 
-0.0.0.0 videolan.org 
 0.0.0.0 allegro.pl 
 0.0.0.0 alluremedia.com.au 
 0.0.0.0 amazon.com 
@@ -48,6 +46,8 @@
 0.0.0.0 bleacherreport.com 
 0.0.0.0 blocklist.kowabit.de 
 0.0.0.0 blogs.discovermagazine.com 
+0.0.0.0 bloomberg.com 
+0.0.0.0 boxrec.com 
 0.0.0.0 btstatic.com 
 0.0.0.0 business.officedepot.com.edgekey.net 
 0.0.0.0 businessfinder.nj.com 
@@ -87,6 +87,7 @@
 0.0.0.0 dev.twitter.com 
 0.0.0.0 device.auth.xboxlive.com 
 0.0.0.0 digg.com 
+0.0.0.0 digitaltrends.com 
 0.0.0.0 directvapplications.hb.omtrdc.net 
 0.0.0.0 directvnow.com 
 0.0.0.0 discovermagazine.com 
@@ -151,7 +152,9 @@
 0.0.0.0 gitter.im 
 0.0.0.0 gmail.com 
 0.0.0.0 goo.gl 
+0.0.0.0 google-analytics.com 
 0.0.0.0 google.com 
+0.0.0.0 googleapis.com 
 0.0.0.0 googlesyndication.com 
 0.0.0.0 googleusercontent.com 
 0.0.0.0 googlevideo.com 
@@ -160,6 +163,7 @@
 0.0.0.0 gs.apple.com 
 0.0.0.0 help.ui.xboxlive.com 
 0.0.0.0 history.com 
+0.0.0.0 homedepot.com 
 0.0.0.0 hosts-file.net 
 0.0.0.0 hostsfile.mine.nu 
 0.0.0.0 hotmail.com 
@@ -172,10 +176,15 @@
 0.0.0.0 ipla.tv 
 0.0.0.0 itunes.apple.com 
 0.0.0.0 j.mp 
+0.0.0.0 jabcreations.com 
 0.0.0.0 jdownloader.org 
 0.0.0.0 jobs.lifehacker.com 
+0.0.0.0 joewein.net 
 0.0.0.0 js.maxmind.com 
 0.0.0.0 keystone.mwbsys.com 
+0.0.0.0 kickstarter.com 
+0.0.0.0 kmart.com 
+0.0.0.0 kohls.com 
 0.0.0.0 l.betrad.com 
 0.0.0.0 lh3.google.com 
 0.0.0.0 lh4.google.com 
@@ -190,9 +199,11 @@
 0.0.0.0 login.live.com 
 0.0.0.0 logmein-gateway.com 
 0.0.0.0 logmein.com 
+0.0.0.0 lowes.com 
 0.0.0.0 m.hotmail.com 
 0.0.0.0 m.weeklyad.target.com 
 0.0.0.0 m.youtube.com 
+0.0.0.0 malwaredomainlist.com 
 0.0.0.0 malwaredomains.lehigh.edu 
 0.0.0.0 malwareurls.joxeankoret.com 
 0.0.0.0 margevicius.lt 
@@ -223,9 +234,11 @@
 0.0.0.0 nflximg.net 
 0.0.0.0 nine.plugins.plexapp.com 
 0.0.0.0 nitroflare.com 
+0.0.0.0 no-ip.com 
 0.0.0.0 node.plexapp.com 
 0.0.0.0 notify.xboxlive.com 
 0.0.0.0 nsatc.net 
+0.0.0.0 nytimes.com 
 0.0.0.0 o1.email.plex.tv 
 0.0.0.0 o2.sg0.plex.tv 
 0.0.0.0 oas.monster.com 
@@ -300,7 +313,6 @@
 0.0.0.0 skyhook.sonarr.tv 
 0.0.0.0 someonewhocares.org 
 0.0.0.0 spaces.live.com 
-0.0.0.0 spapps.co 
 0.0.0.0 spapps.spotify.edgekey.net 
 0.0.0.0 spclient.wg.spotify.com 
 0.0.0.0 spiceworks.com 
@@ -340,6 +352,7 @@
 0.0.0.0 tofukko.r.ribbon.to 
 0.0.0.0 tomshardware.com 
 0.0.0.0 torrentfreak.com 
+0.0.0.0 toysrus.com 
 0.0.0.0 track.spiceworks.com 
 0.0.0.0 tunein.com 
 0.0.0.0 tvdb2.plex.tv 
@@ -361,7 +374,9 @@
 0.0.0.0 verisign.com 
 0.0.0.0 video-stats.l.google.com 
 0.0.0.0 video.google.com 
+0.0.0.0 videolan.org 
 0.0.0.0 vimeo.com 
+0.0.0.0 void.gr 
 0.0.0.0 vox.com 
 0.0.0.0 vupload2.facebook.com 
 0.0.0.0 walgreens.com 
@@ -379,32 +394,9 @@
 0.0.0.0 winhelp2002.mvps.org 
 0.0.0.0 wirtualnemedia.pl 
 0.0.0.0 wt.logmein.com 
-0.0.0.0 www.amazon.com 
-0.0.0.0 www.bit.ly 
-0.0.0.0 www.feedly.com 
-0.0.0.0 www.google-analytics.com 
-0.0.0.0 www.google.com 
-0.0.0.0 www.googleapis.com 
-0.0.0.0 www.hosts-file.net 
-0.0.0.0 www.icanhazip.com 
-0.0.0.0 www.jabcreations.com 
-0.0.0.0 www.jdownloader.org 
-0.0.0.0 www.joewein.net 
-0.0.0.0 www.kickstarter.com 
-0.0.0.0 www.malwaredomainlist.com 
-0.0.0.0 www.messenger.com 
-0.0.0.0 www.msftncsi.com 
-0.0.0.0 www.no-ip.com 
-0.0.0.0 www.pinterest.com 
-0.0.0.0 www.plex.tv 
-0.0.0.0 www.sa-blacklist.stearns.org 
-0.0.0.0 www.unix.com 
-0.0.0.0 www.void.gr 
-0.0.0.0 www.xboxlive.com 
-0.0.0.0 www.youtube-nocookie.com 
-0.0.0.0 www.zoso.ro 
 0.0.0.0 xbox.ipv6.microsoft.com 
 0.0.0.0 xboxexperiencesprod.experimentation.xboxlive.com 
+0.0.0.0 xboxlive.com 
 0.0.0.0 xda-developers.com 
 0.0.0.0 xflight.xboxlive.com 
 0.0.0.0 xkms.xbolive.com 
@@ -412,8 +404,10 @@
 0.0.0.0 xsts.auth.xboxlive.com 
 0.0.0.0 yahoo.com 
 0.0.0.0 youtu.be 
+0.0.0.0 youtube-nocookie.com 
 0.0.0.0 youtube.com 
 0.0.0.0 yt3.ggpht.com 
 0.0.0.0 ytimg.com 
 0.0.0.0 ytimg.l.google.com 
 0.0.0.0 zeustracker.abuse.ch 
+0.0.0.0 zoso.ro 
