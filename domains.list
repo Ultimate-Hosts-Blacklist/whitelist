@@ -40,6 +40,7 @@ ax.itunes.apple.com
 ax.phobos.apple.com.edgesuite.net
 b-api.facebook.com
 b.scorecardresearch.com
+baltimore.cbslocal.com
 banners.spiceworks.com
 bbc.com
 bestbuy.com
@@ -51,6 +52,7 @@ bleacherreport.com
 blocklist.kowabit.de
 blogs.discovermagazine.com
 bloomberg.com
+boston.cbslocal.com
 boxrec.com
 btstatic.com
 business.officedepot.com.edgekey.net
@@ -68,6 +70,7 @@ cert.mgt.xboxlive.com
 channel.facebook.com
 chat.facebook.com
 chatenabled.mail.google.com
+chicago.cbslocal.com
 chrome.google.com
 client.dropbox.com
 clients2.google.com
@@ -184,6 +187,7 @@ homedepot.com
 hosts-file.net
 hostsfile.mine.nu
 hotmail.com
+houston.cbslocal.com
 i.imgur.com
 i.s-microsoft.com
 icanhazip.com
@@ -203,6 +207,7 @@ kickstarter.com
 kmart.com
 kohls.com
 l.betrad.com
+lasvegas.cbslocal.com
 lh3.google.com
 lh4.google.com
 lh5.google.com
@@ -217,6 +222,7 @@ localhost
 login.live.com
 logmein-gateway.com
 logmein.com
+losangeles.cbslocal.com
 lowes.com
 m.hotmail.com
 m.weeklyad.target.com
@@ -236,8 +242,11 @@ meta-db-worker02.pop.ric.plex.bz
 meta.plex.bz
 meta.plex.tv
 metrics.plex.tv
+miami.cbslocal.com
 microsoft.com
+minnesota.cbslocal.com
 mirror1.malwaredomains.com
+mix1065fm.cbslocal.com
 movies.netflix.com
 mozillazine.org
 msftncsi.com
@@ -277,11 +286,13 @@ ow.ly
 p.imgur.com
 pastebin.com
 pgl.yoyo.org
+philadelphia.cbslocal.com
 phobos.apple.com
 pi.hole
 pic.twitter.com
 pinimg.com
 pinterest.com
+pittsburgh.cbslocal.com
 pixel.facebook.com
 pixel.quantserve.com
 platform.twitter.com
@@ -327,7 +338,9 @@ s4.symcb.com
 s5.symcb.com
 sa-blacklist.stearns.org
 sa.symcb.com
+sacramento.cbslocal.com
 samsung.com
+sanfrancisco.cbslocal.com
 scontent-lhr3-1.xx.fbcdn.net
 scontent.xx.fbcdn.net
 search.twitter.com
@@ -373,6 +386,7 @@ talk.l.google.com
 talkgadget.google.com
 talks.l.google.com
 talkx.l.google.com
+tampa.cbslocal.com
 tampermonkey.net
 target.com
 teamviewer.com
@@ -419,6 +433,7 @@ vupload2.facebook.com
 vupload2.t.facebook.com
 walgreens.com
 walmart.com
+washington.cbslocal.com
 weather.com
 web.archive.org
 webcache.googleusercontent.com
