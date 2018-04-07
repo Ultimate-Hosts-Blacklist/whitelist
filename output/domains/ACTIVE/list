@@ -1,8 +1,9 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Thu 05 Apr 14:04:12 UTC 2018 
+# Date of generation: Sat 07 Apr 15:04:41 UTC 2018 
 
 70i.net 
 a1014.g.akamai.net 
+abcnews.go.com 
 accounts.google.com 
 accuweather.com 
 acehardware.com 
@@ -37,7 +38,9 @@ ax.itunes.apple.com
 ax.phobos.apple.com.edgesuite.net 
 b-api.facebook.com 
 b.scorecardresearch.com 
+baltimore.cbslocal.com 
 bbc.com 
+bedbathandbeyond.com 
 bestbuy.com 
 betanews.com 
 bgr.com 
@@ -47,6 +50,7 @@ bleacherreport.com
 blocklist.kowabit.de 
 blogs.discovermagazine.com 
 bloomberg.com 
+boston.cbslocal.com 
 boxrec.com 
 btstatic.com 
 business.officedepot.com.edgekey.net 
@@ -61,6 +65,7 @@ cdn.mplxtms.com
 cdn.optimizely.com 
 cert.mgt.xboxlive.com 
 chatenabled.mail.google.com 
+chicago.cbslocal.com 
 chrome.google.com 
 client.dropbox.com 
 clients2.google.com 
@@ -142,6 +147,7 @@ forums.sonarr.tv
 forums.techguy.org 
 forums.whirlpool.net.au 
 fr.osdn.net 
+frys.com 
 g.live.com 
 g.msn.com 
 gawker.com 
@@ -167,6 +173,7 @@ homedepot.com
 hosts-file.net 
 hostsfile.mine.nu 
 hotmail.com 
+houston.cbslocal.com 
 i.imgur.com 
 i.s-microsoft.com 
 icanhazip.com 
@@ -186,6 +193,7 @@ kickstarter.com
 kmart.com 
 kohls.com 
 l.betrad.com 
+lasvegas.cbslocal.com 
 lh3.google.com 
 lh4.google.com 
 lh5.google.com 
@@ -199,10 +207,12 @@ livefilestore.com
 login.live.com 
 logmein-gateway.com 
 logmein.com 
+losangeles.cbslocal.com 
 lowes.com 
 m.hotmail.com 
 m.weeklyad.target.com 
 m.youtube.com 
+macys.com 
 malwaredomainlist.com 
 malwaredomains.lehigh.edu 
 malwareurls.joxeankoret.com 
@@ -217,16 +227,22 @@ meta-db-worker02.pop.ric.plex.bz
 meta.plex.bz 
 meta.plex.tv 
 metrics.plex.tv 
+miami.cbslocal.com 
 microsoft.com 
+minnesota.cbslocal.com 
 mirror1.malwaredomains.com 
+mix1065fm.cbslocal.com 
 movies.netflix.com 
 mozillazine.org 
 msftncsi.com 
 msg.edit.yahoo.com 
 msn.com 
 mzstatic.com 
+nbcnews.com 
+nbcnewyork.com 
 netflix.com 
 newjobs.com 
+newsday.com 
 newyork.cbslocal.com 
 nexus.passport.com 
 nflxext.com 
@@ -238,6 +254,8 @@ no-ip.com
 node.plexapp.com 
 notify.xboxlive.com 
 nsatc.net 
+ny1.com 
+nydailynews.com 
 nytimes.com 
 o1.email.plex.tv 
 o2.sg0.plex.tv 
@@ -256,13 +274,16 @@ ow.ly
 p.imgur.com 
 pastebin.com 
 pgl.yoyo.org 
+philadelphia.cbslocal.com 
 phobos.apple.com 
 pic.twitter.com 
 pinimg.com 
 pinterest.com 
+pittsburgh.cbslocal.com 
 pixel.facebook.com 
 pixel.quantserve.com 
 platform.twitter.com 
+play.google.com 
 play.spotify.com 
 play.spotify.edgekey.net 
 player.pl 
@@ -296,10 +317,13 @@ s1.symcb.com
 s2.symcb.com 
 s3.amazonaws.com 
 sa.symcb.com 
+sacramento.cbslocal.com 
 samsung.com 
+sanfrancisco.cbslocal.com 
 scontent-lhr3-1.xx.fbcdn.net 
 scontent.xx.fbcdn.net 
 search.twitter.com 
+sears.com 
 secure-cdn.mplxtms.com 
 secure-us.imrworldwide.com 
 secure.dshield.org 
@@ -313,6 +337,7 @@ shop.samsung.com
 skyhook.sonarr.tv 
 someonewhocares.org 
 spaces.live.com 
+spapps.co 
 spapps.spotify.edgekey.net 
 spclient.wg.spotify.com 
 spiceworks.com 
@@ -325,6 +350,7 @@ staging.plex.tv
 stanev.org 
 star.c10r.facebook.com 
 star.facebook.com 
+starbucks.com 
 static.kickstarter.com 
 static.www.odcdn.com.edgekey.net 
 status.plex.tv 
@@ -338,6 +364,7 @@ talk.google.com
 talk.l.google.com 
 talkgadget.google.com 
 talkx.l.google.com 
+tampa.cbslocal.com 
 tampermonkey.net 
 target.com 
 teamviewer.com 
@@ -381,6 +408,7 @@ vox.com
 vupload2.facebook.com 
 walgreens.com 
 walmart.com 
+washington.cbslocal.com 
 weather.com 
 web.archive.org 
 webcache.googleusercontent.com 
