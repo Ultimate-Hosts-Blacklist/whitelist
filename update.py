@@ -15,7 +15,7 @@ Contributors:
 
     @GitHubUsername, Name, Email (optional)
 """
-
+# pylint: disable=bad-continuation
 from json import decoder, dump, loads
 from os import chmod, environ, getcwd, path, remove
 from os import sep as directory_separator
@@ -48,8 +48,9 @@ class Settings(object):  # pylint: disable=too-few-public-methods
     # Note: The variable name should not be changed.
     # Note: This variable is auto updated by Initiate()
     #
-    # Example: "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
-    raw_link = ''
+    # Example:
+    # "https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
+    raw_link = ""
 
     # This variable should be initiated with the name of the list once downloaded.
     # Recommended formats:
@@ -64,7 +65,7 @@ class Settings(object):  # pylint: disable=too-few-public-methods
     # Note: This variable is auto updated by Initiate()
     #
     # Example: "adaway.github.io@AdAway.list"
-    list_name = ''
+    list_name = ""
 
     # This variable will help us know where we are working into the filesystem.
     #
@@ -95,7 +96,7 @@ class Settings(object):  # pylint: disable=too-few-public-methods
     # This variable will help us know where should the info.json file be located.
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
-    repository_info = current_directory + 'info.json'
+    repository_info = current_directory + "info.json"
 
     # This variable will help us know which version of PyFunceble we are going to use.
     #
@@ -107,14 +108,14 @@ class Settings(object):  # pylint: disable=too-few-public-methods
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     PyFunceble = {
-        'PyFunceble.py': 'https://raw.githubusercontent.com/funilrys/PyFunceble/master/PyFunceble.py',  # pylint: disable=line-too-long
-        'requirements.txt': 'https://raw.githubusercontent.com/funilrys/PyFunceble/master/requirements.txt'  # pylint: disable=line-too-long
+        "PyFunceble.py": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/PyFunceble.py",  # pylint: disable=line-too-long
+        "requirements.txt": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/requirements.txt",  # pylint: disable=line-too-long
     }
 
     # This variable is used to match [ci skip] from the git log.
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
-    regex_travis = '[ci skip]'
+    regex_travis = "[ci skip]"
 
     # This variable is used to set the number of minutes before we stop the script under Travis CI.
     #
@@ -127,17 +128,17 @@ class Settings(object):  # pylint: disable=too-few-public-methods
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     # Note: This variable is auto updated by Initiate()
-    commit_autosave_message = ''
+    commit_autosave_message = ""
 
     # This variable is used to set permanent_license_link.
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
-    permanent_license_link = 'https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/repository-structure/master/LICENSE'  # pylint: disable=line-too-long
+    permanent_license_link = "https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/repository-structure/master/LICENSE"  # pylint: disable=line-too-long
 
     # This variable is used to set the permanant config links
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
-    permanent_config_link = 'https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/repository-structure/master/config_cross_input_sources.yaml'  # pylint: disable=line-too-long
+    permanent_config_link = "https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/repository-structure/master/config_cross_input_sources.yaml"  # pylint: disable=line-too-long
 
     # This variable is used to set the arguments when executing PyFunceble.py
     #
@@ -166,7 +167,7 @@ class Initiate(object):
     """
 
     def __init__(self):  # pylint: disable=too-many-branches
-        self.config_update = 'wget %s -O config.yaml' % Settings.permanent_config_link
+        self.config_update = "wget %s -O config.yaml" % Settings.permanent_config_link
         self.travis()
         self.travis_permissions()
         self.structure()
@@ -177,25 +178,21 @@ class Initiate(object):
         Initiate Travis CI settings.
         """
 
-        Helpers.Command('git remote rm origin', False).execute()
+        Helpers.Command("git remote rm origin", False).execute()
         Helpers.Command(
-            "git remote add origin https://" +
-            "%s@github.com/%s.git" %
-            (environ['GH_TOKEN'],
-             environ['TRAVIS_REPO_SLUG']),
-            False).execute()
+            "git remote add origin https://"
+            + "%s@github.com/%s.git"
+            % (environ["GH_TOKEN"], environ["TRAVIS_REPO_SLUG"]),
+            False,
+        ).execute()
         Helpers.Command(
-            'git config --global user.email "%s"' %
-            (environ['GIT_EMAIL']), False).execute()
+            'git config --global user.email "%s"' % (environ["GIT_EMAIL"]), False
+        ).execute()
         Helpers.Command(
-            'git config --global user.name "%s"' %
-            (environ['GIT_NAME']), False).execute()
-        Helpers.Command(
-            'git config --global push.default simple', False).execute()
-        Helpers.Command(
-            'git checkout %s' %
-            environ['GIT_BRANCH'],
-            False).execute()
+            'git config --global user.name "%s"' % (environ["GIT_NAME"]), False
+        ).execute()
+        Helpers.Command("git config --global push.default simple", False).execute()
+        Helpers.Command("git checkout %s" % environ["GIT_BRANCH"], False).execute()
 
         return
 
@@ -205,29 +202,20 @@ class Initiate(object):
         Set permissions in order to avoid issues before commiting.
         """
 
-        build_dir = environ['TRAVIS_BUILD_DIR']
+        build_dir = environ["TRAVIS_BUILD_DIR"]
         commands = [
-            'sudo chown -R travis:travis %s' %
-            (build_dir),
-            'sudo chgrp -R travis %s' %
-            (build_dir),
-            'sudo chmod -R g+rwX %s' %
-            (build_dir),
-            'sudo chmod 777 -Rf %s.git' %
-            (build_dir +
-             directory_separator),
-            r"sudo find %s -type d -exec chmod g+x '{}' \;" %
-            (build_dir)]
+            "sudo chown -R travis:travis %s" % (build_dir),
+            "sudo chgrp -R travis %s" % (build_dir),
+            "sudo chmod -R g+rwX %s" % (build_dir),
+            "sudo chmod 777 -Rf %s.git" % (build_dir + directory_separator),
+            r"sudo find %s -type d -exec chmod g+x '{}' \;" % (build_dir),
+        ]
 
         for command in commands:
             Helpers.Command(command, False).execute()
 
-        if Helpers.Command(
-                'git config core.sharedRepository',
-                False).execute() == '':
-            Helpers.Command(
-                'git config core.sharedRepository group',
-                False).execute()
+        if Helpers.Command("git config core.sharedRepository", False).execute() == "":
+            Helpers.Command("git config core.sharedRepository group", False).execute()
 
         return
 
@@ -244,23 +232,23 @@ class Initiate(object):
         try:
             getattr(Settings, index)
             if index in [
-                    'stable',
-                    'currently_under_test',
-                    'clean_original'] and Settings.informations[index].isdigit():
-                setattr(Settings, index, bool(
-                    int(Settings.informations[index])))
-            elif index in ['days_until_next_test', 'last_test', 'autosave_minutes'] \
-                    and Settings.informations[index].isdigit():
-                setattr(
-                    Settings, index, int(
-                        Settings.informations[index]))
+                "stable", "currently_under_test", "clean_original"
+            ] and Settings.informations[
+                index
+            ].isdigit():
+                setattr(Settings, index, bool(int(Settings.informations[index])))
+            elif index in [
+                "days_until_next_test", "last_test", "autosave_minutes"
+            ] and Settings.informations[
+                index
+            ].isdigit():
+                setattr(Settings, index, int(Settings.informations[index]))
             else:
-                setattr(
-                    Settings, index, Settings.informations[index])
+                setattr(Settings, index, Settings.informations[index])
         except AttributeError:
             raise Exception(
-                '"%s" into %s in unknown.' %
-                (index, Settings.repository_info))
+                '"%s" into %s in unknown.' % (index, Settings.repository_info)
+            )
 
     def download_PyFunceble(self):  # pylint: disable=invalid-name
         """
@@ -271,22 +259,20 @@ class Initiate(object):
             file_path = Settings.current_directory + file
 
             if not path.isfile(file_path) or not Settings.stable:
-                download_link = Settings.PyFunceble[file].replace(
-                    'master', 'dev')
+                download_link = Settings.PyFunceble[file].replace("master", "dev")
             else:
-                download_link = Settings.PyFunceble[file]. replace(
-                    'dev', 'master')
+                download_link = Settings.PyFunceble[file].replace("dev", "master")
 
             if not Helpers.Download(download_link, file_path).link():
-                raise Exception('Unable to download %s.' % download_link)
+                raise Exception("Unable to download %s." % download_link)
 
             self.travis_permissions()
 
             stats = stat(file_path)
             chmod(file_path, stats.st_mode | S_IEXEC)
 
-        if path.isfile(Settings.current_directory + 'tool.py'):
-            Helpers.File(Settings.current_directory + 'tool.py').delete()
+        if path.isfile(Settings.current_directory + "tool.py"):
+            Helpers.File(Settings.current_directory + "tool.py").delete()
 
     def _extract_lines(self, file):
         """
@@ -300,9 +286,8 @@ class Initiate(object):
         result = []
 
         for line in Helpers.File(file).to_list():
-            if line and not line.startswith('#'):
-                result.append(
-                    self._format_domain(line))
+            if line and not line.startswith("#"):
+                result.append(self._format_domain(line.strip()))
 
         return result
 
@@ -312,84 +297,77 @@ class Initiate(object):
         + searches for `domains` files.
         """
 
-        download_filename = Settings.raw_link.split('/')[-1]
-        extraction_directory = './temp'
+        download_filename = Settings.raw_link.split("/")[-1]
+        extraction_directory = "./temp"
 
         if Helpers.Download(Settings.raw_link, download_filename).link():
-            Helpers.File(download_filename).tar_gz_decompress(
-                extraction_directory)
+            Helpers.File(download_filename).tar_gz_decompress(extraction_directory)
 
             formated_content = []
 
             for root, dirs, files in walk(  # pylint: disable=unused-variable
-                    extraction_directory):
+                extraction_directory
+            ):
                 for file in files:
                     if file.startswith("domains"):
                         formated_content.extend(
-                            self._extract_lines(path.join(root, file)))
+                            self._extract_lines(path.join(root, file))
+                        )
 
             formated_content = Helpers.List(formated_content).format()
 
-            Helpers.File(
-                Settings.list_name).write(
-                    '\n'.join(formated_content),
-                    overwrite=True)
+            Helpers.File(Settings.list_name).write(
+                "\n".join(formated_content), overwrite=True
+            )
 
             Helpers.Directory(extraction_directory).delete()
             Helpers.File(download_filename).delete()
 
         else:
-            raise Exception(
-                'Unable to download the the file. Please check the link.')
+            raise Exception("Unable to download the the file. Please check the link.")
 
     def list_file(self):
         """
         Download and format Settings.raw_link.
         """
 
-        regex_new_test = r'Launch\stest'
+        regex_new_test = r"Launch\stest"
 
         if not Settings.currently_under_test or Helpers.Regex(
-                Helpers.Command(
-                    'git log -1',
-                    False).execute(),
-                regex_new_test,
-                return_data=False,
-                escape=False).match():
+            Helpers.Command("git log -1", False).execute(),
+            regex_new_test,
+            return_data=False,
+            escape=False,
+        ).match():
 
-            if Settings.raw_link.endswith('.tar.gz'):
+            if Settings.raw_link.endswith(".tar.gz"):
                 self._generate_from_tar_gz()
-            elif Helpers.Download(
-                    Settings.raw_link,
-                    Settings.file_to_test).link():
-                Helpers.Command(
-                    'dos2unix ' +
-                    Settings.file_to_test,
-                    False).execute()
+            elif Helpers.Download(Settings.raw_link, Settings.file_to_test).link():
+                Helpers.Command("dos2unix " + Settings.file_to_test, False).execute()
 
                 formated_content = self._extract_lines(Settings.file_to_test)
 
-                Helpers.File(
-                    Settings.file_to_test).write(
-                        '\n'.join(formated_content),
-                        overwrite=True)
+                Helpers.File(Settings.file_to_test).write(
+                    "\n".join(formated_content), overwrite=True
+                )
             elif not Settings.raw_link:
                 print("\n")
             else:
                 raise Exception(
-                    'Unable to download the the file. Please check the link.')
+                    "Unable to download the the file. Please check the link."
+                )
 
-            if path.isdir(Settings.current_directory + 'output'):
+            if path.isdir(Settings.current_directory + "output"):
                 Helpers.Command(self.config_update, False).execute()
 
                 Helpers.Command(
-                    Settings.current_directory +
-                    'PyFunceble.py --clean',
-                    False).execute()
+                    Settings.current_directory + "PyFunceble.py --clean", False
+                ).execute()
 
             self.travis_permissions()
 
             return True
+
         return False
 
     def structure(self):
@@ -400,18 +378,20 @@ class Initiate(object):
         if path.isfile(Settings.repository_info):
             content = Helpers.File(Settings.repository_info).read()
             Settings.informations = Helpers.Dict().from_json(content)
-            to_ignore = ['raw_link', 'name']
+            to_ignore = ["raw_link", "name"]
 
             for index in Settings.informations:
-                if Settings.informations[index] != '':
+                if Settings.informations[index] != "":
                     if index not in to_ignore[1:]:
                         self.set_info_settings(index)
                 elif index in to_ignore:
                     continue
+
                 else:
                     raise Exception(
-                        'Please complete "%s" into %s' %
-                        (index, Settings.repository_info))
+                        'Please complete "%s" into %s'
+                        % (index, Settings.repository_info)
+                    )
 
             self.download_PyFunceble()
 
@@ -420,8 +400,8 @@ class Initiate(object):
             self.list_file()
         else:
             raise Exception(
-                'Impossible to read %s' %
-                Settings.current_directory + 'info.json')
+                "Impossible to read %s" % Settings.current_directory + "info.json"
+            )
 
     @classmethod
     def _format_domain(cls, extracted_domain):
@@ -433,35 +413,45 @@ class Initiate(object):
                 The extracted domain or line from the file.
         """
 
-        tabs = '\t'
-        space = ' '
+        if not extracted_domain.startswith("#"):
 
-        tabs_position, space_position = (
-            extracted_domain.find(tabs), extracted_domain.find(space))
+            if "#" in extracted_domain:
+                extracted_domain = extracted_domain[:extracted_domain.find("#")].strip()
 
-        if tabs_position > -1 and space_position > -1:
-            if space_position < tabs_position:
+            tabs = "\t"
+            space = " "
+
+            tabs_position, space_position = (
+                extracted_domain.find(tabs), extracted_domain.find(space)
+            )
+
+            if tabs_position > -1 and space_position > -1:
+                if space_position < tabs_position:
+                    separator = space
+                else:
+                    separator = tabs
+            elif tabs_position > -1:
+                separator = tabs
+            elif space_position > -1:
                 separator = space
             else:
-                separator = tabs
-        elif tabs_position > -1:
-            separator = tabs
-        elif space_position > -1:
-            separator = space
-        else:
-            separator = ''
+                separator = ""
 
-        if separator:
-            splited_line = extracted_domain.split(separator)
+            if separator:
+                splited_line = extracted_domain.split(separator)
 
-            index = 1
-            while index < len(splited_line):
-                if splited_line[index]:
-                    break
-                index += 1
+                index = 1
+                while index < len(splited_line):
+                    if splited_line[index]:
+                        break
 
-            return splited_line[index]
-        return extracted_domain
+                    index += 1
+
+                return splited_line[index]
+
+            return extracted_domain
+
+        return ""
 
     @classmethod
     def allow_test(cls):
@@ -470,21 +460,23 @@ class Initiate(object):
         """
 
         if not Settings.currently_under_test and Helpers.Regex(
-                Helpers.Command(
-                    'git log -1',
-                    False).execute(),
-                r'Launch\stest',
-                return_data=False,
-                escape=False).match():
+            Helpers.Command("git log -1", False).execute(),
+            r"Launch\stest",
+            return_data=False,
+            escape=False,
+        ).match():
             return True
 
         if Settings.days_until_next_test >= 1 and Settings.last_test != 0:
-            retest_date = Settings.last_test + \
-                (24 * Settings.days_until_next_test * 3600)
+            retest_date = Settings.last_test + (
+                24 * Settings.days_until_next_test * 3600
+            )
 
-            if int(strftime('%s')) >= retest_date or Settings.currently_under_test:
+            if int(strftime("%s")) >= retest_date or Settings.currently_under_test:
                 return True
+
             return False
+
         return True
 
     @classmethod
@@ -494,7 +486,8 @@ class Initiate(object):
         """
 
         if Settings.arguments != []:
-            return' '.join(Settings.arguments)
+            return " ".join(Settings.arguments)
+
         return ""
 
     @classmethod
@@ -504,27 +497,25 @@ class Initiate(object):
         """
 
         if Settings.clean_original:
-            list_content = Helpers.File(
-                Settings.file_to_test).to_list()
+            clean_list = []
+            list_content = Helpers.Regex(
+                Helpers.File(Settings.file_to_test).to_list(), r"ALL:"
+            ).matching_list()
+            active = Settings.current_directory + "output/domains/ACTIVE/list"
 
-            inactive = Settings.current_directory + 'output/domains/INACTIVE/list'
-            invalid = Settings.current_directory + 'output/domains/INVALID/list'
+            if path.isfile(active):
+                clean_list.extend(
+                    Helpers.Regex(
+                        Helpers.File(active).to_list(), r"^#"
+                    ).not_matching_list()
+                    + list_content
+                )
 
-            if path.isfile(inactive):
-                for line in Helpers.File(inactive).to_list():
-                    if line and not line.startswith(
-                            '#') and line in list_content:
-                        list_content.remove(line)
-
-            if path.isfile(invalid):
-                for line in Helpers.File(invalid).to_list():
-                    if line and not line.startswith(
-                            '#') and line in list_content:
-                        list_content.remove(line)
+            clean_list = Helpers.List(clean_list).format()
 
             Helpers.File(Settings.clean_list_file).write(
-                '\n'.join(list_content),
-                overwrite=True)
+                "\n".join(clean_list), overwrite=True
+            )
 
     def PyFunceble(self):  # pylint: disable=invalid-name
         """
@@ -532,66 +523,65 @@ class Initiate(object):
         """
 
         # pylint: disable=invalid-name
-        PyFunceble_path = Settings.current_directory + \
-            'PyFunceble.py'
+        PyFunceble_path = Settings.current_directory + "PyFunceble.py"
 
         if Settings.stable:
-            status = ''
+            status = ""
         else:
-            status = '--dev'
+            status = "--dev"
 
-        command_to_execute = 'sudo python3 %s %s -u && ' % (
-            PyFunceble_path, status)
-        command_to_execute += 'python3 %s -v && ' % (PyFunceble_path)
-        command_to_execute += 'export TRAVIS_BUILD_DIR=%s && ' % environ['TRAVIS_BUILD_DIR']
-        command_to_execute += 'sudo python3 %s %s -f %s' % (
-            PyFunceble_path, self._construct_arguments(), Settings.file_to_test)
+        command_to_execute = "sudo python3 %s %s -u && " % (PyFunceble_path, status)
+        command_to_execute += "python3 %s -v && " % (PyFunceble_path)
+        command_to_execute += "export TRAVIS_BUILD_DIR=%s && " % environ[
+            "TRAVIS_BUILD_DIR"
+        ]
+        command_to_execute += "sudo python3 %s %s -f %s" % (
+            PyFunceble_path, self._construct_arguments(), Settings.file_to_test
+        )
 
         if self.allow_test():
             Helpers.Download(
-                Settings.permanent_license_link,
-                Settings.current_directory +
-                'LICENSE').link()
+                Settings.permanent_license_link, Settings.current_directory + "LICENSE"
+            ).link()
 
-            Settings.informations['last_test'] = strftime('%s')
+            Settings.informations["last_test"] = strftime("%s")
 
-            Helpers.Dict(
-                Settings.informations).to_json(
-                    Settings.repository_info)
+            Helpers.Dict(Settings.informations).to_json(Settings.repository_info)
 
             Helpers.Command(self.config_update, False).execute()
             print(Helpers.Command(command_to_execute, True).execute())
 
-            commit_message = 'Update of info.json'
+            commit_message = "Update of info.json"
 
             if Helpers.Regex(
-                    Helpers.Command(
-                        'git log -1',
-                        False).execute(),
-                    "[Results]",
-                    return_data=False,
-                    escape=True).match():
-                Settings.informations['currently_under_test'] = str(int(False))
-                commit_message = "[Results] " + commit_message + \
-                    ' && input source file [ci skip]'
+                Helpers.Command("git log -1", False).execute(),
+                "[Results]",
+                return_data=False,
+                escape=True,
+            ).match():
+                Settings.informations["currently_under_test"] = str(int(False))
+                commit_message = "[Results] " + commit_message + " && generation of clean.list [ci skip]"  # pylint: disable=line-too-long
 
                 self._clean_original()
             else:
-                Settings.informations['currently_under_test'] = str(int(True))
-                commit_message = "[Autosave] " + \
-                    commit_message
+                Settings.informations["currently_under_test"] = str(int(True))
+                commit_message = "[Autosave] " + commit_message
 
-            Helpers.Dict(
-                Settings.informations).to_json(
-                    Settings.repository_info)
+            Helpers.Dict(Settings.informations).to_json(Settings.repository_info)
             self.travis_permissions()
 
             Helpers.Command(
-                "git add --all && git commit -a -m '%s' && git push origin master" %
-                commit_message, False).execute()
+                "git add --all && git commit -a -m '%s' && git push origin master"
+                % commit_message,
+                False,
+            ).execute()
         else:
-            print("No need to test until %s." % ctime(
-                Settings.last_test + (24 * Settings.days_until_next_test * 3600)))
+            print(
+                "No need to test until %s."
+                % ctime(
+                    Settings.last_test + (24 * Settings.days_until_next_test * 3600)
+                )
+            )
             exit(0)
 
 
@@ -626,13 +616,14 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
                     converted dict into a JSON format.
             """
 
-            with open(destination, 'w') as file:
+            with open(destination, "w") as file:
                 dump(
                     self.main_dictionnary,
                     file,
                     ensure_ascii=False,
                     indent=4,
-                    sort_keys=True)
+                    sort_keys=True,
+                )
 
         @classmethod
         def from_json(cls, data):
@@ -646,6 +637,7 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
 
             try:
                 return loads(data)
+
             except decoder.JSONDecodeError:
                 return {}
 
@@ -667,6 +659,7 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
 
             try:
                 return sorted(list(set(self.main_list)), key=str.lower)
+
             except TypeError:
                 return self.main_list
 
@@ -709,7 +702,7 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
             Read a given file path and return its content.
             """
 
-            with open(self.file, 'r', encoding="utf-8") as file:
+            with open(self.file, "r", encoding="utf-8") as file:
                 funilrys = file.read()
 
             return funilrys
@@ -722,7 +715,7 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
             result = []
 
             for read in open(self.file):
-                result.append(read.rstrip('\n').strip())
+                result.append(read.rstrip("\n").strip())
 
             return result
 
@@ -735,13 +728,12 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
                     The data to write.
             """
 
-            if data_to_write is not None and isinstance(
-                    data_to_write, str):
+            if data_to_write is not None and isinstance(data_to_write, str):
                 if overwrite or not path.isfile(self.file):
-                    with open(self.file, 'w', encoding="utf-8") as file:
+                    with open(self.file, "w", encoding="utf-8") as file:
                         file.write(data_to_write)
                 else:
-                    with open(self.file, 'a', encoding="utf-8") as file:
+                    with open(self.file, "a", encoding="utf-8") as file:
                         file.write(data_to_write)
 
         def delete(self):
@@ -791,13 +783,14 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
                 request = get(self.link_to_download, stream=True)
 
                 if request.status_code == 200:
-                    with open(self.destination, 'wb') as file:
+                    with open(self.destination, "wb") as file:
                         request.raw.decode_content = True
                         copyfileobj(request.raw, file)
 
                     del request
 
                     return True
+
             return False
 
     class Command(object):
@@ -813,7 +806,7 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
         """
 
         def __init__(self, command, allow_stdout=True):
-            self.decode_type = 'utf-8'
+            self.decode_type = "utf-8"
             self.command = command
             self.stdout = allow_stdout
 
@@ -827,6 +820,7 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
             if to_decode is not None:
                 # return to_decode.decode(self.decode_type)
                 return str(to_decode, self.decode_type)
+
             return False
 
         def execute(self):
@@ -835,11 +829,7 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
             """
 
             if not self.stdout:
-                process = Popen(
-                    self.command,
-                    stdout=PIPE,
-                    stderr=PIPE,
-                    shell=True)
+                process = Popen(self.command, stdout=PIPE, stderr=PIPE, shell=True)
             else:
                 process = Popen(self.command, stderr=PIPE, shell=True)
 
@@ -849,7 +839,7 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
                 decoded = self.decode_output(error)
 
                 if not decoded:
-                    return 'Unkown error. for %s' % (self.command)
+                    return "Unkown error. for %s" % (self.command)
 
                 print(decoded)
                 exit(1)
@@ -859,15 +849,20 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
 
         """A simple implementation ot the python.re package
 
-
-        :param data: A string, the data to regex check
-        :param regex: A string, the regex to match
-        :param return_data: A boolean, if True, return the matched string
-        :param group: A integer, the group to return
-        :param rematch: A boolean, if True, return the matched groups into a
-            formated list. (implementation of Bash ${BASH_REMATCH})
-        :param replace_with: A string, the value to replace the matched regex with.
-        :param occurences: A int, the number of occurence to replace.
+        Arguments:
+            - data: str
+                The data to regex check.
+            - regex: str
+                The regex to match.
+            - group: int
+                The group to return
+            - rematch: bool
+                True: return the matched groups into a formated list.
+                    (implementation of Bash ${BASH_REMATCH})
+            - replace_with: str
+                The value to replace the matched regex with.
+            - occurences: int
+                The number of occurence(s) to replace.
         """
 
         def __init__(self, data, regex, **args):
@@ -882,7 +877,7 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
                 "occurences": 0,
                 "rematch": False,
                 "replace_with": None,
-                "return_data": True
+                "return_data": True,
             }
 
             # We initiate our optional_arguments in order to be usable all over the
@@ -895,8 +890,34 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
             else:
                 self.regex = regex
 
+        def not_matching_list(self):
+            """
+            This method return a list of string which don't match the
+            given regex.
+            """
+
+            pre_result = comp(self.regex)
+
+            return list(
+                filter(lambda element: not pre_result.search(str(element)), self.data)
+            )
+
+        def matching_list(self):
+            """
+            This method return a list of the string which match the given
+            regex.
+            """
+
+            pre_result = comp(self.regex)
+
+            return list(
+                filter(lambda element: pre_result.search(str(element)), self.data)
+            )
+
         def match(self):
-            """Used to get exploitable result of re.search"""
+            """
+            Used to get exploitable result of re.search
+            """
 
             # We initate this variable which gonna contain the returned data
             result = []
@@ -911,7 +932,7 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
             else:
                 pre_result = to_match.search(self.data)
 
-            if self.return_data and pre_result is not None:  # pylint: disable=no-member
+            if self.return_data and pre_result:  # pylint: disable=no-member
                 if self.rematch:  # pylint: disable=no-member
                     for data in pre_result:
                         if isinstance(data, tuple):
@@ -921,26 +942,34 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
 
                     if self.group != 0:  # pylint: disable=no-member
                         return result[self.group]  # pylint: disable=no-member
+
                 else:
                     result = pre_result.group(
-                        self.group).strip()  # pylint: disable=no-member
+                        self.group  # pylint: disable=no-member
+                    ).strip()
 
                 return result
-            elif not self.return_data and pre_result is not None:  # pylint: disable=no-member
+
+            elif not self.return_data and pre_result:  # pylint: disable=no-member
                 return True
+
             return False
 
         def replace(self):
-            """Used to replace a matched string with another."""
+            """
+            Used to replace a matched string with another.
+            """
 
-            if self.replace_with is not None:  # pylint: disable=no-member
+            if self.replace_with:  # pylint: disable=no-member
                 return substrings(
                     self.regex,
                     self.replace_with,  # pylint: disable=no-member
                     self.data,
-                    self.occurences)  # pylint: disable=no-member
+                    self.occurences,  # pylint: disable=no-member
+                )
+
             return self.data
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     Initiate().PyFunceble()
