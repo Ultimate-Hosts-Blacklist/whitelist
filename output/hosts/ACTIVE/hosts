@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Sat 07 Apr 15:04:41 UTC 2018 
+# Date of generation: Mon 09 Apr 15:04:26 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
@@ -12,6 +12,7 @@
 0.0.0.0 adblock.dk 
 0.0.0.0 adblock.ee 
 0.0.0.0 adblock.mahakala.is 
+0.0.0.0 advanceautoparts.com 
 0.0.0.0 akadns.net 
 0.0.0.0 akamai.net 
 0.0.0.0 akamaiedge.net 
@@ -79,6 +80,7 @@
 0.0.0.0 community.spiceworks.com 
 0.0.0.0 content.logmein.com 
 0.0.0.0 cookie.monster.com 
+0.0.0.0 costco.com 
 0.0.0.0 crateandbarrel.com 
 0.0.0.0 crl.microsoft.com 
 0.0.0.0 crl.verisign.net 
@@ -88,6 +90,7 @@
 0.0.0.0 d.dropbox.com 
 0.0.0.0 d2c87l0yth4zbw.cloudfront.net 
 0.0.0.0 data.iana.org 
+0.0.0.0 dell.com 
 0.0.0.0 denis-ovs.narod.ru 
 0.0.0.0 dev.twitter.com 
 0.0.0.0 device.auth.xboxlive.com 
@@ -136,6 +139,7 @@
 0.0.0.0 external-lhr8-1.xx.fbcdn.net 
 0.0.0.0 external-lhr9-1.xx.fbcdn.net 
 0.0.0.0 facebook.com 
+0.0.0.0 familydollar.com 
 0.0.0.0 feedly.com 
 0.0.0.0 filters.adtidy.org 
 0.0.0.0 fonts.googleapis.com 
@@ -150,6 +154,7 @@
 0.0.0.0 frys.com 
 0.0.0.0 g.live.com 
 0.0.0.0 g.msn.com 
+0.0.0.0 gap.com 
 0.0.0.0 gawker.com 
 0.0.0.0 gekko.spiceworks.com 
 0.0.0.0 geo-prod.do.dsp.mp.microsoft.com 
@@ -169,6 +174,7 @@
 0.0.0.0 gs.apple.com 
 0.0.0.0 help.ui.xboxlive.com 
 0.0.0.0 history.com 
+0.0.0.0 hm.com 
 0.0.0.0 homedepot.com 
 0.0.0.0 hosts-file.net 
 0.0.0.0 hostsfile.mine.nu 
@@ -177,6 +183,7 @@
 0.0.0.0 i.imgur.com 
 0.0.0.0 i.s-microsoft.com 
 0.0.0.0 icanhazip.com 
+0.0.0.0 ikea.com 
 0.0.0.0 imgs.xkcd.com 
 0.0.0.0 imgur.com 
 0.0.0.0 instagram.com 
@@ -184,6 +191,7 @@
 0.0.0.0 itunes.apple.com 
 0.0.0.0 j.mp 
 0.0.0.0 jabcreations.com 
+0.0.0.0 jcpenney.com 
 0.0.0.0 jdownloader.org 
 0.0.0.0 jobs.lifehacker.com 
 0.0.0.0 joewein.net 
@@ -192,6 +200,7 @@
 0.0.0.0 kickstarter.com 
 0.0.0.0 kmart.com 
 0.0.0.0 kohls.com 
+0.0.0.0 kroger.com 
 0.0.0.0 l.betrad.com 
 0.0.0.0 lasvegas.cbslocal.com 
 0.0.0.0 lh3.google.com 
@@ -201,6 +210,7 @@
 0.0.0.0 licdn.com 
 0.0.0.0 licensing.xboxlive.com 
 0.0.0.0 lifehacker.com 
+0.0.0.0 linkedin.com 
 0.0.0.0 live.com 
 0.0.0.0 live.net 
 0.0.0.0 livefilestore.com 
@@ -295,6 +305,7 @@
 0.0.0.0 proxy.plex.bz 
 0.0.0.0 proxy.plex.tv 
 0.0.0.0 publicsuffix.org 
+0.0.0.0 publix.com 
 0.0.0.0 pubsub.plex.bz 
 0.0.0.0 pubsub.plex.tv 
 0.0.0.0 px.spiceworks.com 
@@ -335,6 +346,7 @@
 0.0.0.0 settings-win.data.microsoft.com 
 0.0.0.0 shop.samsung.com 
 0.0.0.0 skyhook.sonarr.tv 
+0.0.0.0 skype.com 
 0.0.0.0 someonewhocares.org 
 0.0.0.0 spaces.live.com 
 0.0.0.0 spapps.co 
