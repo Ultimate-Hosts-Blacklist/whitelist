@@ -15,7 +15,7 @@ Contributors:
 
     @GitHubUsername, Name, Email (optional)
 """
-# pylint: disable=bad-continuation
+# pylint: disable=bad-continuation, too-many-lines
 from json import decoder, dump, loads
 from os import chmod, environ, getcwd, path, remove
 from os import sep as directory_separator
@@ -154,11 +154,18 @@ class Settings(object):  # pylint: disable=too-few-public-methods
     clean_original = False
 
     # This variable is used to set the location of the file for the list without
-    # dead/inactive domains
+    # dead/inactive domains.
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     # Note: This variable is auto updated by Initiate()
     clean_list_file = "clean.list"
+
+    # This variable is used to know if we need to convert the list into idna
+    # before we write the file PyFunceble is going to test.
+    #
+    # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
+    # Note: This variable is auto updated by Initiate()
+    convert_to_idna = False
 
 
 class Initiate(object):
@@ -178,46 +185,54 @@ class Initiate(object):
         Initiate Travis CI settings.
         """
 
-        Helpers.Command("git remote rm origin", False).execute()
-        Helpers.Command(
-            "git remote add origin https://"
-            + "%s@github.com/%s.git"
-            % (environ["GH_TOKEN"], environ["TRAVIS_REPO_SLUG"]),
-            False,
-        ).execute()
-        Helpers.Command(
-            'git config --global user.email "%s"' % (environ["GIT_EMAIL"]), False
-        ).execute()
-        Helpers.Command(
-            'git config --global user.name "%s"' % (environ["GIT_NAME"]), False
-        ).execute()
-        Helpers.Command("git config --global push.default simple", False).execute()
-        Helpers.Command("git checkout %s" % environ["GIT_BRANCH"], False).execute()
+        try:
+            _ = environ["TRAVIS_BUILD_DIR"]
 
-        return
+            Helpers.Command("git remote rm origin", False).execute()
+            Helpers.Command(
+                "git remote add origin https://"
+                + "%s@github.com/%s.git"
+                % (environ["GH_TOKEN"], environ["TRAVIS_REPO_SLUG"]),
+                False,
+            ).execute()
+            Helpers.Command(
+                'git config --global user.email "%s"' % (environ["GIT_EMAIL"]), False
+            ).execute()
+            Helpers.Command(
+                'git config --global user.name "%s"' % (environ["GIT_NAME"]), False
+            ).execute()
+            Helpers.Command("git config --global push.default simple", False).execute()
+            Helpers.Command("git checkout %s" % environ["GIT_BRANCH"], False).execute()
+
+        except KeyError:
+            pass
 
     @classmethod
     def travis_permissions(cls):
         """
         Set permissions in order to avoid issues before commiting.
         """
+        try:
+            build_dir = environ["TRAVIS_BUILD_DIR"]
+            commands = [
+                "sudo chown -R travis:travis %s" % (build_dir),
+                "sudo chgrp -R travis %s" % (build_dir),
+                "sudo chmod -R g+rwX %s" % (build_dir),
+                "sudo chmod 777 -Rf %s.git" % (build_dir + directory_separator),
+                r"sudo find %s -type d -exec chmod g+x '{}' \;" % (build_dir),
+            ]
 
-        build_dir = environ["TRAVIS_BUILD_DIR"]
-        commands = [
-            "sudo chown -R travis:travis %s" % (build_dir),
-            "sudo chgrp -R travis %s" % (build_dir),
-            "sudo chmod -R g+rwX %s" % (build_dir),
-            "sudo chmod 777 -Rf %s.git" % (build_dir + directory_separator),
-            r"sudo find %s -type d -exec chmod g+x '{}' \;" % (build_dir),
-        ]
+            for command in commands:
+                Helpers.Command(command, False).execute()
 
-        for command in commands:
-            Helpers.Command(command, False).execute()
-
-        if Helpers.Command("git config core.sharedRepository", False).execute() == "":
-            Helpers.Command("git config core.sharedRepository group", False).execute()
-
-        return
+            if Helpers.Command(
+                "git config core.sharedRepository", False
+            ).execute() == "":
+                Helpers.Command(
+                    "git config core.sharedRepository group", False
+                ).execute()
+        except KeyError:
+            pass
 
     @classmethod
     def set_info_settings(cls, index):
@@ -232,7 +247,7 @@ class Initiate(object):
         try:
             getattr(Settings, index)
             if index in [
-                "stable", "currently_under_test", "clean_original"
+                "stable", "currently_under_test", "clean_original", "convert_to_idna"
             ] and Settings.informations[
                 index
             ].isdigit():
@@ -247,7 +262,7 @@ class Initiate(object):
                 setattr(Settings, index, Settings.informations[index])
         except AttributeError:
             raise Exception(
-                '"%s" into %s in unknown.' % (index, Settings.repository_info)
+                '"%s" into %s is unknown.' % (index, Settings.repository_info)
             )
 
     def download_PyFunceble(self):  # pylint: disable=invalid-name
@@ -342,7 +357,9 @@ class Initiate(object):
 
             if Settings.raw_link.endswith(".tar.gz"):
                 self._generate_from_tar_gz()
-            elif Helpers.Download(Settings.raw_link, Settings.file_to_test).link():
+            elif Helpers.Download(
+                Settings.raw_link, Settings.file_to_test, Settings.convert_to_idna
+            ).link():
                 Helpers.Command("dos2unix " + Settings.file_to_test, False).execute()
 
                 formated_content = self._extract_lines(Settings.file_to_test)
@@ -551,30 +568,34 @@ class Initiate(object):
             Helpers.Command(self.config_update, False).execute()
             print(Helpers.Command(command_to_execute, True).execute())
 
-            commit_message = "Update of info.json"
+            try:
+                _ = environ["TRAVIS_BUILD_DIR"]
+                commit_message = "Update of info.json"
 
-            if Helpers.Regex(
-                Helpers.Command("git log -1", False).execute(),
-                "[Results]",
-                return_data=False,
-                escape=True,
-            ).match():
-                Settings.informations["currently_under_test"] = str(int(False))
-                commit_message = "[Results] " + commit_message + " && generation of clean.list [ci skip]"  # pylint: disable=line-too-long
+                if Helpers.Regex(
+                    Helpers.Command("git log -1", False).execute(),
+                    "[Results]",
+                    return_data=False,
+                    escape=True,
+                ).match():
+                    Settings.informations["currently_under_test"] = str(int(False))
+                    commit_message = "[Results] " + commit_message + " && generation of clean.list [ci skip]"  # pylint: disable=line-too-long
 
-                self._clean_original()
-            else:
-                Settings.informations["currently_under_test"] = str(int(True))
-                commit_message = "[Autosave] " + commit_message
+                    self._clean_original()
+                else:
+                    Settings.informations["currently_under_test"] = str(int(True))
+                    commit_message = "[Autosave] " + commit_message
 
-            Helpers.Dict(Settings.informations).to_json(Settings.repository_info)
-            self.travis_permissions()
+                Helpers.Dict(Settings.informations).to_json(Settings.repository_info)
+                self.travis_permissions()
 
-            Helpers.Command(
-                "git add --all && git commit -a -m '%s' && git push origin master"
-                % commit_message,
-                False,
-            ).execute()
+                Helpers.Command(
+                    "git add --all && git commit -a -m '%s' && git push origin master"
+                    % commit_message,
+                    False,
+                ).execute()
+            except KeyError:
+                pass
         else:
             print(
                 "No need to test until %s."
@@ -770,9 +791,42 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
                 The destination of the downloaded data.
         """
 
-        def __init__(self, link_to_download, destination):
+        def __init__(self, link_to_download, destination, convert_to_idna=False):
             self.link_to_download = link_to_download
             self.destination = destination
+            self.convert_to_idna = convert_to_idna
+
+        def _convert_to_idna(self, data):
+            """
+            This method convert a given data into IDNA format.
+
+            Argument:
+                - data: str
+                    The downloaded data.
+            """
+
+            if self.convert_to_idna:
+                to_write = []
+
+                for line in data.split("\n"):
+                    line = line.split()
+                    try:
+                        if isinstance(line, list):
+                            converted = []
+                            for string in line:
+                                converted.append(string.encode("idna").decode("utf-8"))
+
+                            to_write.append(" ".join(converted))
+                        else:
+                            to_write.append(line.encode("idna").decode("utf-8"))
+                    except UnicodeError:
+                        if isinstance(line, list):
+                            to_write.append(" ".join(line))
+                        else:
+                            to_write.append(line)
+                return to_write
+
+            return None
 
         def link(self):
             """
@@ -783,9 +837,15 @@ class Helpers(object):  # pylint: disable=too-few-public-methods
                 request = get(self.link_to_download, stream=True)
 
                 if request.status_code == 200:
-                    with open(self.destination, "wb") as file:
-                        request.raw.decode_content = True
-                        copyfileobj(request.raw, file)
+                    if self.convert_to_idna:
+                        Helpers.File(self.destination).write(
+                            "\n".join(self._convert_to_idna(request.text)),
+                            overwrite=True,
+                        )
+                    else:
+                        with open(self.destination, "wb") as file:
+                            request.raw.decode_content = True
+                            copyfileobj(request.raw, file)
 
                     del request
 
