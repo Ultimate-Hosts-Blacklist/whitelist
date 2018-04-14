@@ -435,27 +435,8 @@ class Initiate(object):
             if "#" in extracted_domain:
                 extracted_domain = extracted_domain[:extracted_domain.find("#")].strip()
 
-            tabs = "\t"
-            space = " "
-
-            tabs_position, space_position = (
-                extracted_domain.find(tabs), extracted_domain.find(space)
-            )
-
-            if tabs_position > -1 and space_position > -1:
-                if space_position < tabs_position:
-                    separator = space
-                else:
-                    separator = tabs
-            elif tabs_position > -1:
-                separator = tabs
-            elif space_position > -1:
-                separator = space
-            else:
-                separator = ""
-
-            if separator:
-                splited_line = extracted_domain.split(separator)
+            if ' ' in extracted_domain or '\ŧ' in extracted_domain:
+                splited_line = extracted_domain.split()
 
                 index = 1
                 while index < len(splited_line):
@@ -515,8 +496,8 @@ class Initiate(object):
 
         if Settings.clean_original:
             clean_list = []
-            list_content = Helpers.Regex(
-                Helpers.File(Settings.file_to_test).to_list(), r"ALL:"
+            list_special_content = Helpers.Regex(
+                Helpers.File(Settings.file_to_test).to_list(), r"ALL\s"
             ).matching_list()
             active = Settings.current_directory + "output/domains/ACTIVE/list"
 
@@ -525,7 +506,7 @@ class Initiate(object):
                     Helpers.Regex(
                         Helpers.File(active).to_list(), r"^#"
                     ).not_matching_list()
-                    + list_content
+                    + list_special_content
                 )
 
             clean_list = Helpers.List(clean_list).format()
