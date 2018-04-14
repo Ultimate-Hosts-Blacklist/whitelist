@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Thu 12 Apr 15:04:20 UTC 2018 
+# Date of generation: Sat 14 Apr 21:04:17 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
@@ -22,9 +22,11 @@
 0.0.0.0 amazon.com 
 0.0.0.0 android.clients.google.com 
 0.0.0.0 ap.spotify.com 
+0.0.0.0 api-global.netflix.com 
 0.0.0.0 api.ipify.org 
 0.0.0.0 api.twitter.com 
 0.0.0.0 app.plex.tv 
+0.0.0.0 appboot.netflix.com 
 0.0.0.0 appldnld.apple.com 
 0.0.0.0 apps.facebook.com 
 0.0.0.0 apps.skype.com 
@@ -117,6 +119,7 @@
 0.0.0.0 ea.com 
 0.0.0.0 easylist-downloads.adblockplus.org 
 0.0.0.0 easylist.to 
+0.0.0.0 ebay.pl 
 0.0.0.0 ebayimg.com 
 0.0.0.0 ebayrtm.com 
 0.0.0.0 ebaystatic.com 
@@ -127,6 +130,7 @@
 0.0.0.0 eds.xboxlive.com 
 0.0.0.0 embed.spotify.com 
 0.0.0.0 en.bab.la 
+0.0.0.0 espn.com 
 0.0.0.0 external-lhr0-1.xx.fbcdn.net 
 0.0.0.0 external-lhr1-1.xx.fbcdn.net 
 0.0.0.0 external-lhr10-1.xx.fbcdn.net 
@@ -183,6 +187,7 @@
 0.0.0.0 i.imgur.com 
 0.0.0.0 i.s-microsoft.com 
 0.0.0.0 icanhazip.com 
+0.0.0.0 ichnaea.netflix.com 
 0.0.0.0 ikea.com 
 0.0.0.0 imgs.xkcd.com 
 0.0.0.0 imgur.com 
@@ -312,6 +317,7 @@
 0.0.0.0 ransomwaretracker.abuse.ch 
 0.0.0.0 raw.github.com 
 0.0.0.0 raw.githubusercontent.com 
+0.0.0.0 real-debrid.com 
 0.0.0.0 reddit.com 
 0.0.0.0 res.cloudinary.com 
 0.0.0.0 road.adblock.ro 
