@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Tue 17 Apr 15:04:14 UTC 2018 
+# Date of generation: Fri 20 Apr 15:04:47 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
@@ -12,6 +12,7 @@
 0.0.0.0 adblock.dk 
 0.0.0.0 adblock.ee 
 0.0.0.0 adblock.mahakala.is 
+0.0.0.0 adidas.com 
 0.0.0.0 advanceautoparts.com 
 0.0.0.0 akadns.net 
 0.0.0.0 akamai.net 
@@ -32,6 +33,7 @@
 0.0.0.0 apps.skype.com 
 0.0.0.0 apresolve.spotify.com 
 0.0.0.0 apt.sonarr.tv 
+0.0.0.0 asics.com 
 0.0.0.0 askubuntu.com 
 0.0.0.0 attestation.xboxlive.com 
 0.0.0.0 audible.com 
@@ -47,18 +49,21 @@
 0.0.0.0 bestbuy.com 
 0.0.0.0 betanews.com 
 0.0.0.0 bgr.com 
+0.0.0.0 bialystok.tvp.pl 
 0.0.0.0 bit.ly 
 0.0.0.0 bitbucket.org 
 0.0.0.0 bleacherreport.com 
 0.0.0.0 blocklist.kowabit.de 
 0.0.0.0 blogs.discovermagazine.com 
 0.0.0.0 bloomberg.com 
+0.0.0.0 board.jdownloader.org 
 0.0.0.0 boston.cbslocal.com 
 0.0.0.0 boxrec.com 
 0.0.0.0 btstatic.com 
 0.0.0.0 business.officedepot.com.edgekey.net 
 0.0.0.0 businessfinder.nj.com 
 0.0.0.0 businessinsider.com 
+0.0.0.0 bydgoszcz.tvp.pl 
 0.0.0.0 c.msn.com 
 0.0.0.0 c.s-microsoft.com 
 0.0.0.0 cdn.betrad.com 
@@ -146,7 +151,12 @@
 0.0.0.0 familydollar.com 
 0.0.0.0 feedly.com 
 0.0.0.0 filters.adtidy.org 
+0.0.0.0 finance.yahoo.com 
 0.0.0.0 fonts.googleapis.com 
+0.0.0.0 footlocker-inc.com 
+0.0.0.0 footlocker.com 
+0.0.0.0 forbes.com 
+0.0.0.0 fortune.com 
 0.0.0.0 forum.xda-developers.com 
 0.0.0.0 forums.mozillazine.org 
 0.0.0.0 forums.plex.tv 
@@ -175,15 +185,18 @@
 0.0.0.0 googlevideo.com 
 0.0.0.0 graph.facebook.com 
 0.0.0.0 gravatar.com 
+0.0.0.0 groupon.com 
 0.0.0.0 gs.apple.com 
 0.0.0.0 help.ui.xboxlive.com 
 0.0.0.0 history.com 
 0.0.0.0 hm.com 
 0.0.0.0 homedepot.com 
+0.0.0.0 hoopshype.com 
 0.0.0.0 hosts-file.net 
 0.0.0.0 hostsfile.mine.nu 
 0.0.0.0 hotmail.com 
 0.0.0.0 houston.cbslocal.com 
+0.0.0.0 hulu.com 
 0.0.0.0 i.imgur.com 
 0.0.0.0 i.s-microsoft.com 
 0.0.0.0 icanhazip.com 
@@ -191,6 +204,7 @@
 0.0.0.0 ikea.com 
 0.0.0.0 imgs.xkcd.com 
 0.0.0.0 imgur.com 
+0.0.0.0 indeed.com 
 0.0.0.0 instagram.com 
 0.0.0.0 ipla.tv 
 0.0.0.0 itunes.apple.com 
@@ -201,12 +215,16 @@
 0.0.0.0 jobs.lifehacker.com 
 0.0.0.0 joewein.net 
 0.0.0.0 js.maxmind.com 
+0.0.0.0 katowice.tvp.pl 
 0.0.0.0 keystone.mwbsys.com 
 0.0.0.0 kickstarter.com 
+0.0.0.0 kidsfootlocker.com 
 0.0.0.0 kmart.com 
 0.0.0.0 kohls.com 
+0.0.0.0 krakow.tvp.pl 
 0.0.0.0 kroger.com 
 0.0.0.0 l.betrad.com 
+0.0.0.0 ladyfootlocker.com 
 0.0.0.0 lasvegas.cbslocal.com 
 0.0.0.0 lh3.google.com 
 0.0.0.0 lh4.google.com 
@@ -219,11 +237,13 @@
 0.0.0.0 live.com 
 0.0.0.0 live.net 
 0.0.0.0 livefilestore.com 
+0.0.0.0 lodz.tvp.pl 
 0.0.0.0 login.live.com 
 0.0.0.0 logmein-gateway.com 
 0.0.0.0 logmein.com 
 0.0.0.0 losangeles.cbslocal.com 
 0.0.0.0 lowes.com 
+0.0.0.0 lublin.tvp.pl 
 0.0.0.0 m.hotmail.com 
 0.0.0.0 m.weeklyad.target.com 
 0.0.0.0 m.youtube.com 
@@ -232,6 +252,8 @@
 0.0.0.0 malwaredomains.lehigh.edu 
 0.0.0.0 malwareurls.joxeankoret.com 
 0.0.0.0 margevicius.lt 
+0.0.0.0 marketwatch.com 
+0.0.0.0 mega.nz 
 0.0.0.0 merriam-webster.com 
 0.0.0.0 mesh.com 
 0.0.0.0 messenger.com 
@@ -263,6 +285,7 @@
 0.0.0.0 nflxext.com 
 0.0.0.0 nflximg.com 
 0.0.0.0 nflximg.net 
+0.0.0.0 nike.com 
 0.0.0.0 nine.plugins.plexapp.com 
 0.0.0.0 nitroflare.com 
 0.0.0.0 no-ip.com 
@@ -319,10 +342,12 @@
 0.0.0.0 raw.githubusercontent.com 
 0.0.0.0 real-debrid.com 
 0.0.0.0 reddit.com 
+0.0.0.0 reebok.com 
 0.0.0.0 res.cloudinary.com 
 0.0.0.0 road.adblock.ro 
 0.0.0.0 roku.com 
 0.0.0.0 rover.ebay.com 
+0.0.0.0 rzeszow.tvp.pl 
 0.0.0.0 s-media-cache-ak0.pinimg.com 
 0.0.0.0 s-passets-cache-ak0.pinimg.com 
 0.0.0.0 s.gateway.messenger.live.com 
@@ -339,6 +364,7 @@
 0.0.0.0 sanfrancisco.cbslocal.com 
 0.0.0.0 scontent-lhr3-1.xx.fbcdn.net 
 0.0.0.0 scontent.xx.fbcdn.net 
+0.0.0.0 screenshots.firefox.com 
 0.0.0.0 search.twitter.com 
 0.0.0.0 sears.com 
 0.0.0.0 secure-cdn.mplxtms.com 
@@ -377,6 +403,7 @@
 0.0.0.0 surveymonkey.com 
 0.0.0.0 swcdn.apple.com 
 0.0.0.0 sysctl.org 
+0.0.0.0 szczecin.tvp.pl 
 0.0.0.0 t.co 
 0.0.0.0 talk.google.com 
 0.0.0.0 talk.l.google.com 
@@ -402,6 +429,7 @@
 0.0.0.0 tunein.com 
 0.0.0.0 tvdb2.plex.tv 
 0.0.0.0 tvnstyle.pl 
+0.0.0.0 tvp.pl 
 0.0.0.0 tvthemes.plexapp.com 
 0.0.0.0 tvthemes.plexapp.com.cdn.cloudflare.net 
 0.0.0.0 twimg.com 
@@ -421,6 +449,7 @@
 0.0.0.0 video.google.com 
 0.0.0.0 videolan.org 
 0.0.0.0 vimeo.com 
+0.0.0.0 vod.tvp.pl 
 0.0.0.0 void.gr 
 0.0.0.0 vox.com 
 0.0.0.0 vupload2.facebook.com 
