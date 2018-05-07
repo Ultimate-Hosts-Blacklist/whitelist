@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Fri 04 May 15:05:30 UTC 2018 
+# Date of generation: Mon 07 May 15:05:45 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
@@ -136,6 +136,7 @@
 0.0.0.0 embed.spotify.com 
 0.0.0.0 en.bab.la 
 0.0.0.0 espn.com 
+0.0.0.0 ew.com 
 0.0.0.0 external-lhr0-1.xx.fbcdn.net 
 0.0.0.0 external-lhr1-1.xx.fbcdn.net 
 0.0.0.0 external-lhr10-1.xx.fbcdn.net 
@@ -173,6 +174,8 @@
 0.0.0.0 gekko.spiceworks.com 
 0.0.0.0 geo-prod.do.dsp.mp.microsoft.com 
 0.0.0.0 get.adobe.com 
+0.0.0.0 giphy.com 
+0.0.0.0 git.io 
 0.0.0.0 github.com 
 0.0.0.0 gitter.im 
 0.0.0.0 gmail.com 
@@ -288,12 +291,15 @@
 0.0.0.0 nike.com 
 0.0.0.0 nine.plugins.plexapp.com 
 0.0.0.0 nitroflare.com 
+0.0.0.0 nj.com 
 0.0.0.0 no-ip.com 
 0.0.0.0 node.plexapp.com 
 0.0.0.0 notify.xboxlive.com 
 0.0.0.0 nsatc.net 
 0.0.0.0 ny1.com 
 0.0.0.0 nydailynews.com 
+0.0.0.0 nymag.com 
+0.0.0.0 nypost.com 
 0.0.0.0 nytimes.com 
 0.0.0.0 o1.email.plex.tv 
 0.0.0.0 o2.sg0.plex.tv 
@@ -311,6 +317,7 @@
 0.0.0.0 ow.ly 
 0.0.0.0 p.imgur.com 
 0.0.0.0 pastebin.com 
+0.0.0.0 people.com 
 0.0.0.0 pgl.yoyo.org 
 0.0.0.0 philadelphia.cbslocal.com 
 0.0.0.0 phobos.apple.com 
@@ -414,6 +421,7 @@
 0.0.0.0 target.com 
 0.0.0.0 teamviewer.com 
 0.0.0.0 techguy.org 
+0.0.0.0 thehill.com 
 0.0.0.0 themoviedb.com 
 0.0.0.0 thetvdb.com 
 0.0.0.0 tinyurl.com 
@@ -456,6 +464,7 @@
 0.0.0.0 walgreens.com 
 0.0.0.0 walmart.com 
 0.0.0.0 washington.cbslocal.com 
+0.0.0.0 washingtonpost.com 
 0.0.0.0 weather.com 
 0.0.0.0 web.archive.org 
 0.0.0.0 webcache.googleusercontent.com 
