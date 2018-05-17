@@ -108,7 +108,6 @@ class Settings(object):  # pylint: disable=too-few-public-methods
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     PyFunceble = {
-        "PyFunceble.py": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/PyFunceble.py",  # pylint: disable=line-too-long
         "requirements.txt": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/requirements.txt",  # pylint: disable=line-too-long
     }
 
@@ -138,7 +137,7 @@ class Settings(object):  # pylint: disable=too-few-public-methods
     # This variable is used to set the permanant config links
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
-    permanent_config_link = "https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/repository-structure/master/config_cross_input_sources.yaml"  # pylint: disable=line-too-long
+    permanent_config_link = "https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/repository-structure/master/.PyFunceble_cross_input_sources.yaml"  # pylint: disable=line-too-long
 
     # This variable is used to set the arguments when executing PyFunceble.py
     #
@@ -174,7 +173,7 @@ class Initiate(object):
     """
 
     def __init__(self):  # pylint: disable=too-many-branches
-        self.config_update = "wget %s -O config.yaml" % Settings.permanent_config_link
+        self.config_update = "wget %s -O .PyFunceble.yaml" % Settings.permanent_config_link
         self.travis()
         self.travis_permissions()
         self.structure()
@@ -286,8 +285,11 @@ class Initiate(object):
             stats = stat(file_path)
             chmod(file_path, stats.st_mode | S_IEXEC)
 
-        if path.isfile(Settings.current_directory + "tool.py"):
-            Helpers.File(Settings.current_directory + "tool.py").delete()
+
+
+        Helpers.File(Settings.current_directory + "tool.py").delete()
+        Helpers.File(Settings.current_directory + "PyFunceble.py").delete()
+
 
     def _extract_lines(self, file):
         """
@@ -378,7 +380,7 @@ class Initiate(object):
                 Helpers.Command(self.config_update, False).execute()
 
                 Helpers.Command(
-                    Settings.current_directory + "PyFunceble.py --clean", False
+                    "PyFunceble --clean", False
                 ).execute()
 
             self.travis_permissions()
@@ -521,19 +523,18 @@ class Initiate(object):
         """
 
         # pylint: disable=invalid-name
-        PyFunceble_path = Settings.current_directory + "PyFunceble.py"
+        PyFunceble_path = "PyFunceble"
 
         if Settings.stable:
             status = ""
         else:
             status = "--dev"
 
-        command_to_execute = "sudo python3 %s %s -u && " % (PyFunceble_path, status)
-        command_to_execute += "python3 %s -v && " % (PyFunceble_path)
+        command_to_execute = "%s -v && " % (PyFunceble_path)
         command_to_execute += "export TRAVIS_BUILD_DIR=%s && " % environ[
             "TRAVIS_BUILD_DIR"
         ]
-        command_to_execute += "sudo python3 %s %s -f %s" % (
+        command_to_execute += "%s %s -f %s" % (
             PyFunceble_path, self._construct_arguments(), Settings.file_to_test
         )
 
