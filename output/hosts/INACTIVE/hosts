@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Mon 14 May 15:05:52 UTC 2018 
+# Date of generation: Thu 17 May 15:05:55 UTC 2018 
 
 0.0.0.0 106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services 
 0.0.0.0 banners.spiceworks.com 
@@ -17,6 +17,7 @@
 0.0.0.0 dropbox.comdl.dropbox.com 
 0.0.0.0 fbcdn-creative-a.akamaihd.net 
 0.0.0.0 gslb.spotify.com 
+0.0.0.0 m.weeklyad.target.com 
 0.0.0.0 messenger.hotmail.com 
 0.0.0.0 msg.yahoo.com 
 0.0.0.0 nccp.netflix.com 
@@ -29,6 +30,7 @@
 0.0.0.0 s4.symcb.com 
 0.0.0.0 s5.symcb.com 
 0.0.0.0 sa-blacklist.stearns.org 
+0.0.0.0 sa.symcb.com 
 0.0.0.0 sqm.microsoft.com 
 0.0.0.0 static.ak.facebook.com 
 0.0.0.0 talks.l.google.com 
