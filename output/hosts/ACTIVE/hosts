@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Thu 17 May 15:05:55 UTC 2018 
+# Date of generation: Sat 19 May 16:05:19 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
@@ -57,6 +57,7 @@
 0.0.0.0 blogs.discovermagazine.com 
 0.0.0.0 bloomberg.com 
 0.0.0.0 board.jdownloader.org 
+0.0.0.0 bokser.org 
 0.0.0.0 boston.cbslocal.com 
 0.0.0.0 boxrec.com 
 0.0.0.0 btstatic.com 
@@ -91,6 +92,7 @@
 0.0.0.0 crateandbarrel.com 
 0.0.0.0 crl.microsoft.com 
 0.0.0.0 crl.verisign.net 
+0.0.0.0 crunchbase.com 
 0.0.0.0 ctldl.windowsupdate.com 
 0.0.0.0 customerevents.netflix.com 
 0.0.0.0 cvs.com 
@@ -178,6 +180,8 @@
 0.0.0.0 git.io 
 0.0.0.0 github.com 
 0.0.0.0 gitter.im 
+0.0.0.0 gizmodo.com 
+0.0.0.0 gizmodo.com.au 
 0.0.0.0 gmail.com 
 0.0.0.0 goo.gl 
 0.0.0.0 google-analytics.com 
@@ -291,10 +295,12 @@
 0.0.0.0 nine.plugins.plexapp.com 
 0.0.0.0 nitroflare.com 
 0.0.0.0 nj.com 
+0.0.0.0 nk.pl 
 0.0.0.0 no-ip.com 
 0.0.0.0 node.plexapp.com 
 0.0.0.0 notify.xboxlive.com 
 0.0.0.0 nsatc.net 
+0.0.0.0 ny.com 
 0.0.0.0 ny1.com 
 0.0.0.0 nydailynews.com 
 0.0.0.0 nymag.com 
@@ -364,6 +370,7 @@
 0.0.0.0 s1.symcb.com 
 0.0.0.0 s2.symcb.com 
 0.0.0.0 s3.amazonaws.com 
+0.0.0.0 sa.symcb.com 
 0.0.0.0 sacramento.cbslocal.com 
 0.0.0.0 samsung.com 
 0.0.0.0 sanfrancisco.cbslocal.com 
@@ -421,6 +428,8 @@
 0.0.0.0 techguy.org 
 0.0.0.0 thehill.com 
 0.0.0.0 themoviedb.com 
+0.0.0.0 thenextweb.com 
+0.0.0.0 thepiratebay.org 
 0.0.0.0 thetvdb.com 
 0.0.0.0 tinyurl.com 
 0.0.0.0 title.auth.xboxlive.com 

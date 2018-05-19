@@ -1,6 +1,6 @@
 {
     "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {
-        "1526572076": [
+        "1526745859": [
             ".ubuntu.com",
             "106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services",
             "banners.spiceworks.com",
@@ -32,7 +32,6 @@
             "s4.symcb.com",
             "s5.symcb.com",
             "sa-blacklist.stearns.org",
-            "sa.symcb.com",
             "sqm.microsoft.com",
             "static.ak.facebook.com",
             "talks.l.google.com",
