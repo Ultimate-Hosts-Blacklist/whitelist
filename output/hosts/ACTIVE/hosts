@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Sat 26 May 15:05:08 UTC 2018 
+# Date of generation: Tue 29 May 15:05:11 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
@@ -128,7 +128,6 @@
 0.0.0.0 easylist.to 
 0.0.0.0 ebay.pl 
 0.0.0.0 ebayimg.com 
-0.0.0.0 ebayrtm.com 
 0.0.0.0 ebaystatic.com 
 0.0.0.0 ec-ns.sascdn.com 
 0.0.0.0 echo.edge.messenger.live.com 
@@ -291,7 +290,6 @@
 0.0.0.0 nexus.passport.com 
 0.0.0.0 nflxext.com 
 0.0.0.0 nflximg.com 
-0.0.0.0 nflximg.net 
 0.0.0.0 nike.com 
 0.0.0.0 nine.plugins.plexapp.com 
 0.0.0.0 nitroflare.com 
@@ -395,7 +393,6 @@
 0.0.0.0 skype.com 
 0.0.0.0 someonewhocares.org 
 0.0.0.0 spaces.live.com 
-0.0.0.0 spapps.co 
 0.0.0.0 spapps.spotify.edgekey.net 
 0.0.0.0 spclient.wg.spotify.com 
 0.0.0.0 spiceworks.com 
@@ -444,63 +441,3 @@
 0.0.0.0 toysrus.com 
 0.0.0.0 track.spiceworks.com 
 0.0.0.0 tunein.com 
-0.0.0.0 tvdb2.plex.tv 
-0.0.0.0 tvnstyle.pl 
-0.0.0.0 tvp.pl 
-0.0.0.0 tvthemes.plexapp.com 
-0.0.0.0 tvthemes.plexapp.com.cdn.cloudflare.net 
-0.0.0.0 twimg.com 
-0.0.0.0 twimg0-a.akamaihd.net 
-0.0.0.0 twitter.com 
-0.0.0.0 ubuntuforums.org 
-0.0.0.0 ui.skype.com 
-0.0.0.0 unix.com 
-0.0.0.0 upload.facebook.com 
-0.0.0.0 upload.twitter.com 
-0.0.0.0 userstream.twitter.com 
-0.0.0.0 v.firebog.net 
-0.0.0.0 v10.vortex-win.data.microsoft.com 
-0.0.0.0 variety.com 
-0.0.0.0 verisign.com 
-0.0.0.0 video-stats.l.google.com 
-0.0.0.0 video.google.com 
-0.0.0.0 videolan.org 
-0.0.0.0 vimeo.com 
-0.0.0.0 vod.tvp.pl 
-0.0.0.0 void.gr 
-0.0.0.0 vox.com 
-0.0.0.0 vupload2.facebook.com 
-0.0.0.0 walgreens.com 
-0.0.0.0 walmart.com 
-0.0.0.0 washington.cbslocal.com 
-0.0.0.0 washingtonpost.com 
-0.0.0.0 weather.com 
-0.0.0.0 web.archive.org 
-0.0.0.0 webcache.googleusercontent.com 
-0.0.0.0 weeklyad.target.com 
-0.0.0.0 weeklyad.target.com.edgesuite.net 
-0.0.0.0 whirlpool.net.au 
-0.0.0.0 who.is 
-0.0.0.0 widgets.dlvr.it 
-0.0.0.0 windows.com 
-0.0.0.0 windowsupdate.com 
-0.0.0.0 winhelp2002.mvps.org 
-0.0.0.0 wirtualnemedia.pl 
-0.0.0.0 wt.logmein.com 
-0.0.0.0 xbox.ipv6.microsoft.com 
-0.0.0.0 xboxexperiencesprod.experimentation.xboxlive.com 
-0.0.0.0 xboxlive.com 
-0.0.0.0 xda-developers.com 
-0.0.0.0 xflight.xboxlive.com 
-0.0.0.0 xkms.xbolive.com 
-0.0.0.0 xmpp-server.l.google.com 
-0.0.0.0 xsts.auth.xboxlive.com 
-0.0.0.0 yahoo.com 
-0.0.0.0 youtu.be 
-0.0.0.0 youtube-nocookie.com 
-0.0.0.0 youtube.com 
-0.0.0.0 yt3.ggpht.com 
-0.0.0.0 ytimg.com 
-0.0.0.0 ytimg.l.google.com 
-0.0.0.0 zeustracker.abuse.ch 
-0.0.0.0 zoso.ro 
