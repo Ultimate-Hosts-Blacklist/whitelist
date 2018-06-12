@@ -1,8 +1,9 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Sat 09 Jun 16:06:33 UTC 2018 
+# Date of generation: Tue 12 Jun 11:06:25 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
+0.0.0.0 abc.com 
 0.0.0.0 abcnews.go.com 
 0.0.0.0 accounts.google.com 
 0.0.0.0 accuweather.com 
@@ -20,6 +21,7 @@
 0.0.0.0 albert.apple.com 
 0.0.0.0 allegro.pl 
 0.0.0.0 alluremedia.com.au 
+0.0.0.0 alternativeto.net 
 0.0.0.0 amazon.com 
 0.0.0.0 android.clients.google.com 
 0.0.0.0 androidforums.com 
@@ -60,12 +62,14 @@
 0.0.0.0 bloomberg.com 
 0.0.0.0 board.jdownloader.org 
 0.0.0.0 bokser.org 
+0.0.0.0 books.google.com 
 0.0.0.0 boston.cbslocal.com 
 0.0.0.0 boxrec.com 
 0.0.0.0 btstatic.com 
 0.0.0.0 business.officedepot.com.edgekey.net 
 0.0.0.0 businessfinder.nj.com 
 0.0.0.0 businessinsider.com 
+0.0.0.0 buzzfeed.com 
 0.0.0.0 bydgoszcz.tvp.pl 
 0.0.0.0 c.msn.com 
 0.0.0.0 c.s-microsoft.com 
@@ -87,10 +91,12 @@
 0.0.0.0 cloudfront.net 
 0.0.0.0 cnbc.com 
 0.0.0.0 cnn.com 
+0.0.0.0 collegehumor.com 
 0.0.0.0 community.spiceworks.com 
 0.0.0.0 content.logmein.com 
 0.0.0.0 cookie.monster.com 
 0.0.0.0 costco.com 
+0.0.0.0 cracked.com 
 0.0.0.0 crateandbarrel.com 
 0.0.0.0 crl.microsoft.com 
 0.0.0.0 crl.verisign.net 
@@ -177,6 +183,7 @@
 0.0.0.0 forums.whirlpool.net.au 
 0.0.0.0 fr.osdn.net 
 0.0.0.0 frys.com 
+0.0.0.0 funnyordie.com 
 0.0.0.0 g.live.com 
 0.0.0.0 g.msn.com 
 0.0.0.0 gap.com 
@@ -185,6 +192,7 @@
 0.0.0.0 geo-prod.do.dsp.mp.microsoft.com 
 0.0.0.0 get.adobe.com 
 0.0.0.0 gfycat.com 
+0.0.0.0 gigaom.com 
 0.0.0.0 giphy.com 
 0.0.0.0 git.io 
 0.0.0.0 github.com 
@@ -273,6 +281,7 @@
 0.0.0.0 malwareurls.joxeankoret.com 
 0.0.0.0 margevicius.lt 
 0.0.0.0 marketwatch.com 
+0.0.0.0 mashable.com 
 0.0.0.0 mega.nz 
 0.0.0.0 merriam-webster.com 
 0.0.0.0 mesh.com 
@@ -295,6 +304,7 @@
 0.0.0.0 msg.edit.yahoo.com 
 0.0.0.0 msn.com 
 0.0.0.0 mzstatic.com 
+0.0.0.0 nationalgeographic.com 
 0.0.0.0 nbcnews.com 
 0.0.0.0 nbcnewyork.com 
 0.0.0.0 nesn.com 
@@ -324,6 +334,7 @@
 0.0.0.0 o1.email.plex.tv 
 0.0.0.0 o2.sg0.plex.tv 
 0.0.0.0 oas.monster.com 
+0.0.0.0 observer.com 
 0.0.0.0 ocsp.apple.com 
 0.0.0.0 ocsp.thawte.com 
 0.0.0.0 ocsp.verisign.net 
@@ -332,11 +343,13 @@
 0.0.0.0 officedepot.com 
 0.0.0.0 onet.pl 
 0.0.0.0 openload.co 
+0.0.0.0 openload.io 
 0.0.0.0 ouo.io 
 0.0.0.0 outlook.live.com 
 0.0.0.0 outlook.office365.com 
 0.0.0.0 ow.ly 
 0.0.0.0 p.imgur.com 
+0.0.0.0 pando.com 
 0.0.0.0 pastebin.com 
 0.0.0.0 people.com 
 0.0.0.0 pgl.yoyo.org 
@@ -372,6 +385,7 @@
 0.0.0.0 raw.githubusercontent.com 
 0.0.0.0 real-debrid.com 
 0.0.0.0 reddit.com 
+0.0.0.0 redfin.com 
 0.0.0.0 reebok.com 
 0.0.0.0 res.cloudinary.com 
 0.0.0.0 road.adblock.ro 
@@ -404,6 +418,7 @@
 0.0.0.0 secure.netflix.com 
 0.0.0.0 secure.surveymonkey.com 
 0.0.0.0 securemecca.com 
+0.0.0.0 sendspace.com 
 0.0.0.0 services.sonarr.tv 
 0.0.0.0 settings-win.data.microsoft.com 
 0.0.0.0 shop.samsung.com 
@@ -447,11 +462,13 @@
 0.0.0.0 target.com 
 0.0.0.0 teamviewer.com 
 0.0.0.0 techguy.org 
+0.0.0.0 thechive.com 
 0.0.0.0 thehill.com 
 0.0.0.0 themoviedb.com 
 0.0.0.0 thenextweb.com 
 0.0.0.0 thepiratebay.org 
 0.0.0.0 thetvdb.com 
+0.0.0.0 theverge.com 
 0.0.0.0 tinyurl.com 
 0.0.0.0 title.auth.xboxlive.com 
 0.0.0.0 title.mgt.xboxlive.com 
@@ -506,6 +523,7 @@
 0.0.0.0 windows.com 
 0.0.0.0 windowsupdate.com 
 0.0.0.0 winhelp2002.mvps.org 
+0.0.0.0 wired.com 
 0.0.0.0 wirtualnemedia.pl 
 0.0.0.0 wt.logmein.com 
 0.0.0.0 xbox.ipv6.microsoft.com 
