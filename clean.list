@@ -1,6 +1,7 @@
 
 70i.net
 a1014.g.akamai.net
+abc.com
 abcnews.go.com
 accounts.google.com
 accuweather.com
@@ -23,6 +24,7 @@ ALL twimg.com
 ALL videolan.org
 allegro.pl
 alluremedia.com.au
+alternativeto.net
 amazon.com
 android.clients.google.com
 androidforums.com
@@ -63,12 +65,14 @@ blogs.discovermagazine.com
 bloomberg.com
 board.jdownloader.org
 bokser.org
+books.google.com
 boston.cbslocal.com
 boxrec.com
 btstatic.com
 business.officedepot.com.edgekey.net
 businessfinder.nj.com
 businessinsider.com
+buzzfeed.com
 bydgoszcz.tvp.pl
 c.msn.com
 c.s-microsoft.com
@@ -90,10 +94,12 @@ cloudflare.com
 cloudfront.net
 cnbc.com
 cnn.com
+collegehumor.com
 community.spiceworks.com
 content.logmein.com
 cookie.monster.com
 costco.com
+cracked.com
 crateandbarrel.com
 crl.microsoft.com
 crl.verisign.net
@@ -180,6 +186,7 @@ forums.techguy.org
 forums.whirlpool.net.au
 fr.osdn.net
 frys.com
+funnyordie.com
 g.live.com
 g.msn.com
 gap.com
@@ -188,6 +195,7 @@ gekko.spiceworks.com
 geo-prod.do.dsp.mp.microsoft.com
 get.adobe.com
 gfycat.com
+gigaom.com
 giphy.com
 git.io
 github.com
@@ -276,6 +284,7 @@ malwaredomains.lehigh.edu
 malwareurls.joxeankoret.com
 margevicius.lt
 marketwatch.com
+mashable.com
 mega.nz
 merriam-webster.com
 mesh.com
@@ -298,6 +307,7 @@ msftncsi.com
 msg.edit.yahoo.com
 msn.com
 mzstatic.com
+nationalgeographic.com
 nbcnews.com
 nbcnewyork.com
 nesn.com
@@ -327,6 +337,7 @@ nytimes.com
 o1.email.plex.tv
 o2.sg0.plex.tv
 oas.monster.com
+observer.com
 ocsp.apple.com
 ocsp.thawte.com
 ocsp.verisign.net
@@ -335,11 +346,13 @@ officeclient.microsoft.com
 officedepot.com
 onet.pl
 openload.co
+openload.io
 ouo.io
 outlook.live.com
 outlook.office365.com
 ow.ly
 p.imgur.com
+pando.com
 pastebin.com
 people.com
 pgl.yoyo.org
@@ -375,6 +388,7 @@ raw.github.com
 raw.githubusercontent.com
 real-debrid.com
 reddit.com
+redfin.com
 reebok.com
 res.cloudinary.com
 road.adblock.ro
@@ -407,6 +421,7 @@ secure.logmein.com
 secure.netflix.com
 secure.surveymonkey.com
 securemecca.com
+sendspace.com
 services.sonarr.tv
 settings-win.data.microsoft.com
 shop.samsung.com
@@ -450,11 +465,13 @@ tampermonkey.net
 target.com
 teamviewer.com
 techguy.org
+thechive.com
 thehill.com
 themoviedb.com
 thenextweb.com
 thepiratebay.org
 thetvdb.com
+theverge.com
 tinyurl.com
 title.auth.xboxlive.com
 title.mgt.xboxlive.com
@@ -509,6 +526,7 @@ widgets.dlvr.it
 windows.com
 windowsupdate.com
 winhelp2002.mvps.org
+wired.com
 wirtualnemedia.pl
 wt.logmein.com
 xbox.ipv6.microsoft.com
