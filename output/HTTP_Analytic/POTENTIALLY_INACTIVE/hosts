@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Sat 23 Jun 16:06:21 UTC 2018 
+# Date of generation: Tue 26 Jun 16:06:25 UTC 2018 
 
 0.0.0.0 a1014.g.akamai.net 
 0.0.0.0 adb.juvander.net 
@@ -36,6 +36,7 @@
 0.0.0.0 external-lhr9-1.xx.fbcdn.net 
 0.0.0.0 filters.adtidy.org 
 0.0.0.0 fonts.googleapis.com 
+0.0.0.0 forums.whirlpool.net.au 
 0.0.0.0 gekko.spiceworks.com 
 0.0.0.0 gfycat.com 
 0.0.0.0 gigaom.com 
@@ -57,6 +58,7 @@
 0.0.0.0 proxy.plex.bz 
 0.0.0.0 proxy.plex.tv 
 0.0.0.0 pubsub.plex.bz 
+0.0.0.0 pubsub.plex.tv 
 0.0.0.0 redfin.com 
 0.0.0.0 s-passets-cache-ak0.pinimg.com 
 0.0.0.0 s.shopify.com 
@@ -79,6 +81,7 @@
 0.0.0.0 vimeo.com 
 0.0.0.0 vox.com 
 0.0.0.0 weeklyad.target.com.edgesuite.net 
+0.0.0.0 whirlpool.net.au 
 0.0.0.0 youtube-nocookie.com 
 0.0.0.0 yt3.ggpht.com 
 0.0.0.0 ytimg.l.google.com 
