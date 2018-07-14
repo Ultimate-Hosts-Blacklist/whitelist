@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Wed 11 Jul 16:07:42 UTC 2018 
+# Date of generation: Sat 14 Jul 16:07:23 UTC 2018 
 
 0.0.0.0 a1014.g.akamai.net 
 0.0.0.0 adb.juvander.net 
@@ -19,6 +19,7 @@
 0.0.0.0 crl.microsoft.com 
 0.0.0.0 crunchbase.com 
 0.0.0.0 customerevents.netflix.com 
+0.0.0.0 discussions.apple.com 
 0.0.0.0 dl.delivery.mp.microsoft.com 
 0.0.0.0 download.sonarr.tv 
 0.0.0.0 e3489.cd.akamaiedge.net 
@@ -28,6 +29,7 @@
 0.0.0.0 external-lhr1-1.xx.fbcdn.net 
 0.0.0.0 external-lhr10-1.xx.fbcdn.net 
 0.0.0.0 external-lhr2-1.xx.fbcdn.net 
+0.0.0.0 external-lhr4-1.xx.fbcdn.net 
 0.0.0.0 external-lhr5-1.xx.fbcdn.net 
 0.0.0.0 external-lhr6-1.xx.fbcdn.net 
 0.0.0.0 external-lhr7-1.xx.fbcdn.net 
@@ -55,7 +57,6 @@
 0.0.0.0 proxy.novafusion.ea.com 
 0.0.0.0 proxy.plex.bz 
 0.0.0.0 proxy.plex.tv 
-0.0.0.0 pubsub.plex.bz 
 0.0.0.0 pubsub.plex.tv 
 0.0.0.0 redfin.com 
 0.0.0.0 s-passets-cache-ak0.pinimg.com 
