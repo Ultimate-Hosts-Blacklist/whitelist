@@ -38,6 +38,8 @@ no_files:                     False
 no_whois:                     False
 # Activate/Deactivate the generation of plain list of domains.
 plain_list_domain:            True
+# Save the content of public-suffix.json for the different system or subsystems.
+psl_db:                       {}
 # Activate/Deactivate the quiet mode.
 quiet:                        False
 # The following will save the referer.
@@ -87,6 +89,7 @@ outputs:
     inactive_db:              inactive_db.json
     # The following is the default name of results.txt.
     results:                  results.txt
+    public_suffix:            public-suffix.json
 
   # This section is related to the location of all list of domain without
   # decorator. In other words, it is the location of all plain list of domains.
@@ -222,12 +225,12 @@ http_codes:
 links:
   api_date_format:            "http://pyfunceble.funilrys.com/api/date-format"
   api_no_referer:             "http://pyfunceble.funilrys.com/api/no-referer"
-  config:                     "https://raw.githubusercontent.com/funilrys/PyFunceble/master/.PyFunceble_production.yaml"
-  dir_structure:              "https://raw.githubusercontent.com/funilrys/PyFunceble/master/dir_structure_production.json"
-  iana:                       "https://raw.githubusercontent.com/funilrys/PyFunceble/master/iana-domains-db.json"
+  config:                     "https://raw.githubusercontent.com/funilrys/PyFunceble/dev/.PyFunceble_production.yaml"
+  dir_structure:              "https://raw.githubusercontent.com/funilrys/PyFunceble/dev/dir_structure_production.json"
+  iana:                       "https://raw.githubusercontent.com/funilrys/PyFunceble/dev/iana-domains-db.json"
   repo:                       "https://github.com/funilrys/PyFunceble"
-  requirements:               "https://raw.githubusercontent.com/funilrys/PyFunceble/master/requirements.txt"
-  script:                     "https://raw.githubusercontent.com/funilrys/PyFunceble/master/PyFunceble.py"
+  requirements:               "https://raw.githubusercontent.com/funilrys/PyFunceble/dev/requirements.txt"
+  script:                     "https://raw.githubusercontent.com/funilrys/PyFunceble/dev/PyFunceble.py"
 
 # NOTE: DO NOT CHANGE THIS SECTION UNLESS YOU KNOW WHAT IT IMPLIES.
 counter:
