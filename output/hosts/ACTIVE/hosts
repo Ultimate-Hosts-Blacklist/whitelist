@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Wed 25 Jul 13:07:08 UTC 2018 
+# Date of generation: Sat 28 Jul 16:07:27 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
@@ -132,6 +132,7 @@
 0.0.0.0 download.sonarr.tv 
 0.0.0.0 drive.google.com 
 0.0.0.0 dropbox.com 
+0.0.0.0 duckduckgo.com 
 0.0.0.0 dynupdate.no-ip.com 
 0.0.0.0 e3489.cd.akamaiedge.net 
 0.0.0.0 ea.com 
@@ -175,6 +176,7 @@
 0.0.0.0 footlocker.com 
 0.0.0.0 forbes.com 
 0.0.0.0 fortune.com 
+0.0.0.0 forum.avast.com 
 0.0.0.0 forum.dobreprogramy.pl 
 0.0.0.0 forum.xda-developers.com 
 0.0.0.0 forums.appleinsider.com 
@@ -244,6 +246,7 @@
 0.0.0.0 instagram.com 
 0.0.0.0 investorplace.com 
 0.0.0.0 ipla.tv 
+0.0.0.0 istockphoto.com 
 0.0.0.0 itunes.apple.com 
 0.0.0.0 j.mp 
 0.0.0.0 jabcreations.com 
@@ -291,6 +294,7 @@
 0.0.0.0 margevicius.lt 
 0.0.0.0 marketwatch.com 
 0.0.0.0 mashable.com 
+0.0.0.0 medium.com 
 0.0.0.0 mega.nz 
 0.0.0.0 merriam-webster.com 
 0.0.0.0 mesh.com 
@@ -443,8 +447,10 @@
 0.0.0.0 spclient.wg.spotify.com 
 0.0.0.0 spiceworks.com 
 0.0.0.0 sport.onet.pl 
+0.0.0.0 sport.pl 
 0.0.0.0 sports.yahoo.com 
 0.0.0.0 spotify.com 
+0.0.0.0 ssl-images-amazon.com 
 0.0.0.0 ssl.google-analytics.com 
 0.0.0.0 ssl.gstatic.com 
 0.0.0.0 ssl.reddit.com 
@@ -462,6 +468,7 @@
 0.0.0.0 strefa.fm 
 0.0.0.0 surveymonkey.com 
 0.0.0.0 swcdn.apple.com 
+0.0.0.0 syndication.twitter.com 
 0.0.0.0 sysctl.org 
 0.0.0.0 szczecin.tvp.pl 
 0.0.0.0 t.co 
@@ -481,6 +488,7 @@
 0.0.0.0 thepiratebay.org 
 0.0.0.0 thetvdb.com 
 0.0.0.0 theverge.com 
+0.0.0.0 time.com 
 0.0.0.0 tinyurl.com 
 0.0.0.0 title.auth.xboxlive.com 
 0.0.0.0 title.mgt.xboxlive.com 
@@ -492,6 +500,7 @@
 0.0.0.0 toysrus.com 
 0.0.0.0 track.spiceworks.com 
 0.0.0.0 tunein.com 
+0.0.0.0 tv.wp.pl 
 0.0.0.0 tvdb2.plex.tv 
 0.0.0.0 tvnstyle.pl 
 0.0.0.0 tvp.pl 
@@ -505,6 +514,7 @@
 0.0.0.0 unix.com 
 0.0.0.0 upload.facebook.com 
 0.0.0.0 upload.twitter.com 
+0.0.0.0 uploaded.net 
 0.0.0.0 userstream.twitter.com 
 0.0.0.0 v.firebog.net 
 0.0.0.0 v10.vortex-win.data.microsoft.com 
@@ -554,4 +564,5 @@
 0.0.0.0 ytimg.com 
 0.0.0.0 ytimg.l.google.com 
 0.0.0.0 zeustracker.abuse.ch 
+0.0.0.0 ziprecruiter.com 
 0.0.0.0 zoso.ro 
