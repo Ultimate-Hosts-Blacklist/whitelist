@@ -17,6 +17,7 @@ akadns.net
 akamai.net
 akamaiedge.net
 albert.apple.com
+alexa.com
 ALL .gov
 ALL .ubuntu.com
 ALL digitaltrends.com
@@ -26,6 +27,7 @@ allegro.pl
 alluremedia.com.au
 alternativeto.net
 amazon.com
+amzn.to
 android.clients.google.com
 androidforums.com
 ap.spotify.com
@@ -40,6 +42,7 @@ apps.skype.com
 apresolve.spotify.com
 apt.sonarr.tv
 arstechnica.com
+articles.latimes.com
 asics.com
 askubuntu.com
 attestation.xboxlive.com
@@ -52,6 +55,7 @@ b-api.facebook.com
 b.scorecardresearch.com
 baltimore.cbslocal.com
 bbc.com
+bbs.archlinux.org
 bedbathandbeyond.com
 bestbuy.com
 betanews.com
@@ -115,6 +119,7 @@ demotywatory.pl
 denis-ovs.narod.ru
 dev.twitter.com
 device.auth.xboxlive.com
+di.com.pl
 digg.com
 digitaltrends.com
 directvapplications.hb.omtrdc.net
@@ -174,6 +179,7 @@ feedly.com
 filmweb.pl
 filters.adtidy.org
 finance.yahoo.com
+fm.tuba.pl
 fonts.googleapis.com
 footlocker-inc.com
 footlocker.com
@@ -199,6 +205,7 @@ g.live.com
 g.msn.com
 gap.com
 gawker.com
+gazeta.pl
 gekko.spiceworks.com
 geo-prod.do.dsp.mp.microsoft.com
 get.adobe.com
@@ -223,7 +230,10 @@ googlevideo.com
 graph.facebook.com
 gravatar.com
 groupon.com
+groups.google.com
 gs.apple.com
+hbogo.com
+hbogo.pl
 help.ui.xboxlive.com
 history.com
 hm.com
@@ -269,6 +279,8 @@ kroger.com
 l.betrad.com
 ladyfootlocker.com
 lasvegas.cbslocal.com
+latimes.com
+latimesblogs.latimes.com
 lh3.google.com
 lh4.google.com
 lh5.google.com
@@ -355,17 +367,21 @@ ocsp.apple.com
 ocsp.thawte.com
 ocsp.verisign.net
 odcdn.com
+office.com
 officeclient.microsoft.com
 officedepot.com
 onet.pl
 openload.co
 openload.io
+opensubtitles.org
+opinion.latimes.com
 ouo.io
 outlook.live.com
 outlook.office365.com
 ow.ly
 p.imgur.com
 pando.com
+paper.li
 pastebin.com
 people.com
 pgl.yoyo.org
@@ -451,6 +467,7 @@ spclient.wg.spotify.com
 spiceworks.com
 sport.onet.pl
 sport.pl
+sports.latimes.com
 sports.yahoo.com
 spotify.com
 ssl-images-amazon.com
@@ -502,6 +519,8 @@ tomshardware.com
 torrentfreak.com
 toysrus.com
 track.spiceworks.com
+travel.latimes.com
+tumblr.com
 tunein.com
 tv.wp.pl
 tvdb2.plex.tv
@@ -528,6 +547,7 @@ video.google.com
 videolan.org
 vimeo.com
 vitalia.pl
+vk.com
 vod.pl
 vod.tvp.pl
 void.gr
@@ -552,6 +572,7 @@ winhelp2002.mvps.org
 wired.com
 wirtualnemedia.pl
 wt.logmein.com
+wtkr.com
 xbox.ipv6.microsoft.com
 xboxlive.com
 xda-developers.com

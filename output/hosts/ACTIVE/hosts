@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Sat 28 Jul 16:07:27 UTC 2018 
+# Date of generation: Tue 31 Jul 16:07:04 UTC 2018 
 
 0.0.0.0 70i.net 
 0.0.0.0 a1014.g.akamai.net 
@@ -19,10 +19,12 @@
 0.0.0.0 akamai.net 
 0.0.0.0 akamaiedge.net 
 0.0.0.0 albert.apple.com 
+0.0.0.0 alexa.com 
 0.0.0.0 allegro.pl 
 0.0.0.0 alluremedia.com.au 
 0.0.0.0 alternativeto.net 
 0.0.0.0 amazon.com 
+0.0.0.0 amzn.to 
 0.0.0.0 android.clients.google.com 
 0.0.0.0 androidforums.com 
 0.0.0.0 ap.spotify.com 
@@ -37,6 +39,7 @@
 0.0.0.0 apresolve.spotify.com 
 0.0.0.0 apt.sonarr.tv 
 0.0.0.0 arstechnica.com 
+0.0.0.0 articles.latimes.com 
 0.0.0.0 asics.com 
 0.0.0.0 askubuntu.com 
 0.0.0.0 attestation.xboxlive.com 
@@ -49,6 +52,7 @@
 0.0.0.0 b.scorecardresearch.com 
 0.0.0.0 baltimore.cbslocal.com 
 0.0.0.0 bbc.com 
+0.0.0.0 bbs.archlinux.org 
 0.0.0.0 bedbathandbeyond.com 
 0.0.0.0 bestbuy.com 
 0.0.0.0 betanews.com 
@@ -112,6 +116,7 @@
 0.0.0.0 denis-ovs.narod.ru 
 0.0.0.0 dev.twitter.com 
 0.0.0.0 device.auth.xboxlive.com 
+0.0.0.0 di.com.pl 
 0.0.0.0 digg.com 
 0.0.0.0 digitaltrends.com 
 0.0.0.0 directvapplications.hb.omtrdc.net 
@@ -171,6 +176,7 @@
 0.0.0.0 filmweb.pl 
 0.0.0.0 filters.adtidy.org 
 0.0.0.0 finance.yahoo.com 
+0.0.0.0 fm.tuba.pl 
 0.0.0.0 fonts.googleapis.com 
 0.0.0.0 footlocker-inc.com 
 0.0.0.0 footlocker.com 
@@ -196,6 +202,7 @@
 0.0.0.0 g.msn.com 
 0.0.0.0 gap.com 
 0.0.0.0 gawker.com 
+0.0.0.0 gazeta.pl 
 0.0.0.0 gekko.spiceworks.com 
 0.0.0.0 geo-prod.do.dsp.mp.microsoft.com 
 0.0.0.0 get.adobe.com 
@@ -220,7 +227,10 @@
 0.0.0.0 graph.facebook.com 
 0.0.0.0 gravatar.com 
 0.0.0.0 groupon.com 
+0.0.0.0 groups.google.com 
 0.0.0.0 gs.apple.com 
+0.0.0.0 hbogo.com 
+0.0.0.0 hbogo.pl 
 0.0.0.0 help.ui.xboxlive.com 
 0.0.0.0 history.com 
 0.0.0.0 hm.com 
@@ -266,6 +276,8 @@
 0.0.0.0 l.betrad.com 
 0.0.0.0 ladyfootlocker.com 
 0.0.0.0 lasvegas.cbslocal.com 
+0.0.0.0 latimes.com 
+0.0.0.0 latimesblogs.latimes.com 
 0.0.0.0 lh3.google.com 
 0.0.0.0 lh4.google.com 
 0.0.0.0 lh5.google.com 
@@ -352,17 +364,21 @@
 0.0.0.0 ocsp.thawte.com 
 0.0.0.0 ocsp.verisign.net 
 0.0.0.0 odcdn.com 
+0.0.0.0 office.com 
 0.0.0.0 officeclient.microsoft.com 
 0.0.0.0 officedepot.com 
 0.0.0.0 onet.pl 
 0.0.0.0 openload.co 
 0.0.0.0 openload.io 
+0.0.0.0 opensubtitles.org 
+0.0.0.0 opinion.latimes.com 
 0.0.0.0 ouo.io 
 0.0.0.0 outlook.live.com 
 0.0.0.0 outlook.office365.com 
 0.0.0.0 ow.ly 
 0.0.0.0 p.imgur.com 
 0.0.0.0 pando.com 
+0.0.0.0 paper.li 
 0.0.0.0 pastebin.com 
 0.0.0.0 people.com 
 0.0.0.0 pgl.yoyo.org 
@@ -448,6 +464,7 @@
 0.0.0.0 spiceworks.com 
 0.0.0.0 sport.onet.pl 
 0.0.0.0 sport.pl 
+0.0.0.0 sports.latimes.com 
 0.0.0.0 sports.yahoo.com 
 0.0.0.0 spotify.com 
 0.0.0.0 ssl-images-amazon.com 
@@ -499,6 +516,8 @@
 0.0.0.0 torrentfreak.com 
 0.0.0.0 toysrus.com 
 0.0.0.0 track.spiceworks.com 
+0.0.0.0 travel.latimes.com 
+0.0.0.0 tumblr.com 
 0.0.0.0 tunein.com 
 0.0.0.0 tv.wp.pl 
 0.0.0.0 tvdb2.plex.tv 
@@ -525,6 +544,7 @@
 0.0.0.0 videolan.org 
 0.0.0.0 vimeo.com 
 0.0.0.0 vitalia.pl 
+0.0.0.0 vk.com 
 0.0.0.0 vod.pl 
 0.0.0.0 vod.tvp.pl 
 0.0.0.0 void.gr 
@@ -549,6 +569,7 @@
 0.0.0.0 wired.com 
 0.0.0.0 wirtualnemedia.pl 
 0.0.0.0 wt.logmein.com 
+0.0.0.0 wtkr.com 
 0.0.0.0 xbox.ipv6.microsoft.com 
 0.0.0.0 xboxlive.com 
 0.0.0.0 xda-developers.com 
