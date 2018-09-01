@@ -1,6 +1,7 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Wed 29 Aug 18:08:23 UTC 2018 
+# Date of generation: Sat 01 Sep 16:09:13 UTC 2018 
 
+0.0.0.0 206.189.252.21
 0.0.0.0 70i.net
 0.0.0.0 a1014.g.akamai.net
 0.0.0.0 abc.com
@@ -102,6 +103,7 @@
 0.0.0.0 cdn.embedly.com
 0.0.0.0 cdn.mplxtms.com
 0.0.0.0 cdn.optimizely.com
+0.0.0.0 cdn.rawgit.com
 0.0.0.0 cert.mgt.xboxlive.com
 0.0.0.0 chatenabled.mail.google.com
 0.0.0.0 chicago.cbslocal.com
@@ -136,6 +138,7 @@
 0.0.0.0 cvs.com
 0.0.0.0 d.dropbox.com
 0.0.0.0 data.iana.org
+0.0.0.0 db.local.clamav.net
 0.0.0.0 dell.com
 0.0.0.0 demotywatory.pl
 0.0.0.0 denis-ovs.narod.ru
@@ -211,6 +214,7 @@
 0.0.0.0 fortune.com
 0.0.0.0 forum.avast.com
 0.0.0.0 forum.dobreprogramy.pl
+0.0.0.0 forum.synology.com
 0.0.0.0 forum.xda-developers.com
 0.0.0.0 forums.appleinsider.com
 0.0.0.0 forums.geforce.com
@@ -225,6 +229,7 @@
 0.0.0.0 fr.osdn.net
 0.0.0.0 frys.com
 0.0.0.0 ftp.de.debian.org
+0.0.0.0 ftp.heanet.ie
 0.0.0.0 funnyordie.com
 0.0.0.0 g.live.com
 0.0.0.0 g.msn.com
@@ -623,6 +628,7 @@
 0.0.0.0 pgl.yoyo.org
 0.0.0.0 philadelphia.cbslocal.com
 0.0.0.0 phobos.apple.com
+0.0.0.0 pi-hole.net
 0.0.0.0 pic.twitter.com
 0.0.0.0 pilkanozna.pl
 0.0.0.0 pinimg.com
@@ -650,8 +656,10 @@
 0.0.0.0 px.spiceworks.com
 0.0.0.0 radiostacja.pl
 0.0.0.0 ransomwaretracker.abuse.ch
+0.0.0.0 rapidvideo.com
 0.0.0.0 raw.github.com
 0.0.0.0 raw.githubusercontent.com
+0.0.0.0 rawgit.com
 0.0.0.0 real-debrid.com
 0.0.0.0 reddit.com
 0.0.0.0 redfin.com
