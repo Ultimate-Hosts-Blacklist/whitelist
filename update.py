@@ -17,14 +17,13 @@ Contributors:
 """
 # pylint: disable=bad-continuation, too-many-lines
 from json import decoder, dump, loads
-from os import chmod, environ, getcwd, path, remove
+from os import environ, getcwd, path, remove
 from os import sep as directory_separator
-from os import stat, walk
+from os import walk
 from re import compile as comp
 from re import escape
 from re import sub as substrings
 from shutil import copyfileobj, rmtree
-from stat import S_IEXEC
 from subprocess import PIPE, Popen
 from tarfile import open as tarfile_open
 from time import ctime, strftime
@@ -108,8 +107,7 @@ class Settings:  # pylint: disable=too-few-public-methods
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     PyFunceble = {
-        "requirements.txt": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/requirements.txt",  # pylint: disable=line-too-long
-        ".PyFunceble_production.yaml": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/.PyFunceble_production.yaml",  # pylint: disable=line-too-long
+        ".PyFunceble_production.yaml": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/.PyFunceble_production.yaml"  # pylint: disable=line-too-long
     }
 
     # This variable is used to match [ci skip] from the git log.
@@ -224,6 +222,7 @@ class Initiate:
                 ).replace()
 
             Helpers.File(destination).write(content, overwrite=True)
+            Helpers.File(".PyFunceble.yaml").write(content, overwrite=True)
 
     @classmethod
     def travis(cls):
@@ -334,9 +333,6 @@ class Initiate:
 
             self.travis_permissions()
 
-            stats = stat(file_path)
-            chmod(file_path, stats.st_mode | S_IEXEC)
-
         Helpers.File(Settings.current_directory + "tool.py").delete()
         Helpers.File(Settings.current_directory + "PyFunceble.py").delete()
 
@@ -433,7 +429,10 @@ class Initiate:
                     Settings.permanent_config_link, ".PyFunceble.yaml"
                 ).link()
 
-                Helpers.Command("PyFunceble --clean", False).execute()
+                try:
+                    Helpers.Command("PyFunceble --clean", False).execute()
+                except KeyError:
+                    pass
 
             self.travis_permissions()
 
@@ -558,6 +557,7 @@ class Initiate:
             list_special_content = Helpers.Regex(
                 Helpers.File(Settings.file_to_test).to_list(), r"ALL\s"
             ).matching_list()
+
             active = Settings.current_directory + "output/domains/ACTIVE/list"
 
             if path.isfile(active):
@@ -607,7 +607,11 @@ class Initiate:
             Helpers.Dict(Settings.informations).to_json(Settings.repository_info)
 
             Helpers.Download(Settings.permanent_config_link, ".PyFunceble.yaml").link()
-            print(Helpers.Command(command_to_execute, True).execute())
+
+            try:
+                print(Helpers.Command(command_to_execute, True).execute())
+            except:
+                pass
 
             try:
                 _ = environ["TRAVIS_BUILD_DIR"]
