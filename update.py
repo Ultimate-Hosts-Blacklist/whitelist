@@ -107,7 +107,8 @@ class Settings:  # pylint: disable=too-few-public-methods
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     PyFunceble = {
-        ".PyFunceble_production.yaml": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/.PyFunceble_production.yaml"  # pylint: disable=line-too-long
+        ".PyFunceble_production.yaml": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/.PyFunceble_production.yaml",  # pylint: disable=line-too-long
+        ".PyFunceble_LICENSE": "https://raw.githubusercontent.com/funilrys/PyFunceble/dev/LICENSE",
     }
 
     # This variable is used to match [ci skip] from the git log.
@@ -180,51 +181,6 @@ class Initiate:
         self.structure()
 
     @classmethod
-    def _fix_cross_repo_config(cls):
-        """
-        This method will fix the cross repositories configuration.
-        """
-
-        if not Settings.stable:
-            to_download = Settings.PyFunceble[".PyFunceble_production.yaml"].replace(
-                "master", "dev"
-            )
-        else:
-            to_download = Settings.PyFunceble[".PyFunceble_production.yaml"].replace(
-                "dev", "master"
-            )
-
-        destination = Settings.permanent_config_link.split("/")[-1]
-
-        if path.isfile(destination):
-            Helpers.Download(to_download, destination).link()
-
-            to_replace = {
-                r"less:.*": "less: False",
-                r"plain_list_domain:.*": "plain_list_domain: True",
-                r"seconds_before_http_timeout:.*": "seconds_before_http_timeout: 6",
-                r"share_logs:.*": "share_logs: True",
-                r"show_execution_time:.*": "show_execution_time: True",
-                r"split:.*": "split: True",
-                r"travis:.*": "travis: True",
-                r"travis_autosave_commit:.*": 'travis_autosave_commit: "[Autosave] Testing for Ultimate Hosts Blacklist"',  # pylint: disable=line-too-long
-                r"travis_autosave_final_commit:.*": 'travis_autosave_final_commit: "[Results] Testing for Ultimate Hosts Blacklist"',  # pylint: disable=line-too-long
-                r"travis_branch:.*": "travis_branch: master",
-                r"travis_autosave_minutes:.*": "travis_autosave_minutes: %s"
-                % Settings.autosave_minutes,
-            }
-
-            content = Helpers.File(destination).read()
-
-            for regex, replacement in to_replace.items():
-                content = Helpers.Regex(
-                    content, regex, replace_with=replacement, return_data=True
-                ).replace()
-
-            Helpers.File(destination).write(content, overwrite=True)
-            Helpers.File(".PyFunceble.yaml").write(content, overwrite=True)
-
-    @classmethod
     def travis(cls):
         """
         Initiate Travis CI settings.
@@ -281,6 +237,51 @@ class Initiate:
             pass
 
     @classmethod
+    def _fix_cross_repo_config(cls):
+        """
+        This method will fix the cross repositories configuration.
+        """
+
+        if not Settings.stable:
+            to_download = Settings.PyFunceble[".PyFunceble_production.yaml"].replace(
+                "master", "dev"
+            )
+        else:
+            to_download = Settings.PyFunceble[".PyFunceble_production.yaml"].replace(
+                "dev", "master"
+            )
+
+        destination = Settings.permanent_config_link.split("/")[-1]
+
+        if path.isfile(destination):
+            Helpers.Download(to_download, destination).link()
+
+            to_replace = {
+                r"less:.*": "less: False",
+                r"plain_list_domain:.*": "plain_list_domain: True",
+                r"seconds_before_http_timeout:.*": "seconds_before_http_timeout: 6",
+                r"share_logs:.*": "share_logs: True",
+                r"show_execution_time:.*": "show_execution_time: True",
+                r"split:.*": "split: True",
+                r"travis:.*": "travis: True",
+                r"travis_autosave_commit:.*": 'travis_autosave_commit: "[Autosave] Testing for Ultimate Hosts Blacklist"',  # pylint: disable=line-too-long
+                r"travis_autosave_final_commit:.*": 'travis_autosave_final_commit: "[Results] Testing for Ultimate Hosts Blacklist"',  # pylint: disable=line-too-long
+                r"travis_branch:.*": "travis_branch: master",
+                r"travis_autosave_minutes:.*": "travis_autosave_minutes: %s"
+                % Settings.autosave_minutes,
+            }
+
+            content = Helpers.File(destination).read()
+
+            for regex, replacement in to_replace.items():
+                content = Helpers.Regex(
+                    content, regex, replace_with=replacement, return_data=True
+                ).replace()
+
+            Helpers.File(destination).write(content, overwrite=True)
+            Helpers.File(".PyFunceble.yaml").write(content, overwrite=True)
+
+    @classmethod
     def set_info_settings(cls, index):
         """
         Set Settings.informations according to info.json.
@@ -315,6 +316,20 @@ class Initiate:
                 '"%s" into %s is unknown.' % (index, Settings.repository_info)
             )
 
+    @classmethod
+    def install_right_pyfunceble(cls):
+        """
+        This method will install the right version of PyFunceble
+        depending of the status of the `stable` index.
+        """
+
+        if Settings.stable:
+            to_download = "PyFunceble"
+        else:
+            to_download = "PyFunceble-dev"
+
+        Helpers.Command("pip3 install %s" % to_download, True).execute()
+
     def download_PyFunceble(self):  # pylint: disable=invalid-name
         """
         Download PyFunceble files if they are not present.
@@ -332,6 +347,8 @@ class Initiate:
                 raise Exception("Unable to download %s." % download_link)
 
             self.travis_permissions()
+
+        self.install_right_pyfunceble()
 
         Helpers.File(Settings.current_directory + "tool.py").delete()
         Helpers.File(Settings.current_directory + "PyFunceble.py").delete()
@@ -483,6 +500,8 @@ class Initiate:
                 The extracted domain or line from the file.
         """
 
+        extracted_domain = extracted_domain.strip()
+
         if not extracted_domain.startswith("#"):
 
             if "#" in extracted_domain:
@@ -609,8 +628,8 @@ class Initiate:
             Helpers.Download(Settings.permanent_config_link, ".PyFunceble.yaml").link()
 
             try:
-                print(Helpers.Command(command_to_execute, True).execute())
-            except:
+                Helpers.Command(command_to_execute, True).execute()
+            except KeyError:
                 pass
 
             try:
