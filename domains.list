@@ -25,6 +25,7 @@ ALL .debian.org
 ALL .digitaltrends.com
 ALL .freebsd.org
 ALL .gov
+ALL .netbsd.org
 ALL .openbsd.org
 ALL .pfsense.org
 ALL .twimg.com
@@ -607,6 +608,7 @@ nbcnews.com
 nbcnewyork.com
 nccp.netflix.com
 nesn.com
+netbsd.org
 netflix.com
 newjobs.com
 news.ebc.net.tw
