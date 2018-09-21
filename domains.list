@@ -22,11 +22,11 @@ akamaiedge.net
 albert.apple.com
 alexa.com
 ALL .debian.org
+ALL .digitaltrends.com
 ALL .gov
+ALL .twimg.com
 ALL .ubuntu.com
-ALL digitaltrends.com
-ALL twimg.com
-ALL videolan.org
+ALL .videolan.org
 allegro.pl
 alluremedia.com.au
 alternativeto.net
@@ -165,6 +165,7 @@ dev.twitter.com
 device.auth.xboxlive.com
 di.com.pl
 digg.com
+digitaltrends.com
 directvapplications.hb.omtrdc.net
 directvnow.com
 discovermagazine.com
@@ -846,6 +847,7 @@ verisign.com
 vice.com
 video-stats.l.google.com
 video.google.com
+videolan.org
 vimeo.com
 vitalia.pl
 vk.com
