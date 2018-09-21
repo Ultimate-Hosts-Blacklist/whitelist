@@ -23,6 +23,7 @@ albert.apple.com
 alexa.com
 ALL .debian.org
 ALL .digitaltrends.com
+ALL .freebsd.org
 ALL .gov
 ALL .twimg.com
 ALL .ubuntu.com
@@ -251,6 +252,7 @@ forums.sonarr.tv
 forums.techguy.org
 forums.whirlpool.net.au
 fr.osdn.net
+freebsd.org
 frys.com
 ftp.heanet.ie
 funnyordie.com
