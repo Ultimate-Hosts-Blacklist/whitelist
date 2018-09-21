@@ -26,6 +26,7 @@ ALL .digitaltrends.com
 ALL .freebsd.org
 ALL .gov
 ALL .openbsd.org
+ALL .pfsense.org
 ALL .twimg.com
 ALL .ubuntu.com
 ALL .videolan.org
@@ -660,6 +661,7 @@ pando.com
 paper.li
 pastebin.com
 people.com
+pfsense.org
 pgl.yoyo.org
 philadelphia.cbslocal.com
 phobos.apple.com
