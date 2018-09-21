@@ -21,6 +21,7 @@ akamai.net
 akamaiedge.net
 albert.apple.com
 alexa.com
+ALL .debian.org
 ALL .gov
 ALL .ubuntu.com
 ALL digitaltrends.com
@@ -249,7 +250,6 @@ forums.techguy.org
 forums.whirlpool.net.au
 fr.osdn.net
 frys.com
-ftp.de.debian.org
 ftp.heanet.ie
 funnyordie.com
 g.live.com
@@ -738,7 +738,6 @@ secure.logmein.com
 secure.netflix.com
 secure.surveymonkey.com
 securemecca.com
-security.debian.org
 sendspace.com
 services.sonarr.tv
 settings-win.data.microsoft.com
