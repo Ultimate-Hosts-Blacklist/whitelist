@@ -1,6 +1,7 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Fri 21 Sep 16:09:05 UTC 2018 
+# Date of generation: Sun 23 Sep 16:09:39 UTC 2018 
 
+0.0.0.0 151.101.38.49
 0.0.0.0 206.189.252.21
 0.0.0.0 70i.net
 0.0.0.0 a1014.g.akamai.net
@@ -43,6 +44,7 @@
 0.0.0.0 arstechnica.com
 0.0.0.0 articles.latimes.com
 0.0.0.0 asics.com
+0.0.0.0 ask.fm
 0.0.0.0 askubuntu.com
 0.0.0.0 attestation.xboxlive.com
 0.0.0.0 audible.com
@@ -96,6 +98,7 @@
 0.0.0.0 business.officedepot.com.edgekey.net
 0.0.0.0 buzzfeed.com
 0.0.0.0 bydgoszcz.tvp.pl
+0.0.0.0 ccleaner.com
 0.0.0.0 cda.pl
 0.0.0.0 cdn.betrad.com
 0.0.0.0 cdn.edgesuite.net
@@ -140,6 +143,7 @@
 0.0.0.0 data.iana.org
 0.0.0.0 db.local.clamav.net
 0.0.0.0 d.dropbox.com
+0.0.0.0 debian.org
 0.0.0.0 dell.com
 0.0.0.0 demotywatory.pl
 0.0.0.0 denis-ovs.narod.ru
@@ -227,9 +231,9 @@
 0.0.0.0 forums.whirlpool.net.au
 0.0.0.0 forum.synology.com
 0.0.0.0 forum.xda-developers.com
+0.0.0.0 freebsd.org
 0.0.0.0 fr.osdn.net
 0.0.0.0 frys.com
-0.0.0.0 ftp.de.debian.org
 0.0.0.0 ftp.heanet.ie
 0.0.0.0 funnyordie.com
 0.0.0.0 gap.com
@@ -466,6 +470,7 @@
 0.0.0.0 help.ui.xboxlive.com
 0.0.0.0 history.com
 0.0.0.0 hm.com
+0.0.0.0 hollywoodlife.com
 0.0.0.0 homedepot.com
 0.0.0.0 hoopshype.com
 0.0.0.0 hostsfile.mine.nu
@@ -569,10 +574,12 @@
 0.0.0.0 multiup.org
 0.0.0.0 m.youtube.com
 0.0.0.0 mzstatic.com
+0.0.0.0 naszdziennik.pl
 0.0.0.0 nationalgeographic.com
 0.0.0.0 nbcnews.com
 0.0.0.0 nbcnewyork.com
 0.0.0.0 nesn.com
+0.0.0.0 netbsd.org
 0.0.0.0 netflix.com
 0.0.0.0 newjobs.com
 0.0.0.0 newsday.com
@@ -611,6 +618,7 @@
 0.0.0.0 officedepot.com
 0.0.0.0 onedrive.live.com
 0.0.0.0 onet.pl
+0.0.0.0 openbsd.org
 0.0.0.0 open.fm
 0.0.0.0 openload.co
 0.0.0.0 openload.io
@@ -625,6 +633,7 @@
 0.0.0.0 paper.li
 0.0.0.0 pastebin.com
 0.0.0.0 people.com
+0.0.0.0 pfsense.org
 0.0.0.0 pgl.yoyo.org
 0.0.0.0 philadelphia.cbslocal.com
 0.0.0.0 phobos.apple.com
@@ -641,6 +650,7 @@
 0.0.0.0 player.pl
 0.0.0.0 player.vimeo.com
 0.0.0.0 play.google.com
+0.0.0.0 play.lego.com
 0.0.0.0 play.spotify.com
 0.0.0.0 playstation.com
 0.0.0.0 plex.tv
@@ -662,6 +672,7 @@
 0.0.0.0 raw.github.com
 0.0.0.0 raw.githubusercontent.com
 0.0.0.0 real-debrid.com
+0.0.0.0 realestate.nj.com
 0.0.0.0 reddit.com
 0.0.0.0 redfin.com
 0.0.0.0 reebok.com
@@ -690,17 +701,19 @@
 0.0.0.0 secure.netflix.com
 0.0.0.0 secure.surveymonkey.com
 0.0.0.0 secure-us.imrworldwide.com
-0.0.0.0 security.debian.org
 0.0.0.0 sendspace.com
 0.0.0.0 services.sonarr.tv
 0.0.0.0 settings-win.data.microsoft.com
 0.0.0.0 s.gateway.messenger.live.com
+0.0.0.0 shop.lego.com
 0.0.0.0 shop.samsung.com
 0.0.0.0 siatka.org
 0.0.0.0 skyhook.sonarr.tv
 0.0.0.0 skype.com
 0.0.0.0 slate.com
+0.0.0.0 slickdeals.net
 0.0.0.0 s-media-cache-ak0.pinimg.com
+0.0.0.0 snapchat.com
 0.0.0.0 someonewhocares.org
 0.0.0.0 spaces.live.com
 0.0.0.0 spapps.co
@@ -773,6 +786,7 @@
 0.0.0.0 tumblr.com
 0.0.0.0 tunein.com
 0.0.0.0 tvdb2.plex.tv
+0.0.0.0 tvn24.pl
 0.0.0.0 tvnstyle.pl
 0.0.0.0 tvp.pl
 0.0.0.0 tvthemes.plexapp.com
@@ -787,11 +801,13 @@
 0.0.0.0 uploaded.net
 0.0.0.0 upload.facebook.com
 0.0.0.0 upload.twitter.com
+0.0.0.0 urlhaus.abuse.ch
 0.0.0.0 userstream.twitter.com
 0.0.0.0 v10.vortex-win.data.microsoft.com
 0.0.0.0 variety.com
 0.0.0.0 verisign.com
 0.0.0.0 v.firebog.net
+0.0.0.0 vice.com
 0.0.0.0 video.google.com
 0.0.0.0 videolan.org
 0.0.0.0 video-stats.l.google.com
