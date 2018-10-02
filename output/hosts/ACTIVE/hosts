@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Tue 25 Sep 16:09:42 UTC 2018 
+# Date of generation: Tue 02 Oct 22:10:36 UTC 2018 
 
 0.0.0.0 151.101.38.49
 0.0.0.0 206.189.252.21
@@ -485,6 +485,7 @@
 0.0.0.0 ifmo.ru
 0.0.0.0 i.imgur.com
 0.0.0.0 ikea.com
+0.0.0.0 imagebam.com
 0.0.0.0 image.ibb.co
 0.0.0.0 imgbox.com
 0.0.0.0 imgs.xkcd.com
@@ -548,7 +549,9 @@
 0.0.0.0 marketwatch.com
 0.0.0.0 mashable.com
 0.0.0.0 medium.com
+0.0.0.0 mega.co.nz
 0.0.0.0 mega.nz
+0.0.0.0 menshealth.com
 0.0.0.0 merriam-webster.com
 0.0.0.0 mesh.com
 0.0.0.0 messenger.com
@@ -573,6 +576,7 @@
 0.0.0.0 msn.com
 0.0.0.0 multiup.org
 0.0.0.0 m.youtube.com
+0.0.0.0 mywot.com
 0.0.0.0 mzstatic.com
 0.0.0.0 naszdziennik.pl
 0.0.0.0 nationalgeographic.com
@@ -667,6 +671,7 @@
 0.0.0.0 px.spiceworks.com
 0.0.0.0 radiostacja.pl
 0.0.0.0 ransomwaretracker.abuse.ch
+0.0.0.0 rapidgator.net
 0.0.0.0 rapidvideo.com
 0.0.0.0 rawgit.com
 0.0.0.0 raw.github.com
@@ -776,6 +781,7 @@
 0.0.0.0 title.mgt.xboxlive.com
 0.0.0.0 tlc.com
 0.0.0.0 tld-list.com
+0.0.0.0 tmblr.co
 0.0.0.0 tofukko.r.ribbon.to
 0.0.0.0 tomshardware.com
 0.0.0.0 torrentfreak.com
@@ -784,6 +790,7 @@
 0.0.0.0 travel.latimes.com
 0.0.0.0 tuba.fm
 0.0.0.0 tumblr.com
+0.0.0.0 t.umblr.com
 0.0.0.0 tunein.com
 0.0.0.0 tvdb2.plex.tv
 0.0.0.0 tvn24.pl
@@ -811,6 +818,7 @@
 0.0.0.0 video.google.com
 0.0.0.0 videolan.org
 0.0.0.0 video-stats.l.google.com
+0.0.0.0 vidto.me
 0.0.0.0 vimeo.com
 0.0.0.0 vitalia.pl
 0.0.0.0 vk.com
