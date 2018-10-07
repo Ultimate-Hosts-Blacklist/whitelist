@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Sat 06 Oct 15:10:36 UTC 2018 
+# Date of generation: Sun 07 Oct 12:10:59 UTC 2018 
 
 android.clients.google.com
 api-global.netflix.com
@@ -9,6 +9,7 @@ clients2.google.com
 clients4.google.com
 clients5.google.com
 cookie.monster.com
+customerevents.netflix.com
 ec-ns.sascdn.com
 eds.xboxlive.com
 fonts.googleapis.com
@@ -34,3 +35,6 @@ syndication.twitter.com
 s.youtube.com
 s.ytimg.com
 video-stats.l.google.com
+youtube-nocookie.com
+yt3.ggpht.com
+ytimg.l.google.com
