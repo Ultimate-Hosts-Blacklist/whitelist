@@ -1,7 +1,8 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Sun 14 Oct 17:10:26 UTC 2018 
+# Date of generation: Thu 18 Oct 17:10:54 UTC 2018 
 
 0.0.0.0 151.101.38.49
+0.0.0.0 1und1.de
 0.0.0.0 206.189.252.21
 0.0.0.0 70i.net
 0.0.0.0 a1014.g.akamai.net
@@ -232,6 +233,7 @@
 0.0.0.0 forum.synology.com
 0.0.0.0 forum.xda-developers.com
 0.0.0.0 freebsd.org
+0.0.0.0 freenet.de
 0.0.0.0 fr.osdn.net
 0.0.0.0 frys.com
 0.0.0.0 ftp.heanet.ie
@@ -256,6 +258,12 @@
 0.0.0.0 gmail.com
 0.0.0.0 gmail.google.com
 0.0.0.0 g.msn.com
+0.0.0.0 gmx.at
+0.0.0.0 gmx.ch
+0.0.0.0 gmx.com
+0.0.0.0 gmx.de
+0.0.0.0 gmx.es
+0.0.0.0 gmx.net
 0.0.0.0 godaddy.com
 0.0.0.0 goo.gl
 0.0.0.0 google.ac
@@ -521,6 +529,7 @@
 0.0.0.0 latimesblogs.latimes.com
 0.0.0.0 latimes.com
 0.0.0.0 l.betrad.com
+0.0.0.0 leifsex.com
 0.0.0.0 lh3.google.com
 0.0.0.0 lh4.google.com
 0.0.0.0 lh5.google.com
@@ -549,6 +558,12 @@
 0.0.0.0 margevicius.lt
 0.0.0.0 marketwatch.com
 0.0.0.0 mashable.com
+0.0.0.0 media.licdn.com
+0.0.0.0 mediamarkt.at
+0.0.0.0 mediamarkt.de
+0.0.0.0 mediamarkt.es
+0.0.0.0 mediamarkt.nl
+0.0.0.0 mediamarkt.pl
 0.0.0.0 medium.com
 0.0.0.0 mega.co.nz
 0.0.0.0 mega.nz
@@ -745,6 +760,7 @@
 0.0.0.0 star.facebook.com
 0.0.0.0 startpage.com
 0.0.0.0 static.kickstarter.com
+0.0.0.0 static.licdn.com
 0.0.0.0 static.www.odcdn.com.edgekey.net
 0.0.0.0 status.plex.tv
 0.0.0.0 steamcommunity.com
@@ -786,13 +802,15 @@
 0.0.0.0 tmblr.co
 0.0.0.0 tofukko.r.ribbon.to
 0.0.0.0 tomshardware.com
+0.0.0.0 t-online.at
+0.0.0.0 t-online.de
 0.0.0.0 torrentfreak.com
 0.0.0.0 toysrus.com
 0.0.0.0 track.spiceworks.com
 0.0.0.0 travel.latimes.com
 0.0.0.0 tuba.fm
-0.0.0.0 tumblr.com
 0.0.0.0 t.umblr.com
+0.0.0.0 tumblr.com
 0.0.0.0 tunein.com
 0.0.0.0 tvdb2.plex.tv
 0.0.0.0 tvn24.pl
@@ -836,6 +854,7 @@
 0.0.0.0 weather.com
 0.0.0.0 web.archive.org
 0.0.0.0 webcache.googleusercontent.com
+0.0.0.0 web.de
 0.0.0.0 weeklyad.target.com
 0.0.0.0 weeklyad.target.com.edgesuite.net
 0.0.0.0 wetransfer.com
@@ -859,16 +878,3 @@
 0.0.0.0 xkms.xbolive.com
 0.0.0.0 xmpp-server.l.google.com
 0.0.0.0 xsts.auth.xboxlive.com
-0.0.0.0 xmpp-server.l.google.com
-0.0.0.0 xsts.auth.xboxlive.com
-0.0.0.0 yahoo.com
-0.0.0.0 youtu.be
-0.0.0.0 youtube.com
-0.0.0.0 youtube-nocookie.com
-0.0.0.0 yt3.ggpht.com
-0.0.0.0 ytimg.com
-0.0.0.0 ytimg.l.google.com
-0.0.0.0 zeustracker.abuse.ch
-0.0.0.0 zippyshare.com
-0.0.0.0 ziprecruiter.com
-0.0.0.0 zoso.ro

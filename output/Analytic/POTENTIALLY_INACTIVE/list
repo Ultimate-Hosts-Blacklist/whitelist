@@ -1,8 +1,7 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Sun 14 Oct 17:10:26 UTC 2018 
+# Date of generation: Thu 18 Oct 17:10:54 UTC 2018 
 
 a1014.g.akamai.net
-adb.juvander.net
 android.clients.google.com
 api-global.netflix.com
 api.twitter.com
@@ -47,6 +46,7 @@ lh4.google.com
 lh5.google.com
 lh6.google.com
 login.live.com
+media.licdn.com
 nexus.passport.com
 ocsp.apple.com
 officeclient.microsoft.com
@@ -62,6 +62,7 @@ skyhook.sonarr.tv
 s-passets-cache-ak0.pinimg.com
 s.shopify.com
 ssl.gstatic.com
+static.licdn.com
 static.www.odcdn.com.edgekey.net
 storage.msn.com
 swcdn.apple.com
@@ -76,6 +77,3 @@ upload.twitter.com
 video-stats.l.google.com
 vimeo.com
 weeklyad.target.com.edgesuite.net
-youtube-nocookie.com
-yt3.ggpht.com
-ytimg.l.google.com
