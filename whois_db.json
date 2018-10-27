@@ -1,0 +1,49 @@
+{
+    "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {
+        "wyspagier.pl": {
+            "epoch": "1559088000",
+            "expiration_date": "29-may-2019",
+            "state": "future"
+        },
+        "xboxlive.com": {
+            "epoch": "1542672000",
+            "expiration_date": "20-nov-2018",
+            "state": "future"
+        },
+        "xda-developers.com": {
+            "epoch": "1607731200",
+            "expiration_date": "12-dec-2020",
+            "state": "future"
+        },
+        "yahoo.com": {
+            "epoch": "1674086400",
+            "expiration_date": "19-jan-2023",
+            "state": "future"
+        },
+        "youtube-nocookie.com": {
+            "epoch": "1548201600",
+            "expiration_date": "23-jan-2019",
+            "state": "future"
+        },
+        "youtube.com": {
+            "epoch": "1550188800",
+            "expiration_date": "15-feb-2019",
+            "state": "future"
+        },
+        "ytimg.com": {
+            "epoch": "1544486400",
+            "expiration_date": "11-dec-2018",
+            "state": "future"
+        },
+        "zippyshare.com": {
+            "epoch": "1630886400",
+            "expiration_date": "06-sep-2021",
+            "state": "future"
+        },
+        "ziprecruiter.com": {
+            "epoch": "1771804800",
+            "expiration_date": "23-feb-2026",
+            "state": "future"
+        }
+    }
+}
