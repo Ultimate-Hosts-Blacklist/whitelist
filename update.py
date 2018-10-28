@@ -166,6 +166,12 @@ class Settings:  # pylint: disable=too-few-public-methods
     # Note: This variable is auto updated by Initiate()
     convert_to_idna = False
 
+    # This variable is used to know the marker which we have to match in
+    # order to start from the begining.
+    #
+    # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
+    launch_test_marker = r"Launch\stest"
+
 
 class Initiate:
     """
@@ -340,7 +346,7 @@ class Initiate:
         for file in Settings.PyFunceble:
             file_path = Settings.current_directory + file
 
-            if not path.isfile(file_path) or not Settings.stable:
+            if not Settings.stable:
                 download_link = Settings.PyFunceble[file].replace("master", "dev")
             else:
                 download_link = Settings.PyFunceble[file].replace("dev", "master")
@@ -412,18 +418,14 @@ class Initiate:
         Download and format Settings.raw_link.
         """
 
-        regex_new_test = r"Launch\stest"
+        restart = Helpers.Regex(
+            Helpers.Command("git log -1", False).execute(),
+            Settings.launch_test_marker,
+            return_data=False,
+            escape=False,
+        ).match()
 
-        if (
-            not Settings.currently_under_test
-            or Helpers.Regex(
-                Helpers.Command("git log -1", False).execute(),
-                regex_new_test,
-                return_data=False,
-                escape=False,
-            ).match()
-        ):
-
+        if restart or not Settings.currently_under_test:
             if Settings.raw_link.endswith(".tar.gz"):
                 self._generate_from_tar_gz()
             elif Helpers.Download(
@@ -438,16 +440,15 @@ class Initiate:
                 )
             elif not Settings.raw_link:
                 print("\n")
-            else:
-                raise Exception(
-                    "Unable to download the the file. Please check the link."
-                )
 
             if path.isdir(Settings.current_directory + "output"):
                 try:
                     Helpers.Command("PyFunceble --clean", False).execute()
                 except KeyError:
                     pass
+
+            if restart:
+                Settings.currently_under_test = False
 
             self.travis_permissions()
 
@@ -471,7 +472,6 @@ class Initiate:
                         self.set_info_settings(index)
                 elif index in to_ignore:
                     continue
-
                 else:
                     raise Exception(
                         'Please complete "%s" into %s'
@@ -529,15 +529,12 @@ class Initiate:
         Check if we allow a test.
         """
 
-        if (
-            not Settings.currently_under_test
-            and Helpers.Regex(
-                Helpers.Command("git log -1", False).execute(),
-                r"Launch\stest",
-                return_data=False,
-                escape=False,
-            ).match()
-        ):
+        if Helpers.Regex(
+            Helpers.Command("git log -1", False).execute(),
+            Settings.launch_test_marker,
+            return_data=False,
+            escape=False,
+        ).match():
             return True
 
         if Settings.days_until_next_test >= 1 and Settings.last_test != 0:
@@ -619,11 +616,10 @@ class Initiate:
                 Settings.permanent_license_link, Settings.current_directory + "LICENSE"
             ).link()
 
-            Settings.informations["last_test"] = strftime("%s")
-
-            Helpers.Dict(Settings.informations).to_json(Settings.repository_info)
-
             try:
+                Settings.informations["last_test"] = strftime("%s")
+                Helpers.Dict(Settings.informations).to_json(Settings.repository_info)
+
                 Helpers.Command(command_to_execute, True).execute()
             except KeyError:
                 pass
@@ -645,6 +641,12 @@ class Initiate:
                     )  # pylint: disable=line-too-long
 
                     self._clean_original()
+                elif not Helpers.Regex(
+                    Helpers.Command("git log -1", False).execute(),
+                    r"\[Autosave\]",
+                    return_data=False,
+                ).match():
+                    raise Exception("Push issue.")
                 else:
                     Settings.informations["currently_under_test"] = str(int(True))
                     commit_message = "[Autosave] " + commit_message
