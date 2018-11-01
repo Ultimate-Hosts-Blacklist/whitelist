@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Sun 28 Oct 18:10:30 UTC 2018 
+# Date of generation: Thu 01 Nov 17:11:09 UTC 2018 
 
 0.0.0.0 151.101.38.49
 0.0.0.0 1und1.de
@@ -27,7 +27,17 @@
 0.0.0.0 allegro.pl
 0.0.0.0 alluremedia.com.au
 0.0.0.0 alternativeto.net
+0.0.0.0 amazon.at
+0.0.0.0 amazon.ca
+0.0.0.0 amazon.cn
+0.0.0.0 amazon.co.jp
 0.0.0.0 amazon.com
+0.0.0.0 amazon.co.uk
+0.0.0.0 amazon.de
+0.0.0.0 amazon.es
+0.0.0.0 amazon.fr
+0.0.0.0 amazon.in
+0.0.0.0 amazon.it
 0.0.0.0 amzn.to
 0.0.0.0 android.clients.google.com
 0.0.0.0 androidforums.com
@@ -811,8 +821,8 @@
 0.0.0.0 track.spiceworks.com
 0.0.0.0 travel.latimes.com
 0.0.0.0 tuba.fm
-0.0.0.0 tumblr.com
 0.0.0.0 t.umblr.com
+0.0.0.0 tumblr.com
 0.0.0.0 tunein.com
 0.0.0.0 tvdb2.plex.tv
 0.0.0.0 tvn24.pl
@@ -869,6 +879,7 @@
 0.0.0.0 winhelp2002.mvps.org
 0.0.0.0 wired.com
 0.0.0.0 wirtualnemedia.pl
+0.0.0.0 wordpress.com
 0.0.0.0 wtkr.com
 0.0.0.0 wt.logmein.com
 0.0.0.0 wykop.pl

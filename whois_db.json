@@ -75,9 +75,34 @@
             "expiration_date": "18-jan-2024",
             "state": "future"
         },
+        "amazon.ca": {
+            "epoch": "1563235200",
+            "expiration_date": "16-jul-2019",
+            "state": "future"
+        },
+        "amazon.cn": {
+            "epoch": "1584403200",
+            "expiration_date": "17-mar-2020",
+            "state": "future"
+        },
         "amazon.com": {
             "epoch": "1667174400",
             "expiration_date": "31-oct-2022",
+            "state": "future"
+        },
+        "amazon.fr": {
+            "epoch": "1563667200",
+            "expiration_date": "21-jul-2019",
+            "state": "future"
+        },
+        "amazon.in": {
+            "epoch": "1549843200",
+            "expiration_date": "11-feb-2019",
+            "state": "future"
+        },
+        "amazon.it": {
+            "epoch": "1547251200",
+            "expiration_date": "12-jan-2019",
             "state": "future"
         },
         "androidforums.com": {
@@ -148,6 +173,16 @@
         "bing.fr": {
             "epoch": "1559779200",
             "expiration_date": "06-jun-2019",
+            "state": "future"
+        },
+        "bing.it": {
+            "epoch": "1551830400",
+            "expiration_date": "06-mar-2019",
+            "state": "future"
+        },
+        "bing.pl": {
+            "epoch": "1550707200",
+            "expiration_date": "21-feb-2019",
             "state": "future"
         },
         "bing.ru": {
@@ -290,6 +325,11 @@
             "expiration_date": "21-nov-2024",
             "state": "future"
         },
+        "demotywatory.pl": {
+            "epoch": "1562025600",
+            "expiration_date": "02-jul-2019",
+            "state": "future"
+        },
         "digg.com": {
             "epoch": "1550620800",
             "expiration_date": "20-feb-2019",
@@ -315,6 +355,11 @@
             "expiration_date": "07-dec-2019",
             "state": "future"
         },
+        "dlvr.it": {
+            "epoch": "1560556800",
+            "expiration_date": "15-jun-2019",
+            "state": "future"
+        },
         "dropbox.com": {
             "epoch": "1561593600",
             "expiration_date": "27-jun-2019",
@@ -328,6 +373,11 @@
         "ea.com": {
             "epoch": "1681516800",
             "expiration_date": "15-apr-2023",
+            "state": "future"
+        },
+        "ebay.pl": {
+            "epoch": "1563408000",
+            "expiration_date": "18-jul-2019",
             "state": "future"
         },
         "ebayimg.com": {
@@ -655,6 +705,11 @@
             "expiration_date": "22-may-2019",
             "state": "future"
         },
+        "google.it": {
+            "epoch": "1555804800",
+            "expiration_date": "21-apr-2019",
+            "state": "future"
+        },
         "google.ki": {
             "epoch": "1574812800",
             "expiration_date": "27-nov-2019",
@@ -723,6 +778,11 @@
         "google.ro": {
             "epoch": "1568678400",
             "expiration_date": "17-sep-2019",
+            "state": "future"
+        },
+        "google.rs": {
+            "epoch": "1552176000",
+            "expiration_date": "10-mar-2019",
             "state": "future"
         },
         "google.ru": {
@@ -1321,8 +1381,8 @@
             "state": "future"
         },
         "pando.com": {
-            "epoch": "1540857600",
-            "expiration_date": "30-oct-2018",
+            "epoch": "1572393600",
+            "expiration_date": "30-oct-2019",
             "state": "future"
         },
         "pastebin.com": {
@@ -1690,6 +1750,11 @@
             "expiration_date": "21-may-2026",
             "state": "future"
         },
+        "tvp.pl": {
+            "epoch": "1552003200",
+            "expiration_date": "08-mar-2019",
+            "state": "future"
+        },
         "twimg.com": {
             "epoch": "1569110400",
             "expiration_date": "22-sep-2019",
@@ -1743,6 +1808,11 @@
         "vimeo.com": {
             "epoch": "1544832000",
             "expiration_date": "15-dec-2018",
+            "state": "future"
+        },
+        "vitalia.pl": {
+            "epoch": "1547078400",
+            "expiration_date": "10-jan-2019",
             "state": "future"
         },
         "vk.com": {
@@ -1810,6 +1880,11 @@
             "expiration_date": "06-dec-2018",
             "state": "future"
         },
+        "wordpress.com": {
+            "epoch": "1583193600",
+            "expiration_date": "03-mar-2020",
+            "state": "future"
+        },
         "wtkr.com": {
             "epoch": "1566000000",
             "expiration_date": "17-aug-2019",
@@ -1863,6 +1938,11 @@
         "ziprecruiter.com": {
             "epoch": "1771804800",
             "expiration_date": "23-feb-2026",
+            "state": "future"
+        },
+        "zoso.ro": {
+            "epoch": "1664841600",
+            "expiration_date": "04-oct-2022",
             "state": "future"
         }
     }

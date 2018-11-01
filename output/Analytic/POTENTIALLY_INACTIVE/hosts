@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Sun 28 Oct 18:10:30 UTC 2018 
+# Date of generation: Thu 01 Nov 17:11:09 UTC 2018 
 
 0.0.0.0 a1014.g.akamai.net
 0.0.0.0 android.clients.google.com
@@ -16,6 +16,7 @@
 0.0.0.0 clients5.google.com
 0.0.0.0 cookie.monster.com
 0.0.0.0 crl.microsoft.com
+0.0.0.0 customerevents.netflix.com
 0.0.0.0 dl.delivery.mp.microsoft.com
 0.0.0.0 download.sonarr.tv
 0.0.0.0 e3489.cd.akamaiedge.net
