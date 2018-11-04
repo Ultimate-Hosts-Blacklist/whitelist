@@ -1,5 +1,5 @@
 # File generated with https://github.com/funilrys/PyFunceble
-# Date of generation: Thu 01 Nov 17:11:09 UTC 2018 
+# Date of generation: Sun 04 Nov 17:11:21 UTC 2018 
 
 0.0.0.0 a1014.g.akamai.net
 0.0.0.0 android.clients.google.com
@@ -55,7 +55,6 @@
 0.0.0.0 proxy.plex.tv
 0.0.0.0 pubsub.plex.bz
 0.0.0.0 pubsub.plex.tv
-0.0.0.0 redfin.com
 0.0.0.0 secure-cdn.mplxtms.com
 0.0.0.0 securemecca.com
 0.0.0.0 secure.netflix.com
