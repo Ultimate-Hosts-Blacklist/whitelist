@@ -625,6 +625,11 @@
             "expiration_date": "27-jun-2019",
             "state": "future"
         },
+        "google.ci": {
+            "epoch": "1550016000",
+            "expiration_date": "13-feb-2019",
+            "state": "future"
+        },
         "google.cl": {
             "epoch": "1574208000",
             "expiration_date": "20-nov-2019",
@@ -706,9 +711,9 @@
             "state": "future"
         },
         "google.iq": {
-            "epoch": "1538438400",
-            "expiration_date": "02-oct-2018",
-            "state": "past"
+            "epoch": "1569974400",
+            "expiration_date": "02-oct-2019",
+            "state": "future"
         },
         "google.is": {
             "epoch": "1558483200",
