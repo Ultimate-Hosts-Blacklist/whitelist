@@ -1201,8 +1201,8 @@
             "state": "future"
         },
         "msftncsi.com": {
-            "epoch": "1541808000",
-            "expiration_date": "10-nov-2018",
+            "epoch": "1573344000",
+            "expiration_date": "10-nov-2019",
             "state": "future"
         },
         "msn.com": {
@@ -1301,8 +1301,8 @@
             "state": "future"
         },
         "nk.pl": {
-            "epoch": "1541980800",
-            "expiration_date": "12-nov-2018",
+            "epoch": "1573516800",
+            "expiration_date": "12-nov-2019",
             "state": "future"
         },
         "no-ip.com": {
@@ -1711,8 +1711,8 @@
             "state": "future"
         },
         "theverge.com": {
-            "epoch": "1541808000",
-            "expiration_date": "10-nov-2018",
+            "epoch": "1573344000",
+            "expiration_date": "10-nov-2019",
             "state": "future"
         },
         "time.com": {
@@ -1866,8 +1866,8 @@
             "state": "future"
         },
         "washingtonpost.com": {
-            "epoch": "1541980800",
-            "expiration_date": "12-nov-2018",
+            "epoch": "1573516800",
+            "expiration_date": "12-nov-2019",
             "state": "future"
         },
         "weather.com": {
