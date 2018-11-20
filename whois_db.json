@@ -60,6 +60,11 @@
             "expiration_date": "04-oct-2020",
             "state": "future"
         },
+        "ale-gratka.pl": {
+            "epoch": "1574121600",
+            "expiration_date": "19-nov-2019",
+            "state": "future"
+        },
         "alexa.com": {
             "epoch": "1563235200",
             "expiration_date": "16-jul-2019",
@@ -849,6 +854,11 @@
             "epoch": "1560556800",
             "expiration_date": "15-jun-2019",
             "state": "future"
+        },
+        "google.tg": {
+            "epoch": "1502496000",
+            "expiration_date": "12-aug-2017",
+            "state": "past"
         },
         "google.tk": {
             "epoch": "1549152000",
@@ -1931,8 +1941,8 @@
             "state": "future"
         },
         "xboxlive.com": {
-            "epoch": "1542672000",
-            "expiration_date": "20-nov-2018",
+            "epoch": "1574208000",
+            "expiration_date": "20-nov-2019",
             "state": "future"
         },
         "xda-developers.com": {

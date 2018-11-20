@@ -1,11 +1,10 @@
 {
     "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {
-        "1542389597": [
+        "1542735772": [
             "106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services",
             "151.101.38.49",
             "206.189.252.21",
             "ad.hulu.com",
-            "ale-gratka.pl",
             "banners.spiceworks.com",
             "channel.facebook.com",
             "chat.facebook.com",
@@ -26,7 +25,6 @@
             ".freebsd.org",
             ".gov",
             "gslb.spotify.com",
-            "latimesblogs.latimes.com",
             "mediamarkt.ie",
             "messenger.hotmail.com",
             "msg.yahoo.com",
@@ -34,7 +32,6 @@
             "nccp.netflix.com",
             ".netbsd.org",
             ".openbsd.org",
-            "opinion.latimes.com",
             ".pfsense.org",
             "pi.hole",
             "play.spotify.edgekey.net",
