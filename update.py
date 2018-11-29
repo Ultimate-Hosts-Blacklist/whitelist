@@ -164,13 +164,18 @@ class Settings:  # pylint: disable=too-few-public-methods
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     # Note: This variable is auto updated by Initiate()
-    convert_to_idna = False
+    convert_to_idna = True
 
     # This variable is used to know the marker which we have to match in
     # order to start from the begining.
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     launch_test_marker = r"Launch\stest"
+
+    # This variable set the name of the administration file.
+    #
+    # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
+    administration_script = "administration.py"
 
 
 class Initiate:
@@ -336,7 +341,7 @@ class Initiate:
         else:
             to_download = "PyFunceble-dev"
 
-        Helpers.Command("pip3 install %s" % to_download, True).execute()
+        Helpers.Command("pip3 install %s" % to_download, False).execute()
 
     def download_PyFunceble(self):  # pylint: disable=invalid-name
         """
@@ -360,6 +365,7 @@ class Initiate:
 
         Helpers.File(Settings.current_directory + "tool.py").delete()
         Helpers.File(Settings.current_directory + "PyFunceble.py").delete()
+        Helpers.File(Settings.current_directory + "requirements.txt").delete()
 
     def _extract_lines(self, file):
         """
@@ -428,9 +434,7 @@ class Initiate:
         if restart or not Settings.currently_under_test:
             if Settings.raw_link.endswith(".tar.gz"):
                 self._generate_from_tar_gz()
-            elif Helpers.Download(
-                Settings.raw_link, Settings.file_to_test, Settings.convert_to_idna
-            ).link():
+            elif Helpers.Download(Settings.raw_link, Settings.file_to_test).link():
                 Helpers.Command("dos2unix " + Settings.file_to_test, False).execute()
 
                 formated_content = self._extract_lines(Settings.file_to_test)
@@ -442,10 +446,7 @@ class Initiate:
                 print("\n")
 
             if path.isdir(Settings.current_directory + "output"):
-                try:
-                    Helpers.Command("PyFunceble --clean", False).execute()
-                except KeyError:
-                    pass
+                Helpers.Command("PyFunceble --clean", False).execute()
 
             if restart:
                 Settings.currently_under_test = False
@@ -537,12 +538,15 @@ class Initiate:
         ).match():
             return True
 
+        if Settings.currently_under_test:
+            return True
+
         if Settings.days_until_next_test >= 1 and Settings.last_test != 0:
             retest_date = Settings.last_test + (
                 24 * Settings.days_until_next_test * 3600
             )
 
-            if int(strftime("%s")) >= retest_date or Settings.currently_under_test:
+            if int(strftime("%s")) >= retest_date:
                 return True
 
             return False
@@ -555,38 +559,23 @@ class Initiate:
         Construct the arguments to pass to PyFunceble.
         """
 
+        to_use = []
+
+        to_use.append(
+            "--cmd-before-end %s" % Settings.current_directory
+            + Settings.administration_script
+        )
+
+        if Settings.convert_to_idna:
+            to_use.append("--idna")
+
         if Settings.arguments != []:
-            return " ".join(Settings.arguments)
+            to_use.extend(Settings.arguments)
+
+        if to_use:
+            return " ".join(to_use)
 
         return ""
-
-    @classmethod
-    def _clean_original(cls):
-        """
-        Replace the original file.
-        """
-
-        if Settings.clean_original:
-            clean_list = []
-            list_special_content = Helpers.Regex(
-                Helpers.File(Settings.file_to_test).to_list(), r"ALL\s"
-            ).matching_list()
-
-            active = Settings.current_directory + "output/domains/ACTIVE/list"
-
-            if path.isfile(active):
-                clean_list.extend(
-                    Helpers.Regex(
-                        Helpers.File(active).to_list(), r"^#"
-                    ).not_matching_list()
-                    + list_special_content
-                )
-
-            clean_list = Helpers.List(clean_list).format()
-
-            Helpers.File(Settings.clean_list_file).write(
-                "\n".join(clean_list), overwrite=True
-            )
 
     def PyFunceble(self):  # pylint: disable=invalid-name
         """
@@ -616,51 +605,13 @@ class Initiate:
                 Settings.permanent_license_link, Settings.current_directory + "LICENSE"
             ).link()
 
-            try:
-                Settings.informations["last_test"] = strftime("%s")
-                Helpers.Dict(Settings.informations).to_json(Settings.repository_info)
+            Settings.informations.update(
+                {"last_test": strftime("%s"), "currently_under_test": str(int(True))}
+            )
+            Helpers.Dict(Settings.informations).to_json(Settings.repository_info)
 
-                Helpers.Command(command_to_execute, True).execute()
-            except KeyError:
-                pass
+            Helpers.Command(command_to_execute, True).execute()
 
-            try:
-                _ = environ["TRAVIS_BUILD_DIR"]
-                commit_message = "Update of info.json"
-
-                if Helpers.Regex(
-                    Helpers.Command("git log -1", False).execute(),
-                    r"\[Results\]",
-                    return_data=False,
-                ).match():
-                    Settings.informations["currently_under_test"] = str(int(False))
-                    commit_message = (
-                        "[Results] "
-                        + commit_message
-                        + " && generation of clean.list [ci skip]"
-                    )  # pylint: disable=line-too-long
-
-                    self._clean_original()
-                elif not Helpers.Regex(
-                    Helpers.Command("git log -1", False).execute(),
-                    r"\[Autosave\]",
-                    return_data=False,
-                ).match():
-                    raise Exception("Push issue.")
-                else:
-                    Settings.informations["currently_under_test"] = str(int(True))
-                    commit_message = "[Autosave] " + commit_message
-
-                Helpers.Dict(Settings.informations).to_json(Settings.repository_info)
-                self.travis_permissions()
-
-                Helpers.Command(
-                    "git add --all && git commit -a -m '%s' && git push origin master"
-                    % commit_message,
-                    False,
-                ).execute()
-            except KeyError:
-                pass
         else:
             print(
                 "No need to test until %s."
@@ -856,42 +807,9 @@ class Helpers:  # pylint: disable=too-few-public-methods
                 The destination of the downloaded data.
         """
 
-        def __init__(self, link_to_download, destination, convert_to_idna=False):
+        def __init__(self, link_to_download, destination):
             self.link_to_download = link_to_download
             self.destination = destination
-            self.convert_to_idna = convert_to_idna
-
-        def _convert_to_idna(self, data):
-            """
-            This method convert a given data into IDNA format.
-
-            Argument:
-                - data: str
-                    The downloaded data.
-            """
-
-            if self.convert_to_idna:
-                to_write = []
-
-                for line in data.split("\n"):
-                    line = line.split()
-                    try:
-                        if isinstance(line, list):
-                            converted = []
-                            for string in line:
-                                converted.append(string.encode("idna").decode("utf-8"))
-
-                            to_write.append(" ".join(converted))
-                        else:
-                            to_write.append(line.encode("idna").decode("utf-8"))
-                    except UnicodeError:
-                        if isinstance(line, list):
-                            to_write.append(" ".join(line))
-                        else:
-                            to_write.append(line)
-                return to_write
-
-            return None
 
         def link(self):
             """
@@ -902,15 +820,9 @@ class Helpers:  # pylint: disable=too-few-public-methods
                 request = get(self.link_to_download, stream=True)
 
                 if request.status_code == 200:
-                    if self.convert_to_idna:
-                        Helpers.File(self.destination).write(
-                            "\n".join(self._convert_to_idna(request.text)),
-                            overwrite=True,
-                        )
-                    else:
-                        with open(self.destination, "wb") as file:
-                            request.raw.decode_content = True
-                            copyfileobj(request.raw, file)
+                    with open(self.destination, "wb") as file:
+                        request.raw.decode_content = True
+                        copyfileobj(request.raw, file)
 
                     del request
 
