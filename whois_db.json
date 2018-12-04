@@ -131,8 +131,8 @@
             "state": "future"
         },
         "audible.com": {
-            "epoch": "1543881600",
-            "expiration_date": "04-dec-2018",
+            "epoch": "1607040000",
+            "expiration_date": "04-dec-2020",
             "state": "future"
         },
         "avsforum.com": {
@@ -1401,8 +1401,8 @@
             "state": "future"
         },
         "opensubtitles.org": {
-            "epoch": "1543795200",
-            "expiration_date": "03-dec-2018",
+            "epoch": "1575331200",
+            "expiration_date": "03-dec-2019",
             "state": "future"
         },
         "ouo.io": {
@@ -1481,8 +1481,8 @@
             "state": "future"
         },
         "promodj.com": {
-            "epoch": "1543708800",
-            "expiration_date": "02-dec-2018",
+            "epoch": "1606867200",
+            "expiration_date": "02-dec-2020",
             "state": "future"
         },
         "publicsuffix.org": {
