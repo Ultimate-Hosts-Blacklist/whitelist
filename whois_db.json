@@ -201,8 +201,8 @@
             "state": "future"
         },
         "bing.se": {
-            "epoch": "1544054400",
-            "expiration_date": "06-dec-2018",
+            "epoch": "1575590400",
+            "expiration_date": "06-dec-2019",
             "state": "future"
         },
         "bitbucket.org": {
@@ -286,8 +286,8 @@
             "state": "future"
         },
         "collegehumor.com": {
-            "epoch": "1544054400",
-            "expiration_date": "06-dec-2018",
+            "epoch": "1575590400",
+            "expiration_date": "06-dec-2019",
             "state": "future"
         },
         "cosmopolitan.com": {
@@ -573,7 +573,7 @@
         "gmx.net": {
             "epoch": "1544227200",
             "expiration_date": "08-dec-2018",
-            "state": "future"
+            "state": "past"
         },
         "godaddy.com": {
             "epoch": "1635724800",
@@ -1916,8 +1916,8 @@
             "state": "future"
         },
         "wirtualnemedia.pl": {
-            "epoch": "1544054400",
-            "expiration_date": "06-dec-2018",
+            "epoch": "1575590400",
+            "expiration_date": "06-dec-2019",
             "state": "future"
         },
         "wordpress.com": {
