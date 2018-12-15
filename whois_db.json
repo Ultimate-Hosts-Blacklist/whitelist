@@ -891,9 +891,9 @@
             "state": "future"
         },
         "google.tg": {
-            "epoch": "1502496000",
-            "expiration_date": "12-aug-2017",
-            "state": "past"
+            "epoch": "1565568000",
+            "expiration_date": "12-aug-2019",
+            "state": "future"
         },
         "google.tk": {
             "epoch": "1549152000",
@@ -1956,8 +1956,8 @@
             "state": "future"
         },
         "vimeo.com": {
-            "epoch": "1544832000",
-            "expiration_date": "15-dec-2018",
+            "epoch": "1576368000",
+            "expiration_date": "15-dec-2019",
             "state": "future"
         },
         "vitalia.pl": {
@@ -2006,8 +2006,8 @@
             "state": "future"
         },
         "wetransfer.com": {
-            "epoch": "1544745600",
-            "expiration_date": "14-dec-2018",
+            "epoch": "1576281600",
+            "expiration_date": "14-dec-2019",
             "state": "future"
         },
         "who.is": {
