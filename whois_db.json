@@ -1116,8 +1116,8 @@
             "state": "future"
         },
         "kmart.com": {
-            "epoch": "1545091200",
-            "expiration_date": "18-dec-2018",
+            "epoch": "1608249600",
+            "expiration_date": "18-dec-2020",
             "state": "future"
         },
         "kohls.com": {
@@ -1206,8 +1206,8 @@
             "state": "future"
         },
         "margevicius.lt": {
-            "epoch": "1544918400",
-            "expiration_date": "16-dec-2018",
+            "epoch": "1576454400",
+            "expiration_date": "16-dec-2019",
             "state": "future"
         },
         "marketwatch.com": {
@@ -1276,8 +1276,8 @@
             "state": "future"
         },
         "multiup.org": {
-            "epoch": "1545004800",
-            "expiration_date": "17-dec-2018",
+            "epoch": "1576540800",
+            "expiration_date": "17-dec-2019",
             "state": "future"
         },
         "mywot.com": {
@@ -2013,6 +2013,11 @@
         "who.is": {
             "epoch": "1686528000",
             "expiration_date": "12-jun-2023",
+            "state": "future"
+        },
+        "wikimedia.org": {
+            "epoch": "1647388800",
+            "expiration_date": "16-mar-2022",
             "state": "future"
         },
         "windows.com": {
