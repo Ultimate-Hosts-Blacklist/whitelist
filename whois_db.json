@@ -1166,8 +1166,8 @@
             "state": "future"
         },
         "live.com": {
-            "epoch": "1545868800",
-            "expiration_date": "27-dec-2018",
+            "epoch": "1577404800",
+            "expiration_date": "27-dec-2019",
             "state": "future"
         },
         "live.net": {
@@ -1193,6 +1193,11 @@
         "lowes.com": {
             "epoch": "1561680000",
             "expiration_date": "28-jun-2019",
+            "state": "future"
+        },
+        "lwn.net": {
+            "epoch": "1653091200",
+            "expiration_date": "21-may-2022",
             "state": "future"
         },
         "macys.com": {
@@ -1323,6 +1328,11 @@
         "netflix.com": {
             "epoch": "1573344000",
             "expiration_date": "10-nov-2019",
+            "state": "future"
+        },
+        "newegg.com": {
+            "epoch": "1738368000",
+            "expiration_date": "01-feb-2025",
             "state": "future"
         },
         "newjobs.com": {
@@ -1840,6 +1850,11 @@
             "expiration_date": "20-jul-2019",
             "state": "future"
         },
+        "tmz.com": {
+            "epoch": "1581811200",
+            "expiration_date": "16-feb-2020",
+            "state": "future"
+        },
         "tomshardware.com": {
             "epoch": "1568073600",
             "expiration_date": "10-sep-2019",
@@ -2051,8 +2066,8 @@
             "state": "future"
         },
         "wykop.pl": {
-            "epoch": "1545955200",
-            "expiration_date": "28-dec-2018",
+            "epoch": "1577491200",
+            "expiration_date": "28-dec-2019",
             "state": "future"
         },
         "wyspagier.pl": {
