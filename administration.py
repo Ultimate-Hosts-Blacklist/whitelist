@@ -15,6 +15,7 @@ Contributors:
     @GitHubUsername, Name, Email (optional)
 """
 from update import Helpers, Settings, path, strftime
+from whitelisting import Whitelist
 
 INFO = {}
 
@@ -28,7 +29,7 @@ def get_administration_file():
         content = Helpers.File(Settings.repository_info).read()
         INFO.update(Helpers.Dict().from_json(content))
     else:
-        raise Exception("Unabel to find the administration file.")
+        raise Exception("Unable to find the administration file.")
 
 
 def update_adminisation_file():
@@ -47,16 +48,16 @@ def save_administration_file():
     Helpers.Dict(INFO).to_json(Settings.repository_info)
 
 
-def generate_clean_list():
+def generate_clean_and_whitelisted_list():
     """
-    Update `clean.list`.
+    Update/Create `clean.list` and `whitelisted.list`.
     """
 
     if bool(int(INFO["clean_original"])):
         clean_list = []
 
         list_special_content = Helpers.Regex(
-            Helpers.File(Settings.file_to_test + INFO["list_name"]).to_list(), r"ALL\s"
+            Helpers.File(Settings.file_to_test + Settings.list_name).to_list(), r"ALL\s"
         ).matching_list()
 
         active = Settings.current_directory + "output/domains/ACTIVE/list"
@@ -68,10 +69,15 @@ def generate_clean_list():
             )
 
         clean_list = Helpers.List(clean_list).format()
+        whitelisted = Whitelist(string="\n".join(clean_list)).get()
 
         Helpers.File(Settings.clean_list_file).write(
             "\n".join(clean_list), overwrite=True
         )
+
+        Helpers.File(Settings.whitelisted_list_file).write(whitelisted, overwrite=True)
+
+        Helpers.File("whitelisting.py").delete()
 
 
 if __name__ == "__main__":
@@ -79,4 +85,4 @@ if __name__ == "__main__":
     update_adminisation_file()
     save_administration_file()
 
-    generate_clean_list()
+    generate_clean_and_whitelisted_list()

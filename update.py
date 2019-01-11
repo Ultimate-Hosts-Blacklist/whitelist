@@ -61,10 +61,23 @@ class Settings:  # pylint: disable=too-few-public-methods
     #    - websiteDomainName.com@listName.list
     #
     # Note: The variable name should not be changed.
-    # Note: This variable is auto updated by Initiate()
     #
     # Example: "adaway.github.io@AdAway.list"
-    list_name = ""
+    list_name = "domains.list"
+
+    # This variable is used to set the location of the file for the list without
+    # dead/inactive domains.
+    #
+    # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
+    # Note: This variable is auto updated by Initiate()
+    clean_list_file = "clean.list"
+
+    # This variable is used to set the location of the file for the list without
+    # dead/inactive domains and whitelisted domains.
+    #
+    # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
+    # Note: This variable is auto updated by Initiate()
+    whitelisted_list_file = "whitelisted.list"
 
     # This variable will help us know where we are working into the filesystem.
     #
@@ -108,7 +121,7 @@ class Settings:  # pylint: disable=too-few-public-methods
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     PyFunceble = {
         ".PyFunceble_production.yaml": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/.PyFunceble_production.yaml",  # pylint: disable=line-too-long
-        ".PyFunceble_LICENSE": "https://raw.githubusercontent.com/funilrys/PyFunceble/dev/LICENSE",
+        ".PyFunceble_LICENSE": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/LICENSE",  # pylint: disable=line-too-long
     }
 
     # This variable is used to match [ci skip] from the git log.
@@ -151,13 +164,6 @@ class Settings:  # pylint: disable=too-few-public-methods
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     # Note: This variable is auto updated by Initiate()
     clean_original = False
-
-    # This variable is used to set the location of the file for the list without
-    # dead/inactive domains.
-    #
-    # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
-    # Note: This variable is auto updated by Initiate()
-    clean_list_file = "clean.list"
 
     # This variable is used to know if we need to convert the list into idna
     # before we write the file PyFunceble is going to test.
@@ -279,7 +285,7 @@ class Initiate:
                 r"travis:.*": "travis: True",
                 r"travis_autosave_commit:.*": 'travis_autosave_commit: "[Autosave] Testing for Ultimate Hosts Blacklist"',  # pylint: disable=line-too-long
                 r"travis_autosave_final_commit:.*": 'travis_autosave_final_commit: "[Results] Testing for Ultimate Hosts Blacklist"',  # pylint: disable=line-too-long
-                r"travis_branch:.*": "travis_branch: master",
+                r"travis_branch:.*": "travis_branch: %s" % environ['GIT_BRANCH'],
                 r"travis_autosave_minutes:.*": "travis_autosave_minutes: %s"
                 % Settings.autosave_minutes,
             }
@@ -608,6 +614,11 @@ class Initiate:
             Settings.informations.update(
                 {"last_test": strftime("%s"), "currently_under_test": str(int(True))}
             )
+
+            for index in ['clean_list_file', 'list_name']:
+                if index in Settings.informations:
+                    del Settings.informations[index]
+
             Helpers.Dict(Settings.informations).to_json(Settings.repository_info)
 
             Helpers.Command(command_to_execute, True).execute()
