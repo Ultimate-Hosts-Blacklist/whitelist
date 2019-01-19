@@ -29,7 +29,6 @@ albert.apple.com
 alexa.com
 ALL .debian.org
 ALL .freebsd.org
-ALL .gov
 ALL .netbsd.org
 ALL .openbsd.org
 ALL .pfsense.org
@@ -776,6 +775,7 @@ reebok.com
 REG ^(?!.*\.?(oem)).*\.twimg\.com$
 REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
 REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
+REG ^(?!.*\.?(watchdog\.ohio|dap\.digitalgov|stats\.ssa|adgallery\.whitehousedrugpolicy)).*\.gov$
 REG ^ebay.(?:[a-z\.]+)$
 REG ^pulsar\.ebay\.(?:[a-z\.]+)$
 res.cloudinary.com
