@@ -33,7 +33,6 @@ ALL .gov
 ALL .netbsd.org
 ALL .openbsd.org
 ALL .pfsense.org
-ALL .twimg.com
 ALL .ubuntu.com
 ALL .videolan.org
 allegro.pl
@@ -775,6 +774,7 @@ realestate.nj.com
 reddit.com
 redfin.com
 reebok.com
+REG ^(?!.*\.?(oem)).*\.twimg\.com$
 REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
 REG ^ebay.(?:[a-z\.]+)$
 REG ^pulsar\.ebay\.(?:[a-z\.]+)$
