@@ -28,7 +28,6 @@ akamaiedge.net
 albert.apple.com
 alexa.com
 ALL .debian.org
-ALL .digitaltrends.com
 ALL .freebsd.org
 ALL .gov
 ALL .netbsd.org
@@ -776,6 +775,7 @@ realestate.nj.com
 reddit.com
 redfin.com
 reebok.com
+REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
 REG ^ebay.(?:[a-z\.]+)$
 REG ^pulsar\.ebay\.(?:[a-z\.]+)$
 res.cloudinary.com
