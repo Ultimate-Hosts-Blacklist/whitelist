@@ -690,7 +690,6 @@ onedrive.live.com
 onet.pl
 open.fm
 openbsd.org
-openload.co
 openload.io
 opensubtitles.org
 opinion.latimes.com
@@ -761,6 +760,7 @@ REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
 REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
 REG ^(?!.*\.?(watchdog\.ohio|dap\.digitalgov|stats\.ssa|adgallery\.whitehousedrugpolicy)).*\.gov$
 REG ^ebay.(?:[a-z\.]+)$
+REG ^openload\.[a-z\.]+$
 REG ^pulsar\.ebay\.(?:[a-z\.]+)$
 res.cloudinary.com
 road.adblock.ro
