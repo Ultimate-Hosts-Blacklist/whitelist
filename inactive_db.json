@@ -1,6 +1,6 @@
 {
     "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {
-        "1547749595": [
+        "1547984794": [
             "106c06cd218b007d-b1e8a1331f68446599e96a4b46a050f5.ams.plex.services",
             "151.101.38.49",
             "206.189.252.21",
@@ -24,6 +24,7 @@
             "^ebay.(?:[a-z\\.]+)$",
             "fbcdn-creative-a.akamaihd.net",
             ".freebsd.org",
+            "google.com.sl",
             ".gov",
             "gslb.spotify.com",
             "mediamarkt.ie",
@@ -32,10 +33,12 @@
             "m.weeklyad.target.com",
             "nccp.netflix.com",
             ".netbsd.org",
+            "^(?!.*\\.?(oem)).*\\.twimg\\.com$",
             ".openbsd.org",
             ".pfsense.org",
             "pi.hole",
             "play.spotify.edgekey.net",
+            "^(?!.*\\.?(popcon)).*\\.ubuntu\\.com$",
             "pricelist.skype.com",
             "proxy02.pop.ord.plex.bz",
             "^pulsar\\.ebay\\.(?:[a-z\\.]+)$",
@@ -58,7 +61,9 @@
             "vc.yahoo.com",
             ".videolan.org",
             "vr-ov-crl.thawte.com",
+            "^(?!.*\\.?(vstats)).*\\.digitaltrends\\.com$",
             "vupload2.t.facebook.com",
+            "^(?!.*\\.?(watchdog\\.ohio|dap\\.digitalgov|stats\\.ssa|adgallery\\.whitehousedrugpolicy)).*\\.gov$",
             "webcam.yahoo.com",
             "windowsupdate.nsatc.net",
             "xboxexperiencesprod.experimentation.xboxlive.com"
