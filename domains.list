@@ -556,10 +556,10 @@ REG ^(?!.*\.?(oem)).*\.twimg\.com$
 REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
 REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
 REG ^(?!.*\.?(watchdog\.ohio|dap\.digitalgov|stats\.ssa|adgallery\.whitehousedrugpolicy)).*\.gov$
-REG ^ebay.(?:[a-z\.]+)$
-REG ^google.(?:[a-z\.]+)$
-REG ^openload\.(?:[a-z\.]+)$
-REG ^pulsar\.ebay\.(?:[a-z\.]+)$
+RZD ebay
+RZD google
+RZD openload
+RZD pulsar.ebay
 res.cloudinary.com
 road.adblock.ro
 roku.com
