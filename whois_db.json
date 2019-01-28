@@ -121,9 +121,9 @@
             "state": "future"
         },
         "amazon.it": {
-            "epoch": "1547251200",
-            "expiration_date": "12-jan-2019",
-            "state": "past"
+            "epoch": "1578787200",
+            "expiration_date": "12-jan-2020",
+            "state": "future"
         },
         "androidforums.com": {
             "epoch": "1604534400",
@@ -186,8 +186,8 @@
             "state": "future"
         },
         "bing.cz": {
-            "epoch": "1548633600",
-            "expiration_date": "28-jan-2019",
+            "epoch": "1580169600",
+            "expiration_date": "28-jan-2020",
             "state": "future"
         },
         "bing.fi": {
