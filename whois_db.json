@@ -341,8 +341,8 @@
             "state": "future"
         },
         "cvs.com": {
-            "epoch": "1548892800",
-            "expiration_date": "31-jan-2019",
+            "epoch": "1580428800",
+            "expiration_date": "31-jan-2020",
             "state": "future"
         },
         "datafilehost.com": {
@@ -531,8 +531,8 @@
             "state": "future"
         },
         "funnyordie.com": {
-            "epoch": "1548892800",
-            "expiration_date": "31-jan-2019",
+            "epoch": "1612051200",
+            "expiration_date": "31-jan-2021",
             "state": "future"
         },
         "g.co": {
@@ -998,7 +998,7 @@
         "hosts-file.net": {
             "epoch": "1548979200",
             "expiration_date": "01-feb-2019",
-            "state": "future"
+            "state": "past"
         },
         "hotmail.com": {
             "epoch": "1616889600",
