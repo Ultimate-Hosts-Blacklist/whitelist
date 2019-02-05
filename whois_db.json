@@ -141,8 +141,8 @@
             "state": "future"
         },
         "askubuntu.com": {
-            "epoch": "1549065600",
-            "expiration_date": "02-feb-2019",
+            "epoch": "1580601600",
+            "expiration_date": "02-feb-2020",
             "state": "future"
         },
         "audible.com": {
@@ -996,9 +996,9 @@
             "state": "future"
         },
         "hosts-file.net": {
-            "epoch": "1548979200",
-            "expiration_date": "01-feb-2019",
-            "state": "past"
+            "epoch": "1580515200",
+            "expiration_date": "01-feb-2020",
+            "state": "future"
         },
         "hotmail.com": {
             "epoch": "1616889600",
@@ -1146,8 +1146,8 @@
             "state": "future"
         },
         "leifsex.com": {
-            "epoch": "1549065600",
-            "expiration_date": "02-feb-2019",
+            "epoch": "1580601600",
+            "expiration_date": "02-feb-2020",
             "state": "future"
         },
         "licdn.com": {
@@ -1961,8 +1961,8 @@
             "state": "future"
         },
         "videolan.org": {
-            "epoch": "1549152000",
-            "expiration_date": "03-feb-2019",
+            "epoch": "1580688000",
+            "expiration_date": "03-feb-2020",
             "state": "future"
         },
         "vidto.me": {
