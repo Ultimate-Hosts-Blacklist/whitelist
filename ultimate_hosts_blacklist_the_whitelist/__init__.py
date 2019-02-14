@@ -34,7 +34,7 @@ from colorama import Fore, Style
 
 from ultimate_hosts_blacklist_the_whitelist.core import Core
 
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 def clean_string_with_official_whitelist(data):
     """

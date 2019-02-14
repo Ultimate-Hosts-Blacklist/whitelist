@@ -85,8 +85,8 @@ if __name__ == "__main__":
         long_description=_get_long_description(),
         author="funilrys",
         author_email="contact@funilrys.com",
-        license="https://git.io/vh1mP",
-        url="https://github.com/funilrys/PyFunceble",
+        license="MIT",
+        url="https://github.com/Ultimate-Hosts-Blacklist/whitelist/tree/script",
         platforms=["any"],
         packages=["ultimate_hosts_blacklist_the_whitelist"],
         keywords=[
