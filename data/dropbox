@@ -1,0 +1,31 @@
+# For Update: https://www.dropbox.com/help/security/official-domains#domains
+api-content-photos.dropbox.com
+api-content.dropbox.com
+bolt.dropbox.com
+content.dropboxapi.com
+db.tt
+dl-client.dropbox.com
+dl-doc.dropbox.com
+dl-doc.dropboxusercontent.com
+dl-web.dropbox.com
+dl.dropbox.com
+dl.dropboxusercontent.com
+dropbox-dns.com
+dropbox.com
+dropbox.zendesk.com
+dropboxapi.com
+dropboxbusiness.com
+dropboxcaptcha.com
+dropboxforum.com
+dropboxforums.com
+dropboxinsiders.com
+dropboxmail.com
+dropboxpartners.com
+dropboxstatic.com
+getdropbox.com
+instructorledlearning.dropboxbusiness.com
+paper.dropbox.com
+photos.dropbox.com
+REG ^dl-debug.*\.dropbox\.com$
+REG ^photos-.*\.dropbox\.com$
+showbox-tr.dropbox.com
