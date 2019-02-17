@@ -14,12 +14,19 @@ Contributors:
 
     @GitHubUsername, Name, Email (optional)
 """
-from PyFunceble import syntax_check
+# pylint:disable=bad-continuation
+
+from PyFunceble import is_subdomain, syntax_check
+from PyFunceble import test as domain_availability_check
 from ultimate_hosts_blacklist_the_whitelist import clean_list_with_official_whitelist
 
 from update import Helpers, Settings, path, strftime
 
 INFO = {}
+
+
+PYFUNCEBLE_CONFIGURATION = {"no_whois": True}
+PYFUNCEBLE_CONFIGURATION_VOLATILE = {"no_whois": True, "no_special": True}
 
 
 def get_administration_file():
@@ -50,19 +57,45 @@ def save_administration_file():
     Helpers.Dict(INFO).to_json(Settings.repository_info)
 
 
-def generate_clean_and_whitelisted_list():
+def _is_special_pyfunceble(element):
     """
-    Update/Create `clean.list` and `whitelisted.list`.
+    Check if the given element is a SPECIAL.
     """
 
-    if bool(int(INFO["clean_original"])):
-        clean_list = temp_clean_list = []
+    if ".blogspot." in element:
+        return True
+
+    should_endswith = [
+        ".doubleclick.net",
+        ".liveadvert.com",
+        ".skyrock.com",
+        ".tumblr.com",
+        ".wordpress.com",
+    ]
+
+    for marker in should_endswith:
+        if element.endswith(marker):
+            return True
+
+    return False
+
+
+def generate_extra_files():  # pylint: disable=too-many-branches
+    """
+    Update/Create `clean.list`, `volatile.list` and `whitelisted.list`.
+    """
+
+    if bool(int(INFO["clean_original"])):  # pylint: disable=too-many-nested-blocks
+        clean_list = []
+        temp_clean_list = []
+        volatile_list = []
 
         list_special_content = Helpers.Regex(
             Helpers.File(Settings.file_to_test).to_list(), r"ALL\s"
         ).matching_list()
 
         active = Settings.current_directory + "output/domains/ACTIVE/list"
+        inactive = Settings.current_directory + "output/domains/INACTIVE/list"
 
         if path.isfile(active):
             temp_clean_list.extend(
@@ -70,19 +103,89 @@ def generate_clean_and_whitelisted_list():
                 + list_special_content
             )
 
+        if path.isfile(inactive):
+            for element in Helpers.Regex(
+                Helpers.File(inactive).to_list(), r"^#|^$"
+            ).not_matching_list():
+                print(
+                    "Checking eligibility of `{}` for introduction into `{}`...".format(
+                        element, Settings.volatile_list_file
+                    )
+                )
+                if (
+                    element
+                    and _is_special_pyfunceble(element)
+                    and domain_availability_check(
+                        element, config=PYFUNCEBLE_CONFIGURATION_VOLATILE
+                    ).lower()
+                    == "active"
+                ):
+                    if not is_subdomain(element):
+                        if (
+                            element.startswith("www.")
+                            and domain_availability_check(
+                                element[4:], config=PYFUNCEBLE_CONFIGURATION_VOLATILE
+                            ).lower()
+                            == "active"
+                        ):
+                            print(
+                                "Introduction of `{}` into `{}`".format(
+                                    element[4:], Settings.volatile_list_file
+                                )
+                            )
+                            volatile_list.append(element[4:])
+                        else:
+                            if (
+                                domain_availability_check(
+                                    "www.{}".format(element),
+                                    config=PYFUNCEBLE_CONFIGURATION_VOLATILE,
+                                ).lower()
+                                == "active"
+                            ):
+                                print(
+                                    "Introduction of `{}` into `{}`".format(
+                                        "www.{}".format(element),
+                                        Settings.volatile_list_file,
+                                    )
+                                )
+                                volatile_list.append("www.{}".format(element))
+                    print(
+                        "Introduction of `{}` into `{}`".format(
+                            element, Settings.volatile_list_file
+                        )
+                    )
+                    volatile_list.append(element)
+
         temp_clean_list = Helpers.List(temp_clean_list).format()
+        volatile_list = Helpers.List(volatile_list).format()
 
         for element in temp_clean_list:
             if element:
-                if syntax_check(element):
-                    if element.startswith("www."):
+                if not is_subdomain(element) and syntax_check(element):
+                    if (
+                        element.startswith("www.")
+                        and domain_availability_check(
+                            element[4:], config=PYFUNCEBLE_CONFIGURATION
+                        ).lower()
+                        == "active"
+                    ):
                         clean_list.append(element[4:])
                     else:
-                        clean_list.append("www.%s" % element)
+                        if (
+                            domain_availability_check(
+                                "www.{}".format(element),
+                                config=PYFUNCEBLE_CONFIGURATION,
+                            ).lower()
+                            == "active"
+                        ):
+                            clean_list.append("www.{}".format(element))
                 clean_list.append(element)
 
         clean_list = Helpers.List(clean_list).format()
         whitelisted = clean_list_with_official_whitelist(clean_list)
+
+        volatile_list.extend(clean_list)
+        volatile_list = Helpers.List(volatile_list).format()
 
         Helpers.File(Settings.clean_list_file).write(
             "\n".join(clean_list), overwrite=True
@@ -90,6 +193,10 @@ def generate_clean_and_whitelisted_list():
 
         Helpers.File(Settings.whitelisted_list_file).write(
             "\n".join(whitelisted), overwrite=True
+        )
+
+        Helpers.File(Settings.volatile_list_file).write(
+            "\n".join(volatile_list), overwrite=True
         )
 
         Helpers.File("whitelisting.py").delete()
@@ -100,4 +207,4 @@ if __name__ == "__main__":
     update_adminisation_file()
     save_administration_file()
 
-    generate_clean_and_whitelisted_list()
+    generate_extra_files()

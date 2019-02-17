@@ -79,6 +79,13 @@ class Settings:  # pylint: disable=too-few-public-methods
     # Note: This variable is auto updated by Initiate()
     whitelisted_list_file = "whitelisted.list"
 
+    # This variable is used to set the location of the file for the list without
+    # dead/inactive domains.
+    # The difference between the purpose of this file and the clean.list file
+    # is that this file do not take the "SPECIAL" flag of PyFunceble in
+    # consideration.
+    volatile_list_file = "volatile.list"
+
     # This variable will help us know where we are working into the filesystem.
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
