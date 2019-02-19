@@ -27,6 +27,7 @@ INFO = {}
 
 PYFUNCEBLE_CONFIGURATION = {"no_whois": True}
 PYFUNCEBLE_CONFIGURATION_VOLATILE = {"no_whois": True, "no_special": True}
+REGEX_SPECIAL = r"\.blogspot\.|\.liveadvert\.com$|\.skyrock\.com$|\.tumblr\.com$|\.wordpress\.com$|\.doubleclick\.net$"  # pylint: disable=line-too-long
 
 
 def get_administration_file():
@@ -57,29 +58,6 @@ def save_administration_file():
     Helpers.Dict(INFO).to_json(Settings.repository_info)
 
 
-def _is_special_pyfunceble(element):
-    """
-    Check if the given element is a SPECIAL.
-    """
-
-    if ".blogspot." in element:
-        return True
-
-    should_endswith = [
-        ".doubleclick.net",
-        ".liveadvert.com",
-        ".skyrock.com",
-        ".tumblr.com",
-        ".wordpress.com",
-    ]
-
-    for marker in should_endswith:
-        if element.endswith(marker):
-            return True
-
-    return False
-
-
 def generate_extra_files():  # pylint: disable=too-many-branches
     """
     Update/Create `clean.list`, `volatile.list` and `whitelisted.list`.
@@ -104,9 +82,11 @@ def generate_extra_files():  # pylint: disable=too-many-branches
             )
 
         if path.isfile(inactive):
-            for element in Helpers.Regex(
-                Helpers.File(inactive).to_list(), r"^#|^$"
-            ).not_matching_list():
+            list_to_retest = Helpers.Regex(
+                Helpers.File(inactive).to_list(), REGEX_SPECIAL
+            ).matching_list()
+
+            for element in list_to_retest:
                 print(
                     "Checking eligibility of `{}` for introduction into `{}`...".format(
                         element, Settings.volatile_list_file
@@ -114,7 +94,6 @@ def generate_extra_files():  # pylint: disable=too-many-branches
                 )
                 if (
                     element
-                    and _is_special_pyfunceble(element)
                     and domain_availability_check(
                         element, config=PYFUNCEBLE_CONFIGURATION_VOLATILE
                     ).lower()
