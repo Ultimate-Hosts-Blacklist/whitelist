@@ -366,8 +366,8 @@
             "state": "future"
         },
         "digg.com": {
-            "epoch": "1550620800",
-            "expiration_date": "20-feb-2019",
+            "epoch": "1861660800",
+            "expiration_date": "29-dec-2028",
             "state": "future"
         },
         "digitaltrends.com": {
@@ -991,8 +991,8 @@
             "state": "future"
         },
         "hoopshype.com": {
-            "epoch": "1550620800",
-            "expiration_date": "20-feb-2019",
+            "epoch": "1582156800",
+            "expiration_date": "20-feb-2020",
             "state": "future"
         },
         "hosts-file.net": {
