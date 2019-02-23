@@ -524,11 +524,19 @@ realestate.nj.com
 reddit.com
 redfin.com
 reebok.com
+REG ^(?!.*\.?(oem)).*\.twimg\.com$
+REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
+REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
+REG ^(?!.*\.?(watchdog\.ohio|dap\.digitalgov|stats\.ssa|adgallery\.whitehousedrugpolicy)).*\.gov$
 res.cloudinary.com
 road.adblock.ro
 roku.com
 rover.ebay.com
 rutube.ru
+RZD ebay
+RZD google
+RZD openload
+RZD pulsar.ebay
 rzeszow.tvp.pl
 s-passets-cache-ak0.pinimg.com
 s.gateway.messenger.live.com
@@ -700,6 +708,8 @@ wirtualnemedia.pl
 wordpress.com
 wt.logmein.com
 wtkr.com
+www.1.0.0.1
+www.1.1.1.1
 www.1fichier.com
 www.1und1.de
 www.2shared.com
@@ -709,9 +719,13 @@ www.abc.com
 www.accuweather.com
 www.acehardware.com
 www.adaway.org
+www.adblock.dk
 www.adblock.ee
 www.adidas.com
 www.advanceautoparts.com
+www.akadns.net
+www.akamai.net
+www.akamaiedge.net
 www.alexa.com
 www.allegro.pl
 www.alternativeto.net
@@ -765,8 +779,10 @@ www.businessinsider.com
 www.buzzfeed.com
 www.ccleaner.com
 www.cda.pl
+www.cdninstagram.com
 www.chomikuj.pl
 www.cloudflare.com
+www.cloudfront.net
 www.cnbc.com
 www.cnn.com
 www.collegehumor.com
@@ -794,6 +810,10 @@ www.ea.com
 www.easybytez.com
 www.easylist.to
 www.ebay.pl
+www.ebayimg.com
+www.ebayrtm.com
+www.ebaystatic.com
+www.edgesuite.net
 www.eonline.com
 www.espn.com
 www.ew.com
@@ -885,7 +905,10 @@ www.licdn.com
 www.lifehacker.com
 www.linkedin.com
 www.live.com
+www.live.net
+www.livefilestore.com
 www.load.to
+www.logmein-gateway.com
 www.logmein.com
 www.lowes.com
 www.lwn.net
@@ -912,6 +935,7 @@ www.msftncsi.com
 www.msn.com
 www.multiup.org
 www.mywot.com
+www.mzstatic.com
 www.naszdziennik.pl
 www.nationalgeographic.com
 www.nbcnews.com
@@ -922,13 +946,16 @@ www.netflix.com
 www.newegg.com
 www.newjobs.com
 www.newsday.com
+www.nflxext.com
 www.nflximg.com
+www.nflximg.net
 www.nike.com
 www.nitroflare.com
 www.nj.com
 www.nk.pl
 www.no-ip.com
 www.npr.org
+www.nsatc.net
 www.ny.com
 www.ny1.com
 www.nydailynews.com
@@ -937,6 +964,7 @@ www.nypost.com
 www.nytimes.com
 www.oboom.com
 www.observer.com
+www.odcdn.com
 www.office.com
 www.officedepot.com
 www.onet.pl
@@ -955,6 +983,7 @@ www.people.com
 www.pfsense.org
 www.pi-hole.net
 www.pilkanozna.pl
+www.pinimg.com
 www.pinterest.com
 www.pkobp.pl
 www.player.pl
@@ -972,8 +1001,16 @@ www.real-debrid.com
 www.reddit.com
 www.redfin.com
 www.reebok.com
+www.REG ^(?!.*\.?(oem)).*\.twimg\.com$
+www.REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
+www.REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
+www.REG ^(?!.*\.?(watchdog\.ohio|dap\.digitalgov|stats\.ssa|adgallery\.whitehousedrugpolicy)).*\.gov$
 www.roku.com
 www.rutube.ru
+www.RZD ebay
+www.RZD google
+www.RZD openload
+www.RZD pulsar.ebay
 www.samsung.com
 www.satkurier.pl
 www.scribd.com
@@ -988,10 +1025,12 @@ www.slickdeals.net
 www.snapchat.com
 www.solidfiles.com
 www.someonewhocares.org
+www.spapps.co
 www.spb.ru
 www.spiceworks.com
 www.sport.pl
 www.spotify.com
+www.ssl-images-amazon.com
 www.stackexchange.com
 www.stanev.org
 www.starbucks.com
@@ -1020,6 +1059,7 @@ www.time.com
 www.tinyurl.com
 www.tlc.com
 www.tld-list.com
+www.tmblr.co
 www.tmz.com
 www.tomshardware.com
 www.torrentfreak.com
@@ -1031,6 +1071,7 @@ www.tusfiles.net
 www.tvn24.pl
 www.tvnstyle.pl
 www.tvp.pl
+www.twimg.com
 www.twitch.tv
 www.twitter.com
 www.ubuntuforums.org
@@ -1072,8 +1113,10 @@ www.wyspagier.pl
 www.xboxlive.com
 www.xda-developers.com
 www.yahoo.com
+www.youtu.be
 www.youtube-nocookie.com
 www.youtube.com
+www.ytimg.com
 www.yunfile.com
 www.zajefajna.com
 www.zippyshare.com

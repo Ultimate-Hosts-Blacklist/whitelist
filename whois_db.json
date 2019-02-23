@@ -206,8 +206,8 @@
             "state": "future"
         },
         "bing.pl": {
-            "epoch": "1550707200",
-            "expiration_date": "21-feb-2019",
+            "epoch": "1582243200",
+            "expiration_date": "21-feb-2020",
             "state": "future"
         },
         "bing.ru": {
@@ -1011,8 +1011,8 @@
             "state": "future"
         },
         "hulu.com": {
-            "epoch": "1550793600",
-            "expiration_date": "22-feb-2019",
+            "epoch": "1582329600",
+            "expiration_date": "22-feb-2020",
             "state": "future"
         },
         "icanhazip.com": {
@@ -1666,8 +1666,8 @@
             "state": "future"
         },
         "slate.com": {
-            "epoch": "1550793600",
-            "expiration_date": "22-feb-2019",
+            "epoch": "1582329600",
+            "expiration_date": "22-feb-2020",
             "state": "future"
         },
         "slickdeals.net": {
@@ -1786,8 +1786,8 @@
             "state": "future"
         },
         "thechive.com": {
-            "epoch": "1550880000",
-            "expiration_date": "23-feb-2019",
+            "epoch": "1582416000",
+            "expiration_date": "23-feb-2020",
             "state": "future"
         },
         "thefreethoughtproject.com": {
