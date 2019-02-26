@@ -105,6 +105,11 @@
             "expiration_date": "17-mar-2020",
             "state": "future"
         },
+        "amazon.co.uk": {
+            "epoch": "1607126400",
+            "expiration_date": "05-dec-2020",
+            "state": "future"
+        },
         "amazon.com": {
             "epoch": "1667174400",
             "expiration_date": "31-oct-2022",
@@ -180,9 +185,19 @@
             "expiration_date": "21-apr-2019",
             "state": "future"
         },
+        "bing.co.uk": {
+            "epoch": "1558224000",
+            "expiration_date": "19-may-2019",
+            "state": "future"
+        },
         "bing.com": {
             "epoch": "1580342400",
             "expiration_date": "30-jan-2020",
+            "state": "future"
+        },
+        "bing.com.br": {
+            "epoch": "1580428800",
+            "expiration_date": "31-jan-2020",
             "state": "future"
         },
         "bing.cz": {
@@ -365,6 +380,11 @@
             "expiration_date": "02-jul-2019",
             "state": "future"
         },
+        "di.com.pl": {
+            "epoch": "1582156800",
+            "expiration_date": "20-feb-2020",
+            "state": "future"
+        },
         "digg.com": {
             "epoch": "1861660800",
             "expiration_date": "29-dec-2028",
@@ -464,6 +484,11 @@
             "epoch": "1283126400",
             "expiration_date": "30-aug-2010",
             "state": "past"
+        },
+        "express.co.uk": {
+            "epoch": "1573948800",
+            "expiration_date": "17-nov-2019",
+            "state": "future"
         },
         "facebook.com": {
             "epoch": "1837987200",
@@ -1836,8 +1861,8 @@
             "state": "future"
         },
         "tlc.com": {
-            "epoch": "1551139200",
-            "expiration_date": "26-feb-2019",
+            "epoch": "1582675200",
+            "expiration_date": "26-feb-2020",
             "state": "future"
         },
         "tld-list.com": {
