@@ -16,7 +16,6 @@ Contributors:
 """
 # pylint:disable=bad-continuation
 
-from PyFunceble import is_subdomain
 from ultimate_hosts_blacklist_the_whitelist import clean_list_with_official_whitelist
 
 from update import Helpers, Settings, path, strftime
@@ -64,11 +63,10 @@ def generate_extra_files():  # pylint: disable=too-many-branches,too-many-statem
 
     if bool(int(INFO["clean_original"])):  # pylint: disable=too-many-nested-blocks
         clean_list = []
-        temp_clean_list = []
         volatile_list = []
 
         list_special_content = Helpers.Regex(
-            Helpers.File(Settings.file_to_test).to_list(), r"(ALL|REG|RZD)\s"
+            Helpers.File(Settings.file_to_test).to_list(), Settings.regex_whitelist
         ).matching_list()
 
         active = Settings.current_directory + "output/domains/ACTIVE/list"
@@ -76,47 +74,20 @@ def generate_extra_files():  # pylint: disable=too-many-branches,too-many-statem
 
         if path.isfile(active):
             print("Starting manipulation of `{}`.".format(active))
-            temp_clean_list.extend(
+            clean_list.extend(
                 Helpers.Regex(Helpers.File(active).to_list(), r"^#").not_matching_list()
-                + list_special_content
             )
+            clean_list.extend(list_special_content)
             print("Stoping manipulation of `{}`.".format(active))
 
         if path.isfile(inactive):
             print("Starting manipulation of `{}`.".format(inactive))
-
-            for element in Helpers.Regex(
-                Helpers.File(inactive).to_list(), REGEX_SPECIAL
-            ).matching_list():
-                if element:
-                    if not is_subdomain(element):
-                        if element.startswith("www."):
-                            volatile_list.append(element[4:])
-                        else:
-                            volatile_list.append("www.{}".format(element))
-                    volatile_list.append(element)
+            volatile_list.extend(
+                Helpers.Regex(
+                    Helpers.File(inactive).to_list(), REGEX_SPECIAL
+                ).matching_list()
+            )
             print("Stoping manipulation of `{}`.".format(inactive))
-
-        temp_clean_list = Helpers.List(temp_clean_list).format()
-
-        print(
-            "Starting the generation of the content of `{}`.".format(
-                Settings.clean_list_file
-            )
-        )
-        for element in temp_clean_list:
-            if element:
-                if not is_subdomain(element):
-                    if element.startswith("www."):
-                        clean_list.append(element[4:])
-                    else:
-                        clean_list.append("www.{}".format(element))
-                clean_list.append(element)
-        print(
-            "Stoping the generation of the content of `{}`.".format(
-                Settings.clean_list_file
-            )
-        )
 
         print("Deletion of duplicate for `{}`".format(Settings.clean_list_file))
         clean_list = Helpers.List(clean_list).format()

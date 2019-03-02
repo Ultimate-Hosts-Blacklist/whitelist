@@ -28,6 +28,7 @@ from subprocess import PIPE, Popen
 from tarfile import open as tarfile_open
 from time import ctime, strftime
 
+from domain2idna import get as domain2idna
 from requests import get
 
 
@@ -136,11 +137,14 @@ class Settings:  # pylint: disable=too-few-public-methods
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     regex_travis = "[ci skip]"
 
+    # This variable is used ot match the special whitelist elements.
+    regex_whitelist = r"(ALL|REG|RZD)\s"
+
     # This variable is used to set the number of minutes before we stop the script under Travis CI.
     #
     # Note: DO NOT TOUCH UNLESS YOU KNOW WHAT IT MEANS!
     # Note: This variable is auto updated by Initiate()
-    autosave_minutes = 10
+    autosave_minutes = 15
 
     # This variable is used to set the default commit message when we commit
     # under Travic CI.
@@ -519,11 +523,35 @@ class DomainsList:
                 The file to read.
         """
 
+        from PyFunceble import is_subdomain, syntax_check
+
         result = []
 
         for line in Helpers.File(file).to_list():
-            if line and not line.startswith("#"):
-                result.append(cls.format_domain(line.strip()))
+            if not line:
+                continue
+
+            if line.startswith("#"):
+                continue
+
+            if Helpers.Regex(line, Settings.regex_whitelist, return_data=False).match():
+                result.append(line)
+                continue
+
+            formated = cls.format_domain(line.strip())
+
+            if formated.startswith("www."):
+                if formated[4:] not in result:
+                    result.append(formated[4:])
+            elif syntax_check(domain2idna(formated)) and not is_subdomain(
+                domain2idna(formated)
+            ):
+                new_version = f"www.{formated}"
+
+                if new_version not in result:
+                    result.append(new_version)
+
+            result.append(formated)
 
         return result
 
@@ -592,8 +620,19 @@ class DomainsList:
                 Helpers.File(Settings.file_to_test).write(
                     "\n".join(formated_content), overwrite=True
                 )
-            elif not Settings.raw_link:
+
+                del formated_content
+            elif not Settings.raw_link and path.isfile(Settings.file_to_test):
                 print("\n")
+                new_file_content = Helpers.List(
+                    cls.extract_lines(Settings.file_to_test)
+                ).format()
+
+                Helpers.File(Settings.file_to_test).write(
+                    "\n".join(new_file_content), overwrite=True
+                )
+
+                del new_file_content
 
             if restart:
                 Settings.currently_under_test = False
@@ -819,7 +858,7 @@ class Helpers:  # pylint: disable=too-few-public-methods
 
             result = []
 
-            for read in open(self.file):
+            for read in open(self.file, encoding="utf-8"):
                 result.append(read.rstrip("\n").strip())
 
             return result

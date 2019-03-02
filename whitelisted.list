@@ -1,3 +1,4 @@
+
 REG ^(?!.*\.?(oem)).*\.twimg\.com$
 REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
 REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
@@ -6,11 +7,3 @@ RZD ebay
 RZD google
 RZD openload
 RZD pulsar.ebay
-www.REG ^(?!.*\.?(oem)).*\.twimg\.com$
-www.REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
-www.REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
-www.REG ^(?!.*\.?(watchdog\.ohio|dap\.digitalgov|stats\.ssa|adgallery\.whitehousedrugpolicy)).*\.gov$
-www.RZD ebay
-www.RZD google
-www.RZD openload
-www.RZD pulsar.ebay
