@@ -1250,6 +1250,11 @@
             "expiration_date": "19-jul-2025",
             "state": "future"
         },
+        "maxthon.com": {
+            "epoch": "1588291200",
+            "expiration_date": "01-may-2020",
+            "state": "future"
+        },
         "mediamarkt.pl": {
             "epoch": "1570752000",
             "expiration_date": "11-oct-2019",
