@@ -206,8 +206,8 @@
             "state": "future"
         },
         "bing.fi": {
-            "epoch": "1551744000",
-            "expiration_date": "05-mar-2019",
+            "epoch": "1583366400",
+            "expiration_date": "05-mar-2020",
             "state": "future"
         },
         "bing.fr": {
@@ -1396,8 +1396,8 @@
             "state": "future"
         },
         "nitroflare.com": {
-            "epoch": "1551744000",
-            "expiration_date": "05-mar-2019",
+            "epoch": "1583366400",
+            "expiration_date": "05-mar-2020",
             "state": "future"
         },
         "nj.com": {
