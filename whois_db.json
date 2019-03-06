@@ -218,7 +218,7 @@
         "bing.it": {
             "epoch": "1551830400",
             "expiration_date": "06-mar-2019",
-            "state": "future"
+            "state": "past"
         },
         "bing.pl": {
             "epoch": "1582243200",
