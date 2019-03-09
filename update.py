@@ -279,7 +279,7 @@ class PyFunceble:
         else:
             to_download = "PyFunceble-dev"
 
-        Helpers.Command("pip3 install %s" % to_download, False).execute()
+        Helpers.Command("pip3 install --upgrade %s" % to_download, False).execute()
 
     @classmethod
     def download_complementary_files(cls):

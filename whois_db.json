@@ -1591,8 +1591,8 @@
             "state": "future"
         },
         "publicsuffix.org": {
-            "epoch": "1552003200",
-            "expiration_date": "08-mar-2019",
+            "epoch": "1615161600",
+            "expiration_date": "08-mar-2021",
             "state": "future"
         },
         "publix.com": {
@@ -1926,8 +1926,8 @@
             "state": "future"
         },
         "tvp.pl": {
-            "epoch": "1552003200",
-            "expiration_date": "08-mar-2019",
+            "epoch": "1583625600",
+            "expiration_date": "08-mar-2020",
             "state": "future"
         },
         "twimg.com": {
