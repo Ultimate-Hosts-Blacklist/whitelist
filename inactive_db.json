@@ -1,6 +1,6 @@
 {
     "/home/travis/build/Ultimate-Hosts-Blacklist/whitelist/domains.list": {
-        "1552589400": [
+        "1552761684": [
             ".debian.org",
             ".digitaltrends.com",
             ".freebsd.org",
@@ -94,7 +94,6 @@
             "www.nsatc.net",
             "www.odcdn.com",
             "www.pinimg.com",
-            "www.raw.githubusercontent.com",
             "www.spapps.co",
             "www.ssl-images-amazon.com",
             "www.tmblr.co",
