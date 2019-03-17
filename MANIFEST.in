@@ -1,3 +1,5 @@
-recursive-include ultimate_hosts_blacklist_the_whitelist *.py
+recursive-include ultimate_hosts_blacklist/whitelist *.py
 include LICENSE
 include requirements.txt
+include README.rst
+include .coveragerc

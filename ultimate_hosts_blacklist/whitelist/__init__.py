@@ -7,7 +7,9 @@ License:
 
     MIT License
 
+    Copyright (c) 2018-2019 Ultimate-Hosts-Blacklist
     Copyright (c) 2018-2019 Nissar Chababy
+    Copyright (c) 2019 Mitchell Krog
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -29,12 +31,14 @@ License:
 """
 
 import argparse
-from colorama import init as initiate
+
 from colorama import Fore, Style
+from colorama import init as initiate
 
-from ultimate_hosts_blacklist_the_whitelist.core import Core
+from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "1.0.1"
+VERSION = "2.0.0"
+
 
 def clean_string_with_official_whitelist(data):
     """
@@ -51,6 +55,7 @@ def clean_string_with_official_whitelist(data):
     """
 
     return "\n".join(Core(string=data, use_core=True).filter())
+
 
 def clean_list_with_official_whitelist(data):
     """

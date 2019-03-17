@@ -9,7 +9,9 @@ License:
 
     MIT License
 
+    Copyright (c) 2018-2019 Ultimate-Hosts-Blacklist
     Copyright (c) 2018-2019 Nissar Chababy
+    Copyright (c) 2019 Mitchell Krog
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -30,21 +32,20 @@ License:
     SOFTWARE.
 """
 from json import loads
+from re import escape
 
 from domain2idna import get as domain2idna
 
 # pylint: disable=bad-continuation
-from ultimate_hosts_blacklist_the_whitelist.helpers import (Download, File,
-                                                            List, Regex,
-                                                            escape)
+from ultimate_hosts_blacklist.whitelist.helpers import Download, File, List, Regex
 
 
-class Core:  # pylint: disable=too-few-public-methods
+class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-many-instance-attributes
     """
     Brain of our system.
     """
 
-    MAKERS = {"all": "ALL ", "regex": "REG ", "root_zone_db": "RZD "}
+    MARKERS = {"all": "ALL ", "regex": "REG ", "root_zone_db": "RZD "}
 
     # List all links we are going to call/use.
     LINKS = {
@@ -59,10 +60,12 @@ class Core:  # pylint: disable=too-few-public-methods
         string=None,
         items=None,
         output_file=None,
+        secondary_whitelist=None,
         secondary_whitelist_file=None,
         use_core=True,
-    ):  # pylint: disable=too-many-arguments
+    ):
         self.secondary_whitelist_file = secondary_whitelist_file
+        self.secondary_whitelist_list = secondary_whitelist
         self.file = file
         self.string = string
         self.items = items
@@ -71,7 +74,7 @@ class Core:  # pylint: disable=too-few-public-methods
 
         self.regex_rz_db = RZDB().regex_format()
 
-    def __parse_whitelist_list(self, line):
+    def _parse_whitelist_list(self, line):
         """
         Parse the whiteslist list into something the system understand.
 
@@ -83,16 +86,16 @@ class Core:  # pylint: disable=too-few-public-methods
         """
 
         if line and not line.startswith("#"):
-            if line.startswith(self.MAKERS["all"]):
+            if line.startswith(self.MARKERS["all"]):
                 whitelist_element = "{}$".format(
-                    escape(line.split(self.MAKERS["all"])[-1].strip())
+                    escape(line.split(self.MARKERS["all"])[-1].strip())
                 )
-            elif line.startswith(self.MAKERS["regex"]):
+            elif line.startswith(self.MARKERS["regex"]):
                 whitelist_element = "{}".format(
-                    line.split(self.MAKERS["regex"])[-1].strip()
+                    line.split(self.MARKERS["regex"])[-1].strip()
                 )
-            elif line.startswith(self.MAKERS["root_zone_db"]):
-                to_check = line.split(self.MAKERS["root_zone_db"])[-1].strip()
+            elif line.startswith(self.MARKERS["root_zone_db"]):  # pragma: no cover
+                to_check = line.split(self.MARKERS["root_zone_db"])[-1].strip()
 
                 if to_check.endswith("."):
                     to_check = to_check[:-1]
@@ -101,33 +104,51 @@ class Core:  # pylint: disable=too-few-public-methods
 
                 if not to_check.startswith("www."):
                     whitelist_element = [
-                        "^{}{}$".format(to_check, self.regex_rz_db),
-                        "^www.{}{}$".format(to_check, self.regex_rz_db),
+                        r"^{}{}$".format(to_check, self.regex_rz_db),
+                        r"\s+{}{}$".format(to_check, self.regex_rz_db),
+                        r"\t+{}{}$".format(to_check, self.regex_rz_db),
+                        r"^www\.{}{}$".format(to_check, self.regex_rz_db),
+                        r"\s+www\.{}{}$".format(to_check, self.regex_rz_db),
+                        r"\t+www\.{}{}$".format(to_check, self.regex_rz_db),
                     ]
                 else:
+                    bare = ".".join(to_check.split(".")[1:])
+
                     whitelist_element = [
-                        "^{}{}$".format(to_check, self.regex_rz_db),
-                        "^{}{}$".format(
-                            ".".join(to_check.split(".")[1:]), self.regex_rz_db
-                        ),
+                        r"^{}{}$".format(bare, self.regex_rz_db),
+                        r"\s+{}{}$".format(bare, self.regex_rz_db),
+                        r"\t+{}{}$".format(bare, self.regex_rz_db),
+                        r"^{}{}$".format(to_check, self.regex_rz_db),
+                        r"\s+{}{}$".format(to_check, self.regex_rz_db),
+                        r"\t+{}{}$".format(to_check, self.regex_rz_db),
                     ]
             else:
                 to_check = escape(line.strip())
 
-                if not to_check.startswith("www."):
+                if not to_check.startswith(r"www\."):
                     whitelist_element = [
-                        "^{}$".format(to_check),
-                        "^www.{}$".format(to_check),
+                        r"^{}$".format(to_check),
+                        r"\s+{}$".format(to_check),
+                        r"\t+{}$".format(to_check),
+                        r"^www\.{}$".format(to_check),
+                        r"\s+www\.{}$".format(to_check),
+                        r"\t+www\.{}$".format(to_check),
                     ]
                 else:
+                    bare = ".".join(to_check.split(".")[1:])
+
                     whitelist_element = [
-                        "^{}$".format(to_check),
-                        "^{}$".format(".".join(to_check.split(".")[1:])),
+                        r"^{}$".format(bare),
+                        r"\s+{}$".format(bare),
+                        r"\t+{}$".format(bare),
+                        r"^{}$".format(to_check),
+                        r"\s+{}$".format(to_check),
+                        r"\t+{}$".format(to_check),
                     ]
 
             yield whitelist_element
 
-    def __get_whitelist_list(self):
+    def __get_whitelist_list(self):  # pragma: no cover
         """
         Get whitelist list.
 
@@ -148,10 +169,13 @@ class Core:  # pylint: disable=too-few-public-methods
             for file in self.secondary_whitelist_file:
                 data.extend(file.read().splitlines())
 
+        if self.secondary_whitelist_list and isinstance(
+            self.secondary_whitelist_list, list
+        ):
+            data.extend(self.secondary_whitelist_list)
+
         if data:
-            for element in [
-                self.__parse_whitelist_list(x) for x in List(data).format()
-            ]:
+            for element in [self._parse_whitelist_list(x) for x in List(data).format()]:
                 for content in element:
                     if isinstance(content, list):
                         whiteslist_list.extend(content)
@@ -165,7 +189,7 @@ class Core:  # pylint: disable=too-few-public-methods
         return whiteslist_list, "|".join(whiteslist_list)
 
     @classmethod
-    def __format_upstream_line(cls, line):  # pylint: disable=too-many-branches
+    def _format_upstream_line(cls, line):  # pylint: disable=too-many-branches
         """
         Format the given line in order to only extract the domain.
 
@@ -179,7 +203,7 @@ class Core:  # pylint: disable=too-few-public-methods
         regex_delete = r"localhost$|localdomain$|local$|broadcasthost$|0\.0\.0\.0$|allhosts$|allnodes$|allrouters$|localnet$|loopback$|mcastprefix$"  # pylint: disable=line-too-long
         comment = ""
         element = ""
-        tabs = "\t"
+        tabs = r"\t"
         space = " "
 
         if Regex(line, regex_delete, return_data=True).match():
@@ -187,12 +211,7 @@ class Core:  # pylint: disable=too-few-public-methods
 
         tabs_position, space_position = (line.find(tabs), line.find(space))
 
-        if tabs_position > -1 and space_position > -1:
-            if space_position < tabs_position:
-                separator = space
-            else:
-                separator = tabs
-        elif not tabs_position == -1:
+        if not tabs_position == -1:
             separator = tabs
         elif not space_position == -1:
             separator = space
@@ -221,11 +240,13 @@ class Core:  # pylint: disable=too-few-public-methods
 
                     element = splited_line[index].split(comment)[0]
                     splited_line[index] = domain2idna(element) + comment
+            else:
+                splited_line[index] = domain2idna(splited_line[index])
 
             return separator.join(splited_line)
         return domain2idna(line)
 
-    def __write_output(self, line):
+    def __write_output(self, line):  # pragma: no cover
         """
         Write the output file.
 
@@ -251,26 +272,26 @@ class Core:  # pylint: disable=too-few-public-methods
         content = []
         _, regex_whitelist = self.__get_whitelist_list()
 
-        if self.file:
+        if self.file:  # pragma: no cover
             content.extend(
-                [self.__format_upstream_line(x) for x in File(self.file).to_list()]
+                [self._format_upstream_line(x) for x in File(self.file).to_list()]
             )
         elif self.string:
             content.extend(
-                [self.__format_upstream_line(x) for x in self.string.split("\n")]
+                [self._format_upstream_line(x) for x in self.string.split("\n")]
             )
         elif self.items:
-            content.extend([self.__format_upstream_line(x) for x in self.items])
+            content.extend([self._format_upstream_line(x) for x in self.items])
 
         if content and regex_whitelist:
-            if self.output:
+            if self.output:  # pragma: no cover
                 File(self.output).write("", overwrite=True)
 
             return self.__write_output(
                 Regex(content, regex_whitelist, return_data=False).not_matching_list()
             )
 
-        return content
+        return content  # pragma: no cover
 
 
 class RZDB:

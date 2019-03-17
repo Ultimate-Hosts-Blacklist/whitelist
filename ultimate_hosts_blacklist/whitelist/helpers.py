@@ -1,7 +1,7 @@
 """
 The whitelist script of the Ultimate-Hosts-Blacklist project.
 
-Provide helpers
+Provide the helpers
 
 License:
 ::
@@ -9,7 +9,9 @@ License:
 
     MIT License
 
+    Copyright (c) 2018-2019 Ultimate-Hosts-Blacklist
     Copyright (c) 2018-2019 Nissar Chababy
+    Copyright (c) 2019 Mitchell Krog
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +35,6 @@ License:
 
 from os import path
 from re import compile as comp
-from re import escape
 
 from requests import get
 
@@ -44,7 +45,7 @@ class List:  # pylint: disable=too-few-public-methods
     """
 
     def __init__(self, main_list=None):
-        if main_list is None:
+        if main_list is None:  # pragma: no cover
             self.main_list = []
         else:
             self.main_list = main_list
@@ -56,12 +57,11 @@ class List:  # pylint: disable=too-few-public-methods
 
         try:
             return sorted(list(set(self.main_list)), key=str.lower)
-
-        except TypeError:
+        except TypeError:  # pragma: no cover
             return self.main_list
 
 
-class File:  # pylint: disable=too-few-public-methods
+class File:  # pylint: disable=too-few-public-methods  # pragma: no cover
     """
     File treatment/manipulations.
 
@@ -113,7 +113,7 @@ class File:  # pylint: disable=too-few-public-methods
                     file.write(data_to_write)
 
 
-class Download:  # pylint: disable=too-few-public-methods
+class Download:  # pylint: disable=too-few-public-methods  # pragma: no cover
     """
     This class will initiate a download of the desired link.
 
@@ -199,9 +199,6 @@ class Regex:  # pylint: disable=too-few-public-methods
             The regex to match.
         - group: int
             The group to return
-        - rematch: bool
-            True: return the matched groups into a formated list.
-                (implementation of Bash ${BASH_REMATCH})
         - replace_with: str
             The value to replace the matched regex with.
         - occurences: int
@@ -218,7 +215,6 @@ class Regex:  # pylint: disable=too-few-public-methods
             "escape": False,
             "group": 0,
             "occurences": 0,
-            "rematch": False,
             "return_data": True,
         }
 
@@ -227,9 +223,6 @@ class Regex:  # pylint: disable=too-few-public-methods
         for (arg, default) in optional_arguments.items():
             setattr(self, arg, args.get(arg, default))
 
-        if self.escape:  # pylint: disable=no-member
-            self.regex = escape(regex)
-        else:
             self.regex = regex
 
     def match(self):
@@ -237,38 +230,17 @@ class Regex:  # pylint: disable=too-few-public-methods
         Used to get exploitable result of re.search
         """
 
-        # We initate this variable which gonna contain the returned data
-        result = []
-
         # We compile the regex string
         to_match = comp(self.regex)
 
         # In case we have to use the implementation of ${BASH_REMATCH} we use
         # re.findall otherwise, we use re.search
-        if self.rematch:  # pylint: disable=no-member
-            pre_result = to_match.findall(self.data)
-        else:
-            pre_result = to_match.search(self.data)
+        pre_result = to_match.search(self.data)
 
         if self.return_data and pre_result:  # pylint: disable=no-member
-            if self.rematch:  # pylint: disable=no-member
-                for data in pre_result:
-                    if isinstance(data, tuple):
-                        result.extend(list(data))
-                    else:
-                        result.append(data)
+            return pre_result.group(self.group).strip()  # pylint: disable=no-member
 
-                if self.group != 0:  # pylint: disable=no-member
-                    return result[self.group]  # pylint: disable=no-member
-
-            else:
-                result = pre_result.group(
-                    self.group  # pylint: disable=no-member
-                ).strip()
-
-            return result
-
-        elif not self.return_data and pre_result:  # pylint: disable=no-member
+        if not self.return_data and pre_result:  # pylint: disable=no-member
             return True
 
         return False
@@ -284,13 +256,3 @@ class Regex:  # pylint: disable=too-few-public-methods
         return list(
             filter(lambda element: not pre_result.search(str(element)), self.data)
         )
-
-    def matching_list(self):
-        """
-        This method return a list of the string which match the given
-        regex.
-        """
-
-        pre_result = comp(self.regex)
-
-        return list(filter(lambda element: pre_result.search(str(element)), self.data))

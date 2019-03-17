@@ -7,7 +7,9 @@ License:
 
     MIT License
 
+    Copyright (c) 2018-2019 Ultimate-Hosts-Blacklist
     Copyright (c) 2018-2019 Nissar Chababy
+    Copyright (c) 2019 Mitchell Krog
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -28,25 +30,36 @@ License:
     SOFTWARE.
 """
 
+from os import getcwd
+from os import sep as directory_separator
 from re import compile as comp
+from re import sub as substring
 from unittest import TestLoader
 
 from setuptools import setup
 
+NAMESPACE = "ultimate_hosts_blacklist"
+MODULE = "whitelist"
+
+PYPI_NAME = substring(r"\_", r"\-", "{0}-{1}".format(NAMESPACE, MODULE))
+
 
 def _test_suite():
     """
-    This function will discover and run all the tests.
+    Discover and run all the tests.
     """
 
     test_loader = TestLoader()
-    test_suite = test_loader.discover("tests", pattern="test_*.py")
+    test_suite = test_loader.discover(
+        "{0}{1}{2}{1}tests".format(NAMESPACE, directory_separator, MODULE),
+        pattern="test_*.py",
+    )
     return test_suite
 
 
 def _get_requirements():
     """
-    This function extract all requirements from requirements.txt.
+    Extract all requirements from requirements.txt.
     """
 
     with open("requirements.txt") as file:
@@ -57,12 +70,15 @@ def _get_requirements():
 
 def _get_version():
     """
-    This function will extract the version from ultimate_hosts_blacklist_the_whitelist/__init__.py
+    Extract the version from ultimate_hosts_blacklist/whitelist/__init__.py
     """
 
     to_match = comp(r'VERSION\s=\s"(.*)"\n')
     extracted = to_match.findall(
-        open("ultimate_hosts_blacklist_the_whitelist/__init__.py", encoding="utf-8").read()
+        open(
+            getcwd() + "/ultimate_hosts_blacklist/whitelist/__init__.py",
+            encoding="utf-8",
+        ).read()
     )[0]
 
     return ".".join(list(filter(lambda x: x.isdigit(), extracted.split("."))))
@@ -78,23 +94,16 @@ def _get_long_description():  # pragma: no cover
 
 if __name__ == "__main__":
     setup(
-        name="ultimate_hosts_blacklist_the_whitelist",
+        name=PYPI_NAME,
         version=_get_version(),
         install_requires=_get_requirements(),
         description="The whitelisting tool of the Ultimate Hosts Blacklist project.",
         long_description=_get_long_description(),
-        author="funilrys",
-        author_email="contact@funilrys.com",
         license="MIT",
         url="https://github.com/Ultimate-Hosts-Blacklist/whitelist/tree/script",
         platforms=["any"],
-        packages=["ultimate_hosts_blacklist_the_whitelist"],
-        keywords=[
-            "Python",
-            "hosts",
-            "hosts file",
-            "whitelist",
-        ],
+        packages=["ultimate_hosts_blacklist.whitelist"],
+        keywords=["Python", "hosts", "hosts file", "whitelist"],
         classifiers=[
             "Environment :: Console",
             "Topic :: Internet",
@@ -107,7 +116,9 @@ if __name__ == "__main__":
         test_suite="setup._test_suite",
         entry_points={
             "console_scripts": [
-                "uhb_whitelist=ultimate_hosts_blacklist_the_whitelist:_command_line",
+                "uhb_whitelist=ultimate_hosts_blacklist.whitelist:_command_line",
+                "uhb-whitelist=ultimate_hosts_blacklist.whitelist:_command_line",
+                "ultimate-hosts-blacklist-whitelist=ultimate_hosts_blacklist.whitelist:_command_line",
             ]
         },
     )
