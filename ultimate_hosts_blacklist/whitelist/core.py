@@ -102,7 +102,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
                 to_check = escape(to_check)
 
-                if not to_check.startswith("www."):
+                if not to_check.startswith(r"www\."):
                     whitelist_element = [
                         r"^{}{}$".format(to_check, self.regex_rz_db),
                         r"\s+{}{}$".format(to_check, self.regex_rz_db),
@@ -260,7 +260,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             if isinstance(line, list):
                 line = "\n".join(line)
 
-            File(self.output).write("{}\n".format(line), overwrite=False)
+            File(self.output).write("{}\n".format(line), overwrite=True)
 
         return line
 
@@ -284,11 +284,12 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             content.extend([self._format_upstream_line(x) for x in self.items])
 
         if content and regex_whitelist:
-            if self.output:  # pragma: no cover
-                File(self.output).write("", overwrite=True)
-
             return self.__write_output(
-                Regex(content, regex_whitelist, return_data=False).not_matching_list()
+                [
+                    x
+                    for x in content
+                    if not Regex(x, regex_whitelist, return_data=False).match()
+                ]
             )
 
         return content  # pragma: no cover
