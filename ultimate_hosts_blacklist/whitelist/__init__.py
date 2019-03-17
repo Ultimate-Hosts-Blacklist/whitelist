@@ -37,7 +37,7 @@ from colorama import init as initiate
 
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "2.0.0"
+VERSION = "2.0.1"
 
 
 def clean_string_with_official_whitelist(data):

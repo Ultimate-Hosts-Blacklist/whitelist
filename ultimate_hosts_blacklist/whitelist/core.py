@@ -37,7 +37,7 @@ from re import escape
 from domain2idna import get as domain2idna
 
 # pylint: disable=bad-continuation
-from ultimate_hosts_blacklist.whitelist.helpers import Download, File, List, Regex
+from ultimate_hosts_blacklist.helpers import Download, File, List, Regex
 
 
 class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-many-instance-attributes

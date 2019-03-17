@@ -1,3 +1,4 @@
-requests
-domain2idna
 colorama
+domain2idna
+requests
+ultimate-hosts-blacklist-helpers
