@@ -37,7 +37,7 @@ from colorama import init as initiate
 
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "2.1.0"
+VERSION = "2.2.0"
 
 
 def clean_string_with_official_whitelist(data):
@@ -54,7 +54,7 @@ def clean_string_with_official_whitelist(data):
     :rtype: string
     """
 
-    return "\n".join(Core(string=data, use_core=True).filter())
+    return "\n".join(Core(use_core=True).filter(string=data))
 
 
 def clean_list_with_official_whitelist(data):
@@ -68,7 +68,7 @@ def clean_list_with_official_whitelist(data):
     :rtype: list
     """
 
-    return Core(items=data, use_core=True).filter()
+    return Core(use_core=True).filter(items=data)
 
 
 def _command_line():
@@ -132,16 +132,14 @@ def _command_line():
             print(
                 "\n".join(
                     Core(
-                        file=arguments.file,
                         secondary_whitelist_file=arguments.whitelist,
                         use_core=arguments.without_core,
-                    ).filter()
+                    ).filter(file=arguments.file)
                 )
             )
         else:
             Core(
-                file=arguments.file,
                 secondary_whitelist_file=arguments.whitelist,
                 output_file=arguments.output,
                 use_core=arguments.without_core,
-            ).filter()
+            ).filter(file=arguments.file)

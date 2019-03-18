@@ -56,9 +56,6 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
     def __init__(
         self,
-        file=None,
-        string=None,
-        items=None,
         output_file=None,
         secondary_whitelist=None,
         secondary_whitelist_file=None,
@@ -66,13 +63,11 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
     ):
         self.secondary_whitelist_file = secondary_whitelist_file
         self.secondary_whitelist_list = secondary_whitelist
-        self.file = file
-        self.string = string
-        self.items = items
         self.output = output_file
         self.use_core = use_core
 
         self.regex_rz_db = RZDB().regex_format()
+        self.regex_whitelist = self.__construct_regex_whitelist()
 
     def _parse_whitelist_list(self, line):
         """
@@ -87,11 +82,11 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         if line and not line.startswith("#"):
             if line.startswith(self.MARKERS["all"]):
-                whitelist_element = "{}$".format(
+                whitelist_element = "{0}$".format(
                     escape(line.split(self.MARKERS["all"])[-1].strip())
                 )
             elif line.startswith(self.MARKERS["regex"]):
-                whitelist_element = "{}".format(
+                whitelist_element = "{0}".format(
                     line.split(self.MARKERS["regex"])[-1].strip()
                 )
             elif line.startswith(self.MARKERS["root_zone_db"]):  # pragma: no cover
@@ -104,56 +99,53 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
                 if not to_check.startswith(r"www\."):
                     whitelist_element = [
-                        r"^{}{}$".format(to_check, self.regex_rz_db),
-                        r"\s+{}{}$".format(to_check, self.regex_rz_db),
-                        r"\t+{}{}$".format(to_check, self.regex_rz_db),
-                        r"^www\.{}{}$".format(to_check, self.regex_rz_db),
-                        r"\s+www\.{}{}$".format(to_check, self.regex_rz_db),
-                        r"\t+www\.{}{}$".format(to_check, self.regex_rz_db),
+                        r"^{0}{1}$".format(to_check, self.regex_rz_db),
+                        r"\s+{0}{1}$".format(to_check, self.regex_rz_db),
+                        r"\t+{0}{1}$".format(to_check, self.regex_rz_db),
+                        r"^www\.{0}{1}$".format(to_check, self.regex_rz_db),
+                        r"\s+www\.{0}{1}$".format(to_check, self.regex_rz_db),
+                        r"\t+www\.{0}{1}$".format(to_check, self.regex_rz_db),
                     ]
                 else:
                     bare = ".".join(to_check.split(".")[1:])
 
                     whitelist_element = [
-                        r"^{}{}$".format(bare, self.regex_rz_db),
-                        r"\s+{}{}$".format(bare, self.regex_rz_db),
-                        r"\t+{}{}$".format(bare, self.regex_rz_db),
-                        r"^{}{}$".format(to_check, self.regex_rz_db),
-                        r"\s+{}{}$".format(to_check, self.regex_rz_db),
-                        r"\t+{}{}$".format(to_check, self.regex_rz_db),
+                        r"^{0}{1}$".format(bare, self.regex_rz_db),
+                        r"\s+{0}{1}$".format(bare, self.regex_rz_db),
+                        r"\t+{0}{1}$".format(bare, self.regex_rz_db),
+                        r"^{0}{1}$".format(to_check, self.regex_rz_db),
+                        r"\s+{0}{1}$".format(to_check, self.regex_rz_db),
+                        r"\t+{0}{1}$".format(to_check, self.regex_rz_db),
                     ]
             else:
                 to_check = escape(line.strip())
 
                 if not to_check.startswith(r"www\."):
                     whitelist_element = [
-                        r"^{}$".format(to_check),
-                        r"\s+{}$".format(to_check),
-                        r"\t+{}$".format(to_check),
-                        r"^www\.{}$".format(to_check),
-                        r"\s+www\.{}$".format(to_check),
-                        r"\t+www\.{}$".format(to_check),
+                        r"^{0}$".format(to_check),
+                        r"\s+{0}$".format(to_check),
+                        r"\t+{0}$".format(to_check),
+                        r"^www\.{0}$".format(to_check),
+                        r"\s+www\.{0}$".format(to_check),
+                        r"\t+www\.{0}$".format(to_check),
                     ]
                 else:
                     bare = ".".join(to_check.split(".")[1:])
 
                     whitelist_element = [
-                        r"^{}$".format(bare),
-                        r"\s+{}$".format(bare),
-                        r"\t+{}$".format(bare),
-                        r"^{}$".format(to_check),
-                        r"\s+{}$".format(to_check),
-                        r"\t+{}$".format(to_check),
+                        r"^{0}$".format(bare),
+                        r"\s+{0}$".format(bare),
+                        r"\t+{0}$".format(bare),
+                        r"^{0}$".format(to_check),
+                        r"\s+{0}$".format(to_check),
+                        r"\t+{0}$".format(to_check),
                     ]
 
             yield whitelist_element
 
-    def __get_whitelist_list(self):  # pragma: no cover
+    def __construct_regex_whitelist(self):  # pragma: no cover
         """
-        Get whitelist list.
-
-        :return: The whitelist in list and regex format.
-        :rtype: tuple
+        Construct the regex version of the whitelist list.
         """
 
         whiteslist_list = []
@@ -186,7 +178,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             r"((192)\.(168)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|((10)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|((172)\.(1[6-9]|2[0-9]|3[0-1])\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))"  # pylint: disable=line-too-long
         )
 
-        return whiteslist_list, "|".join(whiteslist_list)
+        return "|".join(whiteslist_list)
 
     @classmethod
     def _format_upstream_line(cls, line):  # pylint: disable=too-many-branches
@@ -206,7 +198,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         tabs = r"\t"
         space = " "
 
-        if Regex(line, regex_delete, return_data=True).match():
+        if Regex(line, regex_delete, return_data=True).match():  # pragma: no cover
             return line
 
         tabs_position, space_position = (line.find(tabs), line.find(space))
@@ -260,39 +252,47 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             if isinstance(line, list):
                 line = "\n".join(line)
 
-            File(self.output).write("{}\n".format(line), overwrite=True)
+            File(self.output).write("{0}\n".format(line), overwrite=True)
 
         return line
 
-    def filter(self):
+    def _get_content(self, file=None, string=None, items=None):  # pragma: no cover
+        """
+        Return the content we have to check.
+        """
+
+        result = []
+
+        if file:
+            with open(file, "r", encoding="utf-8") as file_stream:
+                for line in file_stream:
+                    result.append(self._format_upstream_line(line))
+        elif string:
+            for line in string.split("\n"):
+                result.append(self._format_upstream_line(line))
+        elif items:
+            for line in items:
+                result.append(self._format_upstream_line(line))
+
+        return result
+
+    def filter(self, file=None, string=None, items=None):
         """
         Process the whitelisting.
         """
 
-        content = []
-        _, regex_whitelist = self.__get_whitelist_list()
-
-        if self.file:  # pragma: no cover
-            content.extend(
-                [self._format_upstream_line(x) for x in File(self.file).to_list()]
-            )
-        elif self.string:
-            content.extend(
-                [self._format_upstream_line(x) for x in self.string.split("\n")]
-            )
-        elif self.items:
-            content.extend([self._format_upstream_line(x) for x in self.items])
-
-        if content and regex_whitelist:
+        if self.regex_whitelist:
             return self.__write_output(
-                [
-                    x
-                    for x in content
-                    if not Regex(x, regex_whitelist, return_data=False).match()
-                ]
+                Regex(
+                    self._get_content(file=file, string=string, items=items),
+                    self.regex_whitelist,
+                    return_data=False,
+                ).not_matching_list()
             )
 
-        return content  # pragma: no cover
+        return list(
+            self._get_content(file=file, string=string, items=items)
+        )  # pragma: no cover
 
 
 class RZDB:
@@ -342,6 +342,6 @@ class RZDB:
         Return the regex format.
         """
 
-        return r"((?:\.(?:{})))".format(
+        return r"((?:\.(?:{0})))".format(
             "|".join([escape(x) for x in self.list_format()])
         )

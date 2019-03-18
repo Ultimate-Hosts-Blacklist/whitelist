@@ -229,35 +229,6 @@ class TestLineFormatter(TestCase):
 
         self.assertEqual(expected, actual)
 
-    def test_special_lines(self):
-        """
-        Test the case that the line contain several reserved words.
-        """
-
-        specials = [
-            "localhost",
-            "localdomain",
-            "example.localdomain",
-            "local",
-            "example.local",
-            "broadcasthost",
-            "0.0.0.0",
-            "allhosts",
-            "allnodes",
-            "allrouters",
-            "localnet",
-            "example.localnet",
-            "loopback",
-            "mcastprefix",
-        ]
-
-        for special in specials:
-            given = "0.0.0.0 {0}".format(special)
-            expected = "0.0.0.0 {0}".format(special)
-            actual = Core()._format_upstream_line(given)
-
-            self.assertEqual(expected, actual)
-
 
 class TestFiltering(TestCase):
     """
@@ -272,17 +243,9 @@ class TestFiltering(TestCase):
         secondary_whitelist = ["google.com"]
         given = ["example.org", "google.com", "www.google.com"]
         expected = ["example.org"]
-        actual = Core(
-            items=given, use_core=False, secondary_whitelist=secondary_whitelist
-        ).filter()
-
-        self.assertEqual(expected, actual)
-
-        actual = Core(
-            string="\n".join(given),
-            use_core=False,
-            secondary_whitelist=secondary_whitelist,
-        ).filter()
+        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
+            items=given
+        )
 
         self.assertEqual(expected, actual)
 
@@ -301,17 +264,9 @@ class TestFiltering(TestCase):
             "test.org",
         ]
         expected = ["example.org", "test.org"]
-        actual = Core(
-            items=given, use_core=False, secondary_whitelist=secondary_whitelist
-        ).filter()
-
-        self.assertEqual(expected, actual)
-
-        actual = Core(
-            string="\n".join(given),
-            use_core=False,
-            secondary_whitelist=secondary_whitelist,
-        ).filter()
+        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
+            items=given
+        )
 
         self.assertEqual(expected, actual)
 
@@ -332,17 +287,9 @@ class TestFiltering(TestCase):
             "www.google.com",
         ]
         expected = ["example.com", "0.0.0.0   example.com", r"0.0.0.0\t\t\texample.com"]
-        actual = Core(
-            items=given, use_core=False, secondary_whitelist=secondary_whitelist
-        ).filter()
-
-        self.assertEqual(expected, actual)
-
-        actual = Core(
-            string="\n".join(given),
-            use_core=False,
-            secondary_whitelist=secondary_whitelist,
-        ).filter()
+        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
+            items=given
+        )
 
         self.assertEqual(expected, actual)
 
@@ -363,17 +310,9 @@ class TestFiltering(TestCase):
             "example.mg",
         ]
         expected = []
-        actual = Core(
-            items=given, use_core=False, secondary_whitelist=secondary_whitelist
-        ).filter()
-
-        self.assertEqual(expected, actual)
-
-        actual = Core(
-            string="\n".join(given),
-            use_core=False,
-            secondary_whitelist=secondary_whitelist,
-        ).filter()
+        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
+            items=given
+        )
 
         self.assertEqual(expected, actual)
 
