@@ -30,7 +30,6 @@ License:
     SOFTWARE.
 """
 
-from os import getcwd
 from os import sep as directory_separator
 from re import compile as comp
 from re import sub as substring
@@ -70,14 +69,13 @@ def _get_requirements():
 
 def _get_version():
     """
-    Extract the version from ultimate_hosts_blacklist/whitelist/__init__.py
+    Extract the version from ultimate_hosts_blacklist/MODULE/__init__.py
     """
 
     to_match = comp(r'VERSION\s=\s"(.*)"\n')
     extracted = to_match.findall(
         open(
-            getcwd() + "/ultimate_hosts_blacklist/whitelist/__init__.py",
-            encoding="utf-8",
+            "ultimate_hosts_blacklist/{0}/__init__.py".format(MODULE), encoding="utf-8"
         ).read()
     )[0]
 
@@ -102,7 +100,7 @@ if __name__ == "__main__":
         license="MIT",
         url="https://github.com/Ultimate-Hosts-Blacklist/whitelist/tree/script",
         platforms=["any"],
-        packages=["ultimate_hosts_blacklist.whitelist"],
+        packages=["ultimate_hosts_blacklist.{0}".format(MODULE)],
         keywords=["Python", "hosts", "hosts file", "whitelist"],
         classifiers=[
             "Environment :: Console",
@@ -116,9 +114,15 @@ if __name__ == "__main__":
         test_suite="setup._test_suite",
         entry_points={
             "console_scripts": [
-                "uhb_whitelist=ultimate_hosts_blacklist.whitelist:_command_line",
-                "uhb-whitelist=ultimate_hosts_blacklist.whitelist:_command_line",
-                "ultimate-hosts-blacklist-whitelist=ultimate_hosts_blacklist.whitelist:_command_line",
+                "uhb_whitelist=ultimate_hosts_blacklist.{0}:_command_line".format(
+                    MODULE
+                ),
+                "uhb-whitelist=ultimate_hosts_blacklist.{0}:_command_line".format(
+                    MODULE
+                ),
+                "ultimate-hosts-blacklist-whitelist=ultimate_hosts_blacklist.{0}:_command_line".format(
+                    MODULE
+                ),
             ]
         },
     )

@@ -256,7 +256,9 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         return line
 
-    def _get_content(self, file=None, string=None, items=None):  # pragma: no cover
+    def _get_content(
+        self, file=None, string=None, items=None, already_formatted=False
+    ):  # pragma: no cover
         """
         Return the content we have to check.
         """
@@ -264,19 +266,29 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         result = []
 
         if file:
-            with open(file, "r", encoding="utf-8") as file_stream:
-                for line in file_stream:
-                    result.append(self._format_upstream_line(line))
+            if not already_formatted:
+                with open(file, "r", encoding="utf-8") as file_stream:
+                    for line in file_stream:
+                        result.append(self._format_upstream_line(line))
+
+            else:
+                result = File(file).to_list()
         elif string:
-            for line in string.split("\n"):
-                result.append(self._format_upstream_line(line))
+            if not already_formatted:
+                for line in string.split("\n"):
+                    result.append(self._format_upstream_line(line))
+            else:
+                result = string.split("\n")
         elif items:
-            for line in items:
-                result.append(self._format_upstream_line(line))
+            if not already_formatted:
+                for line in items:
+                    result.append(self._format_upstream_line(line))
+            else:
+                result = items
 
         return result
 
-    def filter(self, file=None, string=None, items=None):
+    def filter(self, file=None, string=None, items=None, already_formatted=False):
         """
         Process the whitelisting.
         """
@@ -284,14 +296,24 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         if self.regex_whitelist:
             return self.__write_output(
                 Regex(
-                    self._get_content(file=file, string=string, items=items),
+                    self._get_content(
+                        file=file,
+                        string=string,
+                        items=items,
+                        already_formatted=already_formatted,
+                    ),
                     self.regex_whitelist,
                     return_data=False,
                 ).not_matching_list()
             )
 
         return list(
-            self._get_content(file=file, string=string, items=items)
+            self._get_content(
+                file=file,
+                string=string,
+                items=items,
+                already_formatted=already_formatted,
+            )
         )  # pragma: no cover
 
 

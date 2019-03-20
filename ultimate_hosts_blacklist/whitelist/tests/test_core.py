@@ -270,6 +270,12 @@ class TestFiltering(TestCase):
 
         self.assertEqual(expected, actual)
 
+        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
+            items=given, already_formatted=True
+        )
+
+        self.assertEqual(expected, actual)
+
     def test_reg(self):
         """
         Test a case with REG.
@@ -312,6 +318,12 @@ class TestFiltering(TestCase):
         expected = []
         actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
             items=given
+        )
+
+        self.assertEqual(expected, actual)
+
+        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
+            items=given, already_formatted=True
         )
 
         self.assertEqual(expected, actual)

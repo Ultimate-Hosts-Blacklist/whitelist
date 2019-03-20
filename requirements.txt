@@ -1,4 +1,4 @@
 colorama
 domain2idna
 requests
-ultimate-hosts-blacklist-helpers
+ultimate-hosts-blacklist-helpers>=1.5.2
