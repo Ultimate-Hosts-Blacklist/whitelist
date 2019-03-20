@@ -1,9 +1,0 @@
-
-REG ^(?!.*\.?(oem)).*\.twimg\.com$
-REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
-REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
-REG ^(?!.*\.?(watchdog\.ohio|dap\.digitalgov|stats\.ssa|adgallery\.whitehousedrugpolicy)).*\.gov$
-RZD ebay
-RZD google
-RZD openload
-RZD pulsar.ebay
