@@ -38,119 +38,6 @@ from unittest import main as launch_test
 from ultimate_hosts_blacklist.whitelist.core import Core
 
 
-class TestMarkers(TestCase):
-    """
-    Test if all markers are correct.
-    """
-
-    def test_marker_validity(self):
-        """
-        Test if all markers are present and correct.
-        """
-
-        known_markers = {"all": "ALL ", "regex": "REG ", "root_zone_db": "RZD "}
-
-        self.assertEqual(known_markers, Core.MARKERS)
-
-
-class TestLinks(TestCase):
-    """
-    Test if the links are correct.
-    """
-
-    def test_links_validity(self):
-        """
-        Test if all links are present and correct.
-        """
-
-        known_links = {
-            "core": "https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/whitelist/master/domains.list",  # pylint: disable=line-too-long
-            "root_zone_db": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/iana-domains-db.json",  # pylint: disable=line-too-long
-            "public_suffix": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/public-suffix.json",  # pylint: disable=line-too-long
-        }
-
-        self.assertEqual(known_links, Core.LINKS)
-
-
-class TestCoreParser(TestCase):
-    """
-    Test the parser.
-    """
-
-    def test_comment_line(self):
-        """
-        Test the parser for the case we have a comment line.
-        """
-
-        given = "# Hello, World!"
-        expected = []
-        actual = list(Core()._parse_whitelist_list(given))
-
-        self.assertEqual(expected, actual)
-
-    def test_all(self):
-        """
-        Test the parser for the ALL marker.
-        """
-
-        given = "ALL example.com"
-        expected = [r"example\.com$"]
-        actual = list(Core()._parse_whitelist_list(given))
-
-        self.assertEqual(expected, actual)
-
-    def test_regex(self):
-        """
-        Test the parser for the REG marker.
-        """
-
-        given = r"REG .*\.example.com$"
-        expected = [r".*\.example.com$"]
-        actual = list(Core()._parse_whitelist_list(given))
-
-        self.assertEqual(expected, actual)
-
-    def test_normal_www(self):
-        """
-        Test the parser for a normal entry which starts with :code:`www.`
-        """
-
-        given = "www.example.org"
-        expected = [
-            [
-                r"^example\.org$",
-                r"\s+example\.org$",
-                r"\t+example\.org$",
-                r"^www\.example\.org$",
-                r"\s+www\.example\.org$",
-                r"\t+www\.example\.org$",
-            ]
-        ]
-        actual = list(Core()._parse_whitelist_list(given))
-
-        self.assertEqual(expected, actual)
-
-    def test_normal(self):
-        """
-        Test the parser fo a normal entry.
-        """
-
-        given = "example.org"
-        expected = [
-            [
-                r"^example\.org$",
-                r"\s+example\.org$",
-                r"\t+example\.org$",
-                r"^www\.example\.org$",
-                r"\s+www\.example\.org$",
-                r"\t+www\.example\.org$",
-            ]
-        ]
-        actual = list(Core()._parse_whitelist_list(given))
-
-        self.assertEqual(expected, actual)
-
-
 class TestLineFormatter(TestCase):
     """
     Test the (upstream) line formatter.
@@ -163,7 +50,7 @@ class TestLineFormatter(TestCase):
 
         given = "# Hello, World!"
         expected = "# Hello, World!"
-        actual = Core()._format_upstream_line(given)
+        actual = Core().format_upstream_line(given)
 
         self.assertEqual(expected, actual)
 
@@ -174,13 +61,13 @@ class TestLineFormatter(TestCase):
 
         given = "0.0.0.0 schön.com # Hello, World!"
         expected = "0.0.0.0 xn--schn-7qa.com # Hello, World!"
-        actual = Core()._format_upstream_line(given)
+        actual = Core().format_upstream_line(given)
 
         self.assertEqual(expected, actual)
 
         given = "0.0.0.0 schön.com# Hello, World!"
         expected = "0.0.0.0 xn--schn-7qa.com# Hello, World!"
-        actual = Core()._format_upstream_line(given)
+        actual = Core().format_upstream_line(given)
 
         self.assertEqual(expected, actual)
 
@@ -192,7 +79,7 @@ class TestLineFormatter(TestCase):
 
         given = "0.0.0.0 schön.com  Hello, World!"
         expected = "0.0.0.0 xn--schn-7qa.com  Hello, World!"
-        actual = Core()._format_upstream_line(given)
+        actual = Core().format_upstream_line(given)
 
         self.assertEqual(expected, actual)
 
@@ -203,7 +90,7 @@ class TestLineFormatter(TestCase):
 
         given = "schön.de"
         expected = "xn--schn-7qa.de"
-        actual = Core()._format_upstream_line(given)
+        actual = Core().format_upstream_line(given)
 
         self.assertEqual(expected, actual)
 
@@ -214,7 +101,7 @@ class TestLineFormatter(TestCase):
 
         given = "0.0.0.0     schön.de"
         expected = "0.0.0.0     xn--schn-7qa.de"
-        actual = Core()._format_upstream_line(given)
+        actual = Core().format_upstream_line(given)
 
         self.assertEqual(expected, actual)
 
@@ -223,9 +110,9 @@ class TestLineFormatter(TestCase):
         Test the case that we meet a line with a tabs as separator.
         """
 
-        given = r"0.0.0.0\t\t\tschön.de"
-        expected = r"0.0.0.0\t\t\txn--schn-7qa.de"
-        actual = Core()._format_upstream_line(given)
+        given = "0.0.0.0\t\t\tschön.de"
+        expected = "0.0.0.0\t\t\txn--schn-7qa.de"
+        actual = Core().format_upstream_line(given)
 
         self.assertEqual(expected, actual)
 
@@ -241,11 +128,29 @@ class TestFiltering(TestCase):
         """
 
         secondary_whitelist = ["google.com"]
-        given = ["example.org", "google.com", "www.google.com"]
+        given = [
+            "example.org",
+            "google.com",
+            "www.google.com",
+            "0.0.0.0    google.com",
+            "0.0.0.0\t\t\t\t\twww.google.com",
+        ]
+
         expected = ["example.org"]
-        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
-            items=given
-        )
+        actual = Core(
+            use_official=False, secondary_whitelist=secondary_whitelist
+        ).filter(items=given)
+
+        self.assertEqual(expected, actual)
+
+    def test_simple_without_whitelist(self):
+        """
+        Test a simple case without a whitelist given.
+        """
+
+        given = ["example.org", "google.com", "www.google.com"]
+        expected = given
+        actual = Core(use_official=False, secondary_whitelist=None).filter(items=given)
 
         self.assertEqual(expected, actual)
 
@@ -254,7 +159,7 @@ class TestFiltering(TestCase):
         Test a case with ALL.
         """
 
-        secondary_whitelist = ["google.com", "ALL .com"]
+        secondary_whitelist = ["google.com", "www.hello.world", "ALL .com"]
         given = [
             "example.org",
             "google.com",
@@ -264,15 +169,15 @@ class TestFiltering(TestCase):
             "test.org",
         ]
         expected = ["example.org", "test.org"]
-        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
-            items=given
-        )
+        actual = Core(
+            use_official=False, secondary_whitelist=secondary_whitelist
+        ).filter(items=given)
 
         self.assertEqual(expected, actual)
 
-        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
-            items=given, already_formatted=True
-        )
+        actual = Core(
+            use_official=False, secondary_whitelist=secondary_whitelist
+        ).filter(items=given, already_formatted=True)
 
         self.assertEqual(expected, actual)
 
@@ -285,17 +190,17 @@ class TestFiltering(TestCase):
         given = [
             "example.com",
             "0.0.0.0   example.com",
-            r"0.0.0.0\t\t\texample.com",
+            "0.0.0.0\t\t\texample.com",
             "example.org",
             "github.com",
             "google.com",
             "test.org",
             "www.google.com",
         ]
-        expected = ["example.com", "0.0.0.0   example.com", r"0.0.0.0\t\t\texample.com"]
-        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
-            items=given
-        )
+        expected = ["example.com", "0.0.0.0   example.com", "0.0.0.0\t\t\texample.com"]
+        actual = Core(
+            use_official=False, secondary_whitelist=secondary_whitelist
+        ).filter(items=given)
 
         self.assertEqual(expected, actual)
 
@@ -316,15 +221,15 @@ class TestFiltering(TestCase):
             "example.mg",
         ]
         expected = []
-        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
-            items=given
-        )
+        actual = Core(
+            use_official=False, secondary_whitelist=secondary_whitelist
+        ).filter(items=given)
 
         self.assertEqual(expected, actual)
 
-        actual = Core(use_core=False, secondary_whitelist=secondary_whitelist).filter(
-            items=given, already_formatted=True
-        )
+        actual = Core(
+            use_official=False, secondary_whitelist=secondary_whitelist
+        ).filter(items=given, already_formatted=True)
 
         self.assertEqual(expected, actual)
 

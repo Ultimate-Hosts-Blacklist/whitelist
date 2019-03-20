@@ -29,7 +29,7 @@ License:
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 """
-
+# pylint: disable=bad-continuation
 import argparse
 
 from colorama import Fore, Style
@@ -37,10 +37,12 @@ from colorama import init as initiate
 
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "2.3.0"
+VERSION = "3.0.0"
 
 
-def clean_string_with_official_whitelist(data):
+def clean_string_with_official_whitelist(
+    data, use_official=True, your_whitelist_list=None
+):
     """
     Clean the given string.
 
@@ -50,25 +52,56 @@ def clean_string_with_official_whitelist(data):
     :param data: The string to clean.
     :type data: str
 
+    :pram use_official: Allow us to use your official whitelist list.
+    :type use_official: bool
+
+    :param your_whitelist_list:
+        Your whitelist list.
+
+        .. note::
+            It should follow our format.
+    :type your_whitelist_list: list
+
     :return: A string without the whitelisted elements.
     :rtype: string
     """
 
-    return "\n".join(Core(use_core=True).filter(string=data))
+    return "\n".join(
+        Core(use_official=use_official, secondary_whitelist=your_whitelist_list).filter(
+            string=data
+        )
+    )
 
 
-def clean_list_with_official_whitelist(data):
+def clean_list_with_official_whitelist(
+    data, use_official=True, your_whitelist_list=None
+):
     """
     Clean the given list.
 
     :param data: The list to clean.
     :type data: list
 
+    :param data: The string to clean.
+    :type data: str
+
+    :pram use_core: Allow us to use your official whitelist list.
+    :type use_core: bool
+
+    :param your_whitelist_list:
+        Your whitelist list.
+
+        .. note::
+            It should follow our format.
+    :type your_whitelist_list: list
+
     :return: A list without the whitelisted elements.
     :rtype: list
     """
 
-    return Core(use_core=True).filter(items=data)
+    return Core(
+        use_official=use_official, secondary_whitelist=your_whitelist_list
+    ).filter(items=data)
 
 
 def _command_line():
@@ -133,7 +166,7 @@ def _command_line():
                 "\n".join(
                     Core(
                         secondary_whitelist_file=arguments.whitelist,
-                        use_core=arguments.without_core,
+                        use_official=arguments.without_core,
                     ).filter(file=arguments.file)
                 )
             )
@@ -141,5 +174,5 @@ def _command_line():
             Core(
                 secondary_whitelist_file=arguments.whitelist,
                 output_file=arguments.output,
-                use_core=arguments.without_core,
+                use_official=arguments.without_core,
             ).filter(file=arguments.file)
