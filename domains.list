@@ -195,6 +195,7 @@ dl.free.fr
 dl.google.com
 dlvr.it
 dns.msftncsi.com
+dn.se
 docs.google.com
 download.cnet.com
 download.sonarr.tv
@@ -219,6 +220,7 @@ edgesuite.net
 eds.xboxlive.com
 embed.spotify.com
 en.bab.la
+engadget.com
 encrypted-tbn0.gstatic.com
 eonline.com
 espn.com
@@ -226,6 +228,7 @@ ew.com
 example.com
 example.org
 express.co.uk
+expressen.se
 external-lhr0-1.xx.fbcdn.net
 external-lhr1-1.xx.fbcdn.net
 external-lhr10-1.xx.fbcdn.net
@@ -268,6 +271,8 @@ forums.roku.com
 forums.sonarr.tv
 forums.techguy.org
 forums.whirlpool.net.au
+forums.linuxmint.com
+forum.paradoxplaza.com
 fr.osdn.net
 freebsd.org
 freenet.de
@@ -310,6 +315,7 @@ groupon.com
 groups.google.com
 gs.apple.com
 gslb.spotify.com
+guru3d.com
 hbogo.com
 hbogo.pl
 heavy.com
@@ -323,6 +329,7 @@ hoopshype.com
 hosts-file.net
 hostsfile.mine.nu
 hotmail.com
+howtoforge.com
 houston.cbslocal.com
 hulkshare.com
 hulu.com
@@ -331,6 +338,7 @@ i.s-microsoft.com
 icanhazip.com
 ichnaea.netflix.com
 icloud.com
+idg.se
 id.sonyentertainmentnetwork.com
 ifmo.ru
 ikea.com
@@ -348,6 +356,7 @@ investorplace.com
 ipinfo.io
 ipla.tv
 istockphoto.com
+is.gd
 itunes.apple.com
 j.mp
 jabcreations.com
@@ -364,6 +373,7 @@ kidsfootlocker.com
 kmart.com
 kohls.com
 komputerswiat.pl
+kotaku.com
 krakow.tvp.pl
 kroger.com
 ladyfootlocker.com
@@ -406,6 +416,7 @@ margevicius.lt
 marketwatch.com
 mashable.com
 maxthon.com
+majorgeeks.com
 media.licdn.com
 mediamarkt.at
 mediamarkt.de
@@ -444,10 +455,14 @@ mywot.com
 mzstatic.com
 naszdziennik.pl
 nationalgeographic.com
+namecheap.com
 nbcnews.com
 nbcnewyork.com
 nccp.netflix.com
 nesn.com
+news.google.com
+neowin.net
+nordvpn.com
 netbsd.org
 netflix.com
 newegg.com
@@ -499,8 +514,10 @@ ouo.io
 outlook.com
 outlook.live.com
 outlook.office365.com
+osnews.com
 ow.ly
 p.imgur.com
+packages.linuxmint.com
 pando.com
 paper.li
 pastebin.com
@@ -530,6 +547,7 @@ playstation.com
 plex.tv
 plus.google.com
 pricelist.skype.com
+prisjakt.nu
 prnt.sc
 products.office.com
 promodj.com
@@ -606,6 +624,7 @@ siatka.org
 skyhook.sonarr.tv
 skype.com
 slate.com
+slashdot.org
 slickdeals.net
 snapchat.com
 solidfiles.com
@@ -640,9 +659,11 @@ status.plex.tv
 steamcommunity.com
 stopklatka.pl
 storage.msn.com
+store.steampowered.com
 strefa.fm
 surveymonkey.com
 swcdn.apple.com
+sweclockers.com
 sysctl.org
 szczecin.tvp.pl
 t-online.at
@@ -659,6 +680,7 @@ tampermonkey.net
 target.com
 teamviewer.com
 techguy.org
+techrepublic.com
 teredo.ipv6.microsoft.com
 thechive.com
 thefreethoughtproject.com
@@ -666,6 +688,7 @@ thehill.com
 themoviedb.com
 thenextweb.com
 thepiratebay.org
+theregister.co.uk
 thetvdb.com
 theverge.com
 thumbs2.imgbox.com
@@ -682,6 +705,7 @@ tomshardware.com
 torrentfreak.com
 toysrus.com
 travel.latimes.com
+trailers.apple.com
 tuba.fm
 tumblr.com
 tunein.com
@@ -715,6 +739,7 @@ vc.yahoo.com
 verisign.com
 vice.com
 video.google.com
+videocopilot.net
 videolan.org
 vidto.me
 vimeo.com
@@ -854,6 +879,7 @@ www.directvnow.com
 www.discovermagazine.com
 www.disqus.com
 www.dlvr.it
+www.dn.se
 www.dropbox.com
 www.duckduckgo.com
 www.ea.com
@@ -864,12 +890,14 @@ www.ebayimg.com
 www.ebayrtm.com
 www.ebaystatic.com
 www.edgesuite.net
+www.engadget.com
 www.eonline.com
 www.espn.com
 www.ew.com
 www.example.com
 www.example.org
 www.express.co.uk
+www.expressen.se
 www.facebook.com
 www.familydollar.com
 www.feedly.com
@@ -913,6 +941,7 @@ www.googleusercontent.com
 www.googlevideo.com
 www.gravatar.com
 www.groupon.com
+www.guru3d.com
 www.hbogo.com
 www.hbogo.pl
 www.heavy.com
@@ -925,10 +954,12 @@ www.hoopshype.com
 www.hosts-file.net
 www.hostsfile.mine.nu
 www.hotmail.com
+www.howtoforge.com
 www.hulkshare.com
 www.hulu.com
 www.icanhazip.com
 www.icloud.com
+www.idg.se
 www.ifmo.ru
 www.ikea.com
 www.imagebam.com
@@ -940,6 +971,7 @@ www.instagram.com
 www.investorplace.com
 www.ipinfo.io
 www.ipla.tv
+www.is.gd
 www.istockphoto.com
 www.j.mp
 www.jabcreations.com
@@ -968,6 +1000,7 @@ www.logmein.com
 www.lowes.com
 www.lwn.net
 www.macys.com
+www.majorgeeks.com
 www.malwaredomainlist.com
 www.margevicius.lt
 www.marketwatch.com
@@ -994,10 +1027,12 @@ www.msn.com
 www.multiup.org
 www.mywot.com
 www.mzstatic.com
+www.namecheap.com
 www.naszdziennik.pl
 www.nationalgeographic.com
 www.nbcnews.com
 www.nbcnewyork.com
+www.neowin.net
 www.nesn.com
 www.netbsd.org
 www.netflix.com
@@ -1030,9 +1065,11 @@ www.open.fm
 www.openbsd.org
 www.openload.io
 www.opensubtitles.org
+www.osnews.com
 www.ouo.io
 www.outlook.com
 www.ow.ly
+www.packages.linuxmint.com
 www.pando.com
 www.paper.li
 www.pastebin.com
@@ -1048,6 +1085,7 @@ www.player.pl
 www.playstation.com
 www.plex.tv
 www.prnt.sc
+www.prisjakt.nu
 www.promodj.com
 www.publicsuffix.org
 www.publix.com
@@ -1090,6 +1128,7 @@ www.steamcommunity.com
 www.stopklatka.pl
 www.strefa.fm
 www.surveymonkey.com
+www.sweclockers.com
 www.sysctl.org
 www.t-online.at
 www.t-online.de
@@ -1098,12 +1137,14 @@ www.tampermonkey.net
 www.target.com
 www.teamviewer.com
 www.techguy.org
+www.techrepublic.com
 www.thechive.com
 www.thefreethoughtproject.com
 www.thehill.com
 www.themoviedb.com
 www.thenextweb.com
 www.thepiratebay.org
+www.theregister.co.uk
 www.thetvdb.com
 www.theverge.com
 www.time.com
@@ -1135,6 +1176,7 @@ www.userscloud.com
 www.variety.com
 www.verisign.com
 www.vice.com
+www.videocopilot.net
 www.videolan.org
 www.vidto.me
 www.vimeo.com
@@ -1164,6 +1206,7 @@ www.wykop.pl
 www.wyspagier.pl
 www.xboxlive.com
 www.xda-developers.com
+www.xkcd.com
 www.yahoo.com
 www.youtu.be
 www.youtube-nocookie.com
@@ -1181,6 +1224,7 @@ xboxexperiencesprod.experimentation.xboxlive.com
 xboxlive.com
 xda-developers.com
 xflight.xboxlive.com
+xkcd.com
 xkms.xbolive.com
 xmpp-server.l.google.com
 xsts.auth.xboxlive.com
