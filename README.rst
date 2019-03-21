@@ -15,7 +15,7 @@ Contributors
 ------------
 
 - Daniel - `@lightswitch05`_
-- dnmTX - `@dnmTX`_
+- Daniel - `@dnmTX`_
 - Nikolay Kasatkin - `@kain`_
 - smed79 - `@smed79`_
 
