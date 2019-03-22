@@ -247,14 +247,18 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                         )
                         return True
 
-            for rule in self.whitelist_process["regex"]:
-                if Regex(line, rule, return_data=False).match():
-                    logging.debug(
-                        "Line {0} whitelisted by {1} rule: {2}.".format(
-                            repr(line), repr("regex"), repr(rule)
-                        )
+            if (
+                self.whitelist_process["regex"]
+                and Regex(
+                    line, self.whitelist_process["regex"], return_data=False
+                ).match()
+            ):
+                logging.debug(
+                    "Line {0} whitelisted by {1} rule.".format(
+                        repr(line), repr("regex")
                     )
-                    return True
+                )
+                return True
 
         logging.debug("Line {0} not whitelisted, no rule matched.".format(repr(line)))
         return False
@@ -286,4 +290,4 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                 items=items,
                 already_formatted=already_formatted,
             )
-        )  # pragma: no cover
+        )
