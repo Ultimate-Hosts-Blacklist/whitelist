@@ -86,8 +86,28 @@ class Parser:
             if line.startswith("www."):
                 line = line[4:]
 
-            return [("strict", line), ("strict", "www.{0}".format(line))]
+            return ("strict", [line, "www.{0}".format(line)])
         return (None, line.strip())
+
+    @classmethod
+    def __get_strict_present_bare(cls, parsed):  # pragma: no cover
+        """
+        Given the output of self.__parse_line(),
+        we return the bare (without www.) version
+        of the given rule.
+        """
+
+        if isinstance(parsed[-1], list):
+            if parsed[-1][0].startswith("www."):
+                bare = parsed[-1][4:]
+            else:
+                bare = parsed[-1][0]
+        elif parsed[-1].startwith("www."):
+            bare = parsed[-1][4:]
+        else:
+            bare = parsed[-1]
+
+        return bare
 
     def parse(self, whitelist_list):
         """
@@ -97,18 +117,40 @@ class Parser:
         :type whitelist_list: list
 
         :return: The list of all processes.
-        :rtype: list
+        :rtype: dict
         """
 
         result = []
+        result = {"strict": {}, "ends": {}, "present": {}, "regex": []}
 
         for line in whitelist_list:
             parsed = self.__parse_line(line)
 
-            if isinstance(parsed, list):
-                for data in parsed:
-                    result.append(data)
-            else:
-                result.append(parsed)
+            if parsed[0] in ["strict", "present"]:
+                bare = self.__get_strict_present_bare(parsed)
+                index = bare[:4]
+
+                if index not in result[parsed[0]]:
+                    result[parsed[0]][index] = []
+
+                if parsed[-1] in result[parsed[0]][index]:  # pragma: no cover
+                    continue
+
+                if isinstance(parsed[-1], list):
+                    result[parsed[0]][index].extend(parsed[-1])
+                else:  # pragma: no cover
+                    result[parsed[0]][index].append(parsed[-1])
+            elif parsed[0] == "ends":
+                index = parsed[-1][-3:]
+
+                if index not in result["ends"]:
+                    result["ends"][index] = []
+
+                if parsed[-1] in result["ends"][index]:  # pragma: no cover
+                    continue
+
+                result["ends"][index].append(parsed[-1])
+            elif parsed[0] == "regex":
+                result["regex"].append(parsed[-1])
 
         return result

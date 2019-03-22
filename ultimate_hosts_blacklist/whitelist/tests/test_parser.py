@@ -55,7 +55,7 @@ class TestParser(TestCase):
         """
 
         given = ["# Hello, World!"]
-        expected = [(None, given[0])]
+        expected = {"strict": {}, "ends": {}, "present": {}, "regex": []}
         actual = self.parser.parse(given)
 
         self.assertEqual(expected, actual)
@@ -66,7 +66,12 @@ class TestParser(TestCase):
         """
 
         given = ["ALL example.com"]
-        expected = [("ends", "example.com")]
+        expected = {
+            "strict": {},
+            "ends": {"com": ["example.com"]},
+            "present": {},
+            "regex": [],
+        }
         actual = self.parser.parse(given)
 
         self.assertEqual(expected, actual)
@@ -77,7 +82,12 @@ class TestParser(TestCase):
         """
 
         given = [r"REG .*\.example.com$"]
-        expected = [("regex", r".*\.example.com$")]
+        expected = {
+            "strict": {},
+            "ends": {},
+            "present": {},
+            "regex": [r".*\.example.com$"],
+        }
         actual = self.parser.parse(given)
 
         self.assertEqual(expected, actual)
@@ -88,7 +98,12 @@ class TestParser(TestCase):
         """
 
         given = ["www.example.org"]
-        expected = [("strict", "example.org"), ("strict", "www.example.org")]
+        expected = {
+            "strict": {"exam": ["example.org", "www.example.org"]},
+            "ends": {},
+            "present": {},
+            "regex": [],
+        }
         actual = self.parser.parse(given)
 
         self.assertEqual(expected, actual)
@@ -99,7 +114,12 @@ class TestParser(TestCase):
         """
 
         given = ["example.org"]
-        expected = [("strict", "example.org"), ("strict", "www.example.org")]
+        expected = {
+            "strict": {"exam": ["example.org", "www.example.org"]},
+            "ends": {},
+            "present": {},
+            "regex": [],
+        }
         actual = self.parser.parse(given)
 
         self.assertEqual(expected, actual)

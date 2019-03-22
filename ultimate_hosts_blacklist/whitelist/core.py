@@ -39,7 +39,6 @@ from domain2idna import get as domain2idna
 
 from ultimate_hosts_blacklist.helpers import Download, File, Regex
 from ultimate_hosts_blacklist.whitelist.configuration import Configuration
-from ultimate_hosts_blacklist.whitelist.match import Match
 from ultimate_hosts_blacklist.whitelist.parser import Parser
 
 
@@ -207,52 +206,55 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         """
 
         logging.debug("Checking line: {0}".format(repr(line)))
+        line = line.split()[-1]
+        logging.debug("Checking line: {0}".format(repr(line)))
 
         if self.whitelist_process:
-            for describer, element in self.whitelist_process:
-                if describer == "ends":
-                    if Match.ends(line, element):
+            if line.startswith("www."):
+                bare = line[4:]
+            else:
+                bare = line
+
+            if (
+                bare[:4] in self.whitelist_process["strict"]
+                and line in self.whitelist_process["strict"][bare[:4]]
+            ):
+                logging.debug(
+                    "Line {0} whitelisted by {1} rule: {2}.".format(
+                        repr(line), repr("strict"), repr(line)
+                    )
+                )
+                return True
+
+            if (
+                bare[:4] in self.whitelist_process["present"]
+                and line in self.whitelist_process["present"][bare[:4]]
+            ):
+                logging.debug(
+                    "Line {0} whitelisted by {1} rule.".format(
+                        repr(line), repr("present")
+                    )
+                )
+                return True
+
+            if bare[-3:] in self.whitelist_process["ends"]:
+                for rule in self.whitelist_process["ends"]:
+                    if line.endswith(rule):
                         logging.debug(
                             "Line {0} whitelisted by {1} rule: {2}.".format(
-                                repr(line), repr(describer), repr(element)
+                                repr(line), repr("ends"), repr(rule)
                             )
                         )
                         return True
 
-                    continue  # pragma: no cover
-
-                if describer == "strict":
-                    if Match.strict(line, element):
-                        logging.debug(
-                            "Line {0} whitelisted by {1} rule: {2}.".format(
-                                repr(line), repr(describer), repr(element)
-                            )
+            for rule in self.whitelist_process["regex"]:
+                if Regex(line, rule, return_data=False).match():
+                    logging.debug(
+                        "Line {0} whitelisted by {1} rule: {2}.".format(
+                            repr(line), repr("regex"), repr(rule)
                         )
-                        return True
-
-                    continue  # pragma: no cover
-
-                if describer == "regex":
-                    if Match.regex(line, element):
-                        logging.debug(
-                            "Line {0} whitelisted by {1} rule: {2}.".format(
-                                repr(line), repr(describer), repr(element)
-                            )
-                        )
-                        return True
-
-                    continue  # pragma: no cover
-
-                if describer == "present":
-                    if Match.present(line, element):
-                        logging.debug(
-                            "Line {0} whitelisted by {1} rule.".format(
-                                repr(line), repr(describer)
-                            )
-                        )
-                        return True
-
-                    continue  # pragma: no cover
+                    )
+                    return True
 
         logging.debug("Line {0} not whitelisted, no rule matched.".format(repr(line)))
         return False
@@ -263,7 +265,6 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         """
 
         if self.whitelist_process:
-
             return self.__write_output(
                 list(
                     filterfalse(
@@ -285,4 +286,4 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                 items=items,
                 already_formatted=already_formatted,
             )
-        )
+        )  # pragma: no cover
