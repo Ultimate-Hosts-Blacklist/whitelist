@@ -64,8 +64,8 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         self.output = output_file
         self.use_core = use_official
 
-        self.parser = Parser()
-        self.whitelist_process = self.parser.parse(self.__get_whitelist_list_to_parse())
+        parser = Parser()
+        self.whitelist_process = parser.parse(self.__get_whitelist_list_to_parse())
 
     def __get_whitelist_list_to_parse(self):
         """

@@ -33,6 +33,7 @@ License:
 """
 # pylint:disable=bad-continuation, too-few-public-methods
 
+from ultimate_hosts_blacklist.helpers import List
 from ultimate_hosts_blacklist.whitelist.configuration import Configuration
 from ultimate_hosts_blacklist.whitelist.rzdb import RZDB
 
@@ -74,10 +75,11 @@ class Parser:
                 if bare.startswith("www."):
                     bare = bare[4:]
 
-                return [
-                    ("present", ["{0}.{1}".format(bare, x) for x in self.rzdb]),
-                    ("present", ["www.{0}.{1}".format(bare, x) for x in self.rzdb]),
-                ]
+                result = ["{0}.{1}".format(bare, x) for x in self.rzdb]
+                result.extend(["www.{0}".format(x) for x in result])
+                result = List(result).format()
+
+                return ("present", result)
 
             line = line.strip()
 
