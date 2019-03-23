@@ -138,7 +138,10 @@ class TestFiltering(TestCase):
 
         expected = ["example.org"]
         actual = Core(
-            use_official=False, secondary_whitelist=secondary_whitelist
+            use_official=False,
+            secondary_whitelist=secondary_whitelist,
+            multiprocessing=True,
+            processes=1,
         ).filter(items=given)
 
         self.assertEqual(expected, actual)
@@ -170,13 +173,17 @@ class TestFiltering(TestCase):
         ]
         expected = ["example.org", "test.org"]
         actual = Core(
-            use_official=False, secondary_whitelist=secondary_whitelist
+            use_official=False,
+            secondary_whitelist=secondary_whitelist,
+            multiprocessing=True,
         ).filter(items=given)
 
         self.assertEqual(expected, actual)
 
         actual = Core(
-            use_official=False, secondary_whitelist=secondary_whitelist
+            use_official=False,
+            secondary_whitelist=secondary_whitelist,
+            multiprocessing=True,
         ).filter(items=given, already_formatted=True)
 
         self.assertEqual(expected, actual)
@@ -188,6 +195,7 @@ class TestFiltering(TestCase):
 
         secondary_whitelist = ["google.com", "REG g"]
         given = [
+            "",
             "example.com",
             "0.0.0.0   example.com",
             "0.0.0.0\t\t\texample.com",
@@ -199,7 +207,17 @@ class TestFiltering(TestCase):
         ]
         expected = ["example.com", "0.0.0.0   example.com", "0.0.0.0\t\t\texample.com"]
         actual = Core(
-            use_official=False, secondary_whitelist=secondary_whitelist
+            use_official=False,
+            secondary_whitelist=secondary_whitelist,
+            multiprocessing=False,
+        ).filter(items=given)
+
+        self.assertEqual(expected, actual)
+
+        actual = Core(
+            use_official=False,
+            secondary_whitelist=secondary_whitelist,
+            multiprocessing=True,
         ).filter(items=given)
 
         self.assertEqual(expected, actual)
@@ -222,13 +240,17 @@ class TestFiltering(TestCase):
         ]
         expected = []
         actual = Core(
-            use_official=False, secondary_whitelist=secondary_whitelist
+            use_official=False,
+            secondary_whitelist=secondary_whitelist,
+            multiprocessing=False,
         ).filter(items=given)
 
         self.assertEqual(expected, actual)
 
         actual = Core(
-            use_official=False, secondary_whitelist=secondary_whitelist
+            use_official=False,
+            secondary_whitelist=secondary_whitelist,
+            multiprocessing=True,
         ).filter(items=given, already_formatted=True)
 
         self.assertEqual(expected, actual)

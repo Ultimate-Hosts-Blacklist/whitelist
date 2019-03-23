@@ -31,17 +31,22 @@ License:
 """
 # pylint: disable=bad-continuation
 import argparse
+from logging import DEBUG, INFO
 
 from colorama import Fore, Style
 from colorama import init as initiate
 
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.2.0"
+VERSION = "3.3.0"
 
 
 def clean_string_with_official_whitelist(
-    data, use_official=True, your_whitelist_list=None
+    data,
+    use_official=True,
+    your_whitelist_list=None,
+    multiprocessing=False,
+    processes=0,
 ):
     """
     Clean the given string.
@@ -62,19 +67,36 @@ def clean_string_with_official_whitelist(
             It should follow our format.
     :type your_whitelist_list: list
 
+    :param multiprocessing: Tell us to use more than one process.
+    :type multiprocessing: bool
+
+    :param processes:
+        The number of processes to use.
+
+        .. note::
+            If equal to :code:`0`, we use :code:`os.cpu_count() // 2`.
+    :param processes: int
+
     :return: A string without the whitelisted elements.
     :rtype: string
     """
 
     return "\n".join(
-        Core(use_official=use_official, secondary_whitelist=your_whitelist_list).filter(
-            string=data
-        )
+        Core(
+            use_official=use_official,
+            secondary_whitelist=your_whitelist_list,
+            multiprocessing=multiprocessing,
+            processes=processes,
+        ).filter(string=data)
     )
 
 
 def clean_list_with_official_whitelist(
-    data, use_official=True, your_whitelist_list=None
+    data,
+    use_official=True,
+    your_whitelist_list=None,
+    multiprocessing=False,
+    processes=0,
 ):
     """
     Clean the given list.
@@ -95,12 +117,25 @@ def clean_list_with_official_whitelist(
             It should follow our format.
     :type your_whitelist_list: list
 
+    :param multiprocessing: Tell us to use more than one process.
+    :type multiprocessing: bool
+
+    :param processes:
+        The number of processes to use.
+
+        .. note::
+            If equal to :code:`0`, we use :code:`os.cpu_count() // 2`.
+    :param processes: int
+
     :return: A list without the whitelisted elements.
     :rtype: list
     """
 
     return Core(
-        use_official=use_official, secondary_whitelist=your_whitelist_list
+        use_official=use_official,
+        secondary_whitelist=your_whitelist_list,
+        multiprocessing=multiprocessing,
+        processes=processes,
     ).filter(items=data)
 
 
@@ -122,10 +157,45 @@ def _command_line():
     )
 
     parser.add_argument(
+        "-d",
+        "--debug",
+        help="Activate the debug mode. This mode will write the whole processes to stdout.",
+        action="store_true",
+        default=False,
+    )
+
+    parser.add_argument(
         "-f",
         "--file",
         type=str,
         help="Read the given file and remove all element to whitelist.",
+    )
+
+    parser.add_argument(
+        "-o",
+        "--output",
+        type=str,
+        help="Save the result to the given filename or path.",
+    )
+
+    parser.add_argument(
+        "-m",
+        "--multiprocessing",
+        action="store_true",
+        default=False,
+        help="Activate the usage of the multiple processes.",
+    )
+
+    parser.add_argument(
+        "-p", "--processes", type=int, default=0, help="The number of processes to use."
+    )
+
+    parser.add_argument(
+        "-v",
+        "--version",
+        help="Show the version end exist.",
+        action="version",
+        version="%(prog)s " + VERSION,
     )
 
     parser.add_argument(
@@ -143,22 +213,12 @@ def _command_line():
         help="Disable the usage of the Ultimate Hosts Blacklist whitelist list.",
     )
 
-    parser.add_argument(
-        "-o",
-        "--output",
-        type=str,
-        help="Save the result to the given filename or path.",
-    )
-
-    parser.add_argument(
-        "-v",
-        "--version",
-        help="Show the version end exist.",
-        action="version",
-        version="%(prog)s " + VERSION,
-    )
-
     arguments = parser.parse_args()
+
+    if arguments.debug:
+        logging_level = DEBUG
+    else:
+        logging_level = INFO
 
     if arguments.file:
         if not arguments.output:
@@ -167,6 +227,9 @@ def _command_line():
                     Core(
                         secondary_whitelist_file=arguments.whitelist,
                         use_official=arguments.without_core,
+                        multiprocessing=arguments.multiprocessing,
+                        processes=arguments.processes,
+                        logging_level=logging_level,
                     ).filter(file=arguments.file)
                 )
             )
@@ -175,4 +238,7 @@ def _command_line():
                 secondary_whitelist_file=arguments.whitelist,
                 output_file=arguments.output,
                 use_official=arguments.without_core,
+                multiprocessing=arguments.multiprocessing,
+                processes=arguments.processes,
+                logging_level=logging_level,
             ).filter(file=arguments.file)

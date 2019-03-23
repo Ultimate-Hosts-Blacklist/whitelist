@@ -34,6 +34,8 @@ License:
 # pylint: disable=bad-continuation, logging-format-interpolation
 import logging
 from itertools import filterfalse
+from multiprocessing import Pool
+from os import cpu_count
 
 from domain2idna import get as domain2idna
 
@@ -53,9 +55,12 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         secondary_whitelist=None,
         secondary_whitelist_file=None,
         use_official=True,
+        multiprocessing=True,
+        processes=0,
+        logging_level=logging.INFO,
     ):
         logging.basicConfig(
-            format="%(asctime)s - %(levelname)s -- %(message)s", level=logging.INFO
+            format="%(asctime)s - %(levelname)s -- %(message)s", level=logging_level
         )
 
         self.secondary_whitelist_file = secondary_whitelist_file
@@ -65,6 +70,14 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         parser = Parser()
         self.whitelist_process = parser.parse(self.__get_whitelist_list_to_parse())
+
+        self.multiprocessing = multiprocessing
+
+        if self.multiprocessing:
+            if not processes:
+                self.processes = cpu_count() // 2
+            else:
+                self.processes = processes
 
     def __get_whitelist_list_to_parse(self):
         """
@@ -205,52 +218,63 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         Check if the given line is whitelisted.
         """
 
-        logging.debug("Checking line: {0}".format(repr(line)))
-        line = line.split()[-1]
-        logging.debug("Checking line: {0}".format(repr(line)))
+        line = line.strip()
+
+        if not line:
+            logging.debug("Empty line whitelisted by default.")
+            return True, line
+
+        logging.debug("Given line: {0}".format(repr(line)))
+
+        if isinstance(line, str):
+            to_check = line.split()[-1]
+        else:  # pragma: no cover
+            raise ValueError("expected {0}. {2} given.".format(type(str), type(line)))
+
+        logging.debug("To check: {0}".format(repr(to_check)))
 
         if self.whitelist_process:
-            if line.startswith("www."):
-                bare = line[4:]
+            if to_check.startswith("www."):
+                bare = to_check[4:]
             else:
-                bare = line
+                bare = to_check
 
             if (
                 bare[:4] in self.whitelist_process["strict"]
-                and line in self.whitelist_process["strict"][bare[:4]]
+                and to_check in self.whitelist_process["strict"][bare[:4]]
             ):
                 logging.debug(
                     "Line {0} whitelisted by {1} rule: {2}.".format(
                         repr(line), repr("strict"), repr(line)
                     )
                 )
-                return True
+                return True, line
 
             if (
                 bare[:4] in self.whitelist_process["present"]
-                and line in self.whitelist_process["present"][bare[:4]]
+                and to_check in self.whitelist_process["present"][bare[:4]]
             ):
                 logging.debug(
                     "Line {0} whitelisted by {1} rule.".format(
                         repr(line), repr("present")
                     )
                 )
-                return True
+                return True, line
 
             if bare[-3:] in self.whitelist_process["ends"]:
-                for rule in self.whitelist_process["ends"]:
-                    if line.endswith(rule):
+                for rule in self.whitelist_process["ends"][bare[-3:]]:
+                    if to_check.endswith(rule):
                         logging.debug(
                             "Line {0} whitelisted by {1} rule: {2}.".format(
                                 repr(line), repr("ends"), repr(rule)
                             )
                         )
-                        return True
+                        return True, line
 
             if (
                 self.whitelist_process["regex"]
                 and Regex(
-                    line, self.whitelist_process["regex"], return_data=False
+                    to_check, self.whitelist_process["regex"], return_data=False
                 ).match()
             ):
                 logging.debug(
@@ -258,10 +282,10 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                         repr(line), repr("regex")
                     )
                 )
-                return True
+                return True, line
 
         logging.debug("Line {0} not whitelisted, no rule matched.".format(repr(line)))
-        return False
+        return False, line
 
     def filter(self, file=None, string=None, items=None, already_formatted=False):
         """
@@ -269,10 +293,27 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         """
 
         if self.whitelist_process:
+            if self.multiprocessing:
+                result = []
+                with Pool(processes=self.processes) as pool:
+                    for whitelisted, line in pool.map(
+                        self.is_whitelisted,
+                        self.__get_content(
+                            file=file,
+                            string=string,
+                            items=items,
+                            already_formatted=already_formatted,
+                        ),
+                    ):
+                        if whitelisted is False:
+                            result.append(line)
+
+                return self.__write_output(result)
+
             return self.__write_output(
                 list(
                     filterfalse(
-                        self.is_whitelisted,
+                        lambda x: self.is_whitelisted(x)[0] is True,
                         self.__get_content(
                             file=file,
                             string=string,

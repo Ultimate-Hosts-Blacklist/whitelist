@@ -65,10 +65,10 @@ class TestParser(TestCase):
         Test the parser for the ALL marker.
         """
 
-        given = ["ALL example.com"]
+        given = ["ALL example.com", "ALL .com"]
         expected = {
             "strict": {},
-            "ends": {"com": ["example.com"]},
+            "ends": {"com": ["example.com", ".com"]},
             "present": {},
             "regex": "",
         }
