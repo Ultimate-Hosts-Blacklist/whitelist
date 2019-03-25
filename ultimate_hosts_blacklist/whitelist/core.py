@@ -79,6 +79,47 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             else:
                 self.processes = processes
 
+    @classmethod
+    def __get_our_special_rules(cls):
+        """
+        Return some special rules which should be always added to the system.
+        """
+
+        return [
+            # Match 0.0.0.0–0.255.255.255
+            r"REG 0\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 10.0.0.0–10.255.255.255
+            r"REG 10\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 100.64.0.0–100.127.255.255
+            r"REG 100\.(0?6[4-9]|0?[7-9][0-9]|1[0-1][0-9]|12[0-7])\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 127.0.0.0–127.255.255.255
+            r"REG 127\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 169.254.0.0–169.254.255.255
+            r"REG 169\.254\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 172.16.0.0–172.31.255.255
+            r"REG 172\.(0?1[6-9]|0?2[0-9]|0?3[0-1])\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 192.0.0.0–192.0.0.255
+            r"REG 192\.0\.0\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 192.0.2.0–192.0.2.255
+            r"REG 192\.0\.2\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 192.88.99.0–192.88.99.255
+            r"REG 192\.88\.99\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 192.168.0.0–192.168.255.255
+            r"REG 192\.168\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 198.18.0.0–198.19.255.255
+            r"REG 198\.(0?1[8-9])\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 198.51.100.0–198.51.100.255
+            r"REG 198\.51\.100\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 203.0.113.0–203.0.113.255
+            r"REG 203\.0\.113\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 224.0.0.0–239.255.255.255
+            r"REG (22[4-9]|23[0-9])\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 240.0.0.0–255.255.255.254
+            r"REG (24[0-9]|25[0-5])\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[0-9]{1,}\/[0-9]{1,})",  # pylint: disable=line-too-long
+            # Match 255.255.255.255
+            r"255.255.255.255",  # pylint: disable=line-too-long
+        ]
+
     def __get_whitelist_list_to_parse(self):
         """
         Return the not parsed/formatted whitelist list.
@@ -93,9 +134,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         else:
             result = []
 
-        result.append(
-            r"REG ((192)\.(168)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|((10)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|((172)\.(1[6-9]|2[0-9]|3[0-1])\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))"  # pylint: disable=line-too-long
-        )
+        result.extend(self.__get_our_special_rules())
 
         if self.secondary_whitelist_file and isinstance(
             self.secondary_whitelist_file, list
@@ -265,7 +304,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                 )
                 return True, line
 
-            if bare[-3:] in self.whitelist_process["ends"]:
+            if bare[-3:] in self.whitelist_process["ends"]:  # pragma: no cover
                 for rule in self.whitelist_process["ends"][bare[-3:]]:
                     if to_check.endswith(rule):
                         logging.debug(
@@ -335,4 +374,4 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                 items=items,
                 already_formatted=already_formatted,
             )
-        )
+        )  # pragma: no cover
