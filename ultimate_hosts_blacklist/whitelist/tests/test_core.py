@@ -203,6 +203,7 @@ class TestFiltering(TestCase):
             "github.com",
             "google.com",
             "test.org",
+            "192.168.178.1.1",
             "www.google.com",
         ]
         expected = ["example.com", "0.0.0.0   example.com", "0.0.0.0\t\t\texample.com"]

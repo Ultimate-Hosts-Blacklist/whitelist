@@ -93,6 +93,10 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         else:
             result = []
 
+        result.append(
+            r"REG ((192)\.(168)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|((10)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|((172)\.(1[6-9]|2[0-9]|3[0-1])\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))"  # pylint: disable=line-too-long
+        )
+
         if self.secondary_whitelist_file and isinstance(
             self.secondary_whitelist_file, list
         ):  # pragma: no cover
