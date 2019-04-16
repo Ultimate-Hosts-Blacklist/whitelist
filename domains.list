@@ -513,11 +513,35 @@ odcdn.com
 office.com
 officeclient.microsoft.com
 officedepot.com
+oladblock.me
+oladblock.services
+oladblock.xyz
+oload.cc
+oload.cloud
+oload.club
+oload.download
+oload.fun
+oload.icu
+oload.info
+oload.live
+oload.pw
+oload.site
+oload.space
+oload.stream
+oload.tv
+oload.win
+oload.xyz
+olpair.com
 onedrive.live.com
 onet.pl
 open.fm
 openbsd.org
+openload.
+openload.co
 openload.io
+openload.link
+openload.pw
+openloed.co
 opensubtitles.org
 opinion.latimes.com
 orange.fr
@@ -588,6 +612,7 @@ REG ^(?!.*\.?(oem)).*\.twimg\.com$
 REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
 REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
 REG ^(?!.*\.?(watchdog\.ohio|dap\.digitalgov|stats\.ssa|adgallery\.whitehousedrugpolicy)).*\.gov$
+REG ^.*\.oloadcdn\.net$
 res.cloudinary.com
 road.adblock.ro
 roku.com
