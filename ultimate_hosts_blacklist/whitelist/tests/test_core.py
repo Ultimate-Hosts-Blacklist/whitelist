@@ -134,8 +134,17 @@ class TestFiltering(TestCase):
             "0.0.0.0\t\t\t\t\twww.google.com",
             "0.15.158.25",
             "10.120.58.75",
+            "10.212.54.132200cdn.tt.omtrdc.net",
+            "10.212.54.132200cm.everesttech.net",
+            "10.212.54.132200ib.adnxs.com",
+            "10.212.54.132200paloaltonetworks.d1.sc.omtrdc.net",
+            "10.212.54.132200paloaltonetworks.tt.omtrdc.net",
+            "10.212.54.132200pixel.everesttech.net",
+            "10.212.54.132200sync-tm.everesttech.net",
+            "10.212.54.132200sync.jivox.com",
             "10.255.25.12",
             "127.48.15.78",
+            "160.41.54.45.rdns.adjust.com",
             "169.254.18.138",
             "172.31.75.92",
             "192.0.0.221",
@@ -153,7 +162,18 @@ class TestFiltering(TestCase):
             "www.google.com",
         ]
 
-        expected = ["example.org"]
+        expected = [
+            "10.212.54.132200cdn.tt.omtrdc.net",
+            "10.212.54.132200cm.everesttech.net",
+            "10.212.54.132200ib.adnxs.com",
+            "10.212.54.132200paloaltonetworks.d1.sc.omtrdc.net",
+            "10.212.54.132200paloaltonetworks.tt.omtrdc.net",
+            "10.212.54.132200pixel.everesttech.net",
+            "10.212.54.132200sync-tm.everesttech.net",
+            "10.212.54.132200sync.jivox.com",
+            "160.41.54.45.rdns.adjust.com",
+            "example.org",
+        ]
         actual = Core(
             use_official=False,
             secondary_whitelist=secondary_whitelist,
@@ -220,7 +240,7 @@ class TestFiltering(TestCase):
             "github.com",
             "google.com",
             "test.org",
-            "192.168.178.1.1",
+            "192.168.178.1",
             "www.google.com",
         ]
         expected = ["example.com", "0.0.0.0   example.com", "0.0.0.0\t\t\texample.com"]
