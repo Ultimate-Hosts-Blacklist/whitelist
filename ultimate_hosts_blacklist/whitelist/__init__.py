@@ -38,7 +38,7 @@ from colorama import init as initiate
 
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.7.0"
+VERSION = "3.7.1"
 
 
 def clean_string_with_official_whitelist(
@@ -183,11 +183,11 @@ def _command_line():
         "--multiprocessing",
         action="store_true",
         default=False,
-        help="Activate the usage of the multiple processes.",
+        help="Activate the usage of multiple processes.",
     )
 
     parser.add_argument(
-        "-p", "--processes", type=int, default=0, help="The number of processes to use."
+        "-p", "--processes", type=int, default=0, help="The number of (maximal) processes to use."
     )
 
     parser.add_argument(

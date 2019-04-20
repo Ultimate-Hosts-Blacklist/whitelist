@@ -211,9 +211,9 @@ The sript can be called as :code:`uhb-whitelist`, :code:`uhb_whitelist` and :cod
         -o OUTPUT, --output OUTPUT
                                 Save the result to the given filename or path.
         -m, --multiprocessing
-                                Activate the usage of the multiple processes.
+                                Activate the usage of multiple processes.
         -p PROCESSES, --processes PROCESSES
-                                The number of processes to use.
+                                The number of (maximal) processes to use.
         -v, --version         Show the version end exist.
         -w WHITELIST [WHITELIST ...], --whitelist WHITELIST [WHITELIST ...]
                                 Read the given file and append its data to the our
