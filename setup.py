@@ -40,7 +40,7 @@ from setuptools import setup
 NAMESPACE = "ultimate_hosts_blacklist"
 MODULE = "whitelist"
 
-PYPI_NAME = substring(r"\_", r"\-", "{0}-{1}".format(NAMESPACE, MODULE))
+PYPI_NAME = substring(r"_", r"-", "{0}-{1}".format(NAMESPACE, MODULE))
 
 
 def _test_suite():
