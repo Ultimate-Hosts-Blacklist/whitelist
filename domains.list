@@ -219,6 +219,7 @@ ec-ns.sascdn.com
 echo.edge.messenger.live.com
 edgesuite.net
 eds.xboxlive.com
+embed.flowplayer.org
 embed.spotify.com
 en.bab.la
 encrypted-tbn0.gstatic.com
@@ -614,6 +615,7 @@ REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
 REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
 REG ^(?!.*\.?(watchdog\.ohio|dap\.digitalgov|stats\.ssa|adgallery\.whitehousedrugpolicy)).*\.gov$
 REG ^.*\.oloadcdn\.net$
+releases.flowplayer.org
 res.cloudinary.com
 road.adblock.ro
 roku.com
