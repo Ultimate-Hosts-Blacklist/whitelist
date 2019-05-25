@@ -23,6 +23,7 @@ adidas.com
 advanceautoparts.com
 adwords.google.com
 ajax.cloudflare.com
+ajax.googleapis.com
 akadns.net
 akamai.net
 akamaiedge.net
@@ -126,6 +127,8 @@ cda.pl
 cdn.discordapp.com
 cdn.edgesuite.net
 cdn.embedly.com
+cdn.fluidplayer.com
+cdn.jsdelivr.net
 cdn.rawgit.com
 cdninstagram.com
 cdnjs.cloudflare.com
@@ -146,9 +149,12 @@ cloudfront.net
 cnbc.com
 cnn.com
 code.google.com
+code.jquery.com
+codeorigin.jquery.com
 collegehumor.com
 community.spiceworks.com
 confib.ifmo.ru
+connect.facebook.net
 contacts.msn.com
 content.logmein.com
 cosmopolitan.com
@@ -221,6 +227,7 @@ ec-ns.sascdn.com
 echo.edge.messenger.live.com
 edgesuite.net
 eds.xboxlive.com
+embed.flowplayer.org
 embed.spotify.com
 en.bab.la
 encrypted-tbn0.gstatic.com
@@ -257,6 +264,7 @@ filters.adtidy.org
 finance.yahoo.com
 fm.tuba.pl
 fonts.googleapis.com
+fonts.gstatic.com
 footlocker-inc.com
 footlocker.com
 forbes.com
@@ -340,6 +348,10 @@ hulkshare.com
 hulu.com
 i.imgur.com
 i.s-microsoft.com
+i0.wp.com
+i1.wp.com
+i2.wp.com
+i3.wp.com
 icanhazip.com
 ichnaea.netflix.com
 icloud.com
@@ -372,6 +384,7 @@ jobs.lifehacker.com
 joemonster.org
 joewein.net
 js.maxmind.com
+jwpcdn.com
 katowice.tvp.pl
 keystone.mwbsys.com
 kickstarter.com
@@ -421,9 +434,11 @@ majorgeeks.com
 malwaredomainlist.com
 malwaredomains.lehigh.edu
 malwareurls.joxeankoret.com
+maps.googleapis.com
 margevicius.lt
 marketwatch.com
 mashable.com
+maxcdn.bootstrapcdn.com
 maxthon.com
 media.licdn.com
 mediamarkt.at
@@ -473,6 +488,7 @@ nccp.netflix.com
 neowin.net
 nesn.com
 netbsd.org
+netdna.bootstrapcdn.com
 netflix.com
 newegg.com
 newjobs.com
@@ -555,6 +571,7 @@ outlook.live.com
 outlook.office365.com
 ow.ly
 p.imgur.com
+p.jwpcdn.com
 packages.linuxmint.com
 pando.com
 paper.li
@@ -574,6 +591,7 @@ pinterest.com
 pittsburgh.cbslocal.com
 pkobp.pl
 pl-pl.facebook.com
+platform.instagram.com
 platform.twitter.com
 play.google.com
 play.lego.com
@@ -603,11 +621,14 @@ radiostacja.pl
 ransomwaretracker.abuse.ch
 rapidgator.net
 rapidvideo.com
+raw.githack.com
 raw.github.com
 raw.githubusercontent.com
+rawcdn.githack.com
 rawgit.com
 real-debrid.com
 realestate.nj.com
+recaptcha.net
 reddit.com
 redfin.com
 reebok.com
@@ -616,6 +637,7 @@ REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
 REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
 REG ^(?!.*\.?(watchdog\.ohio|dap\.digitalgov|stats\.ssa|adgallery\.whitehousedrugpolicy)).*\.gov$
 REG ^.*\.oloadcdn\.net$
+releases.flowplayer.org
 res.cloudinary.com
 road.adblock.ro
 roku.com
@@ -773,6 +795,7 @@ uploaded.net
 uploaded.to
 uptobox.com
 urlhaus.abuse.ch
+use.fontawesome.com
 userscloud.com
 userstream.twitter.com
 v.firebog.net
