@@ -38,6 +38,8 @@ from multiprocessing import Pool
 from os import cpu_count
 
 from domain2idna import get as domain2idna
+from PyFunceble import load_config
+from PyFunceble.check import Check
 
 from ultimate_hosts_blacklist.helpers import Download, File, Regex
 from ultimate_hosts_blacklist.whitelist.configuration import Configuration
@@ -78,6 +80,8 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                 self.processes = cpu_count() // 2
             else:
                 self.processes = processes
+
+        load_config(generate_directory_structure=False)
 
     @classmethod
     def __get_our_special_rules(cls):
@@ -217,6 +221,8 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         :return: The lines
         """
 
+        line = [x.strip() for x in line if x.strip()]
+
         if self.output:
             if isinstance(line, list):
                 line = "\n".join(line)
@@ -256,7 +262,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         return result
 
-    def is_whitelisted(self, line):
+    def is_whitelisted(self, line):  # pylint: disable=too-many-branches
         """
         Check if the given line is whitelisted.
         """
@@ -271,6 +277,11 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         if isinstance(line, str):
             to_check = line.split()[-1]
+
+            url_base = Check(to_check).is_url(return_base=True)
+
+            if url_base is not False:  # pragma: no cover
+                to_check = url_base
         else:  # pragma: no cover
             raise ValueError("expected {0}. {2} given.".format(type(str), type(line)))
 

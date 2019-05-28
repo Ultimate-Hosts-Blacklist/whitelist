@@ -1,4 +1,5 @@
 colorama
 domain2idna
+pyfunceble-dev
 requests
 ultimate-hosts-blacklist-helpers>=1.5.2

@@ -32,13 +32,18 @@ License:
 # pylint: disable=bad-continuation
 import argparse
 from logging import DEBUG, INFO
+from os import environ
+from tempfile import gettempdir
 
 from colorama import Fore, Style
 from colorama import init as initiate
 
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.7.2"
+VERSION = "3.9.0"
+
+environ["PYFUNCEBLE_CONFIG_DIR"] = gettempdir()
+environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "TRUE"
 
 
 def clean_string_with_official_whitelist(
@@ -187,7 +192,11 @@ def _command_line():
     )
 
     parser.add_argument(
-        "-p", "--processes", type=int, default=0, help="The number of (maximal) processes to use."
+        "-p",
+        "--processes",
+        type=int,
+        default=0,
+        help="The number of (maximal) processes to use.",
     )
 
     parser.add_argument(

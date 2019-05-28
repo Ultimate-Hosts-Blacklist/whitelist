@@ -159,6 +159,8 @@ class TestFiltering(TestCase):
             "255.255.255.255",
             "example.org",
             "google.com",
+            "http://www.google.com",
+            "https://google.com",
             "www.google.com",
         ]
 
