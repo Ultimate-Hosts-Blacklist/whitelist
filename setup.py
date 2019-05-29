@@ -1,5 +1,5 @@
 """
-The whitelist script of the Ultimate-Hosts-Blacklist project.
+The whitelisting tool from the Ultimate-Hosts-Blacklist project.
 
 License:
 ::
