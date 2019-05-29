@@ -1,7 +1,17 @@
-The Ultimate Hosts Blacklist whitelist tool
-===========================================
+The whitelisting tool from the Ultimate Hosts Blacklist project
+===============================================================
 
-This is the branch which contain the tool which we use to whitelist domains or IP into our infrastructure.
+This is the whitelisting tool provided by the Ultimate Hosts Blacklist project.
+It is mainly used to whitelist subject (domains, IP, URL) into our infrastructure but can also be used outside our infrastructure.
+
+Indeed, this tool allows you:
+
+* to get rid of our whitelist.
+* to use your own whitelist.
+* to use your own whitelist along with our whitelist.
+* to get rid of one of the rule mentionned in our whitelist.
+* to have a whitelist tool ready to use as a Python module.
+
 
 Installation
 ------------
