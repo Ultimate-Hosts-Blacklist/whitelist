@@ -95,12 +95,14 @@ The generated regular expression will be in this example:
     (\.gov$)|(face)|(example(.*))
 
 
-**NOTE: The :code:`example` group is much longer as we construct the list of TDL based on the Root Zone Database of the IANA and the Public Suffix List project.**
+.. note::
+    The :code:`example` group is much longer as we construct the list of TDL based on the Root Zone Database of the IANA and the Public Suffix List project.**
 
 Which actually means that we whitelist:
 
 * all elements/lines which ends with :code:`.gov`
 * all elements/lines which contain the word :code:`face`
+* all possible TDL combinaison which starts with :code:`example`
 
 Contributors
 ------------
