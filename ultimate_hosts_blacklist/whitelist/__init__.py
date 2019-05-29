@@ -7,8 +7,8 @@ License:
 
     MIT License
 
-    Copyright (c) 2018-2019 Ultimate-Hosts-Blacklist
-    Copyright (c) 2018-2019 Nissar Chababy
+    Copyright (c) 2018, 2019 Ultimate-Hosts-Blacklist
+    Copyright (c) 2018, 2019 Nissar Chababy
     Copyright (c) 2019 Mitchell Krog
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,7 +40,7 @@ from colorama import init as initiate
 
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.10.2"
+VERSION = "3.10.3"
 
 environ["PYFUNCEBLE_CONFIG_DIR"] = gettempdir()
 environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "TRUE"
