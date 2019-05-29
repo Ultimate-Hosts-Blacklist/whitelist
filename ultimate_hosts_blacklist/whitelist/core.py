@@ -56,6 +56,8 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         output_file=None,
         secondary_whitelist=None,
         secondary_whitelist_file=None,
+        anti_whitelist=None,
+        anti_whitelist_file=None,
         use_official=True,
         multiprocessing=True,
         processes=0,
@@ -67,6 +69,9 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         self.secondary_whitelist_file = secondary_whitelist_file
         self.secondary_whitelist_list = secondary_whitelist
+        self.anti_whitelist_list = anti_whitelist
+        self.anti_whitelist_file = anti_whitelist_file
+
         self.output = output_file
         self.use_core = use_official
 
@@ -150,6 +155,13 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             self.secondary_whitelist_list, list
         ):
             result.extend(self.secondary_whitelist_list)
+
+        if self.anti_whitelist_file and isinstance(self.anti_whitelist_file, list):
+            for file in self.anti_whitelist_file:
+                result = list(set(result) - set(file.read().splitlines()))
+
+        if self.anti_whitelist_list and isinstance(self.anti_whitelist_list, list):
+            result = list(set(result) - set(self.anti_whitelist_list))
 
         return result
 

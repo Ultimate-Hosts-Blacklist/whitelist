@@ -40,7 +40,7 @@ from colorama import init as initiate
 
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.9.0"
+VERSION = "3.10.0"
 
 environ["PYFUNCEBLE_CONFIG_DIR"] = gettempdir()
 environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "TRUE"
@@ -50,37 +50,38 @@ def clean_string_with_official_whitelist(
     data,
     use_official=True,
     your_whitelist_list=None,
+    your_anti_whitelist_list=None,
     multiprocessing=False,
     processes=0,
-):
+):  # pylint: disable=too-many-arguments
     """
     Clean the given string.
 
     .. note:
         We consider 1 element per line.
 
-    :param data: The string to clean.
-    :type data: str
-
-    :pram use_official: Allow us to use your official whitelist list.
-    :type use_official: bool
-
-    :param your_whitelist_list:
+    :param str data: The string to clean.
+    :pram bool use_official: Allow us to use your official whitelist list.
+    :param list your_whitelist_list:
         Your whitelist list.
 
         .. note::
             It should follow our format.
-    :type your_whitelist_list: list
 
-    :param multiprocessing: Tell us to use more than one process.
-    :type multiprocessing: bool
+    :param list your_anty_whitelist_list:
+        Your anti whitelist list.
+        Basically a list of rule which we don't have to follow.
 
-    :param processes:
+        .. note::
+            It should follow our format.
+
+    :param bool multiprocessing: Tell us to use more than one process.
+
+    :param int processes:
         The number of processes to use.
 
         .. note::
             If equal to :code:`0`, we use :code:`os.cpu_count() // 2`.
-    :param processes: int
 
     :return: A string without the whitelisted elements.
     :rtype: string
@@ -90,6 +91,7 @@ def clean_string_with_official_whitelist(
         Core(
             use_official=use_official,
             secondary_whitelist=your_whitelist_list,
+            anti_whitelist=your_anti_whitelist_list,
             multiprocessing=multiprocessing,
             processes=processes,
         ).filter(string=data)
@@ -100,37 +102,39 @@ def clean_list_with_official_whitelist(
     data,
     use_official=True,
     your_whitelist_list=None,
+    your_anti_whitelist_list=None,
     multiprocessing=False,
     processes=0,
-):
+):  # pylint: disable=too-many-arguments
     """
     Clean the given list.
 
-    :param data: The list to clean.
-    :type data: list
+    :param list data: The list to clean.
 
-    :param data: The string to clean.
-    :type data: str
+    :param str data: The string to clean.
 
-    :pram use_core: Allow us to use your official whitelist list.
-    :type use_core: bool
+    :pram bool use_core: Allow us to use your official whitelist list.
 
-    :param your_whitelist_list:
+    :param list your_whitelist_list:
         Your whitelist list.
 
         .. note::
             It should follow our format.
-    :type your_whitelist_list: list
 
-    :param multiprocessing: Tell us to use more than one process.
-    :type multiprocessing: bool
+     :param list your_anty_whitelist_list:
+        Your anti whitelist list.
+        Basically a list of rule which we don't have to follow.
 
-    :param processes:
+        .. note::
+            It should follow our format.
+
+    :param bool multiprocessing: Tell us to use more than one process.
+
+    :param int processes:
         The number of processes to use.
 
         .. note::
             If equal to :code:`0`, we use :code:`os.cpu_count() // 2`.
-    :param processes: int
 
     :return: A list without the whitelisted elements.
     :rtype: list
@@ -139,6 +143,7 @@ def clean_list_with_official_whitelist(
     return Core(
         use_official=use_official,
         secondary_whitelist=your_whitelist_list,
+        anti_whitelist=your_anti_whitelist_list,
         multiprocessing=multiprocessing,
         processes=processes,
     ).filter(items=data)
@@ -153,7 +158,8 @@ def _command_line():
     initiate(autoreset=True)
 
     parser = argparse.ArgumentParser(
-        description="The tool to clean a list or a hosts file with the Ultimate Hosts Blacklist whitelist list or your own.",  # pylint: disable=line-too-long
+        description="The tool to clean a list or a hosts file "
+        "with the Ultimate Hosts Blacklist whitelist list or your own.",
         epilog="Crafted with %s by %s"
         % (
             Fore.RED + "♥" + Fore.RESET,
@@ -162,9 +168,19 @@ def _command_line():
     )
 
     parser.add_argument(
+        "-a",
+        "--anti-whitelist",
+        type=argparse.FileType("r"),
+        nargs="+",
+        help="Read the given file and remove the rules (its data) "
+        "from the whitelist list we are going to use.",
+    )
+
+    parser.add_argument(
         "-d",
         "--debug",
-        help="Activate the debug mode. This mode will write the whole processes to stdout.",
+        help="Activate the debug mode. This mode will write the whole "
+        "processes to stdout.",
         action="store_true",
         default=False,
     )
@@ -235,6 +251,7 @@ def _command_line():
                 "\n".join(
                     Core(
                         secondary_whitelist_file=arguments.whitelist,
+                        anti_whitelist_file=arguments.anti_whitelist,
                         use_official=arguments.without_core,
                         multiprocessing=arguments.multiprocessing,
                         processes=arguments.processes,
@@ -245,6 +262,7 @@ def _command_line():
         else:
             Core(
                 secondary_whitelist_file=arguments.whitelist,
+                anti_whitelist_file=arguments.anti_whitelist,
                 output_file=arguments.output,
                 use_official=arguments.without_core,
                 multiprocessing=arguments.multiprocessing,

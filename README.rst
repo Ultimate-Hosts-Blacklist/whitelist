@@ -1,7 +1,7 @@
-The Ultimate Hosts Blacklist whitelist script
-=============================================
+The Ultimate Hosts Blacklist whitelist tool
+===========================================
 
-This is the branch which contain the script which we use to whitelist domains or IP into our infrastructure.
+This is the branch which contain the tool which we use to whitelist domains or IP into our infrastructure.
 
 Installation
 ------------
@@ -15,7 +15,7 @@ Installation
 Complementary whitelist
 -----------------------
 
-Our script allow us to link one or more file(s) to the system which will be used in complementary of our whitelist list.
+Our tool allow us to link one or more file(s) to the system which will be used in complementary of our whitelist list.
 
 Special markers
 ---------------
@@ -49,6 +49,13 @@ The :code:`REG` marker will tell the system to explicitly check for the given re
 """""""""""
 
 The :code:`RZD` marker will tell the system to explicitly check for the given string plus all possible TDL.
+
+Anti whitelist
+--------------
+
+Don't like one of our rule ? Our tool allows you to specify a file which contain a list of rule you don't want to apply.
+
+Simply use the :code:`--anti-whitelist` flag to tell us one or more anti whitelist files and we will apply!
 
 
 Understanding what we actually do
@@ -90,14 +97,15 @@ Contributors
 
 * Daniel - `@dnmTX`_
 
-Usage of the script
--------------------
+Usage of the tool
+-----------------
 
 The sript can be called as :code:`uhb-whitelist`, :code:`uhb_whitelist` and :code:`ultimate-hosts-blacklist-whitelist`.
 
 ::
 
-    usage: uhb_whitelist [-h] [-d] [-f FILE] [-o OUTPUT] [-m] [-p PROCESSES] [-v]
+    usage: uhb_whitelist [-h] [-a ANTI_WHITELIST [ANTI_WHITELIST ...]] [-d]
+                        [-f FILE] [-o OUTPUT] [-m] [-p PROCESSES] [-v]
                         [-w WHITELIST [WHITELIST ...]] [-wc]
 
     The tool to clean a list or a hosts file with the Ultimate Hosts Blacklist
@@ -105,6 +113,9 @@ The sript can be called as :code:`uhb-whitelist`, :code:`uhb_whitelist` and :cod
 
     optional arguments:
         -h, --help            show this help message and exit
+        -a ANTI_WHITELIST [ANTI_WHITELIST ...], --anti-whitelist ANTI_WHITELIST [ANTI_WHITELIST ...]
+                                Read the given file and remove the rules (its data)
+                                from the whitelist list we are going to use.
         -d, --debug           Activate the debug mode. This mode will write the
                                 whole processes to stdout.
         -f FILE, --file FILE  Read the given file and remove all element to
