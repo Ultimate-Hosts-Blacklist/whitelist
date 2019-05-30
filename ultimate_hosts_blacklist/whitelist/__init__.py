@@ -40,7 +40,7 @@ from colorama import init as initiate
 
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.12.0"
+VERSION = "3.13.0"
 
 environ["PYFUNCEBLE_CONFIG_DIR"] = gettempdir()
 environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "TRUE"
@@ -186,6 +186,15 @@ def _command_line():
     )
 
     parser.add_argument(
+        "-df",
+        "--debug-into-file",
+        help="Activate the logging into a file called `uhb_whitelist_debug` "
+        "at the current location.",
+        action="store_true",
+        default=False,
+    )
+
+    parser.add_argument(
         "-f",
         "--file",
         type=str,
@@ -256,6 +265,7 @@ def _command_line():
                         multiprocessing=arguments.multiprocessing,
                         processes=arguments.processes,
                         logging_level=logging_level,
+                        logging_into_file=arguments.debug_into_file,
                     ).filter(file=arguments.file)
                 )
             )
@@ -268,4 +278,5 @@ def _command_line():
                 multiprocessing=arguments.multiprocessing,
                 processes=arguments.processes,
                 logging_level=logging_level,
+                logging_into_file=arguments.debug_into_file,
             ).filter(file=arguments.file)

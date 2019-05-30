@@ -62,9 +62,18 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         multiprocessing=True,
         processes=0,
         logging_level=logging.INFO,
+        logging_into_file=False,
     ):
+
+        if logging_into_file:
+            logging_file = "uhb_whitelist_debug"
+        else:
+            logging_file = None
+
         logging.basicConfig(
-            format="%(asctime)s - %(levelname)s -- %(message)s", level=logging_level
+            format="%(asctime)s - %(levelname)s -- %(message)s",
+            level=logging_level,
+            filename=logging_file,
         )
 
         self.secondary_whitelist_file = secondary_whitelist_file
@@ -375,18 +384,20 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         """
 
         if self.whitelist_process:
-            content = self.__get_content(
-                input_file=file,
-                string=string,
-                items=items,
-                already_formatted=already_formatted,
-            )
 
             if self.multiprocessing:
                 result = []
 
                 with Pool(processes=self.processes) as pool:
-                    for whitelisted, line in pool.map(self.is_whitelisted, content):
+                    for whitelisted, line in pool.map(
+                        self.is_whitelisted,
+                        self.__get_content(
+                            input_file=file,
+                            string=string,
+                            items=items,
+                            already_formatted=already_formatted,
+                        ),
+                    ):
                         if whitelisted is False:
                             result.append(line)
 
