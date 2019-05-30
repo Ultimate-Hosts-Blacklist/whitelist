@@ -156,7 +156,9 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         ):
             result.extend(self.secondary_whitelist_list)
 
-        if self.anti_whitelist_file and isinstance(self.anti_whitelist_file, list):
+        if self.anti_whitelist_file and isinstance(
+            self.anti_whitelist_file, list
+        ):  # pragma: no cover
             for file in self.anti_whitelist_file:
                 result = list(set(result) - set(file.read().splitlines()))
 
@@ -244,7 +246,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         return line
 
     def __get_content(
-        self, file=None, string=None, items=None, already_formatted=False
+        self, input_file=None, string=None, items=None, already_formatted=False
     ):  # pragma: no cover
         """
         Return the content we have to check.
@@ -252,13 +254,13 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         result = []
 
-        if file:
+        if input_file:
             if not already_formatted:
-                with open(file, "r", encoding="utf-8") as file_stream:
-                    for line in file_stream:
+                with open(input_file, "r", encoding="utf-8") as file_stream_instance:
+                    for line in file_stream_instance.read().splitlines():
                         result.append(self.format_upstream_line(line))
             else:
-                result = File(file).to_list()
+                result = File(input_file).to_list()
         elif string:
             if not already_formatted:
                 for line in string.split("\n"):
@@ -359,18 +361,18 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         """
 
         if self.whitelist_process:
+            content = self.__get_content(
+                input_file=file,
+                string=string,
+                items=items,
+                already_formatted=already_formatted,
+            )
+
             if self.multiprocessing:
                 result = []
+
                 with Pool(processes=self.processes) as pool:
-                    for whitelisted, line in pool.map(
-                        self.is_whitelisted,
-                        self.__get_content(
-                            file=file,
-                            string=string,
-                            items=items,
-                            already_formatted=already_formatted,
-                        ),
-                    ):
+                    for whitelisted, line in pool.map(self.is_whitelisted, content):
                         if whitelisted is False:
                             result.append(line)
 
@@ -381,7 +383,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                     filterfalse(
                         lambda x: self.is_whitelisted(x)[0] is True,
                         self.__get_content(
-                            file=file,
+                            input_file=file,
                             string=string,
                             items=items,
                             already_formatted=already_formatted,
@@ -392,7 +394,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         return self.__write_output(
             self.__get_content(
-                file=file,
+                input_file=file,
                 string=string,
                 items=items,
                 already_formatted=already_formatted,
