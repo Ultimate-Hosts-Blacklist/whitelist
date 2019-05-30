@@ -88,6 +88,15 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         load_config(generate_directory_structure=False)
 
+    def __getstate__(self):  # pragma: no cover
+        state = self.__dict__.copy()
+        del state["anti_whitelist_file"]
+
+        return state
+
+    def __setstate__(self, state):  # praga: no cover
+        self.__dict__.update(state)
+
     @classmethod
     def __get_our_special_rules(cls):
         """
@@ -159,8 +168,13 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         if self.anti_whitelist_file and isinstance(
             self.anti_whitelist_file, list
         ):  # pragma: no cover
-            for file in self.anti_whitelist_file:
-                result = list(set(result) - set(file.read().splitlines()))
+
+            anti_content = []
+
+            for anti_file in self.anti_whitelist_file:
+                anti_content.extend(anti_file.read().splitlines())
+
+            result = list(set(result) - set(anti_content))
 
         if self.anti_whitelist_list and isinstance(self.anti_whitelist_list, list):
             result = list(set(result) - set(self.anti_whitelist_list))
