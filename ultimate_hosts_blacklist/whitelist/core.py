@@ -368,7 +368,6 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                     to_check, self.whitelist_process["regex"], return_data=False
                 ).match()
             ):
-                logging.debug("OUTPUT: {0}".format(self.whitelist_process["regex"]))
                 logging.debug(
                     "Line {0} whitelisted by {1} rule.".format(
                         repr(line), repr("regex")
