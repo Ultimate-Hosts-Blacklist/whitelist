@@ -39,6 +39,7 @@ albert.apple.com
 alexa.com
 ALL .debian.org
 ALL .freebsd.org
+ALL .kernel.org
 ALL .netbsd.org
 ALL .openbsd.org
 ALL .pfsense.org
