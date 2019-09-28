@@ -46,6 +46,77 @@ from ultimate_hosts_blacklist.whitelist.configuration import Configuration
 from ultimate_hosts_blacklist.whitelist.parser import Parser
 
 
+def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
+    """
+        Check if the given line is whitelisted.
+        """
+
+    line = line.strip()
+
+    if not line:
+        logging.debug("Empty line whitelisted by default.")
+        return True, line
+
+    logging.debug("Given line: {0}".format(repr(line)))
+
+    if isinstance(line, str):
+        to_check = line.split()[-1]
+
+        url_base = Check(to_check).is_url(return_base=True)
+
+        if url_base is not False:  # pragma: no cover
+            to_check = url_base
+    else:  # pragma: no cover
+        raise ValueError("expected {0}. {2} given.".format(type(str), type(line)))
+
+    logging.debug("To check: {0}".format(repr(to_check)))
+
+    if manifest:
+        if to_check.startswith("www."):
+            bare = to_check[4:]
+        else:
+            bare = to_check
+
+        if bare[:4] in manifest["strict"] and to_check in manifest["strict"][bare[:4]]:
+            logging.debug(
+                "Line {0} whitelisted by {1} rule: {2}.".format(
+                    repr(line), repr("strict"), repr(line)
+                )
+            )
+            return True, line
+
+        if (
+            bare[:4] in manifest["present"]
+            and to_check in manifest["present"][bare[:4]]
+        ):
+            logging.debug(
+                "Line {0} whitelisted by {1} rule.".format(repr(line), repr("present"))
+            )
+            return True, line
+
+        if bare[-3:] in manifest["ends"]:  # pragma: no cover
+            for rule in manifest["ends"][bare[-3:]]:
+                if to_check.endswith(rule):
+                    logging.debug(
+                        "Line {0} whitelisted by {1} rule: {2}.".format(
+                            repr(line), repr("ends"), repr(rule)
+                        )
+                    )
+                    return True, line
+
+        if (
+            manifest["regex"]
+            and Regex(to_check, manifest["regex"], return_data=False).match()
+        ):
+            logging.debug(
+                "Line {0} whitelisted by {1} rule.".format(repr(line), repr("regex"))
+            )
+            return True, line
+
+    logging.debug("Line {0} not whitelisted, no rule matched.".format(repr(line)))
+    return False, line
+
+
 class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-many-instance-attributes
     """
     Brain of our system.
@@ -96,15 +167,6 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                 self.processes = processes
 
         load_config(generate_directory_structure=False)
-
-    def __getstate__(self):  # pragma: no cover
-        state = self.__dict__.copy()
-        del state["anti_whitelist_file"]
-
-        return state
-
-    def __setstate__(self, state):  # praga: no cover
-        self.__dict__.update(state)
 
     @classmethod
     def __get_our_special_rules(cls):
@@ -268,7 +330,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         return line
 
-    def __get_content(
+    def _get_content(
         self, input_file=None, string=None, items=None, already_formatted=False
     ):  # pragma: no cover
         """
@@ -278,105 +340,24 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         result = []
 
         if input_file:
-            if not already_formatted:
-                with open(input_file, "r", encoding="utf-8") as file_stream_instance:
-                    for line in file_stream_instance.read().splitlines():
-                        result.append(self.format_upstream_line(line))
-            else:
-                result = File(input_file).to_list()
-        elif string:
+            result.extend(input_file.read().splitlines())
+        if string:
             if not already_formatted:
                 for line in string.split("\n"):
                     result.append(self.format_upstream_line(line))
             else:
-                result = string.split("\n")
-        elif items:
+                result.extend(string.split("\n"))
+
+        if items:
             if not already_formatted:
                 for line in items:
                     result.append(self.format_upstream_line(line))
             else:
-                result = items
+                result.extend(items)
+
+        del input_file, items, string
 
         return result
-
-    def is_whitelisted(self, line):  # pylint: disable=too-many-branches
-        """
-        Check if the given line is whitelisted.
-        """
-
-        line = line.strip()
-
-        if not line:
-            logging.debug("Empty line whitelisted by default.")
-            return True, line
-
-        logging.debug("Given line: {0}".format(repr(line)))
-
-        if isinstance(line, str):
-            to_check = line.split()[-1]
-
-            url_base = Check(to_check).is_url(return_base=True)
-
-            if url_base is not False:  # pragma: no cover
-                to_check = url_base
-        else:  # pragma: no cover
-            raise ValueError("expected {0}. {2} given.".format(type(str), type(line)))
-
-        logging.debug("To check: {0}".format(repr(to_check)))
-
-        if self.whitelist_process:
-            if to_check.startswith("www."):
-                bare = to_check[4:]
-            else:
-                bare = to_check
-
-            if (
-                bare[:4] in self.whitelist_process["strict"]
-                and to_check in self.whitelist_process["strict"][bare[:4]]
-            ):
-                logging.debug(
-                    "Line {0} whitelisted by {1} rule: {2}.".format(
-                        repr(line), repr("strict"), repr(line)
-                    )
-                )
-                return True, line
-
-            if (
-                bare[:4] in self.whitelist_process["present"]
-                and to_check in self.whitelist_process["present"][bare[:4]]
-            ):
-                logging.debug(
-                    "Line {0} whitelisted by {1} rule.".format(
-                        repr(line), repr("present")
-                    )
-                )
-                return True, line
-
-            if bare[-3:] in self.whitelist_process["ends"]:  # pragma: no cover
-                for rule in self.whitelist_process["ends"][bare[-3:]]:
-                    if to_check.endswith(rule):
-                        logging.debug(
-                            "Line {0} whitelisted by {1} rule: {2}.".format(
-                                repr(line), repr("ends"), repr(rule)
-                            )
-                        )
-                        return True, line
-
-            if (
-                self.whitelist_process["regex"]
-                and Regex(
-                    to_check, self.whitelist_process["regex"], return_data=False
-                ).match()
-            ):
-                logging.debug(
-                    "Line {0} whitelisted by {1} rule.".format(
-                        repr(line), repr("regex")
-                    )
-                )
-                return True, line
-
-        logging.debug("Line {0} not whitelisted, no rule matched.".format(repr(line)))
-        return False, line
 
     def filter(self, file=None, string=None, items=None, already_formatted=False):
         """
@@ -389,14 +370,17 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                 result = []
 
                 with Pool(processes=self.processes) as pool:
-                    for whitelisted, line in pool.map(
-                        self.is_whitelisted,
-                        self.__get_content(
-                            input_file=file,
-                            string=string,
-                            items=items,
-                            already_formatted=already_formatted,
-                        ),
+                    for whitelisted, line in pool.starmap(
+                        _is_whitelisted,
+                        [
+                            [x, self.whitelist_process]
+                            for x in self._get_content(
+                                input_file=file,
+                                string=string,
+                                items=items,
+                                already_formatted=already_formatted,
+                            )
+                        ],
                     ):
                         if whitelisted is False:
                             result.append(line)
@@ -406,8 +390,8 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             return self.__write_output(
                 list(
                     filterfalse(
-                        lambda x: self.is_whitelisted(x)[0] is True,
-                        self.__get_content(
+                        lambda x: _is_whitelisted(x, self.whitelist_process)[0] is True,
+                        self._get_content(
                             input_file=file,
                             string=string,
                             items=items,
@@ -418,7 +402,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             )
 
         return self.__write_output(
-            self.__get_content(
+            self._get_content(
                 input_file=file,
                 string=string,
                 items=items,

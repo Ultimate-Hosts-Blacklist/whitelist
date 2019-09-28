@@ -38,9 +38,10 @@ from tempfile import gettempdir
 from colorama import Fore, Style
 from colorama import init as initiate
 
+from ultimate_hosts_blacklist.helpers import File
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.13.2"
+VERSION = "3.14.0"
 
 environ["PYFUNCEBLE_CONFIG_DIR"] = gettempdir()
 environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "TRUE"
@@ -197,7 +198,7 @@ def _command_line():
     parser.add_argument(
         "-f",
         "--file",
-        type=str,
+        type=argparse.FileType("r"),
         help="Read the given file and remove all element to whitelist.",
     )
 
