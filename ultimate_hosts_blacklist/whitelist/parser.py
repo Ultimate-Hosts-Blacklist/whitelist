@@ -41,9 +41,15 @@ from ultimate_hosts_blacklist.whitelist.rzdb import RZDB
 class Parser:
     """
     Convert the given whitelist list content into something the system understand.
+
+    :param bool no_complement:
+        Forbid us the generation of complements.
+
+        Complements are `www.example.org` if `example.org` is given and vice-versa.
     """
 
-    def __init__(self):
+    def __init__(self, no_complement=False):
+        self.no_complement = no_complement
         self.rzdb = RZDB().list_format()
 
     def __parse_all_line(self, line):
@@ -60,9 +66,14 @@ class Parser:
 
         if record.startswith("."):
             if record.count(".") > 1:
+                if self.no_complement:  # pragma: no cover
+                    strict_rule = ("strict", [record[1:]])
+                else:
+                    strict_rule = ("strict", [record[1:], "www.{0}".format(record[1:])])
+
                 return [
                     ("ends", line.split(Configuration.markers["all"])[-1].strip()),
-                    ("strict", [record[1:], "www.{0}".format(record[1:])]),
+                    strict_rule,
                 ]
 
             return ("ends", line.split(Configuration.markers["all"])[-1].strip())
@@ -81,11 +92,13 @@ class Parser:
 
         bare = line.split(Configuration.markers["root_zone_db"])[-1].strip()
 
-        if bare.startswith("www."):
+        if not self.no_complement and bare.startswith("www."):
             bare = bare[4:]
 
         result = ["{0}.{1}".format(bare, x) for x in self.rzdb]
-        result.extend(["www.{0}".format(x) for x in result])
+
+        if not self.no_complement:
+            result.extend(["www.{0}".format(x) for x in result])
         result = List(result).format()
 
         return ("present", result)
@@ -118,10 +131,12 @@ class Parser:
 
             line = line.strip()
 
-            if line.startswith("www."):
+            if not self.no_complement and line.startswith("www."):
                 line = line[4:]
 
-            return ("strict", [line, "www.{0}".format(line)])
+            if not self.no_complement:
+                return ("strict", [line, "www.{0}".format(line)])
+            return ("strict", [line])  # pragma: no cover
         return (None, line.strip())
 
     @classmethod

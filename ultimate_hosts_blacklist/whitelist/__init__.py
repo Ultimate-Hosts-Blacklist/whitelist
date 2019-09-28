@@ -41,7 +41,7 @@ from colorama import init as initiate
 from ultimate_hosts_blacklist.helpers import File
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.16.0"
+VERSION = "3.17.0"
 
 environ["PYFUNCEBLE_CONFIG_DIR"] = gettempdir()
 environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "TRUE"
@@ -54,6 +54,7 @@ def clean_string_with_official_whitelist(
     your_anti_whitelist_list=None,
     multiprocessing=False,
     processes=0,
+    no_complement=False,
 ):  # pylint: disable=too-many-arguments
     """
     Clean the given string.
@@ -84,6 +85,12 @@ def clean_string_with_official_whitelist(
         .. note::
             If equal to :code:`0`, we use :code:`os.cpu_count() // 2`.
 
+    :param bool no_complement:
+        Forbid us the generation of complements while parsing the
+        whitelist list.
+
+        Complements are `www.example.org` if `example.org` is given and vice-versa.
+
     :return: A string without the whitelisted elements.
     :rtype: string
     """
@@ -95,6 +102,7 @@ def clean_string_with_official_whitelist(
             anti_whitelist=your_anti_whitelist_list,
             multiprocessing=multiprocessing,
             processes=processes,
+            no_complement=no_complement,
         ).filter(string=data)
     )
 
@@ -106,6 +114,7 @@ def clean_list_with_official_whitelist(
     your_anti_whitelist_list=None,
     multiprocessing=False,
     processes=0,
+    no_complement=False,
 ):  # pylint: disable=too-many-arguments
     """
     Clean the given list.
@@ -137,6 +146,12 @@ def clean_list_with_official_whitelist(
         .. note::
             If equal to :code:`0`, we use :code:`os.cpu_count() // 2`.
 
+    :param bool no_complement:
+        Forbid us the generation of complements while parsing the
+        whitelist list.
+
+        Complements are `www.example.org` if `example.org` is given and vice-versa.
+
     :return: A list without the whitelisted elements.
     :rtype: list
     """
@@ -147,6 +162,7 @@ def clean_list_with_official_whitelist(
         anti_whitelist=your_anti_whitelist_list,
         multiprocessing=multiprocessing,
         processes=processes,
+        no_complement=no_complement,
     ).filter(items=data)
 
 
@@ -203,6 +219,13 @@ def _command_line():
     )
 
     parser.add_argument(
+        "--hierachical-sorting",
+        action="store_true",
+        default=False,
+        help="Process a hierarchical sorting when outputing into a file.",
+    )
+
+    parser.add_argument(
         "-o",
         "--output",
         type=str,
@@ -218,6 +241,15 @@ def _command_line():
     )
 
     parser.add_argument(
+        "--no-complement",
+        action="store_true",
+        default=False,
+        help="Forbid us the generation of complements while parsing the "
+        "whitelist list. Complements are `www.example.org` if "
+        "`example.org` is given and vice-versa.",
+    )
+
+    parser.add_argument(
         "-p",
         "--processes",
         type=int,
@@ -228,13 +260,8 @@ def _command_line():
     parser.add_argument(
         "--standard-sorting",
         action="store_true",
+        default=False,
         help="Process a sorting when outputing into a file.",
-    )
-
-    parser.add_argument(
-        "--hierachical-sorting",
-        action="store_true",
-        help="Process a hierarchical sorting when outputing into a file.",
     )
 
     parser.add_argument(
@@ -279,6 +306,7 @@ def _command_line():
                         processes=arguments.processes,
                         logging_level=logging_level,
                         logging_into_file=arguments.debug_into_file,
+                        no_complement=arguments.no_complement,
                     ).filter(
                         file=arguments.file,
                         standard_sort=arguments.standard_sorting,
@@ -296,6 +324,7 @@ def _command_line():
                 processes=arguments.processes,
                 logging_level=logging_level,
                 logging_into_file=arguments.debug_into_file,
+                no_complement=arguments.no_complement,
             ).filter(
                 file=arguments.file,
                 standard_sort=arguments.standard_sorting,

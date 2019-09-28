@@ -122,6 +122,38 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
 class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-many-instance-attributes
     """
     Brain of our system.
+
+    :param str output_file:
+        The path to the file to write.
+    :param list secondary_whitelist:
+        A whitelist list to parse.
+    :param str secondary_whitelist_file:
+        A path to a whitelist file to parse.
+    :param list anti_whitelist:
+        A list of whitelist rule to exclude.
+    :param str anti_whitelist_file:
+        A path to a whitelit file containing the
+        rule we have to exclude.
+    :param bool use_official:
+        Allows us to download and use the official
+        whitelist list of the ultimate hosts blacklist project.
+    :param bool multiprocessing:
+        Allows us to use more than one process for the
+        whitelisting process.
+    :param int processes:
+        The number of processes we are allowed to use.
+
+        .. note::
+            If equal to :code:`0`, we use :code:`os.cpu_count() // 2`.
+    :param int logging_level:
+        The minimum logging level.
+    :param bool logging_into_file:
+        Allows us to log into a file called :code:`uhb_whitelist_debug`.
+    :param bool no_complement:
+        Forbid us the generation of complements while parsing the
+        whitelist list.
+
+        Complements are `www.example.org` if `example.org` is given and vice-versa.
     """
 
     def __init__(
@@ -136,6 +168,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         processes=0,
         logging_level=logging.INFO,
         logging_into_file=False,
+        no_complement=False,
     ):
 
         if logging_into_file:  # pragma: no cover
@@ -157,7 +190,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         self.output = output_file
         self.use_core = use_official
 
-        parser = Parser()
+        parser = Parser(no_complement=no_complement)
         self.whitelist_process = parser.parse(self.__get_whitelist_list_to_parse())
 
         self.multiprocessing = multiprocessing
