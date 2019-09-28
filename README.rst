@@ -37,7 +37,7 @@ It's also possible to do that with our whitelisting system but we can do more.
 :code:`ALL`
 ^^^^^^^^^^^
 
-The :code:`ALL` marker will tell the system to escape and regex check againt what follows.
+The :code:`ALL` marker will tell the system to escape and regex check against what follows.
 
 INVALID characters
 """"""""""""""""""
@@ -85,7 +85,7 @@ our system will actually :
 * Remove every line which match :code:`facebook.com` and :code:`www.facebook.com`
 * Remove everyline which match :code:`example.*`
 * In complementary convert all lines with :code:`ALL ` or :code:`REG` to the right format.
-* Check every line again the regular expression.
+* Check every line against the regular expression.
 * Print or save on screen the results.
 
 The generated regular expression will be in this example:
