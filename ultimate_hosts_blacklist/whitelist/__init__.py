@@ -41,7 +41,7 @@ from colorama import init as initiate
 from ultimate_hosts_blacklist.helpers import File
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.14.0"
+VERSION = "3.15.0"
 
 environ["PYFUNCEBLE_CONFIG_DIR"] = gettempdir()
 environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "TRUE"
@@ -226,6 +226,18 @@ def _command_line():
     )
 
     parser.add_argument(
+        "--standard-sorting",
+        action="store_true",
+        help="Process a sorting when outputing into a file.",
+    )
+
+    parser.add_argument(
+        "--hierachical-sorting",
+        action="store_true",
+        help="Process a hierarchical sorting when outputing into a file.",
+    )
+
+    parser.add_argument(
         "-v",
         "--version",
         help="Show the version end exist.",
@@ -267,7 +279,11 @@ def _command_line():
                         processes=arguments.processes,
                         logging_level=logging_level,
                         logging_into_file=arguments.debug_into_file,
-                    ).filter(file=arguments.file)
+                    ).filter(
+                        file=arguments.file,
+                        standard_sort=arguments.standard_sorting,
+                        hierarchical_sort=arguments.hierachical_sorting,
+                    )
                 )
             )
         else:
@@ -280,4 +296,8 @@ def _command_line():
                 processes=arguments.processes,
                 logging_level=logging_level,
                 logging_into_file=arguments.debug_into_file,
-            ).filter(file=arguments.file)
+            ).filter(
+                file=arguments.file,
+                standard_sort=arguments.standard_sorting,
+                hierarchical_sort=arguments.hierachical_sorting,
+            )

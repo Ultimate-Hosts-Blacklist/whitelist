@@ -40,6 +40,8 @@ from os import cpu_count
 from domain2idna import get as domain2idna
 from PyFunceble import load_config
 from PyFunceble.check import Check
+from PyFunceble.helpers import List
+from PyFunceble.sort import Sort
 
 from ultimate_hosts_blacklist.helpers import Download, File, Regex
 from ultimate_hosts_blacklist.whitelist.configuration import Configuration
@@ -136,7 +138,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         logging_into_file=False,
     ):
 
-        if logging_into_file:
+        if logging_into_file: # pragma: no cover
             logging_file = "uhb_whitelist_debug"
         else:
             logging_file = None
@@ -310,7 +312,9 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             return separator.join(splited_line)
         return domain2idna(line)
 
-    def __write_output(self, line):  # pragma: no cover
+    def __write_output(
+        self, line, standard_sorting, hierarchical_sorting
+    ):  # pragma: no cover
         """
         Write the output file.
 
@@ -324,7 +328,9 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         if self.output:
             if isinstance(line, list):
-                line = "\n".join(line)
+                line = "\n".join(
+                    self.__process_sorting(line, standard_sorting, hierarchical_sorting)
+                )
 
             File(self.output).write("{0}\n".format(line), overwrite=True)
 
@@ -359,7 +365,29 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         return result
 
-    def filter(self, file=None, string=None, items=None, already_formatted=False):
+    @classmethod
+    def __process_sorting(cls, to_sort, standard, hierarchical): # pragma: no cover
+        """
+        Process the sorting of the list.
+        """
+
+        if standard:
+            return List(to_sort).custom_format(Sort.standard)
+
+        if hierarchical:
+            return List(to_sort).custom_format(Sort.hierarchical)
+
+        return to_sort
+
+    def filter(
+        self,
+        file=None,
+        string=None,
+        items=None,
+        already_formatted=False,
+        standard_sort=False,
+        hierarchical_sort=False,
+    ):
         """
         Process the whitelisting.
         """
@@ -385,7 +413,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                         if whitelisted is False:
                             result.append(line)
 
-                return self.__write_output(result)
+                return self.__write_output(result, standard_sort, hierarchical_sort)
 
             return self.__write_output(
                 list(
@@ -398,7 +426,9 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                             already_formatted=already_formatted,
                         ),
                     )
-                )
+                ),
+                standard_sort,
+                hierarchical_sort,
             )
 
         return self.__write_output(
@@ -407,5 +437,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                 string=string,
                 items=items,
                 already_formatted=already_formatted,
-            )
+            ),
+            standard_sort,
+            hierarchical_sort,
         )  # pragma: no cover
