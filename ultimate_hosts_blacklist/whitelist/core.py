@@ -138,7 +138,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         logging_into_file=False,
     ):
 
-        if logging_into_file: # pragma: no cover
+        if logging_into_file:  # pragma: no cover
             logging_file = "uhb_whitelist_debug"
         else:
             logging_file = None
@@ -366,7 +366,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         return result
 
     @classmethod
-    def __process_sorting(cls, to_sort, standard, hierarchical): # pragma: no cover
+    def __process_sorting(cls, to_sort, standard, hierarchical):  # pragma: no cover
         """
         Process the sorting of the list.
         """

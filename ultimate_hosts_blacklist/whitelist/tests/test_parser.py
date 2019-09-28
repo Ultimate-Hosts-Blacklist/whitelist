@@ -67,8 +67,8 @@ class TestParser(TestCase):
 
         given = ["ALL example.com", "ALL .com"]
         expected = {
-            "strict": {},
-            "ends": {"com": ["example.com", ".com"]},
+            "strict": {"exam": ["example.com", "www.example.com"]},
+            "ends": {"com": [".example.com", ".com"]},
             "present": {},
             "regex": "",
         }
@@ -110,7 +110,7 @@ class TestParser(TestCase):
 
     def test_normal(self):
         """
-        Test the parser fo a normal entry.
+        Test the parser for a normal entry.
         """
 
         given = ["example.org"]

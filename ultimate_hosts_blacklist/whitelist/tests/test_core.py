@@ -421,7 +421,7 @@ class TestFiltering(TestCase):
         Test a case with RZD.
         """
 
-        secondary_whitelist = ["google.com", "RZD example"]
+        secondary_whitelist = ["google.com", "RZD www.example"]
         given = [
             "example.org",
             "example.com",

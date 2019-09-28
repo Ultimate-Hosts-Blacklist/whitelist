@@ -33,7 +33,7 @@ License:
 """
 # pylint:disable=bad-continuation, too-few-public-methods
 
-from ultimate_hosts_blacklist.helpers import List
+from ultimate_hosts_blacklist.helpers import Dict, List
 from ultimate_hosts_blacklist.whitelist.configuration import Configuration
 from ultimate_hosts_blacklist.whitelist.rzdb import RZDB
 
@@ -45,6 +45,50 @@ class Parser:
 
     def __init__(self):
         self.rzdb = RZDB().list_format()
+
+    def __parse_all_line(self, line):
+        """
+        Parse the whitelist list line which starts with the all marker.
+
+        :param str line: The line to parse.
+        :return:
+            A list of parsed rule or a tuple representing the rule.
+        :rtype: list, tuple
+        """
+
+        record = line.split(Configuration.markers["all"])[-1].strip()
+
+        if record.startswith("."):
+            if record.count(".") > 1:
+                return [
+                    ("ends", line.split(Configuration.markers["all"])[-1].strip()),
+                    ("strict", [record[1:], "www.{0}".format(record[1:])]),
+                ]
+
+            return ("ends", line.split(Configuration.markers["all"])[-1].strip())
+
+        return self.__parse_line(f'{Configuration.markers["all"]} .{record}')
+
+    def __parse_rzdb_line(self, line):
+        """
+        Parse the whitelist list line which starts with the rzdb marker.
+
+        :param str line: The line to parse.
+        :return:
+            A tuple representing the rule.
+        :rtype: tuple
+        """
+
+        bare = line.split(Configuration.markers["root_zone_db"])[-1].strip()
+
+        if bare.startswith("www."):
+            bare = bare[4:]
+
+        result = ["{0}.{1}".format(bare, x) for x in self.rzdb]
+        result.extend(["www.{0}".format(x) for x in result])
+        result = List(result).format()
+
+        return ("present", result)
 
     def __parse_line(self, line):
         """
@@ -62,7 +106,7 @@ class Parser:
 
         if line and not line.startswith("#"):
             if line.startswith(Configuration.markers["all"]):
-                return ("ends", line.split(Configuration.markers["all"])[-1].strip())
+                return self.__parse_all_line(line)
 
             if line.startswith(Configuration.markers["regex"]):
                 return ("regex", line.split(Configuration.markers["regex"])[-1].strip())
@@ -70,16 +114,7 @@ class Parser:
             if line.startswith(
                 Configuration.markers["root_zone_db"]
             ):  # pragma: no cover
-                bare = line.split(Configuration.markers["root_zone_db"])[-1].strip()
-
-                if bare.startswith("www."):
-                    bare = bare[4:]
-
-                result = ["{0}.{1}".format(bare, x) for x in self.rzdb]
-                result.extend(["www.{0}".format(x) for x in result])
-                result = List(result).format()
-
-                return ("present", result)
+                return self.__parse_rzdb_line(line)
 
             line = line.strip()
 
@@ -109,6 +144,43 @@ class Parser:
 
         return bare
 
+    def __parse_parsed(self, parsed):
+        """
+        Given the output of __parse_line, we parse its output
+        into something our core understand.
+        """
+
+        result = {"strict": {}, "ends": {}, "present": {}, "regex": []}
+
+        if parsed[0] in ["strict", "present"]:
+            bare = self.__get_strict_present_bare(parsed)
+            index = bare[:4]
+
+            if index not in result[parsed[0]]:
+                result[parsed[0]][index] = []
+
+            if parsed[-1] in result[parsed[0]][index]:  # pragma: no cover
+                return {}
+
+            if isinstance(parsed[-1], list):
+                result[parsed[0]][index].extend(parsed[-1])
+            else:  # pragma: no cover
+                result[parsed[0]][index].append(parsed[-1])
+        elif parsed[0] == "ends":
+            index = parsed[-1][-3:]
+
+            if index not in result["ends"]:
+                result["ends"][index] = []
+
+            if parsed[-1] in result["ends"][index]:  # pragma: no cover
+                return {}
+
+            result["ends"][index].append(parsed[-1])
+        elif parsed[0] == "regex":
+            result["regex"].append(parsed[-1])
+
+        return result
+
     def parse(self, whitelist_list):  # pylint: disable=too-many-branches
         """
         Parse the given whitelist list and return the whitelisting process.
@@ -127,32 +199,15 @@ class Parser:
             for line in whitelist_list:
                 parsed = self.__parse_line(line)
 
-                if parsed[0] in ["strict", "present"]:
-                    bare = self.__get_strict_present_bare(parsed)
-                    index = bare[:4]
-
-                    if index not in result[parsed[0]]:
-                        result[parsed[0]][index] = []
-
-                    if parsed[-1] in result[parsed[0]][index]:  # pragma: no cover
-                        continue
-
-                    if isinstance(parsed[-1], list):
-                        result[parsed[0]][index].extend(parsed[-1])
-                    else:  # pragma: no cover
-                        result[parsed[0]][index].append(parsed[-1])
-                elif parsed[0] == "ends":
-                    index = parsed[-1][-3:]
-
-                    if index not in result["ends"]:
-                        result["ends"][index] = []
-
-                    if parsed[-1] in result["ends"][index]:  # pragma: no cover
-                        continue
-
-                    result["ends"][index].append(parsed[-1])
-                elif parsed[0] == "regex":
-                    result["regex"].append(parsed[-1])
+                if isinstance(parsed, list):
+                    for par in parsed:
+                        result = Dict(result).merge(
+                            self.__parse_parsed(par), strict=False
+                        )
+                else:
+                    result = Dict(result).merge(
+                        self.__parse_parsed(parsed), strict=False
+                    )
 
             if result["regex"]:
                 result["regex"] = "({0})".format("|".join(result["regex"]))
