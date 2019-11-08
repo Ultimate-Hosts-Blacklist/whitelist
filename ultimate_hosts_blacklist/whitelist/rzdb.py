@@ -50,12 +50,9 @@ class RZDB:
         Get a copy of the Root zone database.
         """
 
-        return [
-            x
-            for x in loads(
-                Download(Configuration.links["root_zone_db"], destination=None).link()
-            ).keys()
-        ]
+        return loads(
+            Download(Configuration.links["root_zone_db"], destination=None).link()
+        ).keys()
 
     @classmethod
     def __get_public_suffix(cls):

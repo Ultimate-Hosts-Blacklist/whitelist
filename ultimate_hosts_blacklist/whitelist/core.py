@@ -37,11 +37,8 @@ from itertools import filterfalse
 from multiprocessing import Pool
 from os import cpu_count
 
+import PyFunceble
 from domain2idna import get as domain2idna
-from PyFunceble import load_config
-from PyFunceble.check import Check
-from PyFunceble.helpers import List
-from PyFunceble.sort import Sort
 
 from ultimate_hosts_blacklist.helpers import Download, File, Regex
 from ultimate_hosts_blacklist.whitelist.configuration import Configuration
@@ -64,7 +61,7 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
     if isinstance(line, str):
         to_check = line.split()[-1]
 
-        url_base = Check(to_check).is_url(return_base=True)
+        url_base = PyFunceble.Check(to_check).is_url(return_base=True)
 
         if url_base is not False:  # pragma: no cover
             to_check = url_base
@@ -201,7 +198,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             else:
                 self.processes = processes
 
-        load_config(generate_directory_structure=False)
+        PyFunceble.load_config(generate_directory_structure=False)
 
     @classmethod
     def __get_our_special_rules(cls):
@@ -405,10 +402,14 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         """
 
         if standard:
-            return List(to_sort).custom_format(Sort.standard)
+            return PyFunceble.helpers.List(to_sort).custom_format(
+                PyFunceble.engine.Sort.standard
+            )
 
         if hierarchical:
-            return List(to_sort).custom_format(Sort.hierarchical)
+            return PyFunceble.helpers.List(to_sort).custom_format(
+                PyFunceble.engine.Sort.hierarchical
+            )
 
         return to_sort
 
