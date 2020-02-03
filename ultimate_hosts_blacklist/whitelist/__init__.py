@@ -189,7 +189,7 @@ def _command_line():
         "--anti-whitelist",
         type=argparse.FileType("r"),
         nargs="+",
-        help="Read the given file override rules from the UHBW hosted\n"
+        help="Read the given file override rules from the UHBW hosted "
         "whitelist which is used by default. (See also `-wc`)",
     )
 
@@ -255,7 +255,7 @@ def _command_line():
         "--processes",
         type=int,
         default=0,
-        help="The number of (maximal) core processes to use.",
+        help="The number of (maximal) processes core to use.",
     )
 
     parser.add_argument(
@@ -278,15 +278,15 @@ def _command_line():
         "--whitelist",
         type=argparse.FileType("r"),
         nargs="+",
-        help="Read the given file and append its data to the UHBW's\n"
+        help="Read the given file and append its data to the UHBW's "
         "hosted whitelist list.",
     )
 
     parser.add_argument(
-        "-wc\n",
+        "-wc",
         "--without-core",
         action="store_false",
-        help="Disable the usage of the Ultimate Hosts Blacklist\n"
+        help="Disable the usage of the Ultimate Hosts Blacklist "
         "whitelist hosted list.",
     )
 
