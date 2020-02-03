@@ -229,7 +229,7 @@ def _command_line():
         "-o",
         "--output",
         type=str,
-        help="Save the result to the given filename or path. (Can not\n"
+        help="Save the result to the given filename or path. (Can not "
         "be the same as input file `-f`)",
     )
 
