@@ -9,9 +9,9 @@ License:
 
     MIT License
 
-    Copyright (c) 2018, 2019 Ultimate-Hosts-Blacklist
-    Copyright (c) 2018, 2019 Nissar Chababy
-    Copyright (c) 2019 Mitchell Krog
+    Copyright (c) 2018, 2019, 2020 Ultimate-Hosts-Blacklist
+    Copyright (c) 2018, 2019, 2020 Nissar Chababy
+    Copyright (c) 2019, 2020 Mitchell Krog
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -45,6 +45,6 @@ class Configuration:
     # List fo all links we may use.
     links = {
         "core": "https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/whitelist/master/domains.list",  # pylint: disable=line-too-long
-        "root_zone_db": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/iana-domains-db.json",  # pylint: disable=line-too-long
-        "public_suffix": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/public-suffix.json",  # pylint: disable=line-too-long
+        "root_zone_db": "https://raw.githubusercontent.com/PyFunceble/iana/master/iana-domains-db.json",  # pylint: disable=line-too-long
+        "public_suffix": "https://raw.githubusercontent.com/PyFunceble/public-suffix/master/public-suffix.json",  # pylint: disable=line-too-long
     }
