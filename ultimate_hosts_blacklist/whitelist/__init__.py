@@ -175,8 +175,8 @@ def _command_line():
     initiate(autoreset=True)
 
     parser = argparse.ArgumentParser(
-        description="The tool to clean a list or a hosts file "
-        "with the Ultimate Hosts Blacklist whitelist list or your own.",
+        description="UHBW is a tool to clean up lists or hosts files with the "
+        "hosted and/or your own whitelist.",
         epilog="Crafted with %s by %s"
         % (
             Fore.RED + "♥" + Fore.RESET,
@@ -189,8 +189,8 @@ def _command_line():
         "--anti-whitelist",
         type=argparse.FileType("r"),
         nargs="+",
-        help="Read the given file and remove the rules (its data) "
-        "from the whitelist list we are going to use.",
+        help="Read the given file override rules from the UHBW hosted\n"
+        "whitelist which is used by default. (See also `-wc`)",
     )
 
     parser.add_argument(
@@ -215,7 +215,7 @@ def _command_line():
         "-f",
         "--file",
         type=argparse.FileType("r"),
-        help="Read the given file and remove all element to whitelist.",
+        help="Remove all element from the whitelist in the given file.",
     )
 
     parser.add_argument(
@@ -229,7 +229,8 @@ def _command_line():
         "-o",
         "--output",
         type=str,
-        help="Save the result to the given filename or path.",
+        help="Save the result to the given filename or path. (Can not\n"
+        "be the same as input file `-f`)",
     )
 
     parser.add_argument(
@@ -237,7 +238,7 @@ def _command_line():
         "--multiprocessing",
         action="store_true",
         default=False,
-        help="Activate the usage of multiple processes.",
+        help="Activate the usage of multiple core processes.",
     )
 
     parser.add_argument(
@@ -254,7 +255,7 @@ def _command_line():
         "--processes",
         type=int,
         default=0,
-        help="The number of (maximal) processes to use.",
+        help="The number of (maximal) core processes to use.",
     )
 
     parser.add_argument(
@@ -277,14 +278,16 @@ def _command_line():
         "--whitelist",
         type=argparse.FileType("r"),
         nargs="+",
-        help="Read the given file and append its data to the our whitelist list.",
+        help="Read the given file and append its data to the UHBW's\n"
+        "hosted whitelist list.",
     )
 
     parser.add_argument(
-        "-wc",
+        "-wc\n",
         "--without-core",
         action="store_false",
-        help="Disable the usage of the Ultimate Hosts Blacklist whitelist list.",
+        help="Disable the usage of the Ultimate Hosts Blacklist\n"
+        "whitelist hosted list.",
     )
 
     arguments = parser.parse_args()
