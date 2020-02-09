@@ -135,13 +135,14 @@ The script can be called by :code:`uhb-whitelist`, :code:`uhb_whitelist` or
 ::
 
     usage: ultimate-hosts-blacklist-whitelist [-h]
-                                            [-a ANTI_WHITELIST [ANTI_WHITELIST ...]]
-                                            [-d] [-df] [-f FILE]
-                                            [--hierachical-sorting] [-o OUTPUT]
-                                            [-m] [--no-complement]
-                                            [-p PROCESSES] [--standard-sorting]
-                                            [-v] [-w WHITELIST [WHITELIST ...]]
-                                            [-wc]
+                                                [-a ANTI_WHITELIST [ANTI_WHITELIST ...]]
+                                                [--all ALL [ALL ...]] [-d] [-df]
+                                                [-f FILE] [--hierachical-sorting]
+                                                [-o OUTPUT] [-m] [--no-complement]
+                                                [-p PROCESSES] [--reg REG [REG ...]]
+                                                [--rzd RZD [RZD ...]]
+                                                [--standard-sorting] [-v]
+                                                [-w WHITELIST [WHITELIST ...]] [-wc]
 
     UHBW is a tool to clean up lists or hosts files with the hosted and/or your
     own whitelist.
@@ -152,13 +153,16 @@ The script can be called by :code:`uhb-whitelist`, :code:`uhb_whitelist` or
                                 Read the given file override rules from the UHBW
                                 hosted whitelist which is used by default. (See also
                                 `-wc`)
+        --all ALL [ALL ...]   Read the given file(s) and append its rules to the
+                                whitelisting schema. Note: The rules injected
+                                through this argument will be automatically prefixed
+                                with the `ALL` marker.
         -d, --debug           Activate the debug mode. This mode will write the
                                 whole processes to stdout.
         -df, --debug-into-file
                                 Activate the logging into a file called
                                 `uhb_whitelist_debug` at the current location.
-        -f FILE, --file FILE  Remove all element from the whitelist in the given
-                                file.
+        -f FILE, --file FILE  The file to whitelist/clean.
         --hierachical-sorting
                                 Process a hierarchical sorting when outputing into a
                                 file.
@@ -172,17 +176,27 @@ The script can be called by :code:`uhb-whitelist`, :code:`uhb_whitelist` or
                                 if `example.org` is given and vice-versa.
         -p PROCESSES, --processes PROCESSES
                                 The number of (maximal) processes core to use.
+        --reg REG [REG ...]   Read the given file(s) and append its rules to the
+                                whitelisting schema. Note: The rules injected
+                                through this argument will be automatically prefixed
+                                with the `REG` marker.
+        --rzd RZD [RZD ...]   Read the given file(s) and append its rules to the
+                                whitelisting schema. Note: The rules injected
+                                through this argument will be automatically prefixed
+                                with the `RZD` marker.
         --standard-sorting    Process a sorting when outputing into a file.
         -v, --version         Show the version end exist.
         -w WHITELIST [WHITELIST ...], --whitelist WHITELIST [WHITELIST ...]
-                                Read the given file and append its data to the UHBW's
-                                hosted whitelist list.
+                                Read the given file(s) and append its rules to the
+                                whitelisting schema. Note: The rules injected
+                                through this argument won't be changed. We follow what
+                                you give us. That means that if you give any of our
+                                supported rules, they will still be appended to the
+                                whitelisting schema.
         -wc, --without-core   Disable the usage of the Ultimate Hosts Blacklist
                                 whitelist hosted list.
 
     Crafted with ♥ by Nissar Chababy (Funilrys)
-
-
 
 Contributors
 ------------
@@ -220,9 +234,6 @@ License
     SOFTWARE.
 
 .. _@dnmTX: https://github.com/dnmTX
-
 .. _@spirillen: https://github.com/spirillen
-
 .. _whitelist: https://github.com/Ultimate-Hosts-Blacklist/whitelist
-
 .. _UHBW: https://github.com/Ultimate-Hosts-Blacklist/whitelist/tree/script

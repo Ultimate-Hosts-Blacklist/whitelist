@@ -41,10 +41,10 @@ from colorama import init as initiate
 from ultimate_hosts_blacklist.helpers import File
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.20.0"
+VERSION = "3.21.0"
 
 environ["PYFUNCEBLE_CONFIG_DIR"] = gettempdir()
-environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "TRUE"
+environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "YES"
 
 
 def clean_string_with_official_whitelist(
@@ -55,6 +55,9 @@ def clean_string_with_official_whitelist(
     multiprocessing=False,
     processes=0,
     no_complement=False,
+    your_all_list=None,
+    your_reg_list=None,
+    your_rzd_list=None,
 ):  # pylint: disable=too-many-arguments
     """
     Clean the given string.
@@ -70,7 +73,7 @@ def clean_string_with_official_whitelist(
         .. note::
             It should follow our format.
 
-    :param list your_anty_whitelist_list:
+    :param list your_anti_whitelist_list:
         Your anti whitelist list.
         Basically a list of rule which we don't have to follow.
 
@@ -91,6 +94,27 @@ def clean_string_with_official_whitelist(
 
         Complements are `www.example.org` if `example.org` is given and vice-versa.
 
+    :param list your_all_list:
+        Your list of subject to whitelisst.
+        Basically a list which we prefix "ALL " to.
+
+        .. note::
+            It should follow our format.
+
+    :param list your_reg_list:
+        Your list of subject to whitelisst.
+        Basically a list which we prefix "REG " to.
+
+        .. note::
+            It should follow our format.
+
+    :param list your_rzd_list:
+        Your list of subject to whitelisst.
+        Basically a list which we prefix "RZD " to.
+
+        .. note::
+            It should follow our format.
+
     :return: A string without the whitelisted elements.
     :rtype: string
     """
@@ -103,6 +127,9 @@ def clean_string_with_official_whitelist(
             multiprocessing=multiprocessing,
             processes=processes,
             no_complement=no_complement,
+            all_whitelist=your_all_list,
+            reg_whitelist=your_reg_list,
+            rzd_whitelist=your_rzd_list,
         ).filter(string=data)
     )
 
@@ -115,6 +142,9 @@ def clean_list_with_official_whitelist(
     multiprocessing=False,
     processes=0,
     no_complement=False,
+    your_all_list=None,
+    your_reg_list=None,
+    your_rzd_list=None,
 ):  # pylint: disable=too-many-arguments
     """
     Clean the given list.
@@ -152,6 +182,27 @@ def clean_list_with_official_whitelist(
 
         Complements are `www.example.org` if `example.org` is given and vice-versa.
 
+    :param list your_all_list:
+        Your list of subject to whitelisst.
+        Basically a list which we prefix "ALL " to.
+
+        .. note::
+            It should follow our format.
+
+    :param list your_reg_list:
+        Your list of subject to whitelisst.
+        Basically a list which we prefix "REG " to.
+
+        .. note::
+            It should follow our format.
+
+    :param list your_rzd_list:
+        Your list of subject to whitelisst.
+        Basically a list which we prefix "RZD " to.
+
+        .. note::
+            It should follow our format.
+
     :return: A list without the whitelisted elements.
     :rtype: list
     """
@@ -163,6 +214,9 @@ def clean_list_with_official_whitelist(
         multiprocessing=multiprocessing,
         processes=processes,
         no_complement=no_complement,
+        all_whitelist=your_all_list,
+        reg_whitelist=your_reg_list,
+        rzd_whitelist=your_rzd_list,
     ).filter(items=data)
 
 
@@ -180,7 +234,7 @@ def _command_line():
         epilog="Crafted with %s by %s"
         % (
             Fore.RED + "♥" + Fore.RESET,
-            Style.BRIGHT + Fore.CYAN + "Nissar Chababy (Funilrys) " + Style.RESET_ALL,
+            Style.BRIGHT + Fore.YELLOW + "Nissar Chababy (Funilrys) " + Style.RESET_ALL,
         ),
     )
 
@@ -191,6 +245,15 @@ def _command_line():
         nargs="+",
         help="Read the given file override rules from the UHBW hosted "
         "whitelist which is used by default. (See also `-wc`)",
+    )
+
+    parser.add_argument(
+        "--all",
+        type=argparse.FileType("r"),
+        nargs="+",
+        help="Read the given file(s) and append its rules to the whitelisting schema. "
+        f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "
+        f"will be automatically prefixed with the `ALL` marker.{Style.RESET_ALL}",
     )
 
     parser.add_argument(
@@ -215,7 +278,7 @@ def _command_line():
         "-f",
         "--file",
         type=argparse.FileType("r"),
-        help="Remove all element from the whitelist in the given file.",
+        help="The file to whitelist/clean.",
     )
 
     parser.add_argument(
@@ -259,6 +322,24 @@ def _command_line():
     )
 
     parser.add_argument(
+        "--reg",
+        type=argparse.FileType("r"),
+        nargs="+",
+        help="Read the given file(s) and append its rules to the whitelisting schema. "
+        f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "
+        f"will be automatically prefixed with the `REG` marker.{Style.RESET_ALL}",
+    )
+
+    parser.add_argument(
+        "--rzd",
+        type=argparse.FileType("r"),
+        nargs="+",
+        help="Read the given file(s) and append its rules to the whitelisting schema. "
+        f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "
+        f"will be automatically prefixed with the `RZD` marker.{Style.RESET_ALL}",
+    )
+
+    parser.add_argument(
         "--standard-sorting",
         action="store_true",
         default=False,
@@ -278,8 +359,11 @@ def _command_line():
         "--whitelist",
         type=argparse.FileType("r"),
         nargs="+",
-        help="Read the given file and append its data to the UHBW's "
-        "hosted whitelist list.",
+        help="Read the given file(s) and append its rules to the whitelisting schema. "
+        f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "
+        "won't be changed. We follow what you give us. That means that if you "
+        "give any of our supported rules, they will still be appended to the "
+        f"whitelisting schema.{Style.RESET_ALL}",
     )
 
     parser.add_argument(
@@ -310,6 +394,9 @@ def _command_line():
                         logging_level=logging_level,
                         logging_into_file=arguments.debug_into_file,
                         no_complement=arguments.no_complement,
+                        all_whitelist_file=arguments.all,
+                        reg_whitelist_file=arguments.reg,
+                        rzd_whitelist_file=arguments.rzd,
                     ).filter(
                         file=arguments.file,
                         standard_sort=arguments.standard_sorting,
@@ -328,6 +415,9 @@ def _command_line():
                 logging_level=logging_level,
                 logging_into_file=arguments.debug_into_file,
                 no_complement=arguments.no_complement,
+                all_whitelist_file=arguments.all,
+                reg_whitelist_file=arguments.reg,
+                rzd_whitelist_file=arguments.rzd,
             ).filter(
                 file=arguments.file,
                 standard_sort=arguments.standard_sorting,

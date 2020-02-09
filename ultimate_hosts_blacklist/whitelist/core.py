@@ -151,7 +151,24 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         whitelist list.
 
         Complements are `www.example.org` if `example.org` is given and vice-versa.
+    :param list all_whitelist:
+        A whitelist list to prefix "ALL " and parse.
+    :param str all_whitelist_file:
+        A path to a whitelist file,
+        to prefix "ALL " and parse.
+    :param list reg_whitelist:
+        A whitelist list to prefix "REG " and parse.
+    :param str reg_whitelist_file:
+        A path to a whitelist file,
+        to prefix "REG " and parse.
+    :param list rzd_whitelist:
+        A whitelist list to prefix "RZD " and parse.
+    :param str rzd_whitelist_file:
+        A path to a whitelist file,
+        to prefix "RZD " and parse.
     """
+
+    # pylint: disable=too-many-locals
 
     def __init__(
         self,
@@ -166,6 +183,12 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         logging_level=logging.INFO,
         logging_into_file=False,
         no_complement=False,
+        all_whitelist=None,
+        all_whitelist_file=None,
+        reg_whitelist=None,
+        reg_whitelist_file=None,
+        rzd_whitelist=None,
+        rzd_whitelist_file=None,
     ):
 
         if logging_into_file:  # pragma: no cover
@@ -183,6 +206,13 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         self.secondary_whitelist_list = secondary_whitelist
         self.anti_whitelist_list = anti_whitelist
         self.anti_whitelist_file = anti_whitelist_file
+
+        self.all_whitelist_list = all_whitelist
+        self.all_whitelist_file = all_whitelist_file
+        self.reg_whitelist_list = reg_whitelist
+        self.reg_whitelist_file = reg_whitelist_file
+        self.rzd_whitelist_list = rzd_whitelist
+        self.rzd_whitelist_file = rzd_whitelist_file
 
         self.output = output_file
         self.use_core = use_official
@@ -241,21 +271,13 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             r"255.255.255.255",  # pylint: disable=line-too-long
         ]
 
-    def __get_whitelist_list_to_parse(self):
+    def __get_secondary_whitelist_rules(self):
         """
-        Return the not parsed/formatted whitelist list.
+        Provides the rules which are into the
+        secondary whitelist lists.
         """
 
-        if self.use_core:
-            result = (
-                Download(Configuration.links["core"], destination=None)
-                .link()
-                .split("\n")
-            )
-        else:
-            result = []
-
-        result.extend(self.__get_our_special_rules())
+        result = []
 
         if self.secondary_whitelist_file and isinstance(
             self.secondary_whitelist_file, list
@@ -267,6 +289,15 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             self.secondary_whitelist_list, list
         ):
             result.extend(self.secondary_whitelist_list)
+
+        return result
+
+    def __apply_anti_whitelist_rules(self, rules):
+        """
+        Provides the rules anti whitelists rules.
+        """
+
+        result = rules
 
         if self.anti_whitelist_file and isinstance(
             self.anti_whitelist_file, list
@@ -283,6 +314,113 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             result = list(set(result) - set(self.anti_whitelist_list))
 
         return result
+
+    def __get_all_prefixed_whitelist_rules(self):  # pragma: no cover
+        """
+        Provides the rules which are into the
+        ALL whitelist lists.
+
+        .. warning::
+            This method automatically appends the marker.
+        """
+
+        result = []
+
+        if self.all_whitelist_file and isinstance(self.all_whitelist_file, list):
+            for file in self.all_whitelist_file:
+                result.extend(
+                    [
+                        f'{Configuration.markers["all"]}{x}'
+                        for x in file.read().splitlines()
+                    ]
+                )
+
+        if self.all_whitelist_list and isinstance(self.all_whitelist_list):
+            result.extend(
+                [f'{Configuration.markers["all"]}{x}' for x in self.all_whitelist_list]
+            )
+
+        return result
+
+    def __get_reg_prefixed_whitelist_rules(self):  # pragma: no cover
+        """
+        Provides the rules which are into the
+        REG whitelist lists.
+
+        .. warning::
+            This method automatically appends the marker.
+        """
+
+        result = []
+
+        if self.reg_whitelist_file and isinstance(self.reg_whitelist_file, list):
+            for file in self.reg_whitelist_file:
+                result.extend(
+                    [
+                        f'{Configuration.markers["regex"]}{x}'
+                        for x in file.read().splitlines()
+                    ]
+                )
+
+        if self.reg_whitelist_list and isinstance(self.reg_whitelist_list):
+            result.extend(
+                [f'{Configuration.markers["all"]}{x}' for x in self.reg_whitelist_list]
+            )
+
+        return result
+
+    def __get_rzd_prefixed_whitelist_rules(self):  # pragma: no cover
+        """
+        Provides the rules which are into the
+        RZD whitelist lists.
+
+        .. warning::
+            This method automatically appends the marker.
+        """
+
+        result = []
+
+        if self.rzd_whitelist_file and isinstance(self.rzd_whitelist_file, list):
+            for file in self.rzd_whitelist_file:
+                result.extend(
+                    [
+                        f'{Configuration.markers["root_zone_db"]}{x}'
+                        for x in file.read().splitlines()
+                    ]
+                )
+
+        if self.rzd_whitelist_list and isinstance(self.rzd_whitelist_list):
+            result.extend(
+                [
+                    f'{Configuration.markers["root_zone_db"]}{x}'
+                    for x in self.rzd_whitelist_list
+                ]
+            )
+
+        return result
+
+    def __get_whitelist_list_to_parse(self):
+        """
+        Return the not parsed/formatted whitelist list.
+        """
+
+        if self.use_core:
+            result = (
+                Download(Configuration.links["core"], destination=None)
+                .link()
+                .split("\n")
+            )
+        else:
+            result = []
+
+        result.extend(self.__get_our_special_rules())
+        result.extend(self.__get_secondary_whitelist_rules())
+
+        result.extend(self.__get_all_prefixed_whitelist_rules())
+        result.extend(self.__get_reg_prefixed_whitelist_rules())
+        result.extend(self.__get_rzd_prefixed_whitelist_rules())
+
+        return self.__apply_anti_whitelist_rules(result)
 
     @classmethod
     def format_upstream_line(cls, line):  # pylint: disable=too-many-branches
