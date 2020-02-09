@@ -7,8 +7,8 @@ License:
 
     MIT License
 
-    Copyright (c) 2018, 2019, 2020 Ultimate-Hosts-Blacklist
-    Copyright (c) 2018, 2019, 2020 Nissar Chababy
+    Copyright (c) 2018, 2019, 2020, 2020 Ultimate-Hosts-Blacklist
+    Copyright (c) 2018, 2019, 2020, 2020 Nissar Chababy
     Copyright (c) 2019, 2020 Mitchell Krog
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
