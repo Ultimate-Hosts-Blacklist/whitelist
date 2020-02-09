@@ -2,7 +2,7 @@ The whitelisting tool from the Ultimate Hosts Blacklist project
 ===============================================================
 
 This is the whitelisting tool provided by the Ultimate Hosts Blacklist project.
-The script is mainly used to whitelist subject (domains, IP, URL) into our 
+The script is mainly used to whitelist subject (domains, IP, URL) into our
 infrastructure but it can also easily be used outside our infrastructure.
 
 The ultimate hosts blacklist whitelist (**UHBW**) tool allows you:
@@ -27,29 +27,29 @@ The hosted whitelist
 --------------------
 
 The hosted whitelist can be found at `whitelist`_
-This white-list is maintained by the team of good peoples behind the `whitelist`_ 
+This white-list is maintained by the team of good peoples behind the `whitelist`_
 project.
 
 Complementary whitelist
 -----------------------
 
-`UHBW`_ allows you to link one or more file(s) to the system which will be used as 
+`UHBW`_ allows you to link one or more file(s) to the system which will be used as
 complementary to the hosted `whitelist`_, which is downloaded and used by default.
 
 Special markers
 ---------------
 
-If you already have tried to use a whitelist, you'll probably know, that in 
-generally you can only add one domain or URL per line in a file, for which you 
+If you already have tried to use a whitelist, you'll probably know, that in
+generally you can only add one domain or URL per line in a file, for which you
 want to whitelist.
 
-With UHBW you can do this, but in addition to that tedious way, UHBW allows you 
+With UHBW you can do this, but in addition to that tedious way, UHBW allows you
 to use ``Regex``, :code:`RZD` and :code:`ALL`
 
 :code:`ALL`
 ^^^^^^^^^^^
 
-The :code:`ALL` marker will tell the system to escape and regex check against 
+The :code:`ALL` marker will tell the system to escape and regex check against
 what follows.
 
 INVALID characters
@@ -57,33 +57,33 @@ INVALID characters
 
 * :code:`$`
 
-    * As we automatically append :code:`$` to the end of each line, you should 
+    * As we automatically append :code:`$` to the end of each line, you should
       not use this character.
 
 * :code:`\\`
 
-    * As we automatically escape any given expression, you should not explicitly 
+    * As we automatically escape any given expression, you should not explicitly
       escape your regular expression when declaring an :code:`ALL` marker.
 
 :code:`REG`
 """""""""""
 
-The :code:`REG` marker will tell the system to explicitly check for the given 
+The :code:`REG` marker will tell the system to explicitly check for the given
 regex which follows the marker.
 
 :code:`RZD`
 """""""""""
 
-The :code:`RZD` marker will tell the system to explicitly check for the given 
+The :code:`RZD` marker will tell the system to explicitly check for the given
 string plus all possible TDL.
 
 Anti whitelist
 --------------
 
-Don't like some of our rule(s)? UHBW allows you to specify a file, which contain 
+Don't like some of our rule(s)? UHBW allows you to specify a file, which contain
 a list of rule(s) you don't want to be applied.
 
-Simply use the :code:`--anti-whitelist` flag to provide one or more anti whitelist 
+Simply use the :code:`--anti-whitelist` flag to provide one or more anti whitelist
 files and UHBW will obey your wishes!
 
 
@@ -102,7 +102,7 @@ If you have your own whitelist, with the following lines:
 UHBW will do as follows:
 
 * Remove every line which match :code:`facebook.com` and :code:`www.facebook.com`
-* In complementary convert all lines with :code:`ALL ` or :code:`REG` to the 
+* In complementary convert all lines with :code:`ALL ` or :code:`REG` to the
   right format.
 * Remove every line which match :code:`example.*`
 * Check every line against the regular expression. More about this in next chapter.
@@ -116,8 +116,8 @@ The generated regular expression will from this example be:
 
 
 .. note::
-    The :code:`example` group is much longer, as we construct the list of TDL 
-    based on the Root Zone Database, of IANA and the Public Suffix List 
+    The :code:`example` group is much longer, as we construct the list of TDL
+    based on the Root Zone Database, of IANA and the Public Suffix List
     project.**
 
 Which means UHBW actually will whitelist:
@@ -129,50 +129,59 @@ Which means UHBW actually will whitelist:
 Usage of the tool
 -----------------
 
-The script can be called by :code:`uhb-whitelist`, :code:`uhb_whitelist` or 
+The script can be called by :code:`uhb-whitelist`, :code:`uhb_whitelist` or
 :code:`ultimate-hosts-blacklist-whitelist`.
 
 ::
 
-    usage: uhb_whitelist [-h] [-a ANTI_WHITELIST [ANTI_WHITELIST ...]] [-d]
-			 [-f FILE] [-o OUTPUT] [-m] [-p PROCESSES] [-v]
-                         [-w WHITELIST [WHITELIST ...]] [-wc]
+    usage: ultimate-hosts-blacklist-whitelist [-h]
+                                            [-a ANTI_WHITELIST [ANTI_WHITELIST ...]]
+                                            [-d] [-df] [-f FILE]
+                                            [--hierachical-sorting] [-o OUTPUT]
+                                            [-m] [--no-complement]
+                                            [-p PROCESSES] [--standard-sorting]
+                                            [-v] [-w WHITELIST [WHITELIST ...]]
+                                            [-wc]
 
-    UHBW is a tool to clean up lists or hosts files with the hosted and/or your 
+    UHBW is a tool to clean up lists or hosts files with the hosted and/or your
     own whitelist.
 
     optional arguments:
-        -h, --help	Show this help message and exit
-
-        -a, 
-	--anti-whitelist
-			Read the given file override rules from the UHBW hosted
-			whitelist which is used by default. (See also `-wc`)
-
-        -d, --debug	Activate the debug mode. This mode will write the whole 
-			processes to stdout.
-
-        -f, --file	Remove all element from the whitelist in the given file.
-
-        -o, --output	Save the result to the given filename or path. (Can not
-			be the same as input file `-f`)
-
+        -h, --help            show this help message and exit
+        -a ANTI_WHITELIST [ANTI_WHITELIST ...], --anti-whitelist ANTI_WHITELIST [ANTI_WHITELIST ...]
+                                Read the given file override rules from the UHBW
+                                hosted whitelist which is used by default. (See also
+                                `-wc`)
+        -d, --debug           Activate the debug mode. This mode will write the
+                                whole processes to stdout.
+        -df, --debug-into-file
+                                Activate the logging into a file called
+                                `uhb_whitelist_debug` at the current location.
+        -f FILE, --file FILE  Remove all element from the whitelist in the given
+                                file.
+        --hierachical-sorting
+                                Process a hierarchical sorting when outputing into a
+                                file.
+        -o OUTPUT, --output OUTPUT
+                                Save the result to the given filename or path. (Can
+                                not be the same as input file `-f`)
         -m, --multiprocessing
-			Activate the usage of multiple core processes.
-
-        -p, --processes	The number of (maximal) core processes to use.
-
-        -v, --version   Show the version end exist.
-
-        -w, --whitelist Read the given file and append its data to the UHBW's 
-			hosted whitelist list.
-
-        -wc,
-	--without-core	Disable the usage of the Ultimate Hosts Blacklist
-                        whitelist hosted list.
+                                Activate the usage of multiple core processes.
+        --no-complement       Forbid us the generation of complements while parsing
+                                the whitelist list. Complements are `www.example.org`
+                                if `example.org` is given and vice-versa.
+        -p PROCESSES, --processes PROCESSES
+                                The number of (maximal) processes core to use.
+        --standard-sorting    Process a sorting when outputing into a file.
+        -v, --version         Show the version end exist.
+        -w WHITELIST [WHITELIST ...], --whitelist WHITELIST [WHITELIST ...]
+                                Read the given file and append its data to the UHBW's
+                                hosted whitelist list.
+        -wc, --without-core   Disable the usage of the Ultimate Hosts Blacklist
+                                whitelist hosted list.
 
     Crafted with ♥ by Nissar Chababy (Funilrys)
-::
+
 
 Contributors
 ------------
@@ -189,7 +198,7 @@ License
 
     Copyright (c) 2018, 2019 Ultimate-Hosts-Blacklist
     Copyright (c) 2018, 2019 Nissar Chababy
-    Copyright (c) 2019 Mitchell Krog
+    Copyright (c) 2019, 2020 Mitchell Krog
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
