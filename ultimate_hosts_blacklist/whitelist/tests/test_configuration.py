@@ -58,8 +58,8 @@ class TestConfiguration(TestCase):
 
         known_links = {
             "core": "https://raw.githubusercontent.com/Ultimate-Hosts-Blacklist/whitelist/master/domains.list",  # pylint: disable=line-too-long
-            "root_zone_db": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/iana-domains-db.json",  # pylint: disable=line-too-long
-            "public_suffix": "https://raw.githubusercontent.com/funilrys/PyFunceble/master/public-suffix.json",  # pylint: disable=line-too-long
+            "root_zone_db": "https://raw.githubusercontent.com/PyFunceble/iana/master/iana-domains-db.json",  # pylint: disable=line-too-long
+            "public_suffix": "https://raw.githubusercontent.com/PyFunceble/public-suffix/master/public-suffix.json",  # pylint: disable=line-too-long
         }
 
         self.assertEqual(known_links, Configuration.links)
