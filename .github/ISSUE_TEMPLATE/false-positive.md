@@ -1,8 +1,8 @@
 ---
 name: False Positive
 about: Reporting of any false positives or domains that need to be whitelisted
-title: "[FALSE-POSITIVE] "
-labels: false positive
+title: "[FALSE-POSITIVE?] "
+labels: whitelisting process
 assignees: mitchellkrogza, funilrys, dnmTX, smed79
 
 ---
