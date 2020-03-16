@@ -1,0 +1,33 @@
+# This files contains the list of files which are parsed into 
+# our (future to be) Public DNS Service.
+# 
+# How does it works? 
+#
+#    The server will fetch this file, read each lines,
+#    try to fetch:
+#        https://github.com/Ultimate-Hosts-Blacklist/whitelist/raw/master/${line}
+#
+#    If it is successful, the file will be parsed to the whitelisting tool which
+#    is applied before each update/reload of the DNS server. 
+#
+#    If it is not successful, the parser will follow the next line, and so on...
+#
+#    Of course, each lines which starts with "#" will be ignored.
+#
+# Who can update this file?
+#
+#    Everybody who have write access to this file and repository.
+#
+# Notes:
+#    
+#    * The DNS server will fetch this file (and every other listed here) every day
+#      around 19:00 UTC.
+#    * If not around 19:00 UTC because of an issue or any reasone,
+#      it will be reported into the latest feedback
+#      tracker at https://github.com/Ultimate-Hosts-Blacklist/dev-center.
+#
+
+# Our main whitelist file.
+domains.list
+
+# Let's complete the list together!
