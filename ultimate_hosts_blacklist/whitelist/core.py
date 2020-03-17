@@ -57,6 +57,8 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
         return True, line
 
     logging.debug("Given line: {0}".format(repr(line)))
+    if isinstance(line, bytes):
+        line = line.decode()
 
     if isinstance(line, str):
         to_check = line.split()[-1]
@@ -66,7 +68,7 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
         if url_base is not False:  # pragma: no cover
             to_check = url_base
     else:  # pragma: no cover
-        raise ValueError("expected {0}. {2} given.".format(type(str), type(line)))
+        raise ValueError("expected {0}. {1} given.".format(str, type(line)))
 
     logging.debug("To check: {0}".format(repr(to_check)))
 
