@@ -21,8 +21,8 @@
 # Notes:
 #    
 #    * The DNS server will fetch this file (and every other listed here) every day
-#      around 19:00 UTC.
-#    * If not around 19:00 UTC because of an issue or any reasone,
+#      around 19:10 UTC.
+#    * If not around 19:10 UTC because of an issue or any reasone,
 #      it will be reported into the latest feedback
 #      tracker at https://github.com/Ultimate-Hosts-Blacklist/dev-center.
 #
