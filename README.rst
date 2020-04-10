@@ -31,14 +31,6 @@ The ultimate hosts blacklist whitelist (**UHBW**) tool allows you:
 
 
 
-* to override our core whitelist whilst still applying your own personal whitelist. 
-
-::
-
-    uhb_whitelist -f inputfile -o outputfile --anti-whitelist antiwhitelistfile -wc
-
-
-
 * to override our core whitelist whilst still applying your own personal whitelist and anti-whitelist.
 
 ::
