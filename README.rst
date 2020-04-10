@@ -19,7 +19,7 @@ The ultimate hosts blacklist whitelist (**UHBW**) tool allows you:
 
 ::
 
-    uhb_whitelist -f inputfile -o outputfile -w whitelistfile)
+    uhb_whitelist -f inputfile -o outputfile -w whitelistfile
 
 
 
