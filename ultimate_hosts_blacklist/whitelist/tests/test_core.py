@@ -127,13 +127,14 @@ class TestFiltering(TestCase):
         Test a simple case.
         """
 
-        secondary_whitelist = ["google.com"]
+        secondary_whitelist = ["google.com", None, b"example.org"]
         given = [
             "0.0.0.0    google.com",
+            None,
             "0.0.0.0/8",
             "0.0.0.0\t\t\t\t\twww.google.com",
             "0.15.158.25",
-            "10.120.58.75",
+            b"10.120.58.75",
             "10.212.54.132200cdn.tt.omtrdc.net",
             "10.212.54.132200cm.everesttech.net",
             "10.212.54.132200ib.adnxs.com",
@@ -174,7 +175,6 @@ class TestFiltering(TestCase):
             "10.212.54.132200sync-tm.everesttech.net",
             "10.212.54.132200sync.jivox.com",
             "160.41.54.45.rdns.adjust.com",
-            "example.org",
         ]
         actual = Core(
             use_official=False,
@@ -190,12 +190,13 @@ class TestFiltering(TestCase):
         Test a simple case along with an anti whitelist.
         """
 
-        secondary_whitelist = ["google.com"]
-        anti_whitelist = ["google.com"]
+        secondary_whitelist = ["google.com", None]
+        anti_whitelist = ["google.com", None]
 
         given = [
             "0.0.0.0    google.com",
             "0.0.0.0/8",
+            None,
             "0.0.0.0\t\t\t\t\twww.google.com",
             "0.15.158.25",
             "10.120.58.75",

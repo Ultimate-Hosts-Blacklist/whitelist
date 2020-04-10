@@ -117,6 +117,9 @@ class Parser:
         :rtype: tuple|list
         """
 
+        if isinstance(line, bytes):
+            line = line.decode()
+
         if line and not line.startswith("#"):
             if line.startswith(Configuration.markers["all"]):
                 return self.__parse_all_line(line)
@@ -137,7 +140,7 @@ class Parser:
             if not self.no_complement:
                 return ("strict", [line, "www.{0}".format(line)])
             return ("strict", [line])  # pragma: no cover
-        return (None, line.strip())
+        return (None, line)
 
     @classmethod
     def __get_strict_present_bare(cls, parsed):  # pragma: no cover

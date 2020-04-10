@@ -50,15 +50,12 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
         Check if the given line is whitelisted.
         """
 
-    line = line.strip()
-
     if not line:
         logging.debug("Empty line whitelisted by default.")
         return True, line
 
     logging.debug("Given line: {0}".format(repr(line)))
-    if isinstance(line, bytes):
-        line = line.decode()
+    line = line.strip()
 
     if isinstance(line, str):
         to_check = line.split()[-1]
@@ -433,7 +430,10 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         :type line: str
         """
 
-        if line.startswith("#"):
+        if isinstance(line, bytes):
+            line = line.decode()
+
+        if not line or line.startswith("#"):
             return line
 
         regex_delete = r"localhost$|localdomain$|local$|broadcasthost$|0\.0\.0\.0$|allhosts$|allnodes$|allrouters$|localnet$|loopback$|mcastprefix$"  # pylint: disable=line-too-long
