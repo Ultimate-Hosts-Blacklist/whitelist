@@ -7,14 +7,6 @@ infrastructure but it can also easily be used outside our infrastructure.
 
 The ultimate hosts blacklist whitelist (**UHBW**) tool allows you:
 
-* to override our whitelist. 
-
-::
-
-    uhb_whitelist -f inputfile -o outputfile --anti-whitelist antiwhitelistfile
-
-
-
 * to append your own whitelist as complementary to our whitelist.
 
 ::
@@ -23,7 +15,37 @@ The ultimate hosts blacklist whitelist (**UHBW**) tool allows you:
 
 
 
-* to override of one or more of the rule(s) within our hosted whitelist.
+* to anti-whitelist (reverse) only particular domains while still using our core list. 
+
+::
+
+    uhb_whitelist -f inputfile -o outputfile --anti-whitelist antiwhitelistfile
+
+
+
+* to whitelist and anti-whitelist while still using our core list. 
+
+::
+
+    uhb_whitelist -f inputfile -o outputfile --anti-whitelist antiwhitelistfile -w whitelistfile
+
+
+
+* to override our core whitelist whilst still applying your own personal whitelist. 
+
+::
+
+    uhb_whitelist -f inputfile -o outputfile --anti-whitelist antiwhitelistfile -wc
+
+
+
+* to override our core whitelist whilst still applying your own personal whitelist and anti-whitelist.
+
+::
+
+    uhb_whitelist -f inputfile -o outputfile --anti-whitelist antiwhitelistfile -w whitelistfile -wc
+
+
 * to have a whitelist tool ready to use as a Python module.
 
 
