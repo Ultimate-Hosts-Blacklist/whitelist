@@ -161,6 +161,17 @@ Which means UHBW actually will whitelist:
 * all elements/lines which contain the word :code:`face`
 * all possible TDL combination which starts with :code:`example`
 
+File Formats
+--------------
+
+Your input files of domains / urls should be one domain / url per line and should also preferably be sorted.
+
+::
+
+    sort -u inputfile -o inputfile
+
+
+
 Usage of the tool
 -----------------
 
