@@ -11,8 +11,8 @@ Because our list is not just a "normal" list, we have a tool which understands t
 It can be found in the `script branch`_.
 
 
-Maitainers
-----------
+Maintainers
+-----------
 
 - Daniel - `@dnmTX`_
 - Mitchell Krog - `@mitchellkrogza`_
