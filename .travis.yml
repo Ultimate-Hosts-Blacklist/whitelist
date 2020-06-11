@@ -1,0 +1,106 @@
+jobs:
+  include:
+    - stage: "Code Tests"
+      language: generic
+      os: linux
+      dist: bionic
+      name: "Code Test with Python 3.8.3 under Ubuntu 18.04 (Bionic Beaver)"
+      env:
+        - PYTHON_VERSION="3.8.3"
+        - TOXENV="py38"
+      script:
+        - tox --current-env
+    - language: generic
+      os: osx
+      osx_image: xcode11.2
+      name: "Code Test with Python 3.8.3 under macOS 10.14 (Mojave)"
+      env:
+        - PYTHON_VERSION="3.8.3"
+        - TOXENV="py38"
+      script:
+        - tox --current-env
+    - language: generic
+      os: linux
+      dist: bionic
+      name: "Code Test with Python 3.7.7 under Ubuntu 18.04 (Bionic Beaver)"
+      env:
+        - PYTHON_VERSION="3.7.7"
+        - TOXENV="py37"
+      script:
+        - tox --current-env
+    - language: generic
+      os: osx
+      osx_image: xcode11.2
+      name: "Code Test with Python 3.7.7 under macOS 10.14 (Mojave)"
+      env:
+        - PYTHON_VERSION="3.7.7"
+        - TOXENV="py37"
+      script:
+        - tox --current-env
+    - language: generic
+      os: linux
+      dist: bionic
+      name: "Code test with Python 3.6.10 under Ubuntu 18.04 (Bionic Beaver)"
+      env:
+        - PYTHON_VERSION="3.6.10"
+        - TOXENV="py36"
+      script:
+        - tox --current-env
+    - language: generic
+      os: osx
+      osx_image: xcode11.2
+      name: "Code test with Python 3.6.10 under macOS 10.14 (Mojave)"
+      env:
+        - PYTHON_VERSION="3.6.10"
+        - TOXENV="py36"
+      script:
+        - tox --current-env
+
+    - language: generic
+      stage: "Deployments"
+      os: linux
+      dist: bionic
+      name: "Deployment to PyPi"
+      script:
+        - echo "Hello, World!"
+      after_success:
+        - echo "Hello, World!"
+      env:
+        - PYTHON_VERSION="3.8.3"
+      deploy:
+        provider: pypi
+        user: funilrys
+        password:
+          secure: Btlu1QeGgvU7bfG3w2mH5tBxo7fNQh7LNUg9jyxmwsxrejy5T/cYV59ycSeEiph4noEGkdjs+UaXI/Uphs4txeIhzLYFjNz3V5gs6GRH4NcedPE3GP6Aek6+6AoxQ8p+j07lJDSJjV6S4azZF2wZaoIxMkXwtFMqND0jDg9waAtmD25JEhSLgaUSnThLNg8c+t+vTc2r8kOjBCuwQGBhC6TmNmjHch5anZQorj3as9npRCmB0CslvN/78EMztKewajt1z8aG2gqSV/DQY/5HwpoeBGGQq0SDG6FfecXx+2t/cgKvBuc8UvNqWEq3pxCSvfY0vx+sxdSGJ0sTpmKX7NaoFXxKvEywTW3WVzWh+ogiA5SNI+/b3aDSOga4PHa8KZr2iHZvk7lawdurN5ZeLfSl7l/53lo/mWRFdapqftOFmA/C2yRVBZSwWJsixVz1TdhTkPdQUrpw6O/9hTAocPDGHqTP15tVnioi5oXMmxdFqKnYlUrQfXk0Et7KtSoSPJR2jrziQdhuPGakh0bCB38/JnB19GEyvIv8DwL8vBIBNfoc61AY1YNHJH5EP/Oncekpi8s5A4WI1HHYch4Zr4zoPse1Al+MTegX/Tl1FiuXnAabK12h3EHMsWW9JCJ/wvqBnzY8cFrKZGKEZtsqpNkD5HxsoE2WZ5/m2WKXng4=
+        distributions: sdist bdist_wheel
+        skip_existing: true
+        on:
+          all_branches: true
+          condition: "${TRAVIS_BRANCH} =~ ^script|script-dev$"
+
+install:
+  - export PATH="${HOME}/miniconda/bin:${PATH}"
+  - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh; else wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi
+  - bash miniconda.sh -b -p ${HOME}/miniconda
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - conda create -q -n test-environment python="${PYTHON_VERSION}"
+  - source activate test-environment
+  - python --version --version
+  - pip --version
+  - conda --version
+  - conda install coverage coveralls conda-forge::codacy-coverage pylint unittest2
+  - pip install tox-current-env
+  - pip install .
+
+after_success:
+  - python-codacy-coverage -r coverage.xml
+  - coveralls
+
+notifications:
+  email:
+    on_failure: always
+    on_success: change
+    recipients:
+      - pyfunceble@outlook.com

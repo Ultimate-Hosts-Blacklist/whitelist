@@ -38,10 +38,9 @@ from tempfile import gettempdir
 from colorama import Fore, Style
 from colorama import init as initiate
 
-from ultimate_hosts_blacklist.helpers import File
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.22.0"
+VERSION = "3.23.0"
 
 environ["PYFUNCEBLE_CONFIG_DIR"] = gettempdir()
 environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "YES"

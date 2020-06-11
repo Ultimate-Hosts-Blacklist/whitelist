@@ -38,7 +38,7 @@ from multiprocessing import Pool
 from os import cpu_count
 
 import PyFunceble
-from domain2idna import get as domain2idna
+from domain2idna import domain2idna
 
 from ultimate_hosts_blacklist.helpers import Download, File, Regex
 from ultimate_hosts_blacklist.whitelist.configuration import Configuration
