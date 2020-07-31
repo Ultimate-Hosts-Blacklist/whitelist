@@ -54,7 +54,7 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
         logging.debug("Empty line whitelisted by default.")
         return True, line
 
-    if isinstance(line, bytes):
+    if isinstance(line, bytes): # pragma: no cover
         line = line.decode()
 
     logging.debug("Given line: {0}".format(repr(line)))
