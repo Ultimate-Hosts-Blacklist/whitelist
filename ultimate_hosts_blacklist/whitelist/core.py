@@ -54,7 +54,7 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
         logging.debug("Empty line whitelisted by default.")
         return True, line
 
-    if isinstance(line, bytes): # pragma: no cover
+    if isinstance(line, bytes):  # pragma: no cover
         line = line.decode()
 
     logging.debug("Given line: {0}".format(repr(line)))
@@ -65,7 +65,7 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
 
         try:
             url_base = PyFunceble.Check(to_check).is_url(return_base=True)
-        except AttributeError:
+        except AttributeError:  # pragma: no cover
             PyFunceble.load_config(generate_directory_structure=False)
             url_base = PyFunceble.Check(to_check).is_url(return_base=True)
 
