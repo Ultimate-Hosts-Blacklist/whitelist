@@ -3,3 +3,4 @@ domain2idna
 pyfunceble
 requests
 ultimate-hosts-blacklist-helpers>=1.5.2
+urllib3
