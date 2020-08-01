@@ -63,7 +63,11 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
     if isinstance(line, str):
         to_check = line.split()[-1]
 
-        url_base = PyFunceble.Check(to_check).is_url(return_base=True)
+        try:
+            url_base = PyFunceble.Check(to_check).is_url(return_base=True)
+        except AttributeError:
+            PyFunceble.load_config(generate_directory_structure=False)
+            url_base = PyFunceble.Check(to_check).is_url(return_base=True)
 
         if url_base is not False:  # pragma: no cover
             to_check = url_base
