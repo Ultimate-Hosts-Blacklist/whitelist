@@ -15,7 +15,7 @@ The ultimate hosts blacklist whitelist (**UHBW**) tool allows you:
 
 
 
-* to anti-whitelist (reverse) only particular domains while still using our core list. 
+* to anti-whitelist (reverse) only particular domains while still using our core list.
 
 ::
 
@@ -23,7 +23,7 @@ The ultimate hosts blacklist whitelist (**UHBW**) tool allows you:
 
 
 
-* to whitelist and anti-whitelist while still using our core list. 
+* to whitelist and anti-whitelist while still using our core list.
 
 ::
 
@@ -115,7 +115,7 @@ files and UHBW will obey your wishes!
 
 
 Understanding how UHBW whitelist works
-----------------------------
+--------------------------------------
 
 If you have your own whitelist, with the following lines:
 
