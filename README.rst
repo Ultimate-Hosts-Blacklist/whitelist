@@ -129,7 +129,7 @@ If you have your own whitelist, with the following lines:
 UHBW will do as follows:
 
 * Remove every line which match :code:`facebook.com` and :code:`www.facebook.com`
-* In complementary convert all lines with :code:`ALL ` or :code:`REG` to the
+* In complementary convert all lines with :code:`ALL` or :code:`REG` to the
   right format.
 * Remove every line which match :code:`example.*`
 * Check every line against the regular expression. More about this in next chapter.
