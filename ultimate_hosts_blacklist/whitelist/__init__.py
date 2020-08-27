@@ -40,7 +40,7 @@ from colorama import init as initiate
 
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.23.1"
+VERSION = "3.24.0"
 
 environ["PYFUNCEBLE_CONFIG_DIR"] = gettempdir()
 environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "YES"
@@ -240,7 +240,7 @@ def _command_line():
     parser.add_argument(
         "-a",
         "--anti-whitelist",
-        type=argparse.FileType("r"),
+        type=str,
         nargs="+",
         help="Read the given file override rules from the UHBW hosted "
         "whitelist which is used by default. (See also `-wc`)",
@@ -248,7 +248,7 @@ def _command_line():
 
     parser.add_argument(
         "--all",
-        type=argparse.FileType("r"),
+        type=str,
         nargs="+",
         help="Read the given file(s) and append its rules to the whitelisting schema. "
         f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "
@@ -274,10 +274,7 @@ def _command_line():
     )
 
     parser.add_argument(
-        "-f",
-        "--file",
-        type=argparse.FileType("r"),
-        help="The file to whitelist/clean.",
+        "-f", "--file", type=str, help="The file to whitelist/clean.",
     )
 
     parser.add_argument(
@@ -322,7 +319,7 @@ def _command_line():
 
     parser.add_argument(
         "--reg",
-        type=argparse.FileType("r"),
+        type=str,
         nargs="+",
         help="Read the given file(s) and append its rules to the whitelisting schema. "
         f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "
@@ -331,7 +328,7 @@ def _command_line():
 
     parser.add_argument(
         "--rzd",
-        type=argparse.FileType("r"),
+        type=str,
         nargs="+",
         help="Read the given file(s) and append its rules to the whitelisting schema. "
         f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "
@@ -356,7 +353,7 @@ def _command_line():
     parser.add_argument(
         "-w",
         "--whitelist",
-        type=argparse.FileType("r"),
+        type=str,
         nargs="+",
         help="Read the given file(s) and append its rules to the whitelisting schema. "
         f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "

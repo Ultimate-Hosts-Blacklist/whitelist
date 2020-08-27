@@ -31,11 +31,15 @@ License:
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 """
-# pylint: disable=bad-continuation, logging-format-interpolation
+# pylint: disable=bad-continuation
+
+
 import logging
+import sys
 from itertools import filterfalse
 from multiprocessing import Pool
-from os import cpu_count
+from os import cpu_count, environ, sep
+from tempfile import NamedTemporaryFile, TemporaryDirectory
 
 import PyFunceble
 from domain2idna import domain2idna
@@ -47,8 +51,8 @@ from ultimate_hosts_blacklist.whitelist.parser import Parser
 
 def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
     """
-        Check if the given line is whitelisted.
-        """
+    Check if the given line is whitelisted.
+    """
 
     if not line:
         logging.debug("Empty line whitelisted by default.")
@@ -57,7 +61,7 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
     if isinstance(line, bytes):  # pragma: no cover
         line = line.decode()
 
-    logging.debug("Given line: {0}".format(repr(line)))
+    logging.debug("Given line: %s", repr(line))
     line = line.strip()
 
     if isinstance(line, str):
@@ -74,7 +78,7 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
     else:  # pragma: no cover
         raise ValueError("expected {0}. {1} given.".format(str, type(line)))
 
-    logging.debug("To check: {0}".format(repr(to_check)))
+    logging.debug("To check: %s", repr(to_check))
 
     if manifest:
         if to_check.startswith("www."):
@@ -84,9 +88,10 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
 
         if bare[:4] in manifest["strict"] and to_check in manifest["strict"][bare[:4]]:
             logging.debug(
-                "Line {0} whitelisted by {1} rule: {2}.".format(
-                    repr(line), repr("strict"), repr(line)
-                )
+                "Line %s whitelisted by %s rule: %s.",
+                repr(line),
+                repr("strict"),
+                repr(line),
             )
             return True, line
 
@@ -95,7 +100,7 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
             and to_check in manifest["present"][bare[:4]]
         ):
             logging.debug(
-                "Line {0} whitelisted by {1} rule.".format(repr(line), repr("present"))
+                "Line %s whitelisted by %s rule.", repr(line), repr("present")
             )
             return True, line
 
@@ -103,9 +108,10 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
             for rule in manifest["ends"][bare[-3:]]:
                 if to_check.endswith(rule):
                     logging.debug(
-                        "Line {0} whitelisted by {1} rule: {2}.".format(
-                            repr(line), repr("ends"), repr(rule)
-                        )
+                        "Line %s whitelisted by %s rule: %s.",
+                        repr(line),
+                        repr("ends"),
+                        repr(rule),
                     )
                     return True, line
 
@@ -113,12 +119,10 @@ def _is_whitelisted(line, manifest):  # pylint: disable=too-many-branches
             manifest["regex"]
             and Regex(to_check, manifest["regex"], return_data=False).match()
         ):
-            logging.debug(
-                "Line {0} whitelisted by {1} rule.".format(repr(line), repr("regex"))
-            )
+            logging.debug("Line %s whitelisted by %s rule.", repr(line), repr("regex"))
             return True, line
 
-    logging.debug("Line {0} not whitelisted, no rule matched.".format(repr(line)))
+    logging.debug("Line %s not whitelisted, no rule matched.", repr(line))
     return False, line
 
 
@@ -176,6 +180,8 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
     # pylint: disable=too-many-locals
 
+    files_to_delete = []
+
     def __init__(
         self,
         output_file=None,
@@ -208,17 +214,23 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             filename=logging_file,
         )
 
-        self.secondary_whitelist_file = secondary_whitelist_file
+        self.pyfunceble_config_dir = TemporaryDirectory(prefix="UHBW_PYFUNCEBLE")
+        environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "YES"
+        PyFunceble.CONFIG_DIRECTORY = self.pyfunceble_config_dir.name + sep
+
+        PyFunceble.load_config(generate_directory_structure=False)
+
+        self.secondary_whitelist_file = self.__download_file(secondary_whitelist_file)
         self.secondary_whitelist_list = secondary_whitelist
         self.anti_whitelist_list = anti_whitelist
-        self.anti_whitelist_file = anti_whitelist_file
+        self.anti_whitelist_file = self.__download_file(anti_whitelist_file)
 
         self.all_whitelist_list = all_whitelist
-        self.all_whitelist_file = all_whitelist_file
+        self.all_whitelist_file = self.__download_file(all_whitelist_file)
         self.reg_whitelist_list = reg_whitelist
-        self.reg_whitelist_file = reg_whitelist_file
+        self.reg_whitelist_file = self.__download_file(reg_whitelist_file)
         self.rzd_whitelist_list = rzd_whitelist
-        self.rzd_whitelist_file = rzd_whitelist_file
+        self.rzd_whitelist_file = self.__download_file(rzd_whitelist_file)
 
         self.output = output_file
         self.use_core = use_official
@@ -234,7 +246,11 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             else:
                 self.processes = processes
 
-        PyFunceble.load_config(generate_directory_structure=False)
+    def __del__(self):
+        for file_path in self.files_to_delete:
+            PyFunceble.helpers.File(file_path=file_path).delete()
+
+        self.pyfunceble_config_dir.cleanup()
 
     @classmethod
     def __get_our_special_rules(cls):
@@ -276,6 +292,43 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
             # Match 255.255.255.255
             r"255.255.255.255",  # pylint: disable=line-too-long
         ]
+
+    @classmethod
+    def __get_file_obj_from_path(cls, file, force_check=True):  # pragma: no cover
+        """
+        Provides a file object of the given :code:`file`
+        if it exists.
+        """
+
+        if force_check and file is not None:
+            if not PyFunceble.helpers.File(file).exists():
+                print(f"Error: {file} does not exist.")
+                sys.exit(1)
+
+            return open(file, "r")
+
+        return file
+
+    def __download_file(self, file):  # pragma: no cover
+        """
+        Downloads the given file if it's a URL and return
+        the new file destination.
+        """
+
+        if isinstance(file, list):
+            return [self.__download_file(x) for x in file]
+
+        if file:
+            if PyFunceble.Check(file).is_url():
+                destination = NamedTemporaryFile(delete=False)
+
+                PyFunceble.helpers.Download(file).text(destination=destination.name)
+                self.files_to_delete.append(destination.name)
+
+                return destination
+
+            return self.__get_file_obj_from_path(file)
+        return file
 
     def __get_secondary_whitelist_rules(self):
         """
@@ -521,6 +574,8 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         """
 
         result = []
+
+        input_file = self.__get_file_obj_from_path(input_file)
 
         if input_file:
             result.extend(input_file.read().splitlines())
