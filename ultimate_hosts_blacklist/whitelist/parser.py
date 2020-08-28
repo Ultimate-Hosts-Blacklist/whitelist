@@ -31,7 +31,7 @@ License:
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 """
-# pylint:disable=bad-continuation, too-few-public-methods
+# pylint:disable=too-few-public-methods
 
 from ultimate_hosts_blacklist.helpers import Dict, List
 from ultimate_hosts_blacklist.whitelist.configuration import Configuration

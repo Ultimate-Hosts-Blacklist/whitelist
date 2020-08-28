@@ -29,7 +29,6 @@ License:
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 """
-# pylint: disable=bad-continuation
 import argparse
 from logging import DEBUG, INFO
 from os import environ
@@ -274,7 +273,10 @@ def _command_line():
     )
 
     parser.add_argument(
-        "-f", "--file", type=str, help="The file to whitelist/clean.",
+        "-f",
+        "--file",
+        type=str,
+        help="The file to whitelist/clean.",
     )
 
     parser.add_argument(
