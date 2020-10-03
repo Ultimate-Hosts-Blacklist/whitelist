@@ -219,6 +219,8 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         PyFunceble.load_config(generate_directory_structure=False)
 
+        self.temporary_output_file = self.__get_temp_file().name
+
         self.secondary_whitelist_file = self.__download_file(secondary_whitelist_file)
         self.secondary_whitelist_list = secondary_whitelist
         self.anti_whitelist_list = anti_whitelist
@@ -246,6 +248,9 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                 self.processes = processes
 
     def __del__(self):
+        if self.output:
+            PyFunceble.helpers.File(self.temporary_output_file).move(self.output)
+
         for file_path in self.files_to_delete:
             PyFunceble.helpers.File(file_path=file_path).delete()
 
@@ -308,6 +313,16 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         return file
 
+    def __get_temp_file(self):  # pragma: no cover
+        """
+        Provides a new temporary file.
+        """
+
+        destination = NamedTemporaryFile(delete=False)
+        self.files_to_delete.append(destination.name)
+
+        return destination
+
     def __download_file(self, file):  # pragma: no cover
         """
         Downloads the given file if it's a URL and return
@@ -319,10 +334,8 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
 
         if file:
             if PyFunceble.Check(file).is_url():
-                destination = NamedTemporaryFile(delete=False)
-
+                destination = self.__get_temp_file()
                 PyFunceble.helpers.Download(file).text(destination=destination.name)
-                self.files_to_delete.append(destination.name)
 
                 return destination
 
@@ -561,7 +574,7 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
                     self.__process_sorting(line, standard_sorting, hierarchical_sorting)
                 )
 
-            File(self.output).write("{0}\n".format(line), overwrite=True)
+            File(self.temporary_output_file).write("{0}\n".format(line), overwrite=True)
 
         return line
 
