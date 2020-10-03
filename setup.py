@@ -40,7 +40,7 @@ from setuptools import setup
 NAMESPACE = "ultimate_hosts_blacklist"
 MODULE = "whitelist"
 
-PYPI_NAME = substring(r"_", r"-", "{0}-{1}".format(NAMESPACE, MODULE))
+PYPI_NAME = substring(r"_", r"-", "{0}-{1}".format(NAMESPACE, MODULE)) + "-dev"
 
 
 def _test_suite():
@@ -97,6 +97,8 @@ if __name__ == "__main__":
         install_requires=_get_requirements(),
         description="The whitelisting tool of the Ultimate Hosts Blacklist project.",
         long_description=_get_long_description(),
+        author="funilrys",
+        author_email="contact@funilrys.com",
         license="MIT",
         url="https://github.com/Ultimate-Hosts-Blacklist/whitelist/tree/script",
         platforms=["any"],
@@ -120,9 +122,8 @@ if __name__ == "__main__":
                 "uhb-whitelist=ultimate_hosts_blacklist.{0}:_command_line".format(
                     MODULE
                 ),
-                "ultimate-hosts-blacklist-whitelist=ultimate_hosts_blacklist.{0}:_command_line".format(
-                    MODULE
-                ),
+                "ultimate-hosts-blacklist-whitelist=ultimate_hosts_blacklist."
+                "{0}:_command_line".format(MODULE),
             ]
         },
     )
