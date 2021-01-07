@@ -40,7 +40,9 @@ from multiprocessing import Pool
 from os import cpu_count
 from tempfile import NamedTemporaryFile
 
-import PyFunceble.cli.utils.sort
+from PyFunceble.cli.utils.sort import standard as standard_sort
+from PyFunceble.cli.utils.sort import hierarchical as hierarchical_sort
+
 from colorama import Fore, Style
 from domain2idna import domain2idna
 from PyFunceble.checker.syntax.url import URLSyntaxChecker
@@ -608,14 +610,14 @@ class Core:  # pylint: disable=too-few-public-methods,too-many-arguments, too-ma
         if standard:
             return (
                 ListHelper(to_sort)
-                .custom_sort(PyFunceble.cli.utils.sort.standard)
+                .custom_sort(standard_sort)
                 .subject
             )
 
         if hierarchical:
             return (
                 ListHelper(to_sort)
-                .custom_sort(PyFunceble.cli.utils.sort.hierarchical)
+                .custom_sort(hierarchical_sort)
                 .subject
             )
 
