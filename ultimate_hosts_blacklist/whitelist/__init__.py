@@ -39,7 +39,7 @@ from colorama import init as initiate
 
 from ultimate_hosts_blacklist.whitelist.core import Core
 
-VERSION = "3.25.0"
+VERSION = "3.26.0"
 
 environ["PYFUNCEBLE_CONFIG_DIR"] = gettempdir()
 environ["PYFUNCEBLE_AUTO_CONFIGURATION"] = "YES"
@@ -249,7 +249,7 @@ def _command_line():
         "--all",
         type=str,
         nargs="+",
-        help="Read the given file(s) and append its rules to the whitelisting schema. "
+        help="Read the given file(s) (or string) and append its rules to the whitelisting schema. "
         f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "
         f"will be automatically prefixed with the `ALL` marker.{Style.RESET_ALL}",
     )
@@ -323,7 +323,7 @@ def _command_line():
         "--reg",
         type=str,
         nargs="+",
-        help="Read the given file(s) and append its rules to the whitelisting schema. "
+        help="Read the given file(s) (or string) and append its rules to the whitelisting schema. "
         f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "
         f"will be automatically prefixed with the `REG` marker.{Style.RESET_ALL}",
     )
@@ -332,7 +332,7 @@ def _command_line():
         "--rzd",
         type=str,
         nargs="+",
-        help="Read the given file(s) and append its rules to the whitelisting schema. "
+        help="Read the given file(s) (or string) and append its rules to the whitelisting schema. "
         f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "
         f"will be automatically prefixed with the `RZD` marker.{Style.RESET_ALL}",
     )
@@ -357,7 +357,7 @@ def _command_line():
         "--whitelist",
         type=str,
         nargs="+",
-        help="Read the given file(s) and append its rules to the whitelisting schema. "
+        help="Read the given file(s) (or string) and append its rules to the whitelisting schema. "
         f"{Fore.GREEN}{Style.BRIGHT}Note: The rules injected through this argument "
         "won't be changed. We follow what you give us. That means that if you "
         "give any of our supported rules, they will still be appended to the "

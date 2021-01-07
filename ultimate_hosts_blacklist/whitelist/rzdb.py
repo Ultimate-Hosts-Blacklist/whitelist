@@ -35,7 +35,9 @@ License:
 from json import loads
 from re import escape
 
-from ultimate_hosts_blacklist.helpers import Download, List
+from PyFunceble.helpers.download import DownloadHelper
+from PyFunceble.helpers.list import ListHelper
+
 from ultimate_hosts_blacklist.whitelist.configuration import Configuration
 
 
@@ -52,7 +54,7 @@ class RZDB:
 
         return list(
             loads(
-                Download(Configuration.links["root_zone_db"], destination=None).link()
+                DownloadHelper(Configuration.links["root_zone_db"]).download_text()
             ).keys()
         )
 
@@ -65,7 +67,7 @@ class RZDB:
         return [
             suffix
             for suffixes in loads(
-                Download(Configuration.links["public_suffix"], destination=None).link()
+                DownloadHelper(Configuration.links["public_suffix"]).download_text()
             ).values()
             for suffix in suffixes
         ]
@@ -78,7 +80,7 @@ class RZDB:
         result = self.__get_database()
         result.extend(self.__get_public_suffix())
 
-        return List(result).format()
+        return ListHelper(result).remove_duplicates().sort().remove_empty().subject
 
     def regex_format(self):  # pragma: no cover
         """

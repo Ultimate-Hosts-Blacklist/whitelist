@@ -1,0 +1,118 @@
+name: Script deployment Workflow
+on:
+  push:
+    branches:
+      - script
+      - script-dev
+
+jobs:
+  lint:
+    name: Lint project
+
+    runs-on: "${{ matrix.os }}"
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python_version:
+          - "3.9.1"
+        os:
+          - ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Clone repository
+
+      - name: Set up Python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+
+      - name: Install dependencies
+        run: |
+          pip install pylint
+          pip install .
+
+      - name: Lint project with Pylint
+        run: pylint ultimate_hosts_blacklist
+
+  test:
+    needs: lint
+    name: "Tests the script."
+
+    runs-on: "${{ matrix.os }}"
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python_version:
+          - "3.9.1"
+        os:
+          - ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Clone repository
+
+      - name: Set up Python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+
+      - name: Install dependencies
+        run: |
+          pip install tox
+          pip install .
+
+      - name: Launch the test
+        run: |
+          tox
+
+  deploy_pypi:
+    needs: test
+    name: "Deploy 📦 to the PyPi"
+
+    runs-on: "${{ matrix.os }}"
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python_version:
+          - "3.9.1"
+        os:
+          - ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Clone repository
+
+      - name: Set up Python ${{ matrix.python_version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+
+      - name: Install dependencies
+        run: |
+          pip install twine wheel setuptools
+
+      - name: Build 📦
+        run: |
+          python setup.py sdist bdist_wheel
+
+      - name: Check 📦
+        run: |
+          twine check dist/*
+
+      - name: Publish 📦 to PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        if: github.ref == 'refs/heads/script-dev'
+        with:
+          password: ${{ secrets.PYPI_DEV_API_TOKEN }}
+          skip_existing: true
+
+      - name: Publish 📦 to PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        if: github.ref == 'refs/heads/script'
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          skip_existing: true

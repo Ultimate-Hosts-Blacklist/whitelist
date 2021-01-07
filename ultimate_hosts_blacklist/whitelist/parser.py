@@ -33,7 +33,8 @@ License:
 """
 # pylint:disable=too-few-public-methods
 
-from ultimate_hosts_blacklist.helpers import Dict, List
+
+from ultimate_hosts_blacklist.helpers import List, Dict
 from ultimate_hosts_blacklist.whitelist.configuration import Configuration
 from ultimate_hosts_blacklist.whitelist.rzdb import RZDB
 
@@ -226,6 +227,10 @@ class Parser:
                     result = Dict(result).merge(
                         self.__parse_parsed(parsed), strict=False
                     )
+
+                for index, value in result.items():
+                    if not value:
+                        result[index] = {}
 
             if result["regex"]:
                 result["regex"] = "({0})".format("|".join(result["regex"]))
