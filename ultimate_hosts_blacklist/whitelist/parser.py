@@ -34,7 +34,8 @@ License:
 # pylint:disable=too-few-public-methods
 
 
-from ultimate_hosts_blacklist.helpers import List, Dict
+from ultimate_hosts_blacklist.helpers import Dict, List
+
 from ultimate_hosts_blacklist.whitelist.configuration import Configuration
 from ultimate_hosts_blacklist.whitelist.rzdb import RZDB
 
