@@ -29,5 +29,6 @@
 
 # Our main whitelist file.
 domains.list
-
+data/microsoft-teams
+data/microsoft-outlook
 # Let's complete the list together!
