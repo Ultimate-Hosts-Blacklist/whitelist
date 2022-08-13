@@ -29,6 +29,12 @@
 
 # Our main whitelist file.
 domains.list
+# Fix issues with Microsoft Teams.
 data/microsoft-teams
+# Fix issues with Microsoft Outlook.
 data/microsoft-outlook
+# Fix issues with Google Translate
+data/google-translate
+
+
 # Let's complete the list together!
