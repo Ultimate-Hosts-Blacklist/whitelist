@@ -37,6 +37,8 @@ data/microsoft-teams
 data/microsoft-outlook
 # Fix issues with Microsoft Login.
 data/microsoft-login
+# Fix issues with Microsoft Office 365.
+data/microsoft-office365
 ##########################
 
 
