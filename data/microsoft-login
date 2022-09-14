@@ -1,2 +1,11 @@
 login.microsoftonline.com
+ALL .auth.microsoft.com
+ALL .msftidentity.com
+ALL .msidentity.com
+account.activedirectory.windowsazure.com
+accounts.accesscontrol.windows.net
+adminwebservice.microsoftonline.com
+api.passwordreset.microsoftonline.com
+autologon.microsoftazuread-sso.com
+ccs.login.microsoftonline.com
 

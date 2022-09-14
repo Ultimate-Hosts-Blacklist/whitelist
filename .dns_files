@@ -39,6 +39,8 @@ data/microsoft-outlook
 data/microsoft-login
 # Fix issues with Microsoft Office 365.
 data/microsoft-office365
+# Fix issues with Microsoft Sharepoints.
+data/microsoft-sharepoint
 ##########################
 
 

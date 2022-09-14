@@ -1,2 +1,13 @@
+aka.ms
+ALL .broadcast.skype.com
+ALL .keydelivery.mediaservices.windows.net
+ALL .lync.com
+ALL .mstea.ms
+ALL .secure.skypeassets.com
+ALL .sfbassets.com
+ALL .streaming.mediaservices.windows.net
+ALL .teams.microsoft.com
+broadcast.skype.com
+mlccdn.blob.core.windows.net
+mlccdnprod.azureedge.net
 teams.microsoft.com
-
