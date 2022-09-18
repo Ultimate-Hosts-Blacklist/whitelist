@@ -46,6 +46,7 @@ data/microsoft-sharepoint
 
 # Fix issues with Google Translate
 data/google-translate
-
+# Fix issue witth google Static Fonts
+data/google-static
 
 # Let's complete the list together!
