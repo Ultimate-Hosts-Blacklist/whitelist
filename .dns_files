@@ -41,6 +41,8 @@ data/microsoft/login
 data/microsoft/office365
 # Fix issues with Microsoft Sharepoints.
 data/microsoft/sharepoint
+# Fix issuw with Cloud Apps (Azure)
+data/microsoft/azure
 ##########################
 
 
@@ -48,5 +50,8 @@ data/microsoft/sharepoint
 data/google-translate
 # Fix issue witth google Static Fonts
 data/google-static
+
+## Everythin @ CCSU
+data/ccsu
 
 # Let's complete the list together!
