@@ -32,15 +32,15 @@ domains.list
 
 ## Everything Microsoft ##
 # Fix issues with Microsoft Teams.
-data/microsoft-teams
+data/microsoft/teams
 # Fix issues with Microsoft Outlook.
-data/microsoft-outlook
+data/microsoft/outlook
 # Fix issues with Microsoft Login.
-data/microsoft-login
+data/microsoft/login
 # Fix issues with Microsoft Office 365.
-data/microsoft-office365
+data/microsoft/office365
 # Fix issues with Microsoft Sharepoints.
-data/microsoft-sharepoint
+data/microsoft/sharepoint
 ##########################
 
 
