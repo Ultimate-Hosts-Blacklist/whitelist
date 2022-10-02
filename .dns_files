@@ -45,11 +45,12 @@ data/microsoft/sharepoint
 data/microsoft/azure
 ##########################
 
-
+## Everything Google ##
 # Fix issues with Google Translate
-data/google-translate
+data/google/translate
 # Fix issue witth google Static Fonts
-data/google-static
+data/google/static
+##########################
 
 ## Everythin @ CCSU
 data/ccsu
