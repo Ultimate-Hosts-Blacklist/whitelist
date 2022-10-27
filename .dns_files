@@ -41,16 +41,16 @@ data/microsoft/login
 data/microsoft/office365
 # Fix issues with Microsoft Sharepoints.
 data/microsoft/sharepoint
-# Fix issuw with Cloud Apps (Azure)
+# Fix issues with Cloud Apps (Azure)
 data/microsoft/azure
-# Fix issuw with Xbox.
+# Fix issues with Xbox.
 data/microsoft/xbox
 ##########################
 
 ## Everything Google ##
 # Fix issues with Google Translate
 data/google/translate
-# Fix issue witth google Static Fonts
+# Fix issues witth google Static Fonts
 data/google/static
 ##########################
 
