@@ -52,7 +52,25 @@ data/microsoft/xbox
 data/google/translate
 # Fix issues witth google Static Fonts
 data/google/static
+# Fix issues with youtube.
+data/google/youtube
 ##########################
+
+## Everything Facebook ##
+# Fix issues with facebook.
+data/facebook/infra
+# Fix issues with spotify.
+data/facebook/spotify-web
+##########################
+
+## Everything Dropbox ##
+# Fix isues with Dropbox.
+data/dropbox
+##########################
+
+## Everything Netflix ##
+## Fix issues with Netflix.
+data/netflix
 
 ## Everythin @ CCSU
 data/ccsu
