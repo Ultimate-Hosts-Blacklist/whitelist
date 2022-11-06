@@ -45,6 +45,10 @@ data/microsoft/sharepoint
 data/microsoft/azure
 # Fix issues with Xbox.
 data/microsoft/xbox
+# Fix issues with store.
+data/microsoft/store
+# Fix issues with bing.
+data/microsoft/bing
 ##########################
 
 ## Everything Google ##
