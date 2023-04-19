@@ -27,61 +27,143 @@
 #      tracker at https://github.com/Ultimate-Hosts-Blacklist/dev-center.
 #
 
-# Our main whitelist file.
+## Our main whitelist file ##
 domains.list
-
-## Everything Microsoft ##
-# Fix issues with Microsoft Teams.
-data/microsoft/teams
-# Fix issues with Microsoft Outlook.
-data/microsoft/outlook
-# Fix issues with Microsoft Login.
-data/microsoft/login
-# Fix issues with Microsoft Office 365.
-data/microsoft/office365
-# Fix issues with Microsoft Sharepoints.
-data/microsoft/sharepoint
-# Fix issues with Cloud Apps (Azure)
-data/microsoft/azure
-# Fix issues with Xbox.
-data/microsoft/xbox
-# Fix issues with store.
-data/microsoft/store
-# Fix issues with bing.
-data/microsoft/bing
 ##########################
 
-## Everything Google ##
-# Fix issues with Google Translate
-data/google/translate
-# Fix issues witth google Static Fonts
-data/google/static
-# Fix issues with youtube.
-data/google/youtube
+## Everything @ Apple ##
+# Fix issues witth apple itunes.
+data/apple/itunes
 ##########################
 
-## Everything Facebook ##
+## Everything @ Facebook ##
 # Fix issues with facebook.
 data/facebook/infra
 # Fix issues with spotify.
 data/facebook/spotify-web
 ##########################
 
-## Everything Dropbox ##
-# Fix isues with Dropbox.
+## Everything @ Google ##
+# Fix issues with google analytic.
+data/google/analytic
+# Fix issues with google drive.
+data/google/drive
+# Fix issues with google gmail.
+data/google/gmail
+# Fix issues with google maps.
+data/google/maps
+# Fix issues with google static assets.
+data/google/static
+# Fix issues with google talk.
+data/google/talk
+# Fix issues with youtube.
+data/google/youtube
+##########################
+
+## Everything @ Microsoft ##
+# Fix issues with cloud apps (Azure).
+data/microsoft/azure
+# Fix issues with bing.
+data/microsoft/bing
+# Fix issues with microsoft download.
+data/microsoft/download
+# Fix issues with microsoft learn.
+data/microsoft/learn
+# Fix issues with linkedin.
+data/microsoft/linkedin
+# Fix issues with microsoft login.
+data/microsoft/login
+# Fix issues with msn.
+data/microsoft/msn
+# Fix issues with microsoft office 365.
+data/microsoft/office365
+# Fix issues with onedrive.
+data/microsoft/onedrive
+# Fix issues with microsoft outlook.
+data/microsoft/outlook
+# Fix issues with microsoft sharepoints.
+data/microsoft/sharepoint
+# Fix issues with microsoft store.
+data/microsoft/store
+# Fix issues with microsoft teams.
+data/microsoft/teams
+# Fix issues with Xbox.
+data/microsoft/xbox
+##########################
+
+## Everything @ Amazon ##
+# Fix isues with amazon.
+data/amazon
+##########################
+
+## Everything @ Ampproject ##
+## Fix issues with ampproject.
+data/ampproject
+##########################
+
+## Everythin @ CCSU ##
+## Fix issues with ccsu.
+data/ccsu
+##########################
+
+## Everything @ Dropbox ##
+# Fix isues with dropbox.
 data/dropbox
 ##########################
 
-## Everything Netflix ##
-## Fix issues with Netflix.
-data/netflix
+## Everything @ Ebay ##
+# Fix isues with ebay.
+data/ebay
+##########################
 
-## Everythin @ CCSU
-data/ccsu
-
-## Everything @ ampproject
-data/ampproject
-
-## Everything @ hubspot
+## Everything @ Hubspot ##
+## Fix issues with hubspot.
 data/hubspot
+##########################
+
+## Everything @ Logmeln ##
+# Fix isues with logmeln.
+data/logmeln
+##########################
+
+## Everything @ Netflix ##
+## Fix issues with netflix.
+data/netflix
+##########################
+
+## Everything @ Reddit ##
+# Fix isues with reddit.
+data/reddit
+##########################
+
+## Everything @ Salesforce ##
+# Fix isues with salesforce.
+data/salesforce
+##########################
+
+## Everything @ Twitter ##
+# Fix isues with twitter.
+data/twitter
+##########################
+
+## Everything @ Vimeo ##
+# Fix isues with vimeo.
+data/vimeo
+##########################
+
+## Everything @ VPN ##
+# Fix isues with vpn.
+data/vpn
+##########################
+
+## Everything @ WordPress ##
+# Fix isues with wordpress.
+data/wordpress
+##########################
+
+## Everything @ Yahoo ##
+# Fix isues with yahoo.
+data/yahoo
+##########################
+
 # Let's complete the list together!

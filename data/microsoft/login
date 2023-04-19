@@ -7,5 +7,7 @@ ALL .msidentity.com
 api.passwordreset.microsoftonline.com
 autologon.microsoftazuread-sso.com
 ccs.login.microsoftonline.com
+crl.microsoft.com
+login.live.com
 login.microsoftonline.com
 microsoftonline.com

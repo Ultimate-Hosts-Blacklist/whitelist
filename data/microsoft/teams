@@ -7,7 +7,13 @@ ALL .secure.skypeassets.com
 ALL .sfbassets.com
 ALL .streaming.mediaservices.windows.net
 ALL .teams.microsoft.com
+apps.skype.com
+apps.skypeassets.com
 broadcast.skype.com
 mlccdn.blob.core.windows.net
 mlccdnprod.azureedge.net
+pricelist.skype.com
+skype.com
 teams.microsoft.com
+teredo.ipv6.microsoft.com
+ui.skype.com

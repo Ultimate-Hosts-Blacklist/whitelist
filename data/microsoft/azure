@@ -3,7 +3,10 @@ ALL .cloudapp.azure.com
 ALL .cloudapp.net
 az784874.vo.msecnd.net
 azure.com
+dlc-shim.trafficmanager.net
 firstparty-azurefd-prod.trafficmanager.net
+learn-public.trafficmanager.net
+software.download.prss.trafficmanager.net
 star-azurefd-prod.trafficmanager.net
 trafficmanager.net
 windowsazure.com
