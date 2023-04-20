@@ -1,7 +1,7 @@
 acom-site-prod-glbl-01.trafficmanager.net
 ALL .cloudapp.azure.com
 ALL .cloudapp.net
-az784874.vo.msecnd.net
+ALL .vo.msecnd.net
 azure.com
 dlc-shim.trafficmanager.net
 firstparty-azurefd-prod.trafficmanager.net
