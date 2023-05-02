@@ -102,7 +102,7 @@ regex which follows the marker.
 """""""""""
 
 The :code:`RZD` marker will tell the system to explicitly check for the given
-string plus all possible TDL.
+string plus all possible TLD.
 
 Anti whitelist
 --------------
