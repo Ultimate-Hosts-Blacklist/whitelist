@@ -500,6 +500,7 @@ REG ^(?!.*\.?(popcon)).*\.ubuntu\.com$
 REG ^(?!.*\.?(vstats)).*\.digitaltrends\.com$
 REG ^(?!.*\.?(watchdog\.ohio|dap\.digitalgov|stats\.ssa|adgallery\.whitehousedrugpolicy)).*\.gov$
 REG ^.*\.oloadcdn\.net$
+realites.com.tn
 releases.flowplayer.org
 res.cloudinary.com
 road.adblock.ro
