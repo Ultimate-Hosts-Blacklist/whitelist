@@ -14,7 +14,6 @@ It can be found in the `script branch`_.
 Maintainers
 -----------
 
-- Daniel - `@dnmTX`_
 - Mitchell Krog - `@mitchellkrogza`_
 - Nissar Chababy - `@funilrys`_
 - smed79 - `@smed79`_
@@ -26,9 +25,9 @@ License
 
     MIT License
 
-    Copyright (c) 2018, 2019, 2020 Ultimate-Hosts-Blacklist
-    Copyright (c) 2018, 2019, 2020 Nissar Chababy
-    Copyright (c) 2018, 2019, 2020 Mitchell Krog
+    Copyright (c) 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Ultimate Hosts Blacklist - @Ultimate-Hosts-Blacklist Contributors
+    Copyright (c) 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Mitchell Krog - @mitchellkrogza
+    Copyright (c) 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024 Nissar Chababy - @funilrys
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
