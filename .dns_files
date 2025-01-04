@@ -44,6 +44,8 @@ data/facebook/spotify-web
 ##########################
 
 ## Everything @ Google ##
+# Fix issues with google 2-step verification.
+data/google/2fa
 # Fix issues with google analytic.
 data/google/analytic
 # Fix issues with google drive.
