@@ -1,14 +1,14 @@
-# This files contains the list of files which are parsed into 
+# This files contains the list of files which are parsed into
 # our (future to be) Public DNS Service.
-# 
-# How does it works? 
+#
+# How does it works?
 #
 #    The server will fetch this file, read each lines,
 #    try to fetch:
 #        https://github.com/Ultimate-Hosts-Blacklist/whitelist/raw/master/${line}
 #
 #    If it is successful, the file will be parsed to the whitelisting tool which
-#    is applied before each update/reload of the DNS server. 
+#    is applied before each update/reload of the DNS server.
 #
 #    If it is not successful, the parser will follow the next line, and so on...
 #
@@ -19,7 +19,7 @@
 #    Everybody who have write access to this file and repository.
 #
 # Notes:
-#    
+#
 #    * The DNS server will fetch this file (and every other listed here) every day
 #      around 19:10 UTC.
 #    * If not around 19:10 UTC because of an issue or any reasone,
@@ -101,6 +101,11 @@ data/amazon
 ## Everything @ Ampproject ##
 ## Fix issues with ampproject.
 data/ampproject
+##########################
+
+## Everything @ Cloudflare ##
+# Fix isues with cloudflare.
+data/cloudflare
 ##########################
 
 ## Everythin @ CCSU ##
