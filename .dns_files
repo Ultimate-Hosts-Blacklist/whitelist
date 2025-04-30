@@ -39,6 +39,8 @@ data/apple/itunes
 ## Everything @ Facebook ##
 # Fix issues with facebook.
 data/facebook/infra
+# Fix issues with instagram.
+data/facebook/instagram
 # Fix issues with spotify.
 data/facebook/spotify-web
 ##########################
