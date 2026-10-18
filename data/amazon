@@ -33,5 +33,6 @@ images-fe.ssl-images-amazon.com
 images-na.ssl-images-amazon.com
 m.media-amazon.com
 s3.amazonaws.com
+s3.us-west-2.amazonaws.com
 ssl-images-amazon.com
 z-ecx.images-amazon.com
